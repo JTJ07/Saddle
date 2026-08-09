@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: BOOTSTRAP / NOT YET FUNCTIONAL
+status: BOOTSTRAP_COMMITTED / ZERO_MEMORY_COLD_START_PENDING
 completion_lock: ACTIVE
 state_owner: PROJECT_STATE.md
 updated_at: 2026-08-10
@@ -150,14 +150,13 @@ Its product-status assumptions are stale relative to later Executor work and mus
 
 ## 6. Current gaps that must be closed for functional Saddle
 
-1. Durable Saddle repository and cold-start continuity.
-2. Cross-repo canonical-state reconciliation.
-3. Minimal Saddle protocol contract.
-4. Unified eval/evidence harness.
-5. First real AI worker replacing the hard-coded GP001 solution proposal.
-6. Verified intent / verified human authority bridge adequate for the first real effect path.
-7. One real-domain path (recommended candidate: ScriptOps RC1, subject to source/access reconciliation).
-8. Fresh-session end-to-end acceptance proving resumability.
+1. Cross-repo canonical-state reconciliation.
+2. Minimal Saddle protocol contract.
+3. Unified eval/evidence harness.
+4. First real AI worker replacing the hard-coded GP001 solution proposal.
+5. Verified intent / verified human authority bridge adequate for the first real effect path.
+6. One real-domain path (recommended candidate: ScriptOps RC1, subject to source/access reconciliation).
+7. Fresh-session end-to-end acceptance proving resumability.
 
 ## 7. Functional acceptance definition
 
@@ -177,8 +176,10 @@ Its product-status assumptions are stale relative to later Executor work and mus
 
 ## 8. Current blocker
 
-Phase 0 is active: the Saddle repository now exists and is being populated with the durable bootstrap. The next acceptance condition is a zero-memory cold-start review against the committed repository state.
+No repository-creation blocker remains. The durable bootstrap is committed and key startup files have been re-read from GitHub successfully.
+
+Phase 0 remains open only because the required independent zero-memory cold-start test has not yet been executed and recorded.
 
 ## 9. One next step
 
-Complete the bootstrap import, verify all canonical files are present on `main`, and run a zero-memory cold-start review against `README.md` + `AGENTS.md` + `PROJECT_STATE.md` + `SESSION_HANDOFF.md`.
+Run a fresh-session / zero-prior-memory cold-start audit using only the committed `litrgratis-pixel/Saddle` repository and record the result. Do not begin Phase 1 before that evidence exists.

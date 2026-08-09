@@ -1,0 +1,9 @@
+{
+  "schema_version": "saddle-completion-lock/0.1",
+  "status": "ACTIVE",
+  "release_condition": "PROJECT_STATE records FUNCTIONAL_SADDLE_ACCEPTED based on Phase 7 evidence and human acceptance",
+  "new_feature_policy": "PARK_ONLY",
+  "idea_file": "FUTURE_IDEAS.md",
+  "active_plan": "EXECUTION_PLAN.md",
+  "max_active_next_steps": 1
+}

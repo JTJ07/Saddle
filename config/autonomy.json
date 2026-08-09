@@ -1,0 +1,43 @@
+{
+  "schema_version": "saddle-autonomy/0.1",
+  "completion_lock": true,
+  "levels": {
+    "L0": {
+      "name": "READ_ANALYZE",
+      "autonomous": true
+    },
+    "L1": {
+      "name": "SAFE_REVERSIBLE",
+      "autonomous": true,
+      "conditions": [
+        "inside_active_gate",
+        "reversible",
+        "tested",
+        "non_destructive"
+      ]
+    },
+    "L2": {
+      "name": "REPOSITORY_CHANGE",
+      "autonomous": true,
+      "conditions": [
+        "explicitly_inside_active_plan",
+        "branch_scoped",
+        "tests_required",
+        "durable_handoff_required"
+      ]
+    },
+    "L3": {
+      "name": "HUMAN_AUTHORITY",
+      "autonomous": false,
+      "examples": [
+        "change_product_goal",
+        "disable_completion_lock",
+        "unscoped_merge_or_deploy",
+        "expand_secrets_or_permissions",
+        "high_risk_external_effect",
+        "weaken_security_or_evidence",
+        "promote_hypothesis_to_human_decision"
+      ]
+    }
+  }
+}

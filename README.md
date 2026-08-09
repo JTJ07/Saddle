@@ -1,6 +1,6 @@
 # Saddle
 
-Status: `BOOTSTRAP / NOT YET FUNCTIONAL`
+Status: `PHASE 1 / ECOSYSTEM RECONCILIATION / NOT YET FUNCTIONAL`
 
 Saddle is a durable control layer between **human intent** and **arbitrarily capable AI**.
 

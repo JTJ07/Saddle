@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: BOOTSTRAP_COMMITTED / ZERO_MEMORY_COLD_START_PENDING
+status: PHASE_0_ACCEPTED / PHASE_1_ACTIVE / NOT_YET_FUNCTIONAL
 completion_lock: ACTIVE
 state_owner: PROJECT_STATE.md
 updated_at: 2026-08-10
@@ -26,13 +26,15 @@ The project is in **completion mode**. New product development is frozen.
 
 ## 3. Confirmed current ecosystem
 
-Five GitHub repositories are currently accessible under `litrgratis-pixel`:
+Five source/component GitHub repositories are currently tracked under `litrgratis-pixel`:
 
 1. `COS`
 2. `creative-os-project-reconstructor`
 3. `scriptops`
 4. `Executor`
 5. `executor-pilot-target`
+
+The Saddle repository itself is the sixth accessible repository and owns Saddle-specific state.
 
 ### Current default-branch checkpoints observed on 2026-08-10
 
@@ -174,12 +176,22 @@ Its product-status assumptions are stale relative to later Executor work and mus
 10. canonical state and handoff are updated;
 11. a new session with no prior conversation correctly resumes from GitHub alone.
 
-## 8. Current blocker
+## 8. Phase 0 result
 
-No repository-creation blocker remains. The durable bootstrap is committed and key startup files have been re-read from GitHub successfully.
+`PHASE 0 — DURABLE MEMORY BOOTSTRAP` has passing evidence in `evidence/COLD_START_AUDIT_001.md`.
 
-Phase 0 remains open only because the required independent zero-memory cold-start test has not yet been executed and recorded.
+A fresh session recovered the product definition, prime memory law, completion lock, active phase, evidence boundary and one next step from committed repository content without prior bootstrap conversation context.
 
-## 9. One next step
+The audit found one stale root status label in `README.md`; the same change set corrects it.
 
-Run a fresh-session / zero-prior-memory cold-start audit using only the committed `litrgratis-pixel/Saddle` repository and record the result. Do not begin Phase 1 before that evidence exists.
+This closes only the durable-memory bootstrap gate. Saddle remains `NOT YET FUNCTIONAL`.
+
+## 9. Current blocker
+
+`PHASE 1 — ECOSYSTEM RECONCILIATION` is now the active gate.
+
+The immediate unresolved work is to classify the active Executor PR stack #51–#57 against current main and distinguish canonical implementation, draft design, reusable semantics and superseded/experimental material before later protocol or authority work relies on it.
+
+## 10. One next step
+
+Classify Executor PRs #51–#57 against current `Executor/main` and record the result in Saddle's ecosystem/source state without merging or rewriting the Executor repository.

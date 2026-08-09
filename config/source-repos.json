@@ -1,0 +1,30 @@
+{
+  "observed_at": "2026-08-10",
+  "repositories": [
+    {
+      "name": "litrgratis-pixel/COS",
+      "observed_main": "3220310267c3d0ba2184daaf3f2adad259a9cb20",
+      "role": "canonical high-level state/memory"
+    },
+    {
+      "name": "litrgratis-pixel/creative-os-project-reconstructor",
+      "observed_main": "defc7b029097284f94136fec54b75c313ac12f68",
+      "role": "context/project reconstruction"
+    },
+    {
+      "name": "litrgratis-pixel/scriptops",
+      "observed_main": "90a5ba9863961c4b79472db84297cfb403cc5158",
+      "role": "real-domain candidate / canon-control workflow"
+    },
+    {
+      "name": "litrgratis-pixel/Executor",
+      "observed_main": "788443c3ed5b290ac8f1de145a93d02d2dd15317",
+      "role": "controlled effect engine"
+    },
+    {
+      "name": "litrgratis-pixel/executor-pilot-target",
+      "observed_main": "dc094679ef3e2d5cf5f1aa0ff0fd54d16f201154",
+      "role": "deterministic technical benchmark"
+    }
+  ]
+}

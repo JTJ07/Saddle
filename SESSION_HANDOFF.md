@@ -80,7 +80,7 @@ Clean preflight:
 - proposals 0;
 - selection NONE.
 
-After later main-only evidence/documentation commits, compare reports PR #15 branch `ahead_by 4 / behind_by 4`, and a later PR snapshot reports `mergeable: false`. This does not block running the benchmark; rebase/merge housekeeping is routine and should be reevaluated after evidence collection.
+Later main-only documentation/evidence commits caused the PR branch to diverge from current `main`; GitHub currently reports it non-mergeable. This does not block benchmark execution. Rebase/merge housekeeping is routine and should be reevaluated after evidence collection.
 
 Evidence: `evidence/PHASE4_LIVE_BENCHMARK_PREFLIGHT_2026-08-10.md`.
 

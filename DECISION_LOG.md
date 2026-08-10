@@ -217,7 +217,53 @@ Only explicit human decisions or decisions already clearly established by the pr
   9. **intent preservation** — no loss of the human-approved goal, no added goals, and no silent priority change.
 - Intent-preservation consequence: this is an evaluation dimension, not a new semantic-authority subsystem. Saddle must not infer or authorize meaning through an automated similarity score. Evaluation is grounded in the preserved raw/human-approved intent and explicit constraints.
 - Historical checkpoint: Phase 4A is the first evidence that Saddle can not only constrain AI effects but also make interchangeable intelligence measurable under stable boundaries.
-- Ordering: canonicalize the bounded Phase-4B runner; configure the provider secret only in approved secret storage; execute the already approved Sol/Terra benchmark; then `BENCHMARK RESULT -> EVALUATION -> HUMAN DECISION`. No automatic autonomy increase follows.
+- Ordering at the time of this decision: canonicalize the bounded Phase-4B runner; configure the provider secret only in approved secret storage; execute the already approved Sol/Terra benchmark; then `BENCHMARK RESULT -> EVALUATION -> HUMAN DECISION`. No automatic autonomy increase follows.
+
+## DEC-SAD-014 — Prove synthetic system integration before API worker measurement
+
+- Date: 2026-08-10
+- Owner: USER
+- Status: ACTIVE / PROOF-ORDER DECISION
+- Human verdict:
+  - `ARCHITECTURE: PASS`;
+  - `OWNERSHIP MODEL: PASS`;
+  - `PHASE 4A: PASS`;
+  - `PHASE 4B: READY BUT PAUSED`;
+  - `PHASE 6: PASS`;
+  - `NEXT: PRODUCT / SYSTEM INTEGRATION`.
+- Decision: the API benchmark is not an architecture blocker. It measures whether a chosen AI worker produces sufficiently useful proposals under the already frozen Saddle/Executor boundaries. Before buying that measurement, prove provider-independent system composition with deterministic synthetic Intelligence.
+- Accepted proof order:
+
+```text
+Phase 4A — cognitive calibration / ACCEPTED
+        ↓
+Phase 4C — Synthetic Intelligence Integration
+        ↓
+Phase 4B — controlled reproducible API worker benchmark
+        ↓
+evaluation
+        ↓
+human decision
+```
+
+- Phase-4C scope:
+  - deterministic proposal generator only;
+  - `IntentEnvelope -> VerifiedIntentBinding -> synthetic WorkerProposal -> EffectProposal -> exact EffectAuthority -> existing Executor -> objective evidence -> EffectReceipt -> StateDelta -> verifier`;
+  - no provider/model call;
+  - no new capability, autonomy, authority or tool expansion.
+- Required attacks:
+  1. exact happy path executes one bounded effect and returns review-required evidence;
+  2. explicit proposal scope drift blocks before execution;
+  3. authority for a different exact proposal blocks;
+  4. replay of consumed exact authority blocks.
+- Semantic-boundary consequence: drift checking must use preserved explicit constraints/action/target bindings. Saddle must not substitute semantic similarity or its own claim about what the human "really meant".
+- Evidence boundary:
+  - `SYNTHETIC_INTEGRATION_EVIDENCE != API_WORKER_EVIDENCE`;
+  - `SYNTHETIC_INTEGRATION_EVIDENCE != MODEL_PERFORMANCE_EVIDENCE`;
+  - Phase-4C PASS cannot select a model, increase autonomy, establish maturity or produce `FUNCTIONAL_SADDLE_ACCEPTED`.
+- ScriptOps composition consequence: current accepted ScriptOps Phase-6 v2 is scene-domain specific while Executor GP001 is code-domain specific. Do not invent a ScriptOps code-mutation capability or artificially chain two executors merely to satisfy a diagram. Keep ScriptOps Phase-6 as separate controlled-workflow evidence.
+- Phase-4B consequence: its benchmark contract, approved budget/calls/retries and proposal-only boundary remain unchanged. While paused, the workflow should require explicit dispatch rather than auto-running on unrelated PRs.
+- Detailed decision record: `decisions/DEC-SAD-014.md`.
 
 ## Not yet a decision
 

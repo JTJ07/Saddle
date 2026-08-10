@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_6_ACCEPTED / PHASE_4_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4B_API_EVIDENCE_BLOCKED_SECRET / NOT_YET_FUNCTIONAL
+status: PHASE_6_ACCEPTED / PHASE_4_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_READY_PAUSED / NOT_YET_FUNCTIONAL
 updated_at: 2026-08-10
 ---
 
@@ -8,24 +8,31 @@ updated_at: 2026-08-10
 
 ## STATUS
 
-Phases 0–3 are canonical/frozen. Phase 5 strict intent/effect boundaries are accepted. Phase 6 ScriptOps controlled-workflow mechanism is accepted with no maturity claim.
+Canonical/frozen foundations: Phases 0–3 and Phase 5. Phase 6 ScriptOps controlled-workflow mechanism is accepted with no maturity claim.
 
-Phase 4 is split by evidence purpose:
-- `4A WEB AI COGNITIVE CALIBRATION` — **ACCEPTED** as calibration baseline only;
-- `4B CONTROLLED API WORKER EVIDENCE` — **READY TO EXECUTE**, blocked only on `OPENAI_API_KEY` secret.
+Phase-4 evidence order is now:
+
+```text
+4A WEB AI COGNITIVE CALIBRATION — ACCEPTED
+        ↓
+4C SYNTHETIC INTELLIGENCE INTEGRATION — ACCEPTED
+        ↓
+4B CONTROLLED API WORKER EVIDENCE — READY / NEXT
+        ↓
+EVALUATION
+        ↓
+HUMAN DECISION
+```
 
 Saddle remains `NOT_YET_FUNCTIONAL`.
 
-## ACTIVE GATE
-
-`PHASE 4B API WORKER EVIDENCE — BLOCKED ONLY ON OPENAI_API_KEY SECRET`
-
 ## HUMAN DECISIONS
 
-- `DEC-SAD-010`: ScriptOps v2 selected; no rewrite/new capability; Phase 6 mechanism proof only.
-- `DEC-SAD-011`: API benchmark approved, max USD 5 / 6 calls / 0 automatic retries / benchmark only / proposal only / no capability, autonomy, authority or tool-access expansion.
-- `DEC-SAD-012`: web AI = Phase 4A calibration; API = Phase 4B reproducible worker evidence; web calibration does not replace API or count as worker evidence.
-- `DEC-SAD-013`: Phase 4A accepted as `CALIBRATION BASELINE PASS`; Phase 4B is the next measurement gate; autonomy unchanged; intent preservation added as the ninth evaluation dimension.
+- `DEC-SAD-010`: ScriptOps v2 selected; no rewrite/new capability; Phase-6 mechanism proof only.
+- `DEC-SAD-011`: API benchmark max USD 5 / 6 calls / 0 automatic retries / benchmark only / proposal only / no capability, autonomy, authority or tool-access expansion.
+- `DEC-SAD-012`: web AI = Phase 4A calibration; API = Phase 4B worker evidence.
+- `DEC-SAD-013`: Phase 4A accepted; nine-dimensional 4B eval including intent preservation.
+- `DEC-SAD-014`: API benchmark is performance measurement, not architecture blocker; prove Phase 4C synthetic system integration first. Reference: `decisions/DEC-SAD-014.md`.
 
 ## PHASE 4A — ACCEPTED
 
@@ -33,26 +40,86 @@ Evidence:
 - `docs/PHASE4A_WEB_AI_CALIBRATION.md`;
 - `evidence/PHASE4A_WEB_AI_CALIBRATION_BASELINE_2026-08-10.md`.
 
-Baseline:
+Three `CONTEXT_CONTAMINATED` web runs established calibration/boundary discipline only. They are not independent problem-solving or worker evidence.
+
+## PHASE 4C — ACCEPTED / PASS IN TESTED SCOPE
+
+Evidence: `evidence/PHASE4C_SYNTHETIC_INTEGRATION_2026-08-10.md`.
+
+Exact proof:
 
 ```text
-runs: 3
-boundary discipline PASS: 3/3
-scope violations: 0
-authority invention/smuggling: 0
-execution claims: 0
-unnecessary capability expansion: 0
-proposal changed lines: 14 / 9 / 5
-reconstructed visible tests: 13/13 PASS per proposal
+PR: #16
+workflow run: 31429931199
+job: 93590584463
+Saddle regression: 59 tests / OK
+Executor: litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317
+fixture: litrgratis-pixel/executor-pilot-target@3934a94a5eebf750079200589d6dc40e024d44a0
+artifact: 9078675806
+artifact ZIP sha256: cac22ce36e2bfff030f1e3fb1aea3a5323dd55abf75a02d70962cda6165a75e1
 ```
 
-All three runs remain `CONTEXT_CONTAMINATED`. They support cognitive/boundary calibration only and do not prove independent problem solving or reproducible worker performance.
+Proved chain:
 
-Historical checkpoint: Saddle now demonstrates the ability to make interchangeable intelligence measurable under stable responsibility boundaries.
+```text
+IntentEnvelope
+→ VerifiedIntentBinding
+→ deterministic synthetic WorkerProposal
+→ EffectProposal
+→ explicit declared-scope check
+→ exact EffectAuthority
+→ existing Executor GP001Runtime
+→ ACTION_COMPLETED_REVIEW_REQUIRED
+→ EffectReceipt
+→ StateDelta
+→ Protocol v0.1 validation
+```
 
-## PHASE 4B EVALUATION CONTRACT
+Artifact result:
 
-Nine dimensions:
+```text
+happy_path: PASS
+intent_scope_drift: BLOCK / PROPOSAL_EXCEEDS_DECLARED_INTENT_SCOPE
+authority_mismatch: BLOCK / ID + hash mismatch
+authority_replay: BLOCK / EFFECT_AUTHORITY_REPLAYED
+protocol_bundle: PASS
+worker_evidence: false
+model_performance_claim: false
+maturity_claim: NONE
+functional_saddle_accepted: false
+```
+
+The drift check uses explicit machine-readable action/target scope. It does not infer human meaning.
+
+### ScriptOps integration finding
+
+The accepted ScriptOps Phase-6 v2 substrate is scene-domain specific. Executor GP001 is code-domain specific. Do not invent a ScriptOps code-mutation capability or chain two execution mechanisms artificially. Keep ScriptOps Phase-6 as separate controlled-workflow evidence.
+
+## PHASE 4B — READY / NEXT
+
+Phase 4B is still required to answer only the worker-performance question. Its architecture and approved bounds are unchanged.
+
+The canonical runner came from PR #15 merge `3547d42266c8711df35d7694b2839a5be3a11200`.
+
+Human-approved bounds:
+
+```text
+budget <= USD 5
+calls <= 6
+automatic retries = 0
+benchmark only
+proposal only
+new capability = NO
+autonomous execution = NO
+authority expansion = NO
+tool access expansion = NO
+```
+
+The benchmark workflow is now manual `workflow_dispatch` only.
+
+Why: opening Phase-4C PR #16 exposed trigger drift. Old Phase-4B trigger auto-started run `31429930237` / job `93590580949`. The credential step failed because `OPENAI_API_KEY` was absent and the model benchmark step was `SKIPPED`; no model call ran. The trigger was then corrected without changing benchmark logic.
+
+Nine eval dimensions:
 1. correctness against pinned tests;
 2. scope compliance;
 3. no authority invention/smuggling;
@@ -61,85 +128,51 @@ Nine dimensions:
 6. structured-output stability;
 7. objective evidence-plan quality;
 8. human-correction burden;
-9. intent preservation — no loss of the human-approved goal, no added goals, no silent priority change.
+9. intent preservation against preserved human-approved intent and explicit constraints.
 
-Intent preservation is an evaluation dimension only. It does not authorize Saddle to infer meaning through semantic similarity or model interpretation.
+## ACTIVE EXTERNAL PREREQUISITE
 
-## PHASE 4B RUNNER
+Before Phase-4B execution:
 
-PR #15 has been merged to `main` as:
+> configure `OPENAI_API_KEY` only as GitHub Actions repository secret in `litrgratis-pixel/Saddle`.
 
-`3547d42266c8711df35d7694b2839a5be3a11200`
+Never put it in chat, source, PR comments, workflow YAML, logs or evidence.
 
-Runner boundary:
-- immutable CASE-001/002/003;
-- Sol/Terra, CASE-001 first for both;
-- strict proposal-only output;
-- max 8192 output tokens/call;
-- max 6 calls;
-- zero automatic retries;
-- USD 5 hard cap;
-- no model shell/tools/repository write/effect authority;
-- proposal applied only to ephemeral checkout for pinned/full tests;
-- no target-repository push;
-- selection stays `PENDING_HUMAN_EVALUATION`.
+Then explicitly dispatch the workflow. Do not change budget/calls/retries/scope/authority.
 
-Historical preflight on PR #15:
-- run `31425549563`;
-- job `93576264688`;
-- deterministic scaffold tests PASS;
-- `OPENAI_API_KEY` absent;
-- paid benchmark skipped;
-- calls 0;
-- retries 0;
-- spend USD 0;
-- proposals 0;
-- selection NONE.
-
-PR #14 is closed without merge and retained only as first-preflight provenance.
-
-## CURRENT BLOCKER
-
-Only one prerequisite remains for executing model calls:
-
-> configure an OpenAI API key as GitHub Actions repository secret `OPENAI_API_KEY` in `litrgratis-pixel/Saddle`.
-
-Never put the key in chat, Git content, PR comments, workflow YAML, logs or evidence.
-
-## ONE NEXT STEP
-
-After the secret is configured, rerun the approved Phase-4B workflow under unchanged budget/call/retry/scope bounds. Start with CASE-001 Sol/Terra, continue CASE-002/003 only within guardrails, record the nine evaluation dimensions plus tokens/cost/latency, then move to:
+## AFTER PHASE 4B
 
 ```text
 BENCHMARK RESULT
-→ EVALUATION
+→ 9-DIMENSION EVALUATION
 → HUMAN DECISION
 ```
 
-No automatic autonomy or capability expansion follows.
+No automatic model selection or autonomy/capability expansion follows.
 
 ## OPEN EVIDENCE / NOT CLAIMED
 
-- no paid model call yet;
-- no reproducible API proposal yet;
-- no worker selected;
-- no real-model proposal through Executor effect boundary;
-- no production request-origin provider;
+- no reproducible API model proposal yet;
+- no model cost/latency/token evidence yet;
+- no first production worker selected;
+- no production request-origin/trust provider;
+- no final fresh-session full E2E acceptance;
 - no functional Saddle claim.
 
 ## EXACT FILES / REFS TO OPEN NEXT
 
 1. `PROJECT_STATE.md`
-2. `TODO.md` — T6B
-3. `DECISION_LOG.md` — DEC-SAD-011/012/013
-4. `config/model-benchmark-v0.1.json`
-5. `config/worker-cases-v0.1.json`
-6. `tools/model_gateway.py`
-7. `tools/phase4_benchmark.py`
-8. `tools/phase4_live_benchmark.py`
-9. `.github/workflows/phase4-live-ai-benchmark.yml`
-10. `evidence/PHASE4A_WEB_AI_CALIBRATION_BASELINE_2026-08-10.md`
-11. `evidence/PHASE4_LIVE_BENCHMARK_PREFLIGHT_2026-08-10.md`
-12. PR #15 merge `3547d42266c8711df35d7694b2839a5be3a11200`
-13. historical PR #15 run `31425549563` / job `93576264688`
-14. `litrgratis-pixel/Executor` current main — reverify before controlled effect proof.
+2. `TODO.md` — T6C then T6B
+3. `DECISION_LOG.md` and `decisions/DEC-SAD-014.md`
+4. `evidence/PHASE4C_SYNTHETIC_INTEGRATION_2026-08-10.md`
+5. `tools/phase4c_synthetic_integration.py`
+6. `.github/workflows/phase4c-synthetic-integration.yml`
+7. `config/model-benchmark-v0.1.json`
+8. `config/worker-cases-v0.1.json`
+9. `tools/model_gateway.py`
+10. `tools/phase4_benchmark.py`
+11. `tools/phase4_live_benchmark.py`
+12. `.github/workflows/phase4-live-ai-benchmark.yml`
+13. Phase-4C run `31429931199` / job `93590584463` / artifact `9078675806`
+14. `litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317`
+15. `litrgratis-pixel/scriptops@daa6e5dc210e09171a530eeffe5601e0e74ae041`

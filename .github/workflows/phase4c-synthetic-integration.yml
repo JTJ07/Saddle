@@ -1,0 +1,123 @@
+name: Phase 4C synthetic integration proof
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - tools/phase4c_synthetic_integration.py
+      - tests/test_phase4c_synthetic_integration.py
+      - .github/workflows/phase4c-synthetic-integration.yml
+      - tools/phase5_boundaries.py
+      - tools/protocol_v01.py
+      - protocol/v0.1/**
+      - authority/v0.1/**
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-integration:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout Saddle
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.11"
+
+      - name: Run deterministic Saddle regression
+        run: python -m unittest discover -s tests -v
+
+      - name: Verify Phase 4B is paused behind explicit dispatch
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          workflow = Path('.github/workflows/phase4-live-ai-benchmark.yml').read_text(encoding='utf-8')
+          if 'workflow_dispatch:' not in workflow:
+              raise SystemExit('Phase 4B must require explicit workflow_dispatch while paused')
+          if 'pull_request:' in workflow:
+              raise SystemExit('Phase 4B must not auto-run on pull requests while paused')
+          print('Phase 4B explicit-dispatch pause: PASS')
+          PY
+
+      - name: Acquire exact Executor commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          executor="$RUNNER_TEMP/executor"
+          rm -rf "$executor"
+          git init -q "$executor"
+          git -C "$executor" remote add origin https://github.com/litrgratis-pixel/Executor.git
+          git -C "$executor" -c protocol.version=2 -c core.hooksPath=/dev/null -c credential.helper= fetch --no-tags --depth=1 origin 788443c3ed5b290ac8f1de145a93d02d2dd15317
+          git -C "$executor" checkout -q --detach FETCH_HEAD
+          test "$(git -C "$executor" rev-parse HEAD)" = "788443c3ed5b290ac8f1de145a93d02d2dd15317"
+          test -z "$(git -C "$executor" status --porcelain)"
+
+      - name: Acquire exact CASE-001 fixture commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          target="$RUNNER_TEMP/gp001-target"
+          rm -rf "$target"
+          git init -q "$target"
+          git -C "$target" remote add origin https://github.com/litrgratis-pixel/executor-pilot-target.git
+          git -C "$target" -c protocol.version=2 -c core.hooksPath=/dev/null -c credential.helper= fetch --no-tags --depth=1 origin 3934a94a5eebf750079200589d6dc40e024d44a0
+          git -C "$target" checkout -q --detach FETCH_HEAD
+          test "$(git -C "$target" rev-parse HEAD)" = "3934a94a5eebf750079200589d6dc40e024d44a0"
+          test -z "$(git -C "$target" status --porcelain)"
+
+      - name: Resolve immutable sandbox image
+        id: image
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker pull python:3.11-slim
+          image="$(docker image inspect --format='{{.Id}}' python:3.11-slim)"
+          case "$image" in
+            sha256:????????????????????????????????????????????????????????????????) ;;
+            *) echo "unexpected immutable image id: $image" >&2; exit 1 ;;
+          esac
+          echo "image=$image" >> "$GITHUB_OUTPUT"
+
+      - name: Run full synthetic Saddle to Executor to evidence proof
+        shell: bash
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          set -euo pipefail
+          python tools/phase4c_synthetic_integration.py \
+            --root "$GITHUB_WORKSPACE" \
+            --executor-root "$RUNNER_TEMP/executor" \
+            --workspace "$RUNNER_TEMP/gp001-target" \
+            --runs-root "$RUNNER_TEMP/phase4c-runs" \
+            --image "${{ steps.image.outputs.image }}" \
+            --output "$RUNNER_TEMP/phase4c-evidence/summary.json"
+
+      - name: Upload synthetic integration evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase4c-synthetic-integration-evidence
+          path: ${{ runner.temp }}/phase4c-evidence/
+          if-no-files-found: ignore
+          retention-days: 30
+
+      - name: Verify sandbox cleanup
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          remaining="$(docker ps -a --filter label=creative-os-executor-gp001=first-vertical-runtime-slice --format '{{.ID}}')"
+          if [ -n "$remaining" ]; then
+            echo "Phase 4C container cleanup failure: $remaining" >&2
+            docker ps -a --no-trunc
+            exit 1
+          fi

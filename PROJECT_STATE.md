@@ -105,9 +105,9 @@ Current exact runner is **Saddle PR #15**:
 - branch `agent/phase4b-runner-rebased`;
 - head `e4f0105b614f5de7cfa6393e6e49327e7505d9fb`;
 - functional diff: exactly 4 runner/evaluation files, no duplicate governance state;
-- current compare after later main-only evidence/doc commits: branch is `ahead_by 4 / behind_by 4`; a later PR snapshot reports `mergeable: false`.
+- later main-only documentation/evidence commits have caused the PR branch to diverge from current `main`; GitHub currently reports it non-mergeable.
 
-This merge-status drift does not block benchmark execution. Re-evaluate/rebase routinely before eventual merge; do not interpret it as a model/contract failure or a new human semantic gate.
+This does not block benchmark execution. Re-evaluate/rebase routinely before eventual merge; do not interpret branch divergence as a model/contract failure or a new human semantic gate.
 
 Clean preflight run:
 - workflow run `31425549563`;

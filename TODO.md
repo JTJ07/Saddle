@@ -4,7 +4,6 @@ Status: `ACTIVE / COMPLETION LOCK ENFORCED`
 Updated: 2026-08-10
 
 ## Authority
-
 1. `DECISION_LOG.md`
 2. `PROJECT_STATE.md`
 3. `EXECUTION_PLAN.md`
@@ -12,207 +11,94 @@ Updated: 2026-08-10
 5. `SESSION_HANDOFF.md`
 6. draft analysis/PR material
 
-This file is only the operational projection. Higher-authority state wins.
-
-## Operating rules
-
-- Work top-to-bottom.
-- Keep at most one implementation item `IN_PROGRESS`.
-- `DONE` requires observable evidence.
-- New ideas go to `FUTURE_IDEAS.md` as `PARKED`.
-- Broken eval inputs remain reproducible.
-- DEC-SAD-007 permits routine scheduled execution without repeated interruption, but not goal/lock/security/authority expansion or self-declared functional acceptance.
-
----
+Rules: work top-to-bottom; one implementation item at a time; `DONE` needs evidence; park new ideas; keep broken eval inputs reproducible; DEC-SAD-007 permits routine scheduled execution but not goal/lock/security/authority expansion or self-declared functional acceptance.
 
 ## T0 — Durable-memory bootstrap
 Status: `DONE`
-Evidence: `evidence/COLD_START_AUDIT_001.md`, merged PR #1 / `b950660c...`.
+Evidence: cold-start audit + merged `b950660c...`.
 
 ## T1 — Preserve six-part test evidence
 Status: `DONE`
-Evidence: `evidence/TEST_SESSION_2026-08-10/` + `analysis/SADDLE_TEST_SESSION_2026-08-10.md`.
 
 ## T2 — Preserve new ideas without activation
 Status: `DONE`
-IDEA-SAD-014 and IDEA-SAD-015 remain `PARKED`.
+IDEA-SAD-014/015 remain `PARKED`.
 
-## T3 — Phase 1 ecosystem reconciliation
+## T3 — Ecosystem reconciliation
 Status: `DONE`
-Evidence: `docs/PHASE1_ECOSYSTEM_RECONCILIATION_2026-08-10.md`, responsibility boundary, ecosystem/source map, canonical merge `2e0bd347...`.
-
----
+Evidence: Phase-1 reconciliation + merged `2e0bd347...`.
 
 ## T4 — Freeze Saddle Protocol v0.1
-Status: `DONE ON CURRENT PHASE-2 CHANGE SET`
-
-Artifacts:
-- `docs/SADDLE_PROTOCOL_v0.1.md`;
-- `protocol/v0.1/common.schema.json`;
-- `protocol/v0.1/intent-envelope.schema.json`;
-- `protocol/v0.1/effect-proposal.schema.json`;
-- `protocol/v0.1/effect-receipt.schema.json`;
-- `protocol/v0.1/state-delta.schema.json`;
-- `tools/protocol_v01.py`;
-- `tests/test_protocol_v01.py`.
-
-Evidence:
-- compileall PASS;
-- 14/14 unittest PASS;
-- `evidence/PHASE2_PROTOCOL_V01_TEST_2026-08-10.md`.
-
-Key guarantees:
-- content-addressed immutable intent/effect/receipt/delta identities;
-- raw human intent mutation invalidates identity;
-- proposal cannot contain effect authority;
-- receipt authority binds exact proposal ID+hash;
-- FACT/DECISION/HYPOTHESIS separate;
-- DECISION human-owned;
-- project status change requires a bound human decision;
-- provider/model/framework independent.
-
----
+Status: `DONE`
+Evidence: frozen schemas/validator + 14 tests + merged `819449ba...`.
 
 ## T5 — Minimal audit + eval foundation
-Status: `READY / NEXT`
+Status: `DONE ON CURRENT PHASE-3 CHANGE SET`
 
-Implement stdlib-only unless measured insufficient:
+Artifacts:
+- `eval/v0.1/eval-result.schema.json`;
+- `config/eval-lanes.json`;
+- `tools/eval_harness.py`;
+- `tests/test_eval_harness.py`;
+- `docs/EVAL_FOUNDATION_v0.1.md`;
+- smoke record/summary and Phase-3 evidence.
 
-1. state/handoff invariant audit;
-2. machine-readable eval result schema/record;
-3. JSONL writer/reader;
-4. fail-closed aggregate summary;
-5. case/model/prompt/version fields;
-6. result + scope/policy violations;
-7. tokens/cost/latency/retries/human corrections when available;
-8. evidence refs;
-9. initial lane registry:
-   - Saddle/COS cold-start;
-   - Reconstructor regression;
-   - Executor policy/security;
-   - executor-pilot-target CASE-001–003;
-   - later ScriptOps smoke.
+Evidence:
+- 12/12 Phase-3 tests PASS;
+- combined Phase-2+3 regression 26/26 PASS;
+- empty result set => BLOCKED;
+- scope/policy violation => effective FAIL;
+- FAIL cannot be hidden by PASS;
+- synthetic scope-violation CLI smoke => overall FAIL / exit code 1.
 
-Do not add Langfuse/LangGraph/database/dashboard unless plain records become a measured blocker.
-
----
+No dashboard/database/observability framework added.
 
 ## T6 — First real AI worker through Saddle/Executor
-Status: `BLOCKED UNTIL T5`
+Status: `READY / NEXT`
 
 Required path:
 
 ```text
 pinned task/source/tests
 → thin ModelGateway
-→ real AI proposal
+→ real model-generated proposal
 → bounded proposal validation
 → Executor effect path
-→ tests + evidence
+→ tests + eval evidence
 ```
 
-Requirements:
-- no hard-coded solution;
-- credentials outside worker/evidence;
-- benchmark at least two current capable model candidates before production selection;
-- record quality/cost/latency/retries;
-- no unrestricted write/shell/internet;
-- no multi-agent or dynamic routing platform;
-- CASE-001–003 start from clean broken baselines.
-
----
+Immediate work:
+1. verify current official model/API candidates;
+2. define only the ModelGateway interface needed for CASE-001–003;
+3. determine authorized credential path with secret isolated from worker/evidence;
+4. benchmark at least two current candidates on identical cases;
+5. choose one first worker only after results;
+6. keep CASE inputs immutable;
+7. no unrestricted write/shell/internet, no dynamic routing, no multi-agent.
 
 ## T7 — Verified intent / effect authority boundary
-Status: `BLOCKED UNTIL REQUIRED T4–T6 FOUNDATION`
+Status: `BLOCKED UNTIL REQUIRED T6 FOUNDATION`
 
-Keep distinct:
-
-```text
-human request content
-!= AI interpretation
-!= verified request origin
-!= human confirmation/decision
-!= downstream effect authority
-```
-
-Use Executor #51–#57 findings under the Saddle responsibility model:
-- strengthened-A2 principle at default Saddle intent boundary;
-- A1 valid delegated/enterprise intake;
-- one minimal authority adapter only for the pilot;
-- replay/staleness/scope attacks fail closed;
-- no generalized IAM/delegation platform.
-
----
+Keep request content, AI interpretation, verified request origin, human decision and downstream effect authority distinct. Reuse Executor #51–#57 under Saddle ownership model. One minimal authority adapter only; no generalized IAM.
 
 ## T8 — Minimal ScriptOps real-domain path
 Status: `HUMAN SEMANTIC GATE + BLOCKED ON PRECEDING SADDLE GATES`
 
-Open decision: select/reject `legacy/scriptops-v2-single.py` as implementation base.
-Current technical recommendation: `YES — reuse v2`.
+Open decision: select/reject `legacy/scriptops-v2-single.py` as implementation base. Current technical recommendation: `YES — reuse v2`.
 
-If selected, repair only:
-
-```text
-task
-→ context
-→ candidate
-→ validation
-→ impact report
-→ human approve/reject/revision with why
-→ correct accepted hash
-→ Git commit
-→ smoke evidence
-```
-
-No browser helper, direct model automation, GUI, vector DB, graph platform or multi-user expansion.
-
----
+If selected, repair only: task → context → candidate → validation → impact → human approve/reject/revision with why → accepted hash → Git commit → smoke evidence.
 
 ## T9 — Functional Saddle acceptance
-Status: `BLOCKED UNTIL T4–T8`
+Status: `BLOCKED UNTIL T6–T8`
 
-Required fresh-session proof:
+Fresh-session proof: human intent → IntentEnvelope → context recovery → real AI → EffectProposal → authority/effect gate → bounded execution → EffectReceipt/evidence → required human review → StateDelta → second zero-history resume.
 
-```text
-human intent
-→ durable IntentEnvelope
-→ context recovery
-→ AI problem solving
-→ EffectProposal
-→ authority/effect gate
-→ bounded real execution
-→ EffectReceipt/evidence
-→ required human review
-→ StateDelta
-→ second zero-history resume
-```
-
-Only with the required evidence and human acceptance may state become `FUNCTIONAL_SADDLE_ACCEPTED`.
-
----
+Only required evidence + human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
 
 ## T10 — Post-acceptance human direction
 Status: `BLOCKED UNTIL T9`
-
-Completion lock does not release automatically. Human decides whether to harden, broaden, increase autonomy, activate parked ideas, pursue value/reinvestment or bounded self-improvement.
-
----
+Completion lock does not release automatically.
 
 # EXPLICITLY NOT TODO BEFORE FUNCTIONAL ACCEPTANCE
 
-Do not implement without a proven current-gate blocker plus authorized exception:
-
-- multi-agent/swarm runtime;
-- Company Loop runtime;
-- full Ginseng runtime/graph/UI;
-- vector DB/general RAG;
-- browser/computer-use automation;
-- broad MCP marketplace;
-- dynamic provider routing;
-- hidden persistent agent-memory service;
-- dashboard/control center;
-- self-hosted model platform;
-- generalized enterprise IAM;
-- autonomous resource acquisition;
-- self-preservation objective;
-- autonomous self-modification outside bounded eval/sandbox/adoption gates.
+No multi-agent/swarm runtime, Company Loop, full Ginseng runtime/UI, vector DB/general RAG, browser automation, broad MCP marketplace, dynamic model routing, hidden agent memory, dashboard, self-hosted model platform, generalized enterprise IAM, autonomous resource acquisition, self-preservation objective, or autonomous self-modification outside bounded eval/sandbox/adoption gates.

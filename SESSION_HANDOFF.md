@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_1_ACCEPTED / PHASE_2_ACTIVE / NOT_YET_FUNCTIONAL
+status: PHASE_2_ACCEPTED / PHASE_3_ACTIVE / NOT_YET_FUNCTIONAL
 updated_at: 2026-08-10
 ---
 
@@ -8,86 +8,79 @@ updated_at: 2026-08-10
 
 ## STATUS
 
-Phase 0 durable-memory bootstrap is canonical and accepted. Phase 1 ecosystem reconciliation is complete on the current canonical-sync change set. Saddle remains `NOT YET FUNCTIONAL`.
+Phase 0 durable memory, Phase 1 reconciliation and Phase 2 protocol freeze have passing recorded evidence on the current change set. Saddle remains `NOT YET FUNCTIONAL`.
 
 ## ACTIVE GATE
 
-`PHASE 2 — FREEZE SADDLE PROTOCOL v0.1`
+`PHASE 3 — AUDIT + EVAL FOUNDATION`
 
 ## WHAT CHANGED
 
-- merged Phase-0 cold-start closure to Saddle `main` (`b950660c...`);
-- merged ScriptOps GitHub-side access-check/v2 gap analysis (`33c9d15a...`) without selecting v2 as runtime base;
-- preserved six-part Saddle test questions/raw answers/analysis;
-- preserved IDEA-SAD-014 and IDEA-SAD-015 as `PARKED` only;
-- recorded DEC-SAD-006 responsibility ownership boundary;
-- recorded DEC-SAD-007 operational delegation through the existing completion path;
-- reconciled Executor #51–#57, older Executor experimental debt, COS #18 and ScriptOps state;
-- remapped request-origin/meaning findings to the Saddle intent boundary and consequence authority to Executor;
-- updated ecosystem/source registry and operational TODO.
+- froze Saddle Protocol v0.1 as four provider/model/agent-independent JSON Schemas;
+- defined content-addressed IDs using SHA-256 over a restricted RFC-8785/JCS canonical JSON profile;
+- added provider-independent source/evidence/authority refs;
+- added stdlib-only canonicalizer/schema-subset validator/cross-object binding validator;
+- made `EffectProposal` structurally unable to carry executable authority;
+- made `EffectReceipt` require active `EFFECT_PERMISSION` bound to exact proposal ID+hash;
+- enforced HUMAN ownership for StateDelta decisions and decision binding for project-status changes;
+- marked the original illustrative protocol draft superseded.
 
 ## EVIDENCE
 
-- `evidence/COLD_START_AUDIT_001.md`;
-- `docs/PHASE1_ECOSYSTEM_RECONCILIATION_2026-08-10.md`;
-- `docs/SADDLE_EXECUTOR_RESPONSIBILITY_BOUNDARY.md`;
-- `analysis/SADDLE_TEST_SESSION_2026-08-10.md`;
-- `evidence/TEST_SESSION_2026-08-10/`;
-- `ECOSYSTEM_MAP.md`;
-- `SOURCE_REGISTRY.md`.
+- `docs/SADDLE_PROTOCOL_v0.1.md`;
+- `protocol/v0.1/`;
+- `tools/protocol_v01.py`;
+- `tests/test_protocol_v01.py`;
+- `evidence/PHASE2_PROTOCOL_V01_TEST_2026-08-10.md`.
 
-## HUMAN DECISIONS RECORDED
+Local deterministic test evidence:
 
-See `DECISION_LOG.md`, especially:
+```text
+python -m compileall -q tools tests
+PASS
 
-- DEC-SAD-001 GitHub durable memory;
-- DEC-SAD-002 completion lock;
-- DEC-SAD-003 universal Saddle direction;
-- DEC-SAD-004 intelligence freedom / effect control;
-- DEC-SAD-005 reuse before rewrite;
-- DEC-SAD-006 responsibility boundary:
-  `HUMAN OWNS INTENT / SADDLE PRESERVES AND BINDS INTENT / INTELLIGENCE PROPOSES HOW / EXECUTOR GOVERNS CONSEQUENCES / VERIFIER ESTABLISHES FACTS`;
-- DEC-SAD-007 operational delegation: continue the scheduled completion path without repeated user interruption, while preserving reserved semantic/security/acceptance boundaries.
+python -m unittest discover -s tests -v
+Ran 14 tests
+OK
+```
+
+No GitHub CI result is claimed for Phase 2.
+
+## DECISIONS / BOUNDARIES PRESERVED
+
+- HUMAN OWNS INTENT.
+- SADDLE PRESERVES AND BINDS INTENT.
+- INTELLIGENCE PROPOSES HOW.
+- EXECUTOR GOVERNS CONSEQUENCES.
+- VERIFIER ESTABLISHES FACTS.
+- NO LAYER MAY SUBSTITUTE FOR A HIGHER-ORDER OWNER.
+- completion lock remains ACTIVE.
+- no provider/model/framework/trust technology was selected by Phase 2.
 
 ## IDEAS PARKED
 
-- IDEA-SAD-014 human-controlled value/reinvestment flywheel;
-- IDEA-SAD-015 bounded self-improvement loop;
-- all earlier future ideas remain parked.
-
-## IMPORTANT CLASSIFICATIONS
-
-- Executor `main` is canonical implementation; #51–#57 are draft/research/reusable trust material, not merged runtime.
-- Executor #57 trust findings survive; its global `USER -> EXECUTOR` front-door placement is superseded by Saddle.
-- strengthened-A2 principle is retained at Saddle intent boundary; naive A2 rejected; A1 valid delegated/enterprise variant; provider unselected.
-- COS #18 supplies reusable Ginseng semantics but stale global status/placement; do not activate runtime.
-- ScriptOps access-check is canonical; v2 is recommended but not yet human-selected as runtime base.
-- executor-pilot-target broken benchmark branches must remain reproducible; do not merge CASE-001 repair into `case-001-broken`.
-- direct Codex CASE-001 solve is AI-worker capability evidence, not full Saddle execution.
+All existing future ideas remain parked, including resource/reinvestment and bounded self-improvement.
 
 ## BLOCKERS
 
-Current blocker: Saddle Protocol v0.1 is still a draft, not a frozen/tested provider-independent contract.
+Current blocker: no unified minimal audit/eval harness yet exists to produce and aggregate machine-readable evidence for later AI-worker and end-to-end runs.
 
 ## ONE NEXT STEP
 
-Implement and deterministically test the four Phase-2 protocol schemas:
+Implement Phase-3 stdlib-only audit/eval foundation with:
 
-1. `IntentEnvelope`;
-2. `EffectProposal`;
-3. `EffectReceipt`;
-4. `StateDelta`.
+- state/handoff invariant audit;
+- JSON/JSONL eval-result record;
+- fail-closed aggregation;
+- model/prompt/version, success/failure, scope/policy violations, tokens/cost/latency/retries/human corrections/evidence refs;
+- initial lane registry for cold-start, Reconstructor, Executor, pilot CASE-001–003 and later ScriptOps.
 
-Do not select provider/model/agent framework/UI/database to solve this gate.
-
-## EXACT FILES / REFS TO OPEN NEXT
+## EXACT FILES TO OPEN NEXT
 
 1. `AGENTS.md`
 2. `PROJECT_STATE.md`
-3. `EXECUTION_PLAN.md` — Phase 2
-4. `TODO.md` — T4
-5. `DECISION_LOG.md`
-6. `docs/SADDLE_PROTOCOL_v0.1_DRAFT.md`
-7. `docs/SADDLE_EXECUTOR_RESPONSIBILITY_BOUNDARY.md`
-8. `docs/PHASE1_ECOSYSTEM_RECONCILIATION_2026-08-10.md`
-9. `RESTRICTIONS.md`
+3. `EXECUTION_PLAN.md` — Phase 3
+4. `TODO.md` — T5
+5. `docs/SADDLE_PROTOCOL_v0.1.md`
+6. `tools/protocol_v01.py`
+7. `RESTRICTIONS.md`

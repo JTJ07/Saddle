@@ -5,7 +5,7 @@ Updated: 2026-08-10
 
 Authority: `DECISION_LOG.md` > `PROJECT_STATE.md` > `EXECUTION_PLAN.md` > `TODO.md` > `SESSION_HANDOFF.md` > draft analysis.
 
-Rules: work by the current evidence dependency, keep exactly one `READY / NEXT` item, require evidence for DONE/PASS, park new ideas, preserve broken benchmarks, and do not expand capability before the active proof gate. DEC-SAD-007 permits routine execution but not goal/lock/security/financial/authority expansion or self-declared functional acceptance.
+Rules: work by current evidence dependency; require observable evidence for PASS/DONE; park new ideas; preserve broken benchmarks; do not broaden capability before the active proof gate. DEC-SAD-007 permits routine execution but not goal/lock/security/financial/authority expansion or self-declared functional acceptance.
 
 ## T0 — Durable-memory bootstrap
 Status: `DONE`
@@ -29,14 +29,40 @@ Evidence: canonical merge `819449ba...`, 14 protocol tests.
 Status: `DONE / FROZEN`
 Evidence: canonical merge `801f0561...`, fail-closed JSON/JSONL harness.
 
-## T6 — Phase 4 live AI-worker evidence
+## T6A — Phase 4A web-AI cognitive calibration
+Status: `BASELINE DONE / SUPPORTING EVIDENCE ONLY`
+Human decision: `DEC-SAD-012`.
+
+Purpose:
+- calibrate the Saddle <-> Intelligence contract in a human-guided web environment;
+- test proposal correctness, scope discipline, authority discipline, goal preservation, rationale and structure;
+- refine the formal API eval before reproducible worker runs.
+
+Evidence:
+- `docs/PHASE4A_WEB_AI_CALIBRATION.md`;
+- `evidence/PHASE4A_WEB_AI_CALIBRATION_BASELINE_2026-08-10.md`;
+- 3 manual CASE-001/002/003 runs;
+- 3/3 boundary-discipline PASS;
+- 0 scope violations;
+- 0 authority invention/smuggling;
+- 0 execution claims;
+- reconstructed visible tests: 13/13 PASS for each proposal.
+
+Limitation:
+- all baseline runs were context-contaminated;
+- independent model-solving ability is not evaluated or claimed;
+- fresh web repeats are optional unless they reveal a contract defect.
+
+Hard rule:
+
+`WEB_AI_CALIBRATION != API_WORKER_EVIDENCE`.
+
+## T6B — Phase 4B reproducible API worker evidence
 Status: `BLOCKED / NEXT HUMAN SECURITY ACTION`
 Direction/scaffold: `PASS / FROZEN`.
-Live evidence: `OPEN`.
+Formal worker evidence: `OPEN`.
 
-Human authorization: `DEC-SAD-011`.
-
-Approved bound:
+Human approval: `DEC-SAD-011`.
 
 ```text
 BUDGET: max USD 5
@@ -49,20 +75,24 @@ AUTHORITY EXPANSION: NO
 TOOL ACCESS EXPANSION: NO
 ```
 
-Already completed:
-- immutable CASE-001–003 pins;
-- proposal-only WorkerProposal;
-- thin ModelGateway;
-- no model effect authority;
-- exact target/hash/diff validation;
-- Sol/Terra current public API availability reverified from official OpenAI sources;
-- GitHub Actions benchmark runner created in PR #14;
-- complete deterministic regression on that runner: `54 tests / OK`;
-- runner/effect token permissions remain read-only;
-- benchmark preflight run `31423378809`, job `93569214499` stopped before API because `OPENAI_API_KEY` is absent;
-- model calls `0`, retries `0`, spend `USD 0`.
+Calibration-frozen evaluation dimensions:
+1. proposal correctness against pinned tests;
+2. scope compliance;
+3. no authority invention/smuggling;
+4. no goal expansion beyond human task;
+5. rationale quality;
+6. structured-output stability;
+7. objective evidence plan;
+8. human corrections required.
 
-### READY / NEXT — only active item
+Preflight evidence:
+- PR #14 / run `31423378809` / job `93569214499`;
+- GitHub runner available;
+- Saddle regression `54 tests / OK`;
+- missing `OPENAI_API_KEY` detected before any model call;
+- calls `0`, retries `0`, spend `USD 0`, proposals `0`.
+
+### NEXT HUMAN SECURITY ACTION — only active blocker
 
 Configure GitHub Actions repository secret:
 
@@ -71,27 +101,18 @@ Repository: litrgratis-pixel/Saddle
 Secret name: OPENAI_API_KEY
 ```
 
-Do **not** place the secret in chat, source files, PR comments, logs or evidence.
+Never place the secret in chat, source, PR comments, logs or evidence.
 
-After it is configured, re-run failed benchmark run `31423378809` / job `93569214499` under the unchanged approved limits.
+After configuration, rerun existing failed run `31423378809` / job `93569214499` under unchanged limits. Then compare Sol/Terra on the immutable cases, record calibrated eval dimensions + tokens/cost/latency/retries, and move results to `EVALUATION -> HUMAN DECISION`.
 
-Then:
-1. compare Sol/Terra on CASE-001 first;
-2. continue CASE-002/003 only within call/budget guard;
-3. record proposal correctness, scope, structure, rationale, tests, tokens, cost, latency and retries;
-4. move result to `EVALUATION -> HUMAN DECISION`;
-5. do not automatically expand autonomy.
-
-Later, at least one selected validated proposal must cross the controlled Executor/effect boundary before live-AI evidence can fully close.
-
-No dynamic router, multi-agent, general tool expansion or unrestricted worker shell/write/network.
+At least one later selected validated real-model proposal must cross the controlled Executor/effect boundary before live-AI evidence can fully close.
 
 ## T7 — Phase 5 strict verified-intent + effect-authority boundaries
 Status: `DONE / FROZEN`
 
 Evidence:
 - `VerifiedIntentBinding` + independent raw-intent hash;
-- exact separate `EffectAuthority`;
+- separate exact `EffectAuthority`;
 - 15/15 tests PASS;
 - no semantic interpretation/user-label/model-confidence path can create permission;
 - replay/stale/deny/mismatch/raw-intent mutation cases BLOCK.
@@ -103,26 +124,17 @@ Status: `DONE / CONTROLLED WORKFLOW MECHANISM PASS / NO MATURITY CLAIM`
 
 Human decision: `DEC-SAD-010` / ScriptOps `DEC-SO-010`.
 
-```text
-BASE: legacy/scriptops-v2-single.py
-REWRITE: NO
-NEW CAPABILITY: NO
-PHASE 6: reuse + hardening + proof
-```
-
-Canonical ScriptOps evidence:
-- PR #7 merged as `daa6e5dc210e09171a530eeffe5601e0e74ae041`;
+Canonical evidence:
+- ScriptOps PR #7 merged as `daa6e5dc210e09171a530eeffe5601e0e74ae041`;
 - final verified head `acbfca79f96407dbd46f9806bf821caf6e02e1af`;
 - repository verifier run `31421752036` SUCCESS;
 - Phase-6 smoke run `31421752569` SUCCESS;
 - Saddle evidence: `evidence/PHASE6_SCRIPTOPS_CONTROLLED_WORKFLOW_2026-08-10.md`.
 
-B1–B5 closed: clean checkpoints, generated-artifact lifecycle, fresh accepted hash, mandatory `why`, impact report + end-to-end smoke. Historical v2 remained unchanged.
-
-Do not infer ScriptOps maturity, independent product value, AI-worker success or functional Saddle from this proof.
+No ScriptOps maturity or independent product-value claim.
 
 ## T9 — Phase 7 functional Saddle acceptance
-Status: `BLOCKED UNTIL T6 LIVE AI EVIDENCE`
+Status: `BLOCKED UNTIL T6B LIVE AI EVIDENCE`
 
 Required fresh-session loop:
 
@@ -139,7 +151,7 @@ human raw intent
 → second zero-history resume
 ```
 
-Only the complete evidence set + explicit human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
+Only complete evidence + explicit human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
 
 ## T10 — Phase 8 post-acceptance direction
 Status: `BLOCKED UNTIL T9`

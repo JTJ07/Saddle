@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_5_ACCEPTED / PHASE_6_AWAITING_REAL_WORKFLOW_BASE_DECISION / NOT_YET_FUNCTIONAL
+status: PHASE_5_ACCEPTED / PHASE_6_ACTIVE / HUMAN_BASE_DECISION_REQUIRED / NOT_YET_FUNCTIONAL
 completion_lock: ACTIVE
 state_owner: PROJECT_STATE.md
 updated_at: 2026-08-10
@@ -186,7 +186,7 @@ Final acceptance still requires:
 
 Phase 5 has no remaining strict-boundary blocker on this change set.
 
-Next phase is one real user workflow. The existing technical recommendation remains ScriptOps using `legacy/scriptops-v2-single.py`, but earlier governance explicitly reserves that base selection as a human semantic decision.
+Phase 6 is active, but its first real workflow requires an explicit base selection. The existing technical recommendation remains ScriptOps using `legacy/scriptops-v2-single.py`, while earlier governance explicitly reserves that base selection as a human semantic decision.
 
 No runtime implementation should begin until that base is explicitly selected or rejected.
 

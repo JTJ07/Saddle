@@ -142,6 +142,33 @@ Only explicit human decisions or decisions already clearly established by the pr
 - Evidence: ScriptOps PR #7 merged as `daa6e5dc210e09171a530eeffe5601e0e74ae041`; final verified head `acbfca79f96407dbd46f9806bf821caf6e02e1af`; final GitHub Actions `Verify repository state` run `31421752036` PASS and `Phase 6 ScriptOps smoke` run `31421752569` PASS.
 - Next-order decision: after the bounded Phase-6 mechanism proof, return to the still-open live AI-worker benchmark/effect evidence before expanding capability.
 
+## DEC-SAD-011 — Approve bounded live AI worker benchmark
+
+- Date: 2026-08-10
+- Owner: USER
+- Status: ACTIVE / SPENDING + EVAL GATE APPROVAL
+- Decision:
+  - `PHASE 6: ACCEPTED`;
+  - `STATUS: CONTROLLED WORKFLOW PROVEN`;
+  - `MATURITY: NONE`;
+  - `FUNCTIONAL_SADDLE_ACCEPTED: NOT YET`;
+  - `NEXT: REAL AI WORKER EVIDENCE`;
+  - benchmark budget `APPROVED` up to `USD 5`;
+  - maximum `6` model calls;
+  - `0` automatic retries;
+  - scope is `BENCHMARK ONLY`;
+  - proposal-only execution; the model receives no shell, repo write, tool authority or effect authority.
+- Explicit prohibitions during this gate:
+  - no new product capability;
+  - no autonomous execution;
+  - no authority expansion;
+  - no tool-access expansion;
+  - no automatic autonomy increase after results.
+- Evaluation intent: measure whether a model produces useful proposals inside Saddle/Executor boundaries, not generic intelligence. Record correctness, scope compliance, structural validity, proposal rationale, tokens, cost, latency, retries, evidence and any required human corrections.
+- Ordering: begin with the smallest deterministic case; benchmark evidence is followed by evaluation and a separate evidence-based model/capability decision.
+- Evidence requirements: every paid call must be bound to an immutable case/input contract and stored as benchmark evidence; model output remains a proposal and cannot claim execution or authority.
+- Provider/model re-verification on 2026-08-10: official OpenAI documentation still lists `gpt-5.6-sol` and `gpt-5.6-terra` as API models; account-level access must be verified by the authorized runner at execution time.
+
 ## Not yet a decision
 
 The following remain open until explicitly selected or proven:

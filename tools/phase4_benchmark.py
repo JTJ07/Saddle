@@ -103,12 +103,14 @@ def generate_proposal(
     model_id: str,
     reasoning_effort: str,
     api_key_env: str = "OPENAI_API_KEY",
+    max_output_tokens: int = 8192,
 ) -> dict[str, Any]:
     case = load_case(root, checkout, case_id)
     gateway = OpenAIResponsesGateway(
         model_id=model_id,
         reasoning_effort=reasoning_effort,
         api_key_env=api_key_env,
+        max_output_tokens=max_output_tokens,
     )
     result = gateway.generate(
         case_id=case_id,
@@ -132,6 +134,7 @@ def generate_proposal(
         "commit": case["commit"],
         "model_id": result.model_id,
         "reasoning_effort": reasoning_effort,
+        "max_output_tokens": max_output_tokens,
         "latency_ms": result.latency_ms,
         "usage": asdict(result.usage),
         "provider_response_id": result.response_id,
@@ -149,6 +152,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--model", required=True)
     parser.add_argument("--reasoning-effort", default="medium")
     parser.add_argument("--api-key-env", default="OPENAI_API_KEY")
+    parser.add_argument("--max-output-tokens", type=int, default=8192)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args(argv)
 
@@ -160,6 +164,7 @@ def main(argv: list[str] | None = None) -> int:
             model_id=args.model,
             reasoning_effort=args.reasoning_effort,
             api_key_env=args.api_key_env,
+            max_output_tokens=args.max_output_tokens,
         )
     except CredentialUnavailable as exc:
         print(json.dumps({"status": "BLOCKED", "reason": str(exc)}, sort_keys=True))

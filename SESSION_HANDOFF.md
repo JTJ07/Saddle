@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_4_ACTIVE / EXTERNAL_MODEL_RUN_BLOCKED / NOT_YET_FUNCTIONAL
+status: PHASE_5_ACCEPTED / PHASE_6_AWAITING_REAL_WORKFLOW_BASE_DECISION / NOT_YET_FUNCTIONAL
 updated_at: 2026-08-10
 ---
 
@@ -8,71 +8,89 @@ updated_at: 2026-08-10
 
 ## STATUS
 
-Phases 0–3 are canonical. Phase 4 has a proposal-only ModelGateway scaffold and exact benchmark pins, but no real model call has occurred. Saddle remains `NOT YET FUNCTIONAL`.
+Phases 0–3 are canonical foundations. Phase-4 AI-worker direction/scaffold is frozen as PASS direction while its live external-model benchmark evidence remains open. Phase 5 strict intent/effect boundary proof has passing local deterministic evidence on this change set. Saddle remains `NOT_YET_FUNCTIONAL`.
 
 ## ACTIVE GATE
 
-`PHASE 4 — FIRST REAL AI WORKER`
+`PHASE 6 — FIRST REAL USER WORKFLOW / HUMAN BASE-SELECTION DECISION`
 
 ## WHAT CHANGED
 
-- pinned CASE-001–003 to exact broken commits;
-- added strict proposal-only worker schema;
-- added provider-neutral `ModelGateway` protocol plus narrow OpenAI Responses adapter;
-- added exact-path/diff-budget/before-after-hash proposal validation;
-- added non-secret Phase-4 preflight;
-- added pinned-checkout proposal runner;
-- researched current official Sol/Terra API availability/pricing;
-- bounded first-pass proposal to six calls / zero automatic retries / recommended USD 5 hard cap;
-- confirmed current Executor accepts the normalized `AuthorizedFileMutation` shape, so CASE-001 does not require an Executor rewrite merely to replace the hard-coded solution source.
+- recorded `DEC-SAD-008`: Saddle preserves intent integrity; it does not understand/authorize meaning;
+- recorded `DEC-SAD-009`: freeze Phase 1–4 foundations and advance to strict Phase 5 while preserving the unexecuted Phase-4 live benchmark evidence requirement;
+- added independent `raw_intent_hash` anchor for exact human UTF-8 input;
+- added provider-independent `VerifiedIntentBinding`;
+- added separate exact `EffectAuthority`;
+- added deterministic fail-closed boundary evaluator;
+- added 15 adversarial/positive-control tests;
+- added Phase-5 eval lane and evidence;
+- updated roadmap so real user workflow follows Phase 5 without adding capability layers.
 
-## EVIDENCE
+## CONSTITUTIONAL INVARIANT
 
-- `docs/MODEL_GATEWAY_v0.1.md`;
-- `evidence/PHASE4_PRE_CREDENTIAL_CHECKPOINT_2026-08-10.md`;
-- `worker/v0.1/worker-proposal.schema.json`;
-- `config/worker-cases-v0.1.json`;
-- `config/model-benchmark-v0.1.json`;
-- `tools/model_gateway.py`;
-- `tools/phase4_preflight.py`;
-- `tools/phase4_benchmark.py`;
-- Phase-4 local scaffold slice: 13 tests PASS.
+```text
+HUMAN OWNS INTENT
+SADDLE PRESERVES INTENT INTEGRITY
+INTELLIGENCE PROPOSES HOW
+EXECUTOR GOVERNS CONSEQUENCES
+VERIFIER ESTABLISHES FACTS
+NO LAYER MAY SUBSTITUTE FOR A HIGHER-ORDER OWNER
+```
 
-Actual preflight:
-`BLOCKED / PROVIDER_CREDENTIAL_NOT_CONFIGURED`.
+Saddle does not infer permission from semantic similarity, AI interpretation, USER labels or model confidence.
 
-## BOUNDARIES PRESERVED
+## PHASE 5 EVIDENCE
 
-- no real provider call;
-- no model selected;
-- no secret read or recorded;
-- no tools/shell/write/network authority granted to model;
-- no fake token/cost/latency/quality result;
-- completion lock remains ACTIVE.
+Artifacts:
+- `authority/v0.1/verified-intent-binding.schema.json`;
+- `authority/v0.1/effect-authority.schema.json`;
+- `tools/phase5_boundaries.py`;
+- `tests/test_phase5_boundaries.py`;
+- `docs/PHASE5_STRICT_BOUNDARIES_v0.1.md`;
+- `evidence/PHASE5_STRICT_BOUNDARY_TEST_2026-08-10.md`.
 
-## BLOCKERS
+Local deterministic evidence:
 
-All three are required:
+```text
+python -m compileall -q tools tests
+PASS
 
-1. authorized external control-plane runner with outbound provider HTTPS;
-2. `OPENAI_API_KEY` configured in that runner's secret store/environment, never chat/GitHub/evidence;
-3. explicit human approval of paid first-pass budget.
+python -m unittest discover -s tests -p 'test_phase5_boundaries.py' -v
+Ran 15 tests
+OK
+```
 
-Recommended first pass: max 6 calls, no retries, USD 5.00 hard cap.
+Negative cases block for missing authority, goal-expanding interpretation, raw-intent mutation, unverified origin, wrong/mutated effect, action/target mismatch, expiry, deny, replay and wrong intent. Exact active binding + exact active one-use ALLOW authority is the positive control.
+
+## OPEN EVIDENCE / NOT CLAIMED
+
+- no production request-origin/identity provider selected;
+- no live Sol/Terra benchmark executed;
+- no real-model proposal routed through Executor yet;
+- no first real ScriptOps workflow executed;
+- no functional Saddle claim.
+
+## BLOCKER / HUMAN SEMANTIC GATE
+
+The next real workflow needs an explicit base selection.
+
+Current technical recommendation remains:
+
+`legacy/scriptops-v2-single.py` = **YES, reuse as Phase-6 base**.
+
+Earlier governance explicitly reserved that base selection to the human; it has not yet been promoted to a decision.
 
 ## ONE NEXT STEP
 
-Enable an authorized external model-runner environment, configure its API secret securely, approve the first-pass budget, then run Sol vs Terra on pinned CASE-001–003 and record results through the Phase-3 eval harness before any worker-model selection.
+Human selects or rejects `legacy/scriptops-v2-single.py` as the Phase-6 real-workflow implementation base. If selected, implement only the smallest task -> context -> candidate -> validation -> impact -> human approve/reject/revision with why -> accepted hash -> Git commit -> smoke-evidence path.
 
 ## EXACT FILES / REFS TO OPEN NEXT
 
 1. `PROJECT_STATE.md`
-2. `TODO.md` — T6
-3. `docs/MODEL_GATEWAY_v0.1.md`
-4. `evidence/PHASE4_PRE_CREDENTIAL_CHECKPOINT_2026-08-10.md`
-5. `config/model-benchmark-v0.1.json`
-6. `config/worker-cases-v0.1.json`
-7. `tools/model_gateway.py`
-8. `tools/phase4_preflight.py`
-9. `tools/phase4_benchmark.py`
-10. `litrgratis-pixel/Executor` main `788443c...`
+2. `EXECUTION_PLAN.md` — Phase 6
+3. `TODO.md` — T8
+4. `DECISION_LOG.md` — DEC-SAD-008/009
+5. `docs/PHASE5_STRICT_BOUNDARIES_v0.1.md`
+6. `evidence/PHASE5_STRICT_BOUNDARY_TEST_2026-08-10.md`
+7. `litrgratis-pixel/scriptops` main `33c9d15a10dfd3f833a99dfcebea22dd77f26b65`
+8. ScriptOps `legacy/scriptops-v2-single.py`

@@ -20,10 +20,11 @@
   ],
   "cases": ["CASE-001", "CASE-002", "CASE-003"],
   "phase4a_calibration": {
-    "status": "BASELINE_PASS_NOT_WORKER_EVIDENCE",
+    "status": "ACCEPTED_CALIBRATION_BASELINE_PASS_NOT_WORKER_EVIDENCE",
     "runs": 3,
     "context_contaminated_runs": 3,
     "independent_problem_solving_claim": false,
+    "evidence_type": "COGNITIVE_CALIBRATION_ONLY",
     "evidence_ref": "evidence/PHASE4A_WEB_AI_CALIBRATION_BASELINE_2026-08-10.md"
   },
   "first_pass_policy": {
@@ -46,15 +47,17 @@
     "proposal_rationale_quality",
     "structured_output_stability",
     "objective_evidence_plan",
-    "human_corrections_required"
+    "human_corrections_required",
+    "intent_preservation_against_human_approved_intent"
   ],
+  "intent_preservation_rule": "Evaluate against preserved raw/human-approved intent and explicit constraints: no loss of goal, no added goals, no silent priority change. Do not use semantic similarity or model interpretation as authority.",
   "required_before_run": [
     "authorized runner with outbound HTTPS to the provider API",
     "OPENAI_API_KEY configured in runner secret environment, never chat/repo/evidence",
     "candidate model IDs verified against official provider documentation immediately before execution",
     "immutable case commit checks pass"
   ],
-  "selection_rule": "Do not select a production worker from reputation or web-AI calibration alone. Compare the same immutable cases and record correctness, scope compliance, authority violations, goal expansion, structured-output validity, rationale quality, evidence plan, tokens, cost, latency, retries and human corrections. Selection remains pending human evaluation after the reproducible API benchmark.",
+  "selection_rule": "Do not select a production worker from reputation or web-AI calibration alone. Compare the same immutable cases and evaluate correctness, scope compliance, authority violations, goal expansion, intent preservation, structured-output validity, rationale quality, evidence plan, tokens, cost, latency, retries and human corrections. Selection remains pending human evaluation after the reproducible API benchmark.",
   "official_sources": [
     "https://openai.com/index/gpt-5-6/",
     "https://developers.openai.com/api/docs/models/gpt-5.6-sol",

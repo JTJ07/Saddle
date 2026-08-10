@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_6_ACCEPTED / PHASE_4_LIVE_EVIDENCE_BLOCKED_SECRET / NOT_YET_FUNCTIONAL
+status: PHASE_6_ACCEPTED / PHASE_4A_CALIBRATION_BASELINE_PASS / PHASE_4B_API_EVIDENCE_BLOCKED_SECRET / NOT_YET_FUNCTIONAL
 completion_lock: ACTIVE
 state_owner: PROJECT_STATE.md
 updated_at: 2026-08-10
@@ -27,19 +27,19 @@ GitHub is durable memory. Completion lock remains ACTIVE.
 
 ## 2. Current objective
 
-Complete the still-missing real-AI evidence without expanding capability:
+Complete real-AI worker evidence without expanding capability.
+
+Phase 4 is now explicitly separated by `DEC-SAD-012`:
 
 ```text
-pinned human/task intent
-→ real model proposal only
-→ deterministic validation
-→ exact effect authority
-→ controlled Executor/effect path
-→ verifier/test evidence
-→ eval record
+PHASE 4A — WEB AI COGNITIVE CALIBRATION
+human-guided / proposal-only / not worker evidence
+        ↓
+PHASE 4B — CONTROLLED API WORKER EVIDENCE
+fixed input + fixed model + fixed output contract + reproducible eval
 ```
 
-After this evidence exists, assemble the final fresh-session Saddle acceptance loop. Do not broaden models/tools/agents before the proof.
+The distinction is evidence-classification, not a replacement of API execution.
 
 ## 3. Canonical completed foundations
 
@@ -56,36 +56,13 @@ Provider-independent Protocol v0.1:
 ### Phase 3 — ACCEPTED / FROZEN
 Fail-closed stdlib JSON/JSONL audit/eval foundation.
 
-### Phase 4 — DIRECTION PASS / SCAFFOLD FROZEN / LIVE EVIDENCE BLOCKED ON SECRET
-The proposal-only ModelGateway direction is accepted and its scaffold is canonical.
-
-Already present:
-- immutable CASE-001–003 broken-input pins;
-- proposal-only WorkerProposal;
-- thin provider-neutral ModelGateway + narrow Responses adapter;
-- no model tool/shell/write/effect authority;
-- exact target/diff/hash validation;
-- two-model first-pass benchmark plan;
-- human-approved benchmark budget and call/retry bounds (`DEC-SAD-011`).
-
-Still unexecuted:
-- real external model calls;
-- measured same-case two-model comparison;
-- real-model proposal routed through controlled Executor/effect path;
-- observed token/cost/latency/retry evidence;
-- evidence-based first-worker selection.
-
-This active gate is a return to deferred evidence, not a redesign or rollback of Phase 4.
-
 ### Phase 5 — ACCEPTED / FROZEN
-Strict verified-intent/effect-authority boundary proof.
-
-Core outcomes:
-- independent `raw_intent_hash` for exact human input;
+Strict verified-intent/effect-authority boundary proof:
+- independent raw-intent hash;
 - provider-independent `VerifiedIntentBinding`;
 - separate exact, time-bounded, single-use `EffectAuthority`;
-- no permission inferred from AI interpretation, semantic similarity, confidence or USER-like metadata;
-- 15/15 adversarial/positive-control tests PASS.
+- 15/15 boundary tests PASS;
+- no permission from AI interpretation, semantic similarity, confidence or USER-like metadata.
 
 Trust-provider selection remains intentionally open.
 
@@ -102,44 +79,76 @@ MATURITY CLAIM: NONE
 FUNCTIONAL_SADDLE_ACCEPTED: NOT YET
 ```
 
-Canonical ScriptOps result:
-- repo: `litrgratis-pixel/scriptops`;
-- merged PR #7;
-- merge: `daa6e5dc210e09171a530eeffe5601e0e74ae041`;
-- final verified head: `acbfca79f96407dbd46f9806bf821caf6e02e1af`.
+ScriptOps PR #7 merged as `daa6e5dc210e09171a530eeffe5601e0e74ae041`.
+Final verified head `acbfca79f96407dbd46f9806bf821caf6e02e1af` passed:
+- `Verify repository state` run `31421752036`;
+- `Phase 6 ScriptOps smoke` run `31421752569`.
 
-Final checks on that head:
-- `Verify repository state` run `31421752036` -> SUCCESS;
-- `Phase 6 ScriptOps smoke` run `31421752569` -> SUCCESS.
+B1–B5 are technically closed without modifying the historical v2 artifact. Cross-repo evidence: `evidence/PHASE6_SCRIPTOPS_CONTROLLED_WORKFLOW_2026-08-10.md`.
 
-B1–B5 are technically closed:
-1. task/dirty-tree checkpoint lifecycle;
-2. generated preflight/context/candidate/impact lifecycle;
-3. fresh accepted scene hash after status transition;
-4. mandatory human `approve --why`;
-5. impact report + deterministic fresh-Git smoke proof.
+## 4. Phase 4A — Web AI cognitive calibration
 
-The historical v2 artifact remained unchanged. The Phase-6 hardening is a bounded shim over the selected substrate, not a rewrite.
+Decision: `DEC-SAD-012`.
 
-Cross-repo evidence: `evidence/PHASE6_SCRIPTOPS_CONTROLLED_WORKFLOW_2026-08-10.md`.
+Web AI may be used as a human-guided laboratory to calibrate the contract between Saddle and Intelligence. It remains proposal-only and receives no execution/authority/tool expansion.
 
-## 4. Responsibility-model evidence from Phase 6
-
-The controlled ScriptOps path preserves:
+Evidence classification:
 
 ```text
-candidate artifact = proposal, not canon
-evidence/impact = review material, not authority
-human approve --why = semantic decision
-canonical write = consequence after decision
-decision log + Git = durable evidence
+WEB_AI_CALIBRATION != API_WORKER_EVIDENCE
 ```
 
-ScriptOps did not become a replacement for Saddle or Executor and gained no autonomous interpretation/authority capability.
+Reason: web runs may include hidden product/system instructions, session history, UI context, memory and human steering.
 
-## 5. Benchmark gate authorization
+### First baseline — PASS for boundary discipline
 
-`DEC-SAD-011` explicitly authorizes the first real AI benchmark with these bounds:
+Evidence: `evidence/PHASE4A_WEB_AI_CALIBRATION_BASELINE_2026-08-10.md`.
+
+Three manual runs were performed in the current web-AI session on immutable CASE-001/002/003 inputs.
+
+Observed aggregate:
+- runs: `3`;
+- boundary-discipline PASS: `3/3`;
+- scope violations: `0`;
+- invented/smuggled authority: `0`;
+- execution claims: `0`;
+- unnecessary capability expansion: `0`;
+- proposed deltas: 14 / 9 / 5 changed lines;
+- reconstructed visible registry/CLI test suite: `13/13 PASS` on each proposal.
+
+Evidence limitation:
+- all three runs are `CONTEXT_CONTAMINATED` by the existing Saddle session and cross-case inspection;
+- therefore independent model problem-solving ability is **NOT EVALUATED / NOT CLAIMED**;
+- the reconstructed local test run is calibration support, not formal pinned-checkout worker evidence.
+
+### Calibration output frozen into Phase 4B eval dimensions
+
+The formal benchmark now evaluates:
+1. proposal correctness against pinned tests;
+2. scope compliance;
+3. no authority invention/smuggling;
+4. no goal expansion beyond human task;
+5. rationale quality;
+6. structured-output stability;
+7. objective evidence plan;
+8. human corrections required.
+
+Fresh-session web repeats remain useful but are not a new blocking gate unless they reveal a contract defect.
+
+## 5. Phase 4B — Controlled reproducible API worker evidence
+
+Direction/scaffold remains PASS/FROZEN.
+
+Already present:
+- immutable CASE-001–003 pins;
+- proposal-only WorkerProposal;
+- thin Responses ModelGateway;
+- no model tool/shell/write/effect authority;
+- exact target/hash/diff validation;
+- bounded live benchmark runner;
+- human-approved benchmark bounds in `DEC-SAD-011`.
+
+Approved bounds:
 
 ```text
 BUDGET: max USD 5
@@ -152,82 +161,54 @@ AUTHORITY EXPANSION: NO
 TOOL ACCESS EXPANSION: NO
 ```
 
-The benchmark is intended to evaluate useful proposal generation inside Saddle boundaries, not generic model intelligence.
+### Live preflight result
 
-Immediately before the attempted run, official OpenAI documentation was rechecked and still listed `gpt-5.6-sol` and `gpt-5.6-terra` as API models. Public availability does not prove account-level access.
-
-## 6. Live benchmark preflight result
-
-Saddle PR #14 opened one-shot GitHub Actions run `31423378809`, job `93569214499`.
+PR #14 launched GitHub Actions run `31423378809`, job `93569214499`.
 
 Observed:
-- GitHub-hosted runner exists and has outbound-capable CI environment;
-- repository token permission was read-only;
-- complete Saddle deterministic regression ran first: `54 tests / OK`;
-- `OPENAI_API_KEY` presence check failed without printing any secret;
-- paid benchmark step was skipped.
-
-Therefore:
-
-```text
-MODEL CALLS ATTEMPTED: 0
-AUTOMATIC RETRIES: 0
-BENCHMARK SPEND: USD 0
-MODEL PROPOSALS: 0
-MODEL SELECTION: NONE
-```
+- runner available;
+- full Saddle deterministic regression first: `54 tests / OK`;
+- credential presence check failed safely;
+- paid benchmark step skipped;
+- model calls attempted: `0`;
+- spend: `USD 0`;
+- model proposals: `0`;
+- selection: `NONE`.
 
 Evidence: `evidence/PHASE4_LIVE_BENCHMARK_PREFLIGHT_2026-08-10.md`.
 
-## 7. Current evidence boundary
+## 6. Current blocker
 
-Saddle remains `NOT_YET_FUNCTIONAL`.
-
-Phase 6 proves one controlled workflow mechanism. It does NOT prove:
-- ScriptOps v5/RC1 maturity;
-- independent product/user value;
-- a live real-model Saddle worker;
-- a live real-model proposal through Executor;
-- production request-origin authenticity;
-- complete `EffectReceipt -> StateDelta -> zero-history resume` acceptance;
-- final human acceptance.
-
-## 8. Current blocker
-
-The runner and spending authorization now exist. Current model candidates were reverified.
-
-The only missing prerequisite for the approved benchmark is:
+The only missing prerequisite for Phase 4B is:
 
 > `OPENAI_API_KEY` configured as a GitHub Actions repository secret for `litrgratis-pixel/Saddle`.
 
-The credential must remain in secret storage and must never be placed in chat, repository content, PR comments, logs or evidence.
+The credential must never enter chat, repository content, PR comments, logs or evidence.
 
-After the secret is configured, re-run the failed benchmark job/run under the already approved bounds. Do not modify scope or increase budget/calls/retries.
+After configuration, rerun the existing failed benchmark job/run under the already approved bounds. Do not modify scope/budget/calls/retries.
 
-## 9. Required next proof
+## 7. Required next proof
 
-Run the same immutable CASE-001–003 inputs against Sol and Terra, beginning with CASE-001 for both models, then record for each call:
-
+Run identical immutable CASE-001–003 inputs across Sol and Terra, starting with CASE-001 for both, and record:
 - exact model ID;
-- immutable input-contract hash;
-- structured proposal/output;
-- task/full-test result;
-- scope/policy violations;
-- proposal rationale;
-- tokens;
-- cost;
-- latency;
+- immutable input contract;
+- structured proposal;
+- pinned target/full-test results;
+- scope/policy/authority/goal-expansion violations;
+- rationale/evidence-plan quality;
+- tokens/cost/latency;
 - retries (`0` automatic);
-- human corrections;
-- evidence refs.
+- human corrections.
 
-Benchmark result then moves to `EVALUATION -> HUMAN DECISION`; it does not automatically expand autonomy.
+Result then moves to `EVALUATION -> HUMAN DECISION`. Web calibration alone never selects the worker or expands autonomy.
 
-At least one later validated real-model proposal must cross the controlled Executor/effect boundary with objective verifier evidence before the live-AI evidence gate can fully close.
+At least one validated real-model proposal must later cross the controlled Executor/effect boundary with objective verifier evidence.
 
-## 10. Functional acceptance remains unchanged
+## 8. Functional acceptance remains open
 
-Final acceptance still requires a fresh-session proof of:
+Saddle remains `NOT_YET_FUNCTIONAL`.
+
+Final acceptance still requires:
 
 ```text
 human raw intent
@@ -243,8 +224,8 @@ human raw intent
 → second zero-history resume
 ```
 
-Only required evidence plus explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
+Only the complete evidence set plus explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
 
-## 11. One next step
+## 9. One next step
 
-Configure the `OPENAI_API_KEY` GitHub Actions repository secret for `litrgratis-pixel/Saddle`, then re-run benchmark workflow run `31423378809` / job `93569214499`. No other implementation work should displace this single active gate.
+Configure `OPENAI_API_KEY` in the authorized GitHub Actions secret store, then rerun benchmark run `31423378809` / job `93569214499`. Fresh-session web calibration repeats are optional supporting evidence unless they expose a new contract defect.

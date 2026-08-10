@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_6_ACCEPTED / PHASE_4_LIVE_EVIDENCE_ACTIVE / NOT_YET_FUNCTIONAL
+status: PHASE_6_ACCEPTED / PHASE_4_LIVE_EVIDENCE_BLOCKED_SECRET / NOT_YET_FUNCTIONAL
 completion_lock: ACTIVE
 state_owner: PROJECT_STATE.md
 updated_at: 2026-08-10
@@ -56,7 +56,7 @@ Provider-independent Protocol v0.1:
 ### Phase 3 — ACCEPTED / FROZEN
 Fail-closed stdlib JSON/JSONL audit/eval foundation.
 
-### Phase 4 — DIRECTION PASS / SCAFFOLD FROZEN / LIVE EVIDENCE ACTIVE
+### Phase 4 — DIRECTION PASS / SCAFFOLD FROZEN / LIVE EVIDENCE BLOCKED ON SECRET
 The proposal-only ModelGateway direction is accepted and its scaffold is canonical.
 
 Already present:
@@ -65,7 +65,8 @@ Already present:
 - thin provider-neutral ModelGateway + narrow Responses adapter;
 - no model tool/shell/write/effect authority;
 - exact target/diff/hash validation;
-- two-model first-pass benchmark plan.
+- two-model first-pass benchmark plan;
+- human-approved benchmark budget and call/retry bounds (`DEC-SAD-011`).
 
 Still unexecuted:
 - real external model calls;
@@ -136,7 +137,49 @@ decision log + Git = durable evidence
 
 ScriptOps did not become a replacement for Saddle or Executor and gained no autonomous interpretation/authority capability.
 
-## 5. Current evidence boundary
+## 5. Benchmark gate authorization
+
+`DEC-SAD-011` explicitly authorizes the first real AI benchmark with these bounds:
+
+```text
+BUDGET: max USD 5
+MODEL CALLS: max 6
+AUTOMATIC RETRIES: 0
+SCOPE: benchmark only
+NEW CAPABILITY: NO
+AUTONOMOUS EXECUTION: NO
+AUTHORITY EXPANSION: NO
+TOOL ACCESS EXPANSION: NO
+```
+
+The benchmark is intended to evaluate useful proposal generation inside Saddle boundaries, not generic model intelligence.
+
+Immediately before the attempted run, official OpenAI documentation was rechecked and still listed `gpt-5.6-sol` and `gpt-5.6-terra` as API models. Public availability does not prove account-level access.
+
+## 6. Live benchmark preflight result
+
+Saddle PR #14 opened one-shot GitHub Actions run `31423378809`, job `93569214499`.
+
+Observed:
+- GitHub-hosted runner exists and has outbound-capable CI environment;
+- repository token permission was read-only;
+- complete Saddle deterministic regression ran first: `54 tests / OK`;
+- `OPENAI_API_KEY` presence check failed without printing any secret;
+- paid benchmark step was skipped.
+
+Therefore:
+
+```text
+MODEL CALLS ATTEMPTED: 0
+AUTOMATIC RETRIES: 0
+BENCHMARK SPEND: USD 0
+MODEL PROPOSALS: 0
+MODEL SELECTION: NONE
+```
+
+Evidence: `evidence/PHASE4_LIVE_BENCHMARK_PREFLIGHT_2026-08-10.md`.
+
+## 7. Current evidence boundary
 
 Saddle remains `NOT_YET_FUNCTIONAL`.
 
@@ -149,36 +192,40 @@ Phase 6 proves one controlled workflow mechanism. It does NOT prove:
 - complete `EffectReceipt -> StateDelta -> zero-history resume` acceptance;
 - final human acceptance.
 
-## 6. Current live-AI blocker
+## 8. Current blocker
 
-The Phase-4 scaffold previously reached the real external-model boundary.
+The runner and spending authorization now exist. Current model candidates were reverified.
 
-Continuation requires all of:
+The only missing prerequisite for the approved benchmark is:
 
-1. an authorized control-plane runner with outbound HTTPS to the selected provider API;
-2. provider credential configured in that runner's secret store/environment, never chat/GitHub/evidence;
-3. explicit human approval for paid benchmark spending;
-4. current provider/model availability re-verified immediately before execution.
+> `OPENAI_API_KEY` configured as a GitHub Actions repository secret for `litrgratis-pixel/Saddle`.
 
-The earlier first-pass proposal was maximum 6 calls, zero automatic retries, recommended USD 5 hard cap. That spending recommendation is **not yet a human-approved budget**.
+The credential must remain in secret storage and must never be placed in chat, repository content, PR comments, logs or evidence.
 
-## 7. Required next proof
+After the secret is configured, re-run the failed benchmark job/run under the already approved bounds. Do not modify scope or increase budget/calls/retries.
 
-Run the same immutable CASE-001–003 inputs against at least two current suitable model candidates, then for each result record:
+## 9. Required next proof
 
-- model/version;
-- task result;
+Run the same immutable CASE-001–003 inputs against Sol and Terra, beginning with CASE-001 for both models, then record for each call:
+
+- exact model ID;
+- immutable input-contract hash;
+- structured proposal/output;
+- task/full-test result;
 - scope/policy violations;
+- proposal rationale;
 - tokens;
 - cost;
 - latency;
-- retries;
+- retries (`0` automatic);
 - human corrections;
 - evidence refs.
 
-At least one validated real-model proposal must cross the controlled Executor/effect boundary with objective verifier evidence before the live-AI gate can close.
+Benchmark result then moves to `EVALUATION -> HUMAN DECISION`; it does not automatically expand autonomy.
 
-## 8. Functional acceptance remains unchanged
+At least one later validated real-model proposal must cross the controlled Executor/effect boundary with objective verifier evidence before the live-AI evidence gate can fully close.
+
+## 10. Functional acceptance remains unchanged
 
 Final acceptance still requires a fresh-session proof of:
 
@@ -198,6 +245,6 @@ human raw intent
 
 Only required evidence plus explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
 
-## 9. One next step
+## 11. One next step
 
-Enable an authorized external model-runner, securely configure its provider credential, obtain explicit human approval for the bounded paid benchmark budget, re-verify current model candidates from official provider sources, and execute the identical pinned CASE-001–003 benchmark/effect proof before selecting the first worker model.
+Configure the `OPENAI_API_KEY` GitHub Actions repository secret for `litrgratis-pixel/Saddle`, then re-run benchmark workflow run `31423378809` / job `93569214499`. No other implementation work should displace this single active gate.

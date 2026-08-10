@@ -1,0 +1,33 @@
+{
+  "schema_version": "saddle-worker-cases/0.1",
+  "repository": "litrgratis-pixel/executor-pilot-target",
+  "cases": [
+    {
+      "case_id": "CASE-001",
+      "commit": "3934a94a5eebf750079200589d6dc40e024d44a0",
+      "case_doc": "cases/CASE-001.md",
+      "target_path": "project_registry/registry.py",
+      "tests_path": "tests/test_registry.py",
+      "target_test": "tests.test_registry.ProjectRegistryTests.test_duplicate_batch_does_not_partially_mutate_registry",
+      "max_patch_lines": 80
+    },
+    {
+      "case_id": "CASE-002",
+      "commit": "c3683bf37ad6a3f1d49c0ca05ebdd41627e9a5be",
+      "case_doc": "cases/CASE-002.md",
+      "target_path": "project_registry/registry.py",
+      "tests_path": "tests/test_registry.py",
+      "target_test": "tests.test_registry.ProjectRegistryTests.test_closed_project_requires_reason_before_reopening",
+      "max_patch_lines": 80
+    },
+    {
+      "case_id": "CASE-003",
+      "commit": "c42bead2bbbff9c84486f17637ec80f35eeffa25",
+      "case_doc": "cases/CASE-003.md",
+      "target_path": "project_registry/registry.py",
+      "tests_path": "tests/test_registry.py",
+      "target_test": "tests.test_registry.ProjectRegistryTests.test_json_output_is_sorted_stable_and_utf8_friendly",
+      "max_patch_lines": 80
+    }
+  ]
+}

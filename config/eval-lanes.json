@@ -1,0 +1,12 @@
+{
+  "schema_version": "saddle-eval-lanes/0.1",
+  "lanes": [
+    {"lane_id": "saddle-cold-start", "status": "BASELINE_AVAILABLE", "source_ref": "evidence/COLD_START_AUDIT_001.md", "purpose": "Zero-history project continuity and one-next-step recovery."},
+    {"lane_id": "reconstructor-regression", "status": "READY", "source_ref": "litrgratis-pixel/creative-os-project-reconstructor", "purpose": "Context reconstruction regression cases."},
+    {"lane_id": "executor-policy-security", "status": "READY", "source_ref": "litrgratis-pixel/Executor", "purpose": "Executor policy, sandbox and security regression evidence."},
+    {"lane_id": "pilot-case-001", "status": "READY_FOR_T6", "source_ref": "litrgratis-pixel/executor-pilot-target:case-001-broken", "purpose": "Atomic batch insertion from immutable broken baseline."},
+    {"lane_id": "pilot-case-002", "status": "READY_FOR_T6", "source_ref": "litrgratis-pixel/executor-pilot-target:case-002-broken", "purpose": "Reopen authorization from immutable broken baseline."},
+    {"lane_id": "pilot-case-003", "status": "READY_FOR_T6", "source_ref": "litrgratis-pixel/executor-pilot-target:case-003-broken", "purpose": "Deterministic output from immutable broken baseline."},
+    {"lane_id": "scriptops-smoke", "status": "DEFERRED_TO_T8", "source_ref": "litrgratis-pixel/scriptops", "purpose": "One real-domain task-to-approved-Git-change smoke path."}
+  ]
+}

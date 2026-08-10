@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_1_ACCEPTED / PHASE_2_ACTIVE / NOT_YET_FUNCTIONAL
+status: PHASE_2_ACCEPTED / PHASE_3_ACTIVE / NOT_YET_FUNCTIONAL
 completion_lock: ACTIVE
 state_owner: PROJECT_STATE.md
 updated_at: 2026-08-10
@@ -8,19 +8,9 @@ updated_at: 2026-08-10
 
 # PROJECT_STATE — Saddle
 
-## 1. Current product definition
+## 1. Product definition
 
-Saddle is the durable control/coupling layer between human intent and arbitrary AI capability.
-
-It preserves and binds the human-owned intent, supplies durable context and decision lineage, keeps consequential effects behind authority boundaries, records evidence/state, and avoids unnecessarily prescribing how the underlying intelligence solves the problem.
-
-Core rules:
-
-> **Maximize usable AI capability; constrain unauthorized effects, not intelligence itself.**
-
-> **NO LAYER MAY SUBSTITUTE FOR A HIGHER-ORDER OWNER.**
-
-Current responsibility model:
+Saddle is the durable control/coupling layer between human-owned intent and arbitrary AI capability.
 
 ```text
 HUMAN OWNS INTENT
@@ -30,167 +20,130 @@ EXECUTOR GOVERNS CONSEQUENCES
 VERIFIER ESTABLISHES FACTS
 ```
 
+Cross-layer rule:
+
+> **NO LAYER MAY SUBSTITUTE FOR A HIGHER-ORDER OWNER.**
+
+Core capability rule:
+
+> **Maximize usable AI capability; constrain unauthorized effects, not intelligence itself.**
+
 ## 2. Current objective
 
-Finish the smallest end-to-end Saddle that proves:
+Finish the smallest end-to-end Saddle proving:
 
 ```text
 human intent
 → durable/bound intent
-→ correct context recovery
+→ context recovery
 → real AI proposal
-→ effect authority boundary
+→ exact effect authority
 → bounded execution
-→ objective evidence
+→ evidence
 → durable StateDelta
 → fresh-session resume
 ```
 
-The project remains in completion mode. New product development is frozen.
+Completion lock remains active. New product directions remain parked.
 
-## 3. Current ecosystem checkpoints
+## 3. Reconciled ecosystem checkpoints
 
-Observed / reconciled on 2026-08-10:
+Observed/reconciled on 2026-08-10:
 
-- Saddle: Phase-0 closure merge `b950660c84c6dcad1a093a7aba5ad2d70d472ee4` plus current Phase-1 sync branch;
+- Saddle Phase-1 canonical merge: `2e0bd347a80495d1cdf95a85a180655f3ea13f3b`;
 - COS main: `3220310267c3d0ba2184daaf3f2adad259a9cb20`;
-- creative-os-project-reconstructor main: `defc7b029097284f94136fec54b75c313ac12f68`;
-- ScriptOps main after access-check reconciliation: `33c9d15a10dfd3f833a99dfcebea22dd77f26b65`;
+- Reconstructor main: `defc7b029097284f94136fec54b75c313ac12f68`;
+- ScriptOps main: `33c9d15a10dfd3f833a99dfcebea22dd77f26b65`;
 - Executor main: `788443c3ed5b290ac8f1de145a93d02d2dd15317`;
 - executor-pilot-target main: `dc094679ef3e2d5cf5f1aa0ff0fd54d16f201154`.
 
-These are observed refs, not permanent implementation pins unless a later protocol explicitly pins one.
+Detailed classification: `docs/PHASE1_ECOSYSTEM_RECONCILIATION_2026-08-10.md`.
 
-## 4. Reconciled component roles
-
-### COS
-Reuse memory/source-hierarchy/session-handoff patterns.
-
-COS PR #18 classification:
-`REUSABLE GINSENG SEMANTICS + STALE/SUPERSEDED GLOBAL STATUS/PLACEMENT`.
-
-Reuse:
-- `FACT / DECISION / HYPOTHESIS`;
-- Decision Lineage;
-- source/proposer/confidence/status on important relations;
-- AI cannot confirm its own hypothesis/relation;
-- `ELEMENT -> FUNCTION/CAPABILITY -> EFFECT` reasoning.
-
-Do not activate Ginseng runtime/UI under completion lock.
-
-### Project Reconstructor
-Reuse as context-recovery adapter and regression source. Automated cross-model/large-set eval belongs in T5.
-
-### ScriptOps
-GitHub-side access check is now canonical. No separate later RC1 build was found in accessible GitHub; local/off-GitHub artifacts remain unknown.
-
-Preserved v2 already has most needed mechanics. Known minimal one-slice gaps:
-- clean-tree lifecycle conflict;
-- dirty-tree before approval;
-- stale accepted hash;
-- missing mandatory `why`;
-- missing impact report/smoke proof.
-
-Technical recommendation: reuse v2. This remains a recommendation until human base selection.
+## 4. Important component truth
 
 ### Executor
-Canonical effect-control implementation remains `Executor/main` at `788443c...`.
+Canonical implementation is `Executor/main`. PR #51–#57 remain draft/research/reusable trust material, not merged runtime.
 
-Current main strengths:
-- request-to-contract formation boundary;
-- user-request vs model-interpretation separation;
-- policy/source/task/project checks;
-- action authorization machinery;
-- hardened sandbox;
-- evidence/replay controls;
-- GP001 controlled path.
+Retained invariant:
+`USER PROVENANCE != VERIFIED REQUEST-ORIGIN EVIDENCE`.
 
-Current main gaps:
-- GP001 proposal is hard-coded rather than real-AI-generated;
-- verified human authority/freeze not implemented.
+Naive A2 is rejected. Strengthened-A2 trust principle is retained at Saddle's intent boundary. A1 remains a delegated/enterprise intake variant. No provider is selected.
 
-Executor #51–#57 classification is recorded in `docs/PHASE1_ECOSYSTEM_RECONCILIATION_2026-08-10.md`.
+### ScriptOps
+GitHub-side access check and v2-vs-RC1 gap analysis are canonical. V2 remains the technical recommendation for the later real-domain slice, but base selection remains an explicit human semantic decision.
 
-Critical retained trust findings:
-- `USER PROVENANCE != VERIFIED REQUEST-ORIGIN EVIDENCE`;
-- naive A2 rejected;
-- exact transaction-specific origin binding, anti-replay/freshness and explicit trust-domain rules;
-- approval/authentication do not automatically prove exact request origination.
-
-Global placement correction:
-`USER -> EXECUTOR` is superseded as Saddle's front door. Strengthened-A2 principle is retained at the Saddle intent boundary; A1 is a valid delegated/enterprise intake variant.
+### COS / Ginseng
+Reuse decision-intelligence semantics only. Ginseng runtime/UI remains parked.
 
 ### executor-pilot-target
-Repeatable technical lab for CASE-001–003.
-
-Direct Codex CASE-001 solve demonstrates `AI_WORKER_CAPABILITY`, not full Saddle execution.
-
-Do not merge the repair into `case-001-broken`; broken benchmark inputs remain reproducible.
+Repeatable CASE-001–003 lab. Direct Codex CASE-001 solve demonstrates AI-worker capability only. Do not merge the successful repair into `case-001-broken`.
 
 ## 5. Phase results
 
 ### Phase 0 — ACCEPTED
+Repository-only zero-memory recovery passed. Evidence: `evidence/COLD_START_AUDIT_001.md`.
 
-Evidence: `evidence/COLD_START_AUDIT_001.md` and merged PR #1.
+### Phase 1 — ACCEPTED
+Cross-repository material is classified as canonical, draft, reusable, superseded, experimental or never-merge. Evidence: Phase-1 reconciliation docs and canonical merge `2e0bd347...`.
 
-A zero-history session recovered product definition, memory law, completion lock, evidence boundary and one next step from GitHub alone.
+### Phase 2 — ACCEPTED ON THIS CHANGE SET
 
-### Phase 1 — ACCEPTED ON THIS CANONICAL SYNC
+Frozen provider/model/agent-independent protocol artifacts:
 
-Evidence:
-- `docs/PHASE1_ECOSYSTEM_RECONCILIATION_2026-08-10.md`;
-- `docs/SADDLE_EXECUTOR_RESPONSIBILITY_BOUNDARY.md`;
-- updated `ECOSYSTEM_MAP.md`;
-- updated `SOURCE_REGISTRY.md`;
-- ScriptOps access-check/gap analysis merged;
-- `DEC-SAD-006` responsibility boundary;
-- preserved test/evidence package and parked ideas.
+- `docs/SADDLE_PROTOCOL_v0.1.md`;
+- `protocol/v0.1/common.schema.json`;
+- `protocol/v0.1/intent-envelope.schema.json`;
+- `protocol/v0.1/effect-proposal.schema.json`;
+- `protocol/v0.1/effect-receipt.schema.json`;
+- `protocol/v0.1/state-delta.schema.json`;
+- `tools/protocol_v01.py`;
+- `tests/test_protocol_v01.py`.
 
-Phase-1 DoD result:
-a fresh agent can distinguish canonical implementation, active draft research, reusable semantics, superseded placement, experimental evidence and never-merge helpers for the components needed by the next phase.
+Identity uses SHA-256 over a restricted RFC-8785/JCS canonical JSON profile. Schemas use JSON Schema Draft 2020-12.
+
+Deterministic evidence:
+
+- `python -m compileall -q tools tests` → PASS;
+- `python -m unittest discover -s tests -v` → 14 tests, OK;
+- evidence file: `evidence/PHASE2_PROTOCOL_V01_TEST_2026-08-10.md`.
+
+Important protocol boundaries:
+
+- raw human intent is mutation-detectable;
+- AI interpretation remains separate;
+- EffectProposal cannot contain authority;
+- EffectReceipt requires active effect permission bound to exact proposal ID+hash;
+- FACT / DECISION / HYPOTHESIS remain separate;
+- DECISION requires a human owner;
+- status change requires a bound human decision;
+- schemas/utilities choose no model, agent framework, trust provider, UI or database.
+
+This proves protocol mechanics only, not a functional Saddle.
 
 ## 6. Current active gate
 
-`PHASE 2 — FREEZE SADDLE PROTOCOL v0.1`
+`PHASE 3 — AUDIT + EVAL FOUNDATION`
 
-Required provider/model/agent-independent objects:
+Goal: create the smallest plain-Python/JSON/JSONL evidence system that can measure later AI-worker and end-to-end progress without a full observability platform.
 
-1. `IntentEnvelope`;
-2. `EffectProposal`;
-3. `EffectReceipt`;
-4. `StateDelta`.
+Required minimum:
 
-Required work:
-- JSON Schemas;
-- deterministic canonical serialization/hash identity;
-- provenance/source references;
-- provider-independent authority references;
-- schema and invariant tests.
+- deterministic Saddle state/handoff invariant audit;
+- machine-readable eval-result record;
+- aggregation that cannot silently turn FAIL into PASS;
+- fields for case/model/prompt-version/result/scope-policy violations/tokens/cost/latency/retries/human corrections/evidence refs;
+- initial lanes prepared for cold-start/Reconstructor/Executor/pilot CASE-001–003/later ScriptOps.
 
-Do not select a provider/model/agent framework merely to complete this gate.
+## 7. Functional acceptance remains unchanged
 
-## 7. Functional acceptance definition
-
-`FUNCTIONAL_SADDLE_ACCEPTED` requires observable proof that:
-
-1. a human supplies a natural request;
-2. verbatim intent is durably preserved with stable identity;
-3. project/context recovery needs no hidden chat memory;
-4. real AI independently proposes a useful solution;
-5. proposal is not authority;
-6. exact consequential effect is checked against scope/permission;
-7. effect executes in a bounded environment;
-8. objective evidence verifies the actual result;
-9. required human review/acceptance occurs at the correct boundary;
-10. canonical state/handoff is updated;
-11. another zero-history session resumes correctly.
+`FUNCTIONAL_SADDLE_ACCEPTED` still requires the complete observable human-intent → AI → authority → bounded effect → evidence → durable-state → zero-history-resume loop plus required human acceptance.
 
 ## 8. Current blocker
 
-No Phase-1 reconciliation blocker remains on this change set.
+No Phase-2 protocol blocker remains on this change set.
 
-The current blocker is absence of a frozen/tested Saddle Protocol v0.1 contract.
+Current blocker: no unified minimal audit/eval harness yet exists to measure T6 and later gates.
 
 ## 9. One next step
 
-Implement and deterministically test the four Phase-2 protocol schemas (`IntentEnvelope`, `EffectProposal`, `EffectReceipt`, `StateDelta`) without coupling them to a model provider, agent framework, trust provider or UI.
+Implement and deterministically test the minimal Phase-3 audit/eval harness using only stdlib Python + JSON/JSONL unless a measured blocker proves more infrastructure necessary.

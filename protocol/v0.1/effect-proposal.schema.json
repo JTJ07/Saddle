@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:saddle:schema:effect-proposal:0.1",
+  "title": "Saddle EffectProposal v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "effect_id", "content_hash", "intent_id", "action", "target", "expected_effect", "required_capabilities", "risk", "reason", "evidence_plan", "created_at"],
+  "properties": {
+    "schema_version": {"const": "saddle-effect-proposal/0.1"},
+    "effect_id": {"type": "string", "pattern": "^effect:sha256:[0-9a-f]{64}$"},
+    "content_hash": {"$ref": "urn:saddle:schema:common:0.1#/$defs/contentHash"},
+    "intent_id": {"type": "string", "pattern": "^intent:sha256:[0-9a-f]{64}$"},
+    "action": {"type": "string", "minLength": 1},
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "ref"],
+      "properties": {
+        "kind": {"type": "string", "minLength": 1},
+        "ref": {"type": "string", "minLength": 1},
+        "expected_state_hash": {"$ref": "urn:saddle:schema:common:0.1#/$defs/contentHash"}
+      }
+    },
+    "expected_effect": {"type": "string", "minLength": 1},
+    "required_capabilities": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "risk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "notes"],
+      "properties": {
+        "level": {"enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"]},
+        "notes": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "estimated_cost": {"$ref": "urn:saddle:schema:common:0.1#/$defs/moneyLimit"},
+    "reason": {"type": "string", "minLength": 1},
+    "evidence_plan": {"type": "array", "minItems": 1, "items": {"$ref": "urn:saddle:schema:common:0.1#/$defs/evidenceExpectation"}},
+    "created_at": {"$ref": "urn:saddle:schema:common:0.1#/$defs/timestamp"}
+  }
+}

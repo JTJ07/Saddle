@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:saddle:schema:effect-receipt:0.1",
+  "title": "Saddle EffectReceipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "receipt_id", "content_hash", "effect_id", "authorization_ref", "status", "actual_effect", "changed_objects", "evidence_refs", "tests", "duration_ms", "observed_at"],
+  "properties": {
+    "schema_version": {"const": "saddle-effect-receipt/0.1"},
+    "receipt_id": {"type": "string", "pattern": "^receipt:sha256:[0-9a-f]{64}$"},
+    "content_hash": {"$ref": "urn:saddle:schema:common:0.1#/$defs/contentHash"},
+    "effect_id": {"type": "string", "pattern": "^effect:sha256:[0-9a-f]{64}$"},
+    "authorization_ref": {"$ref": "urn:saddle:schema:common:0.1#/$defs/authorityRef"},
+    "status": {"enum": ["SUCCEEDED", "FAILED", "BLOCKED"]},
+    "actual_effect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["summary", "result_refs"],
+      "properties": {
+        "summary": {"type": "string", "minLength": 1},
+        "result_refs": {"type": "array", "items": {"$ref": "urn:saddle:schema:common:0.1#/$defs/sourceRef"}}
+      }
+    },
+    "changed_objects": {"type": "array", "items": {"$ref": "urn:saddle:schema:common:0.1#/$defs/sourceRef"}},
+    "evidence_refs": {"type": "array", "minItems": 1, "items": {"$ref": "urn:saddle:schema:common:0.1#/$defs/sourceRef"}},
+    "tests": {"type": "array", "items": {"$ref": "urn:saddle:schema:common:0.1#/$defs/testResult"}},
+    "cost": {"$ref": "urn:saddle:schema:common:0.1#/$defs/moneyLimit"},
+    "duration_ms": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+    "observed_at": {"$ref": "urn:saddle:schema:common:0.1#/$defs/timestamp"}
+  }
+}

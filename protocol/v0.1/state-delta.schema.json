@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:saddle:schema:state-delta:0.1",
+  "title": "Saddle StateDelta v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "state_delta_id", "content_hash", "intent_id", "effect_id", "facts_added", "decisions_added", "hypotheses_added", "superseded", "project_status_change", "blockers", "next_step", "source_refs", "created_at"],
+  "properties": {
+    "schema_version": {"const": "saddle-state-delta/0.1"},
+    "state_delta_id": {"type": "string", "pattern": "^state-delta:sha256:[0-9a-f]{64}$"},
+    "content_hash": {"$ref": "urn:saddle:schema:common:0.1#/$defs/contentHash"},
+    "intent_id": {"type": "string", "pattern": "^intent:sha256:[0-9a-f]{64}$"},
+    "effect_id": {"type": "string", "pattern": "^effect:sha256:[0-9a-f]{64}$"},
+    "facts_added": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["fact_id", "statement", "source_refs", "observed_at"],
+        "properties": {
+          "fact_id": {"type": "string", "minLength": 1},
+          "statement": {"type": "string", "minLength": 1},
+          "source_refs": {"type": "array", "minItems": 1, "items": {"$ref": "urn:saddle:schema:common:0.1#/$defs/sourceRef"}},
+          "observed_at": {"$ref": "urn:saddle:schema:common:0.1#/$defs/timestamp"}
+        }
+      }
+    },
+    "decisions_added": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["decision_id", "statement", "decision_owner_kind", "decision_owner_ref", "source_refs", "decided_at"],
+        "properties": {
+          "decision_id": {"type": "string", "minLength": 1},
+          "statement": {"type": "string", "minLength": 1},
+          "decision_owner_kind": {"const": "HUMAN"},
+          "decision_owner_ref": {"type": "string", "minLength": 1},
+          "source_refs": {"type": "array", "minItems": 1, "items": {"$ref": "urn:saddle:schema:common:0.1#/$defs/sourceRef"}},
+          "decided_at": {"$ref": "urn:saddle:schema:common:0.1#/$defs/timestamp"}
+        }
+      }
+    },
+    "hypotheses_added": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["hypothesis_id", "statement", "proposed_by_kind", "proposed_by_ref", "source_refs"],
+        "properties": {
+          "hypothesis_id": {"type": "string", "minLength": 1},
+          "statement": {"type": "string", "minLength": 1},
+          "proposed_by_kind": {"enum": ["HUMAN", "AI", "SYSTEM"]},
+          "proposed_by_ref": {"type": "string", "minLength": 1},
+          "source_refs": {"type": "array", "items": {"$ref": "urn:saddle:schema:common:0.1#/$defs/sourceRef"}}
+        }
+      }
+    },
+    "superseded": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["object_ref", "reason"],
+        "properties": {
+          "object_ref": {"type": "string", "minLength": 1},
+          "reason": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "project_status_change": {
+      "anyOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["from", "to", "decision_ref"],
+          "properties": {
+            "from": {"type": "string", "minLength": 1},
+            "to": {"type": "string", "minLength": 1},
+            "decision_ref": {"type": "string", "minLength": 1}
+          }
+        }
+      ]
+    },
+    "blockers": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "next_step": {"type": "string", "minLength": 1},
+    "source_refs": {"type": "array", "minItems": 1, "items": {"$ref": "urn:saddle:schema:common:0.1#/$defs/sourceRef"}},
+    "created_at": {"$ref": "urn:saddle:schema:common:0.1#/$defs/timestamp"}
+  }
+}

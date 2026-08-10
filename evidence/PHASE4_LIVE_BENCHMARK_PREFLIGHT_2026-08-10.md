@@ -46,22 +46,22 @@ After the 4A/4B canon moved `main`, PR #14 became non-mergeable. It was closed w
 
 ## Current runner preflight — PR #15
 
-Fresh branch/PR:
+Current exact runner:
 
 ```text
 branch: agent/phase4b-runner-rebased
 PR: #15
 head: e4f0105b614f5de7cfa6393e6e49327e7505d9fb
-changed files: 4
+functional diff: exactly 4 runner/evaluation files
 ```
 
-Only runner/evaluation files differ:
+Only these files differ:
 - `.github/workflows/phase4-live-ai-benchmark.yml`;
 - `tools/model_gateway.py`;
 - `tools/phase4_benchmark.py`;
 - `tools/phase4_live_benchmark.py`.
 
-No duplicate governance/state is carried by the PR.
+No duplicate governance/state is carried by PR #15.
 
 Preflight run `31425549563` / job `93576264688`:
 - deterministic scaffold tests PASS;
@@ -73,16 +73,9 @@ Preflight run `31425549563` / job `93576264688`:
 - proposals `0`;
 - selection `NONE`.
 
-At initial post-preflight inspection GitHub reported the PR mergeable. Subsequent direct documentation/evidence commits advanced `main`. Current compare reports:
+At initial post-preflight inspection GitHub reported the PR mergeable. Subsequent direct main-only documentation/evidence commits caused the branch to diverge from current `main`; a later PR snapshot reports `mergeable: false`.
 
-```text
-status: diverged
-ahead_by: 4
-behind_by: 4
-functional PR diff: still only the same 4 runner/evaluation files
-```
-
-A later GitHub PR snapshot reports `mergeable: false`. Do **not** infer a code-contract failure from that flag: the benchmark itself does not require merging before execution. Re-evaluate/rebase the runner routinely before eventual merge after evidence collection. This is not a new human semantic blocker.
+Do **not** infer a code-contract failure from that status. The functional PR diff remains only the four runner/evaluation files, and benchmark execution does not require merge. Re-evaluate/rebase routinely before eventual merge after evidence collection. This is not a new human semantic blocker.
 
 ## Runner boundary proved by preflight
 

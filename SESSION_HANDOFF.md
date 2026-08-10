@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_3_ACCEPTED / PHASE_4_ACTIVE / NOT_YET_FUNCTIONAL
+status: PHASE_4_ACTIVE / EXTERNAL_MODEL_RUN_BLOCKED / NOT_YET_FUNCTIONAL
 updated_at: 2026-08-10
 ---
 
@@ -8,7 +8,7 @@ updated_at: 2026-08-10
 
 ## STATUS
 
-Phases 0–3 have recorded evidence on the current change set. Saddle remains `NOT YET FUNCTIONAL`.
+Phases 0–3 are canonical. Phase 4 has a proposal-only ModelGateway scaffold and exact benchmark pins, but no real model call has occurred. Saddle remains `NOT YET FUNCTIONAL`.
 
 ## ACTIVE GATE
 
@@ -16,50 +16,63 @@ Phases 0–3 have recorded evidence on the current change set. Saddle remains `N
 
 ## WHAT CHANGED
 
-- added `eval/v0.1/eval-result.schema.json`;
-- added `config/eval-lanes.json` for cold-start, Reconstructor, Executor, pilot CASE-001–003 and later ScriptOps;
-- added stdlib `tools/eval_harness.py` with validate / aggregate / audit commands;
-- aggregation is fail-closed: zero results => BLOCKED; scope/policy violations => effective FAIL; FAIL/ERROR cannot be hidden by PASS records;
-- repository audit checks phase/state agreement, completion lock, one-next-step discipline, frozen protocol and machine-readable source SHAs;
-- refreshed ScriptOps observed main in `config/source-repos.json`;
-- encoded one historical cold-start baseline smoke without inventing missing metrics.
+- pinned CASE-001–003 to exact broken commits;
+- added strict proposal-only worker schema;
+- added provider-neutral `ModelGateway` protocol plus narrow OpenAI Responses adapter;
+- added exact-path/diff-budget/before-after-hash proposal validation;
+- added non-secret Phase-4 preflight;
+- added pinned-checkout proposal runner;
+- researched current official Sol/Terra API availability/pricing;
+- bounded first-pass proposal to six calls / zero automatic retries / recommended USD 5 hard cap;
+- confirmed current Executor accepts the normalized `AuthorizedFileMutation` shape, so CASE-001 does not require an Executor rewrite merely to replace the hard-coded solution source.
 
 ## EVIDENCE
 
-- `docs/EVAL_FOUNDATION_v0.1.md`;
-- `evidence/PHASE3_AUDIT_EVAL_TEST_2026-08-10.md`;
-- `eval/examples/phase3-smoke.jsonl`;
-- `evidence/PHASE3_SMOKE_SUMMARY.json`;
-- Phase-3 tests: 12/12 PASS;
-- combined Phase-2+3 tests: 26/26 PASS;
-- synthetic scope-violation aggregate: overall FAIL, exit code 1.
+- `docs/MODEL_GATEWAY_v0.1.md`;
+- `evidence/PHASE4_PRE_CREDENTIAL_CHECKPOINT_2026-08-10.md`;
+- `worker/v0.1/worker-proposal.schema.json`;
+- `config/worker-cases-v0.1.json`;
+- `config/model-benchmark-v0.1.json`;
+- `tools/model_gateway.py`;
+- `tools/phase4_preflight.py`;
+- `tools/phase4_benchmark.py`;
+- Phase-4 local scaffold slice: 13 tests PASS.
 
-No GitHub CI result is claimed for Phase 3.
+Actual preflight:
+`BLOCKED / PROVIDER_CREDENTIAL_NOT_CONFIGURED`.
 
 ## BOUNDARIES PRESERVED
 
-- completion lock ACTIVE;
-- no model/provider selected;
-- no observability platform/database/dashboard added;
-- no remote result is inferred from local evidence;
-- missing latency/token/cost fields remain `null`, never invented.
+- no real provider call;
+- no model selected;
+- no secret read or recorded;
+- no tools/shell/write/network authority granted to model;
+- no fake token/cost/latency/quality result;
+- completion lock remains ACTIVE.
 
 ## BLOCKERS
 
-Current blocker: no real model-backed worker path exists yet.
+All three are required:
+
+1. authorized external control-plane runner with outbound provider HTTPS;
+2. `OPENAI_API_KEY` configured in that runner's secret store/environment, never chat/GitHub/evidence;
+3. explicit human approval of paid first-pass budget.
+
+Recommended first pass: max 6 calls, no retries, USD 5.00 hard cap.
 
 ## ONE NEXT STEP
 
-Verify current official model/API options, define the thinnest ModelGateway needed only for CASE-001–003, and determine whether the available control plane has an authorized credential path that keeps provider secrets outside worker prompts/sandbox/evidence.
+Enable an authorized external model-runner environment, configure its API secret securely, approve the first-pass budget, then run Sol vs Terra on pinned CASE-001–003 and record results through the Phase-3 eval harness before any worker-model selection.
 
 ## EXACT FILES / REFS TO OPEN NEXT
 
-1. `AGENTS.md`
-2. `PROJECT_STATE.md`
-3. `EXECUTION_PLAN.md` — Phase 4
-4. `TODO.md` — T6
-5. `docs/SADDLE_PROTOCOL_v0.1.md`
-6. `docs/EVAL_FOUNDATION_v0.1.md`
-7. `tools/eval_harness.py`
-8. `litrgratis-pixel/Executor` main
-9. `litrgratis-pixel/executor-pilot-target` CASE-001–003
+1. `PROJECT_STATE.md`
+2. `TODO.md` — T6
+3. `docs/MODEL_GATEWAY_v0.1.md`
+4. `evidence/PHASE4_PRE_CREDENTIAL_CHECKPOINT_2026-08-10.md`
+5. `config/model-benchmark-v0.1.json`
+6. `config/worker-cases-v0.1.json`
+7. `tools/model_gateway.py`
+8. `tools/phase4_preflight.py`
+9. `tools/phase4_benchmark.py`
+10. `litrgratis-pixel/Executor` main `788443c...`

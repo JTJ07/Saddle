@@ -2,9 +2,9 @@
 
 Status: `ACTIVE`
 
-Rule: phases are gates. Do not implement a later capability merely to avoid proving an earlier boundary.
+Rule: phases are evidence gates. Do not implement later capability merely to avoid proving an earlier boundary.
 
-Explicit roadmap decision `DEC-SAD-009` permits deterministic Phase 5 boundary work while the live external Phase-4 model benchmark remains blocked. This does **not** waive the real-model evidence required before final functional acceptance.
+`DEC-SAD-009` allowed deterministic Phase 5 boundary work while live Phase-4 model evidence was externally blocked. `DEC-SAD-010` then selected ScriptOps v2 for a bounded Phase-6 workflow proof. That proof is now complete. Per the user's explicit ordering, the active dependency returns to the still-open live Phase-4 AI-worker evidence before final Phase-7 acceptance. This is an evidence dependency, not an architecture rollback.
 
 ## PHASE 0 — DURABLE MEMORY BOOTSTRAP
 
@@ -87,12 +87,12 @@ No observability platform/database/dashboard unless measured evidence later prov
 
 ---
 
-## PHASE 4 — AI PROPOSAL WORKER DIRECTION
+## PHASE 4 — AI PROPOSAL WORKER DIRECTION + LIVE EVIDENCE
 
-Status: `DIRECTION PASS / SCAFFOLD FROZEN / LIVE BENCHMARK EVIDENCE OPEN`
+Status: `DIRECTION PASS / SCAFFOLD FROZEN / LIVE BENCHMARK EVIDENCE ACTIVE`
 
 ### Goal
-Keep intelligence in a proposal-only role while Executor remains the effect gate.
+Keep intelligence in a proposal-only role while Executor remains the effect gate, then prove that separation with a real model.
 
 ### Frozen direction
 
@@ -116,35 +116,36 @@ evidence
 - thin ModelGateway;
 - no model shell/write/tool/effect authority;
 - deterministic path/hash/diff-budget validation;
-- two-model benchmark plan.
+- two-model benchmark harness/plan.
 
-### Outstanding evidence
-The real Sol/Terra benchmark has not run because the available environment lacks authorized provider egress/credential/budget.
+### Outstanding live evidence — CURRENT GATE
+The real external benchmark has not run because the available execution environment previously lacked authorized provider egress/credential/budget.
 
-This evidence remains mandatory before final functional acceptance:
-- real model proposals from immutable inputs;
-- at least two candidates compared;
+Required:
+- re-verify current provider/model candidates immediately before the run;
+- real model proposals from immutable CASE-001–003 inputs;
+- at least two suitable current candidates compared on the same inputs;
 - no protected-file/policy violations;
-- quality/cost/latency/retries recorded;
+- quality/result, tokens, cost, latency, retries and human corrections recorded;
 - one worker selected only from evidence;
-- validated proposal routed through the controlled effect path.
+- at least one validated real-model proposal routed through the controlled Executor/effect path.
 
-`DEC-SAD-009` explicitly allows Phase 5 to proceed without pretending this evidence exists.
+The earlier proposed first pass was max six calls, zero automatic retries and USD 5 hard cap. It remains a recommendation until explicitly approved by the human.
 
 ### Forbidden
 - dynamic model router;
 - multi-agent worker;
 - unrestricted worker shell/write/internet;
-- generalized provider framework.
+- generalized provider framework;
+- hiding credentials in prompts/evidence/repo.
 
 ---
 
 ## PHASE 5 — VERIFIED INTENT + EFFECT AUTHORITY BOUNDARIES
 
-Status: `ACTIVE / STRICT SCOPE`
+Status: `ACCEPTED / FOUNDATION FROZEN`
 
-### Goal
-Prove the minimal deterministic boundary:
+### Goal proved
 
 ```text
 raw human intent
@@ -153,8 +154,6 @@ raw human intent
 → separate exact EffectAuthority
 → ALLOW / BLOCK
 ```
-
-Not: implement full authority/IAM.
 
 ### Constitutional wording
 
@@ -166,76 +165,17 @@ Not:
 - `Saddle understands intent`;
 - `Saddle authorizes meaning`.
 
-### Phase 5A — Verified Intent Boundary
-
-Prove only:
-
-> this exact raw human input is bound to this principal/source event under this immutable binding.
-
-Minimum:
-- `intent_id` + envelope hash;
-- stable `raw_intent_hash` from exact UTF-8 human input;
-- principal reference;
-- immutable origin event reference + hash;
-- freshness/status;
-- content-addressed binding identity.
-
-Trust-provider selection remains intentionally open.
-
-### Phase 5B — Effect Authority Boundary
-
-Prove only:
-
-> this exact `EffectProposal` is explicitly ALLOW or DENY under this exact verified-intent binding.
-
-Minimum:
-- separate authority object;
-- exact proposal ID + hash;
-- exact action + target;
-- exact verified-intent binding ID + hash;
-- evidence requirements;
-- issuer reference;
-- freshness;
-- single-use/replay protection.
-
-### Negative tests — primary acceptance evidence
-
-Must fail closed for:
-1. AI interpretation expands the human goal but no exact authority exists;
-2. raw intent changes after origin binding;
-3. USER-like metadata exists without verified origin;
-4. authority belongs to another proposal;
-5. proposal mutates after authority;
-6. action or target changes after authority;
-7. binding/authority is stale, expired or revoked;
-8. authority is replayed;
-9. authority explicitly denies;
-10. proposal references a different intent.
-
-Positive control: only exact active binding + exact active `ALLOW` authority for the exact proposal may return `ALLOW`.
-
-### Method
-
-```text
-MODEL
-↓
-ATTACK
-↓
-INVARIANT
-↓
-IMPLEMENTATION
-↓
-TEST
-```
-
-### DoD
-- provider-independent `VerifiedIntentBinding` and `EffectAuthority` contracts exist;
-- raw intent has an interpretation-independent integrity anchor;
+### Accepted proof
+- provider-independent `VerifiedIntentBinding`;
+- independent stable `raw_intent_hash` from exact UTF-8 human input;
+- principal + immutable origin-event binding;
+- exact separate `EffectAuthority` bound to intent binding + proposal ID/hash + action/target;
+- freshness and single-use/replay protection;
 - no semantic similarity/model claim can create permission;
-- negative tests fail closed;
-- one exact positive-control path passes;
-- trust provider remains unselected;
-- no capability expansion occurs.
+- stale/revoked/deny/replay/mismatch/raw-mutation cases fail closed;
+- exact positive control passes;
+- 15/15 deterministic tests PASS;
+- trust provider intentionally unselected.
 
 ### Forbidden
 - enterprise IAM;
@@ -250,36 +190,61 @@ TEST
 
 ---
 
-## PHASE 6 — FIRST REAL USER WORKFLOW
+## PHASE 6 — FIRST CONTROLLED REAL-WORKFLOW MECHANISM
 
-Status: `BLOCKED UNTIL PHASE 5 ACCEPTED`
+Status: `ACCEPTED / NO MATURITY CLAIM`
 
-### Goal
-Move from boundary proof to one controlled real-world workflow without broadening the architecture.
+### Human decision
 
-Preferred existing candidate: ScriptOps, subject to the still-open human base-selection decision.
+`DEC-SAD-010`:
 
-If ScriptOps v2 is selected, repair only the smallest path:
+```text
+BASE: legacy/scriptops-v2-single.py
+REWRITE: NO
+NEW CAPABILITY: NO
+PHASE 6: reuse + hardening + proof
+```
+
+### Goal proved
+Move from boundary proof to one controlled workflow mechanism without broadening architecture.
+
+Implemented path:
 
 ```text
 task
 → context
 → candidate
 → validation
-→ impact
-→ human approve/reject/revision with why
-→ accepted hash
+→ impact report
+→ human approve --why
+→ fresh accepted hash
+→ decision log
 → Git commit
 → smoke evidence
 ```
 
-Do not add browser helper, direct autonomous model approval, GUI, vector DB, graph platform or multi-user scope.
+### Evidence
+ScriptOps PR #7 merged as `daa6e5dc210e09171a530eeffe5601e0e74ae041`.
+
+Final verified pre-merge head `acbfca79f96407dbd46f9806bf821caf6e02e1af`:
+- `Verify repository state` run `31421752036` SUCCESS;
+- `Phase 6 ScriptOps smoke` run `31421752569` SUCCESS.
+
+B1–B5 closed. Historical v2 remained unchanged; the hardening is a small auditable shim.
+
+Saddle cross-repo evidence: `evidence/PHASE6_SCRIPTOPS_CONTROLLED_WORKFLOW_2026-08-10.md`.
+
+### Proof boundary
+This proves a controlled workflow mechanism, not ScriptOps maturity, independent user/product value, a real AI worker, production trust provider or functional Saddle.
+
+### Forbidden remains
+No browser helper, model/API convenience automation, autonomous approval, GUI, vector DB, semantic graph, multi-user, agent framework or capability expansion.
 
 ---
 
 ## PHASE 7 — FUNCTIONAL SADDLE ACCEPTANCE
 
-Status: `BLOCKED UNTIL REQUIRED PHASE 4–6 EVIDENCE`
+Status: `BLOCKED UNTIL PHASE-4 LIVE AI EVIDENCE AND FINAL E2E PROOF`
 
 ### Goal
 Prove the product, not components.
@@ -294,15 +259,15 @@ human intent
 → real AI proposal
 → exact effect authority
 → bounded real execution
-→ verifier evidence
+→ EffectReceipt / verifier evidence
 → human review where required
 → durable StateDelta
 → second zero-history resume
 ```
 
-Required evidence includes the still-open real-model benchmark evidence from Phase 4.
+Required evidence includes the still-open real-model benchmark/effect evidence from Phase 4 plus the accepted Phase-5 and Phase-6 evidence.
 
-Only here, with required evidence and explicit human acceptance, may `PROJECT_STATE.md` become:
+Only here, with the complete evidence set and explicit human acceptance, may `PROJECT_STATE.md` become:
 
 `FUNCTIONAL_SADDLE_ACCEPTED`.
 

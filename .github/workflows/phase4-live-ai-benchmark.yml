@@ -1,0 +1,53 @@
+name: Phase 4 live AI benchmark
+
+on:
+  pull_request:
+    types: [opened]
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - name: Checkout Saddle
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Verify deterministic scaffold tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Check benchmark credential without revealing it
+        shell: bash
+        run: |
+          if [ -z "${OPENAI_API_KEY:-}" ]; then
+            echo "BLOCKED: OPENAI_API_KEY repository secret is not configured for this runner."
+            exit 3
+          fi
+          echo "Credential presence check: PASS (value not printed)."
+
+      - name: Run approved benchmark
+        run: |
+          python tools/phase4_live_benchmark.py \
+            --root . \
+            --output-dir benchmark-output \
+            --budget-usd 5 \
+            --max-calls 6
+
+      - name: Upload benchmark evidence artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase4-live-ai-benchmark
+          path: benchmark-output/
+          if-no-files-found: ignore
+          retention-days: 30

@@ -140,6 +140,7 @@ class OpenAIResponsesGateway:
         endpoint: str = "https://api.openai.com/v1/responses",
         api_key_env: str = "OPENAI_API_KEY",
         timeout_s: int = 120,
+        max_output_tokens: int = 8192,
         transport: Callable[[dict[str, Any], str], dict[str, Any]] | None = None,
     ) -> None:
         self.model_id = model_id
@@ -147,6 +148,7 @@ class OpenAIResponsesGateway:
         self.endpoint = endpoint
         self.api_key_env = api_key_env
         self.timeout_s = timeout_s
+        self.max_output_tokens = max_output_tokens
         self._transport = transport or self._http_transport
 
     def _http_transport(self, payload: dict[str, Any], api_key: str) -> dict[str, Any]:
@@ -162,6 +164,8 @@ class OpenAIResponsesGateway:
         try:
             with urllib.request.urlopen(request, timeout=self.timeout_s) as response:
                 body = response.read().decode("utf-8")
+        except urllib.error.HTTPError as exc:
+            raise GatewayResponseError(f"OpenAI Responses request failed with HTTP {exc.code}") from exc
         except (urllib.error.URLError, TimeoutError, OSError) as exc:
             raise GatewayResponseError(
                 f"OpenAI Responses request failed before a valid response was received: {type(exc).__name__}"
@@ -222,6 +226,7 @@ class OpenAIResponsesGateway:
             "model": self.model_id,
             "store": False,
             "reasoning": {"effort": self.reasoning_effort},
+            "max_output_tokens": self.max_output_tokens,
             "instructions": (
                 "You are a coding proposal generator inside Saddle. You may reason freely, "
                 "but you have no execution authority. Produce only the requested structured proposal."

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:saddle:schema:intent-envelope:0.1",
+  "title": "Saddle IntentEnvelope v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "intent_id", "content_hash", "raw_human_intent", "origin", "desired_outcome", "success_evidence", "human_owned_constraints", "context_refs", "created_at"],
+  "properties": {
+    "schema_version": {"const": "saddle-intent/0.1"},
+    "intent_id": {"type": "string", "pattern": "^intent:sha256:[0-9a-f]{64}$"},
+    "content_hash": {"$ref": "urn:saddle:schema:common:0.1#/$defs/contentHash"},
+    "raw_human_intent": {"type": "string", "minLength": 1},
+    "origin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "evidence_refs"],
+      "properties": {
+        "status": {"enum": ["UNVERIFIED", "VERIFIED"]},
+        "principal_ref": {"type": "string", "minLength": 1},
+        "evidence_refs": {"type": "array", "items": {"$ref": "urn:saddle:schema:common:0.1#/$defs/sourceRef"}}
+      }
+    },
+    "derived_interpretation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "proposed_by", "source_refs"],
+      "properties": {
+        "text": {"type": "string", "minLength": 1},
+        "proposed_by": {"type": "string", "minLength": 1},
+        "source_refs": {"type": "array", "items": {"$ref": "urn:saddle:schema:common:0.1#/$defs/sourceRef"}}
+      }
+    },
+    "desired_outcome": {"type": "string", "minLength": 1},
+    "success_evidence": {"type": "array", "minItems": 1, "items": {"$ref": "urn:saddle:schema:common:0.1#/$defs/evidenceExpectation"}},
+    "human_owned_constraints": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "context_refs": {"type": "array", "items": {"$ref": "urn:saddle:schema:common:0.1#/$defs/sourceRef"}},
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "max_cost": {"$ref": "urn:saddle:schema:common:0.1#/$defs/moneyLimit"},
+        "max_duration_ms": {"type": "integer", "minimum": 0, "maximum": 9007199254740991}
+      }
+    },
+    "created_at": {"$ref": "urn:saddle:schema:common:0.1#/$defs/timestamp"}
+  }
+}

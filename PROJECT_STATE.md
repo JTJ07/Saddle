@@ -104,8 +104,10 @@ TOOL ACCESS EXPANSION: NO
 Current exact runner is **Saddle PR #15**:
 - branch `agent/phase4b-runner-rebased`;
 - head `e4f0105b614f5de7cfa6393e6e49327e7505d9fb`;
-- mergeable: `true`;
-- changed files: exactly 4 runner/evaluation files, no duplicate governance state.
+- functional diff: exactly 4 runner/evaluation files, no duplicate governance state;
+- current compare after later main-only evidence/doc commits: branch is `ahead_by 4 / behind_by 4`; a later PR snapshot reports `mergeable: false`.
+
+This merge-status drift does not block benchmark execution. Re-evaluate/rebase routinely before eventual merge; do not interpret it as a model/contract failure or a new human semantic gate.
 
 Clean preflight run:
 - workflow run `31425549563`;
@@ -125,13 +127,13 @@ Evidence: `evidence/PHASE4_LIVE_BENCHMARK_PREFLIGHT_2026-08-10.md`.
 
 ## 6. Current blocker
 
-The only missing prerequisite for Phase 4B is:
+The only missing prerequisite for executing the Phase-4B model calls is:
 
 > `OPENAI_API_KEY` configured as a GitHub Actions repository secret for `litrgratis-pixel/Saddle`.
 
 The credential must never enter chat, repository content, PR comments, workflow YAML, logs or evidence.
 
-No additional design or capability work is needed to bypass this blocker.
+No additional design or capability work is needed to bypass this blocker. PR rebase/merge housekeeping can occur after evidence collection without changing the benchmark contract.
 
 ## 7. Required next proof
 

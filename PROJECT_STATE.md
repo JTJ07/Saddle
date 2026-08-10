@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_2_ACCEPTED / PHASE_3_ACTIVE / NOT_YET_FUNCTIONAL
+status: PHASE_3_ACCEPTED / PHASE_4_ACTIVE / NOT_YET_FUNCTIONAL
 completion_lock: ACTIVE
 state_owner: PROJECT_STATE.md
 updated_at: 2026-08-10
@@ -20,17 +20,13 @@ EXECUTOR GOVERNS CONSEQUENCES
 VERIFIER ESTABLISHES FACTS
 ```
 
-Cross-layer rule:
-
 > **NO LAYER MAY SUBSTITUTE FOR A HIGHER-ORDER OWNER.**
-
-Core capability rule:
 
 > **Maximize usable AI capability; constrain unauthorized effects, not intelligence itself.**
 
 ## 2. Current objective
 
-Finish the smallest end-to-end Saddle proving:
+Finish the smallest end-to-end path:
 
 ```text
 human intent
@@ -44,106 +40,108 @@ human intent
 → fresh-session resume
 ```
 
-Completion lock remains active. New product directions remain parked.
+Completion lock remains active.
 
 ## 3. Reconciled ecosystem checkpoints
 
 Observed/reconciled on 2026-08-10:
 
-- Saddle Phase-1 canonical merge: `2e0bd347a80495d1cdf95a85a180655f3ea13f3b`;
+- Saddle Phase-2 merge: `819449bab850fdd6cacabc67980d803e0ba43088`;
 - COS main: `3220310267c3d0ba2184daaf3f2adad259a9cb20`;
 - Reconstructor main: `defc7b029097284f94136fec54b75c313ac12f68`;
 - ScriptOps main: `33c9d15a10dfd3f833a99dfcebea22dd77f26b65`;
 - Executor main: `788443c3ed5b290ac8f1de145a93d02d2dd15317`;
 - executor-pilot-target main: `dc094679ef3e2d5cf5f1aa0ff0fd54d16f201154`.
 
-Detailed classification: `docs/PHASE1_ECOSYSTEM_RECONCILIATION_2026-08-10.md`.
+Detailed cross-repo classification remains in `docs/PHASE1_ECOSYSTEM_RECONCILIATION_2026-08-10.md`.
 
-## 4. Important component truth
+## 4. Critical current boundaries
 
-### Executor
-Canonical implementation is `Executor/main`. PR #51–#57 remain draft/research/reusable trust material, not merged runtime.
-
-Retained invariant:
-`USER PROVENANCE != VERIFIED REQUEST-ORIGIN EVIDENCE`.
-
-Naive A2 is rejected. Strengthened-A2 trust principle is retained at Saddle's intent boundary. A1 remains a delegated/enterprise intake variant. No provider is selected.
-
-### ScriptOps
-GitHub-side access check and v2-vs-RC1 gap analysis are canonical. V2 remains the technical recommendation for the later real-domain slice, but base selection remains an explicit human semantic decision.
-
-### COS / Ginseng
-Reuse decision-intelligence semantics only. Ginseng runtime/UI remains parked.
-
-### executor-pilot-target
-Repeatable CASE-001–003 lab. Direct Codex CASE-001 solve demonstrates AI-worker capability only. Do not merge the successful repair into `case-001-broken`.
+- `USER PROVENANCE != VERIFIED REQUEST-ORIGIN EVIDENCE`.
+- naive A2 rejected.
+- strengthened-A2 principle retained at the Saddle intent boundary.
+- A1 remains a valid delegated/enterprise intake variant.
+- provider remains unselected.
+- ScriptOps v2 remains recommended but not yet human-selected as runtime base.
+- CASE-001 direct Codex solve is AI-worker capability evidence only; do not merge it into `case-001-broken`.
 
 ## 5. Phase results
 
 ### Phase 0 — ACCEPTED
-Repository-only zero-memory recovery passed. Evidence: `evidence/COLD_START_AUDIT_001.md`.
+Repository-only zero-memory recovery passed.
 
 ### Phase 1 — ACCEPTED
-Cross-repository material is classified as canonical, draft, reusable, superseded, experimental or never-merge. Evidence: Phase-1 reconciliation docs and canonical merge `2e0bd347...`.
+Ecosystem and ownership boundaries reconciled.
 
-### Phase 2 — ACCEPTED ON THIS CHANGE SET
+### Phase 2 — ACCEPTED
+Frozen Protocol v0.1:
+- four JSON Schemas;
+- content-addressed IDs;
+- provider-independent source/evidence/authority refs;
+- deterministic validation;
+- 14 protocol tests PASS.
 
-Frozen provider/model/agent-independent protocol artifacts:
+Evidence: `evidence/PHASE2_PROTOCOL_V01_TEST_2026-08-10.md`.
 
-- `docs/SADDLE_PROTOCOL_v0.1.md`;
-- `protocol/v0.1/common.schema.json`;
-- `protocol/v0.1/intent-envelope.schema.json`;
-- `protocol/v0.1/effect-proposal.schema.json`;
-- `protocol/v0.1/effect-receipt.schema.json`;
-- `protocol/v0.1/state-delta.schema.json`;
-- `tools/protocol_v01.py`;
-- `tests/test_protocol_v01.py`.
+### Phase 3 — ACCEPTED ON THIS CHANGE SET
 
-Identity uses SHA-256 over a restricted RFC-8785/JCS canonical JSON profile. Schemas use JSON Schema Draft 2020-12.
+Minimal stdlib audit/eval foundation:
 
-Deterministic evidence:
+- `eval/v0.1/eval-result.schema.json`;
+- `config/eval-lanes.json`;
+- `tools/eval_harness.py`;
+- `tests/test_eval_harness.py`;
+- `docs/EVAL_FOUNDATION_v0.1.md`;
+- `eval/examples/phase3-smoke.jsonl`;
+- `evidence/PHASE3_SMOKE_SUMMARY.json`;
+- `evidence/PHASE3_AUDIT_EVAL_TEST_2026-08-10.md`.
 
-- `python -m compileall -q tools tests` → PASS;
-- `python -m unittest discover -s tests -v` → 14 tests, OK;
-- evidence file: `evidence/PHASE2_PROTOCOL_V01_TEST_2026-08-10.md`.
+Behavior:
+- zero results => BLOCKED, never PASS;
+- any scope/policy violation => effective FAIL;
+- FAIL cannot be averaged away by PASS results;
+- unknown/malformed evidence fails validation;
+- repo audit checks active-phase agreement, completion lock, one-next-step discipline, frozen protocol and machine-readable source refs.
 
-Important protocol boundaries:
+Evidence:
+- Phase-3 slice: 12 tests PASS;
+- combined Phase-2+3 regression: 26 tests PASS;
+- CLI PASS smoke produces `evidence/PHASE3_SMOKE_SUMMARY.json`;
+- synthetic scope-violation smoke returns overall FAIL and non-zero exit code.
 
-- raw human intent is mutation-detectable;
-- AI interpretation remains separate;
-- EffectProposal cannot contain authority;
-- EffectReceipt requires active effect permission bound to exact proposal ID+hash;
-- FACT / DECISION / HYPOTHESIS remain separate;
-- DECISION requires a human owner;
-- status change requires a bound human decision;
-- schemas/utilities choose no model, agent framework, trust provider, UI or database.
-
-This proves protocol mechanics only, not a functional Saddle.
+No dashboard/database/observability framework was added.
 
 ## 6. Current active gate
 
-`PHASE 3 — AUDIT + EVAL FOUNDATION`
+`PHASE 4 — FIRST REAL AI WORKER`
 
-Goal: create the smallest plain-Python/JSON/JSONL evidence system that can measure later AI-worker and end-to-end progress without a full observability platform.
+Required path:
 
-Required minimum:
+```text
+pinned task + source + tests
+→ thin ModelGateway control plane
+→ real model-generated proposal
+→ bounded proposal validation / mutation conversion
+→ Executor effect path
+→ tests + eval evidence
+```
 
-- deterministic Saddle state/handoff invariant audit;
-- machine-readable eval-result record;
-- aggregation that cannot silently turn FAIL into PASS;
-- fields for case/model/prompt-version/result/scope-policy violations/tokens/cost/latency/retries/human corrections/evidence refs;
-- initial lanes prepared for cold-start/Reconstructor/Executor/pilot CASE-001–003/later ScriptOps.
+Required benchmark:
+CASE-001–003 from clean immutable broken inputs, zero manual solution edits, no protected-file/policy violations, tests passing, model/prompt/cost/latency/retries/human corrections recorded.
+
+Model selection rule:
+verify current official provider/model information and benchmark at least two sensible current candidates on the same cases before selecting the first worker. Do not build dynamic routing.
 
 ## 7. Functional acceptance remains unchanged
 
-`FUNCTIONAL_SADDLE_ACCEPTED` still requires the complete observable human-intent → AI → authority → bounded effect → evidence → durable-state → zero-history-resume loop plus required human acceptance.
+Protocol/eval success does not make Saddle functional. Full human-intent → AI → authority → effect → evidence → durable resume still must pass.
 
 ## 8. Current blocker
 
-No Phase-2 protocol blocker remains on this change set.
+No Phase-3 foundation blocker remains on this change set.
 
-Current blocker: no unified minimal audit/eval harness yet exists to measure T6 and later gates.
+Current blocker: no real model-backed `ModelGateway` / worker path exists yet, and no current two-model benchmark has been executed through the Saddle/Executor boundary.
 
 ## 9. One next step
 
-Implement and deterministically test the minimal Phase-3 audit/eval harness using only stdlib Python + JSON/JSONL unless a measured blocker proves more infrastructure necessary.
+Research current official model/API options, define the thinnest ModelGateway interface needed only for CASE-001–003, and determine whether the available execution environment has an authorized provider credential path without exposing credentials to the worker or evidence.

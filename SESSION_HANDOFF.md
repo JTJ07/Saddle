@@ -8,10 +8,10 @@ updated_at: 2026-08-10
 
 ## STATUS
 
-Phases 0–3 are canonical/frozen foundations. Phase 5 strict intent/effect boundaries are accepted. Phase 6 ScriptOps controlled workflow mechanism is accepted with no maturity claim. Phase 4 is now split by evidence purpose:
+Phases 0–3 are canonical/frozen. Phase 5 strict intent/effect boundaries are accepted. Phase 6 ScriptOps controlled-workflow mechanism is accepted with no maturity claim. Phase 4 is split by evidence purpose:
 
-- `4A WEB AI COGNITIVE CALIBRATION` — baseline PASS as supporting evidence only;
-- `4B CONTROLLED API WORKER EVIDENCE` — formal worker evidence still open and blocked only on provider secret.
+- `4A WEB AI COGNITIVE CALIBRATION` — baseline PASS, supporting evidence only;
+- `4B CONTROLLED API WORKER EVIDENCE` — formal worker evidence open, blocked only on provider secret.
 
 Saddle remains `NOT_YET_FUNCTIONAL`.
 
@@ -21,47 +21,17 @@ Saddle remains `NOT_YET_FUNCTIONAL`.
 
 ## HUMAN DECISIONS
 
-### DEC-SAD-010
-
-```text
-PHASE 6: ACCEPTED
-CONTROLLED WORKFLOW: PROVEN
-MATURITY: NONE
-FUNCTIONAL_SADDLE_ACCEPTED: NOT YET
-```
-
-### DEC-SAD-011
-
-```text
-REAL AI WORKER BENCHMARK: APPROVED
-BUDGET: max USD 5
-CALLS: max 6
-AUTOMATIC RETRIES: 0
-SCOPE: benchmark only
-NEW CAPABILITY: NO
-AUTONOMOUS EXECUTION: NO
-AUTHORITY EXPANSION: NO
-TOOL ACCESS EXPANSION: NO
-```
-
-### DEC-SAD-012
-
-```text
-WEB AI CALIBRATION PATH: APPROVED
-WEB AI = PHASE 4A COGNITIVE CALIBRATION
-API = PHASE 4B REPRODUCIBLE WORKER EVIDENCE
-WEB AI DOES NOT REPLACE API
-WEB AI DOES NOT COUNT AS AUTONOMOUS WORKER EVIDENCE
-```
+- `DEC-SAD-010`: ScriptOps v2 selected; no rewrite/new capability; Phase 6 mechanism proof only.
+- `DEC-SAD-011`: API benchmark approved, max USD 5 / 6 calls / 0 automatic retries / benchmark only / proposal only / no capability, autonomy, authority or tool-access expansion.
+- `DEC-SAD-012`: web AI = Phase 4A calibration; API = Phase 4B reproducible worker evidence; web calibration does not replace API or count as autonomous worker evidence.
 
 ## PHASE 4A RESULT
 
-Reference: `docs/PHASE4A_WEB_AI_CALIBRATION.md`.
-Evidence: `evidence/PHASE4A_WEB_AI_CALIBRATION_BASELINE_2026-08-10.md`.
+References:
+- `docs/PHASE4A_WEB_AI_CALIBRATION.md`;
+- `evidence/PHASE4A_WEB_AI_CALIBRATION_BASELINE_2026-08-10.md`.
 
-Three manual web-AI baseline runs were recorded on immutable CASE-001/002/003 inputs.
-
-Aggregate:
+Baseline:
 
 ```text
 runs: 3
@@ -74,58 +44,42 @@ proposal changed lines: 14 / 9 / 5
 reconstructed visible tests: 13/13 PASS per proposal
 ```
 
-Critical limitation: all three runs are `CONTEXT_CONTAMINATED` by the existing Saddle session and cross-case inspection. They may calibrate scope/authority/structure behavior but **do not** prove independent model problem solving or reproducible worker behavior.
+All three are `CONTEXT_CONTAMINATED`; independent model problem solving and reproducible worker behavior are NOT CLAIMED.
 
-The calibration baseline froze these Phase-4B evaluation dimensions:
-1. correctness against pinned tests;
-2. scope compliance;
-3. no authority invention/smuggling;
-4. no goal expansion;
-5. rationale quality;
-6. structured-output stability;
-7. objective evidence plan;
-8. human corrections required.
-
-Fresh-session web repeats are optional supporting evidence unless they reveal a contract defect.
+Frozen Phase-4B eval dimensions: correctness, scope, authority discipline, goal preservation, rationale quality, structured-output stability, objective evidence plan, human corrections.
 
 ## PHASE 6 RESULT
 
-ScriptOps PR #7 merged as `daa6e5dc210e09171a530eeffe5601e0e74ae041`.
-Final verified head `acbfca79f96407dbd46f9806bf821caf6e02e1af` passed:
-- `Verify repository state` run `31421752036`;
-- `Phase 6 ScriptOps smoke` run `31421752569`.
+ScriptOps PR #7 merged as `daa6e5dc210e09171a530eeffe5601e0e74ae041`; final verifier + Phase-6 smoke succeeded. B1–B5 closed. Historical v2 unchanged. Evidence: `evidence/PHASE6_SCRIPTOPS_CONTROLLED_WORKFLOW_2026-08-10.md`.
 
-B1–B5 are closed. Historical `legacy/scriptops-v2-single.py` remains unchanged. Cross-repo evidence: `evidence/PHASE6_SCRIPTOPS_CONTROLLED_WORKFLOW_2026-08-10.md`.
+## PHASE 4B RUNNER / PREFLIGHT
 
-## PHASE 4B PREPARATION / PREFLIGHT
+### Historical provenance
 
-Saddle PR #14 contains the bounded one-shot API benchmark runner:
-- Sol/Terra candidates;
-- immutable CASE-001–003 inputs;
-- proposal-only structured output;
-- no model shell/tool/repo write/effect authority;
-- max 8192 output tokens/call;
-- max 6 calls;
-- zero automatic retries;
-- target proposal tested only in ephemeral checkout;
-- no push to target repo;
-- selection remains `PENDING_HUMAN_EVALUATION`.
+PR #14 / run `31423378809` / job `93569214499` proved the first safe preflight: 54 tests OK, secret absent, 0 calls, USD 0. After canon moved, PR #14 became non-mergeable and was closed without merge. Retain it only as provenance.
 
-GitHub Actions run `31423378809`, job `93569214499` observed:
-1. runner available;
-2. deterministic Saddle regression `54 tests / OK`;
-3. `OPENAI_API_KEY` presence check failed safely;
-4. paid benchmark step skipped.
+### Current exact runner
 
-Totals:
+PR #15:
 
 ```text
-MODEL CALLS: 0
-AUTOMATIC RETRIES: 0
-SPEND: USD 0
-PROPOSALS: 0
-MODEL SELECTION: NONE
+branch: agent/phase4b-runner-rebased
+head: e4f0105b614f5de7cfa6393e6e49327e7505d9fb
+mergeable: true
+changed files: 4 runner/evaluation files
 ```
+
+Clean preflight:
+- run `31425549563`;
+- job `93576264688`;
+- deterministic scaffold tests PASS;
+- `OPENAI_API_KEY` absent;
+- paid benchmark skipped;
+- calls 0;
+- retries 0;
+- spend USD 0;
+- proposals 0;
+- selection NONE.
 
 Evidence: `evidence/PHASE4_LIVE_BENCHMARK_PREFLIGHT_2026-08-10.md`.
 
@@ -135,21 +89,17 @@ Only one prerequisite remains:
 
 > configure an OpenAI API key as GitHub Actions repository secret `OPENAI_API_KEY` in `litrgratis-pixel/Saddle`.
 
-Never place the key in chat, Git content, PR comments, workflow YAML, logs or evidence.
+Never put the key in chat, Git content, PR comments, workflow YAML, logs or evidence.
 
 ## ONE NEXT STEP
 
-After the secret is configured, re-run failed workflow run `31423378809` / job `93569214499` without changing budget/call/retry/scope bounds.
-
-Benchmark begins with CASE-001 for Sol and Terra, continues only within the existing cap, records the calibrated eval dimensions + tokens/cost/latency, then moves to `EVALUATION -> HUMAN DECISION`.
-
-No automatic autonomy/capability expansion follows.
+After the secret is configured, rerun PR #15 workflow run `31425549563` / job `93576264688` under unchanged budget/call/retry/scope bounds. Start with CASE-001 Sol/Terra, record the calibrated eval dimensions plus tokens/cost/latency, then move to `EVALUATION -> HUMAN DECISION`. No automatic autonomy/capability expansion follows.
 
 ## OPEN EVIDENCE / NOT CLAIMED
 
 - no paid model call yet;
-- no reproducible API model proposal yet;
-- no first worker selection;
+- no reproducible API proposal yet;
+- no worker selected;
 - no real-model proposal through Executor effect boundary;
 - no production request-origin provider;
 - no functional Saddle claim.
@@ -161,12 +111,10 @@ No automatic autonomy/capability expansion follows.
 3. `DECISION_LOG.md` — DEC-SAD-010/011/012
 4. `docs/PHASE4A_WEB_AI_CALIBRATION.md`
 5. `evidence/PHASE4A_WEB_AI_CALIBRATION_BASELINE_2026-08-10.md`
-6. `config/model-benchmark-v0.1.json`
-7. `config/worker-cases-v0.1.json`
-8. `tools/model_gateway.py`
-9. `tools/phase4_benchmark.py`
-10. `evidence/PHASE4_LIVE_BENCHMARK_PREFLIGHT_2026-08-10.md`
-11. Saddle PR #14
-12. workflow run `31423378809`, job `93569214499`
-13. `litrgratis-pixel/scriptops` main `daa6e5dc210e09171a530eeffe5601e0e74ae041`
-14. `litrgratis-pixel/Executor` current main (re-verify before controlled effect proof)
+6. `evidence/PHASE4_LIVE_BENCHMARK_PREFLIGHT_2026-08-10.md`
+7. `config/model-benchmark-v0.1.json`
+8. `config/worker-cases-v0.1.json`
+9. Saddle PR #15 / run `31425549563` / job `93576264688`
+10. historical Saddle PR #14 only for provenance
+11. `litrgratis-pixel/scriptops` main `daa6e5dc210e09171a530eeffe5601e0e74ae041`
+12. `litrgratis-pixel/Executor` current main — reverify before controlled effect proof.

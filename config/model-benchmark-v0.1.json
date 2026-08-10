@@ -3,7 +3,7 @@
   "observed_at": "2026-08-10",
   "provider": "openai",
   "api": "responses",
-  "candidate_status": "REQUIRES_ACCOUNT_MODEL_ACCESS_VERIFICATION",
+  "candidate_status": "OFFICIAL_API_AVAILABILITY_REVERIFIED_2026-08-10_ACCOUNT_ACCESS_STILL_RUNTIME_VERIFIED",
   "candidates": [
     {
       "model_id": "gpt-5.6-sol",
@@ -23,17 +23,21 @@
     "calls_per_candidate_per_case": 1,
     "max_total_model_calls": 6,
     "automatic_retries": 0,
-    "recommended_hard_cap_usd_minor": 500,
-    "budget_status": "HUMAN_APPROVAL_REQUIRED"
+    "max_output_tokens_per_call": 8192,
+    "approved_hard_cap_usd_minor": 500,
+    "budget_status": "HUMAN_APPROVED_2026-08-10",
+    "scope": "BENCHMARK_ONLY",
+    "autonomous_execution": false,
+    "authority_expansion": false,
+    "tool_access_expansion": false
   },
   "required_before_run": [
     "authorized runner with outbound HTTPS to the provider API",
     "OPENAI_API_KEY configured in runner secret environment, never chat/repo/evidence",
-    "candidate model IDs verified against the authorized API account",
-    "human-approved paid API benchmark budget",
+    "candidate model IDs verified against official provider documentation immediately before execution",
     "immutable case commit checks pass"
   ],
-  "selection_rule": "Do not select a production worker from reputation. Compare the same cases and record task result, scope/policy violations, tokens, cost, latency, retries and human corrections.",
+  "selection_rule": "Do not select a production worker from reputation. Compare the same cases and record task result, scope/policy violations, structured-output validity, proposal reason, tokens, cost, latency, retries and human corrections. Selection remains pending evaluation after the benchmark.",
   "official_sources": [
     "https://openai.com/index/gpt-5-6/",
     "https://developers.openai.com/api/docs/models/gpt-5.6-sol",

@@ -4,9 +4,10 @@
     {"lane_id": "saddle-cold-start", "status": "BASELINE_AVAILABLE", "source_ref": "evidence/COLD_START_AUDIT_001.md", "purpose": "Zero-history project continuity and one-next-step recovery."},
     {"lane_id": "reconstructor-regression", "status": "READY", "source_ref": "litrgratis-pixel/creative-os-project-reconstructor", "purpose": "Context reconstruction regression cases."},
     {"lane_id": "executor-policy-security", "status": "READY", "source_ref": "litrgratis-pixel/Executor", "purpose": "Executor policy, sandbox and security regression evidence."},
-    {"lane_id": "pilot-case-001", "status": "READY_FOR_T6", "source_ref": "litrgratis-pixel/executor-pilot-target:case-001-broken", "purpose": "Atomic batch insertion from immutable broken baseline."},
-    {"lane_id": "pilot-case-002", "status": "READY_FOR_T6", "source_ref": "litrgratis-pixel/executor-pilot-target:case-002-broken", "purpose": "Reopen authorization from immutable broken baseline."},
-    {"lane_id": "pilot-case-003", "status": "READY_FOR_T6", "source_ref": "litrgratis-pixel/executor-pilot-target:case-003-broken", "purpose": "Deterministic output from immutable broken baseline."},
-    {"lane_id": "scriptops-smoke", "status": "DEFERRED_TO_T8", "source_ref": "litrgratis-pixel/scriptops", "purpose": "One real-domain task-to-approved-Git-change smoke path."}
+    {"lane_id": "pilot-case-001", "status": "READY_FOR_REAL_MODEL_EVIDENCE", "source_ref": "litrgratis-pixel/executor-pilot-target:3934a94a5eebf750079200589d6dc40e024d44a0", "purpose": "Atomic batch insertion from immutable broken baseline."},
+    {"lane_id": "pilot-case-002", "status": "READY_FOR_REAL_MODEL_EVIDENCE", "source_ref": "litrgratis-pixel/executor-pilot-target:c3683bf37ad6a3f1d49c0ca05ebdd41627e9a5be", "purpose": "Reopen authorization from immutable broken baseline."},
+    {"lane_id": "pilot-case-003", "status": "READY_FOR_REAL_MODEL_EVIDENCE", "source_ref": "litrgratis-pixel/executor-pilot-target:c42bead2bbbff9c84486f17637ec80f35eeffa25", "purpose": "Deterministic output from immutable broken baseline."},
+    {"lane_id": "phase5-boundary-attacks", "status": "BASELINE_AVAILABLE", "source_ref": "evidence/PHASE5_STRICT_BOUNDARY_TEST_2026-08-10.md", "purpose": "Negative tests for raw-intent integrity and exact effect-authority binding."},
+    {"lane_id": "scriptops-smoke", "status": "DEFERRED_TO_PHASE_6", "source_ref": "litrgratis-pixel/scriptops", "purpose": "One real-domain task-to-approved-Git-change smoke path."}
   ]
 }

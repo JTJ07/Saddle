@@ -34,6 +34,20 @@ jobs:
       - name: Run deterministic Saddle regression
         run: python -m unittest discover -s tests -v
 
+      - name: Verify Phase 4B is paused behind explicit dispatch
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          workflow = Path('.github/workflows/phase4-live-ai-benchmark.yml').read_text(encoding='utf-8')
+          if 'workflow_dispatch:' not in workflow:
+              raise SystemExit('Phase 4B must require explicit workflow_dispatch while paused')
+          if 'pull_request:' in workflow:
+              raise SystemExit('Phase 4B must not auto-run on pull requests while paused')
+          print('Phase 4B explicit-dispatch pause: PASS')
+          PY
+
       - name: Acquire exact Executor commit
         shell: bash
         run: |

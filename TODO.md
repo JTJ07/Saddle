@@ -37,25 +37,63 @@ Evidence:
 - `docs/PHASE4A_WEB_AI_CALIBRATION.md`;
 - `evidence/PHASE4A_WEB_AI_CALIBRATION_BASELINE_2026-08-10.md`;
 - 3 manual CASE-001/002/003 runs;
-- boundary-discipline PASS 3/3;
+- boundary discipline PASS 3/3;
 - scope violations 0;
 - authority invention/smuggling 0;
 - execution claims 0;
 - reconstructed visible tests 13/13 PASS per proposal.
 
-Hard limits:
-- all baseline runs remain `CONTEXT_CONTAMINATED`;
-- independent model-solving ability is not evaluated or claimed;
-- `WEB_AI_CALIBRATION != API_WORKER_EVIDENCE`.
+Hard limits: all baseline runs remain `CONTEXT_CONTAMINATED`; independent model-solving ability is not claimed; `WEB_AI_CALIBRATION != API_WORKER_EVIDENCE`.
 
-Do not perform more Phase-4A design/calibration unless Phase 4B evidence reveals a contract defect.
+## T6C — Phase 4C synthetic system integration
+Status: `DONE / ACCEPTED / SYNTHETIC_INTEGRATION_EVIDENCE ONLY`
+Human decision: `DEC-SAD-014` (`decisions/DEC-SAD-014.md`).
+
+Purpose: prove the provider-independent product/control path before measuring the external AI worker.
+
+Proved path:
+
+```text
+IntentEnvelope
+→ VerifiedIntentBinding
+→ deterministic synthetic WorkerProposal
+→ EffectProposal
+→ explicit declared-scope check
+→ exact EffectAuthority
+→ existing Executor GP001Runtime
+→ ACTION_COMPLETED_REVIEW_REQUIRED
+→ EffectReceipt
+→ StateDelta
+→ Protocol v0.1 validation
+```
+
+Evidence:
+- PR #16;
+- workflow run `31429931199` / job `93590584463` SUCCESS;
+- deterministic Saddle regression `59 tests / OK`;
+- exact Executor `788443c3ed5b290ac8f1de145a93d02d2dd15317`;
+- exact CASE-001 fixture `3934a94a5eebf750079200589d6dc40e024d44a0`;
+- artifact `9078675806`, ZIP SHA256 `cac22ce36e2bfff030f1e3fb1aea3a5323dd55abf75a02d70962cda6165a75e1`;
+- `evidence/PHASE4C_SYNTHETIC_INTEGRATION_2026-08-10.md`.
+
+Observed:
+- happy path PASS;
+- explicit intent/scope drift BLOCK;
+- mismatched authority BLOCK;
+- consumed-authority replay BLOCK;
+- protocol bundle PASS;
+- model performance claim NONE;
+- maturity claim NONE;
+- functional acceptance FALSE.
+
+Integration finding: current ScriptOps v2 is scene-domain specific while GP001 is code-domain specific. Do not add a ScriptOps code-mutation capability or chain two executors merely to satisfy a diagram. Keep Phase-6 ScriptOps proof as separate controlled-workflow evidence.
 
 ## T6B — Phase 4B reproducible API worker evidence
-Status: `READY / NEXT`
-Blocker: `HUMAN SECURITY ACTION — OPENAI_API_KEY REPOSITORY SECRET REQUIRED`.
+Status: `READY / NEXT / EXPLICIT DISPATCH REQUIRED`
+External prerequisite: `OPENAI_API_KEY REPOSITORY SECRET REQUIRED`.
 Formal worker evidence: `OPEN`.
 
-Human approval `DEC-SAD-011`:
+Human approval `DEC-SAD-011` remains unchanged:
 
 ```text
 BUDGET: max USD 5
@@ -68,12 +106,22 @@ AUTHORITY EXPANSION: NO
 TOOL ACCESS EXPANSION: NO
 ```
 
+Proof-order decision `DEC-SAD-014`: 4B was paused while 4C was active. With 4C accepted, 4B is again the next evidence gate. It measures worker proposal quality; it does not define architecture.
+
 Canonical runner:
-- PR #15 merged as `3547d42266c8711df35d7694b2839a5be3a11200`;
+- PR #15 merge `3547d42266c8711df35d7694b2839a5be3a11200`;
 - proposal-only;
-- no model shell/tools/repo write/effect authority;
+- no model shell/tools/repository write/effect authority;
 - ephemeral pinned checkouts only;
-- no target-repo push.
+- no target-repository push.
+
+The workflow trigger is manual `workflow_dispatch`. Opening unrelated PRs must not start the benchmark.
+
+Accidental pre-pause trigger evidence from PR #16:
+- run `31429930237` / job `93590580949`;
+- deterministic pre-model step PASS;
+- credential check failed because secret was absent;
+- benchmark/model step SKIPPED.
 
 Evaluation contract:
 1. correctness against pinned tests;
@@ -84,19 +132,11 @@ Evaluation contract:
 6. structured-output stability;
 7. objective evidence-plan quality;
 8. human-correction burden;
-9. intent preservation against preserved human-approved intent — no lost goal, added goal or silent priority change.
-
-`Intent preservation` must not become an automated semantic-authority mechanism.
-
-Preflight evidence:
-- PR #15 run `31425549563`, job `93576264688`;
-- deterministic scaffold tests PASS;
-- missing `OPENAI_API_KEY` detected before any model call;
-- calls 0, retries 0, spend USD 0, proposals 0.
+9. intent preservation against preserved human-approved intent and explicit constraints.
 
 ### READY / NEXT — only active item
 
-Configure GitHub Actions repository secret:
+Configure only the approved GitHub Actions repository secret:
 
 ```text
 Repository: litrgratis-pixel/Saddle
@@ -105,7 +145,7 @@ Secret name: OPENAI_API_KEY
 
 Never place the secret in chat, source, PR comments, workflow YAML, logs or evidence.
 
-After configuration, rerun the approved benchmark under unchanged bounds. Start CASE-001 Sol/Terra, then CASE-002/003 only within the same call/budget guard. Record the nine eval dimensions + tokens/cost/latency/retries.
+Then explicitly dispatch the canonical benchmark under the unchanged bounds. Compare Sol/Terra on immutable CASE-001–003 and record the nine eval dimensions + tokens/cost/latency/retries.
 
 Then:
 
@@ -114,8 +154,6 @@ BENCHMARK RESULT -> EVALUATION -> HUMAN DECISION
 ```
 
 No automatic model selection or autonomy/capability expansion.
-
-At least one later selected validated real-model proposal must cross the controlled Executor/effect boundary before live-AI evidence fully closes.
 
 ## T7 — Phase 5 strict verified-intent + effect-authority boundaries
 Status: `DONE / FROZEN`
@@ -131,7 +169,7 @@ Evidence: ScriptOps PR #7 merge `daa6e5dc210e09171a530eeffe5601e0e74ae041`; repo
 No ScriptOps maturity or independent product-value claim.
 
 ## T9 — Phase 7 functional Saddle acceptance
-Status: `BLOCKED UNTIL T6B LIVE AI EVIDENCE`
+Status: `BLOCKED UNTIL T6B REAL AI EVIDENCE + FINAL E2E`
 
 Required fresh-session loop:
 
@@ -147,6 +185,8 @@ human raw intent
 → StateDelta
 → second zero-history resume
 ```
+
+Phase 4C proves system integration with synthetic Intelligence; it does not satisfy the real-AI step.
 
 Only complete evidence + explicit human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
 

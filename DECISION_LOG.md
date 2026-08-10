@@ -42,12 +42,34 @@ Only explicit human decisions or decisions already clearly established by the pr
 - Decision: The existing `litrgratis-pixel` package is the starting asset base. Determine what can be reused and completed before replacing it.
 - Consequence: COS, Reconstructor, ScriptOps, Executor and pilot-target are treated as candidate Saddle components/evidence, not discarded by default.
 
+## DEC-SAD-006 — Responsibility ownership boundary
+
+- Date: 2026-08-10
+- Owner: USER
+- Status: ADOPTED DIRECTION / PENDING CANONICAL MERGE
+- Decision:
+  - `HUMAN OWNS INTENT`;
+  - `SADDLE PRESERVES AND BINDS INTENT`;
+  - `INTELLIGENCE PROPOSES HOW`;
+  - `EXECUTOR GOVERNS CONSEQUENCES`;
+  - `VERIFIER ESTABLISHES FACTS`;
+  - `NO LAYER MAY SUBSTITUTE FOR A HIGHER-ORDER OWNER`.
+- Product-front-door consequence: `USER -> EXECUTOR` is not the global Saddle front-door model. The current direction is `USER -> SADDLE -> INTELLIGENCE -> EXECUTOR`, with explicit delegation to an external/corporate trust domain allowed as an enterprise intake variant.
+- A1/A2 consequence:
+  - naive A2 remains rejected;
+  - the strengthened-A2 principle is retained at the Saddle intent boundary;
+  - A1 remains a valid delegated/enterprise intake variant rather than the default global product front door;
+  - no trust provider is selected by this decision.
+- Executor consequence: Executor should own governed consequential-effect authority and execution, not become the semantic owner of human intent. A future Executor contract may carry an `intent_ref` without requiring full human conversational context.
+- Evidence/design reference: `docs/SADDLE_EXECUTOR_RESPONSIBILITY_BOUNDARY.md`.
+
 ## Not yet a decision
 
 The following remain open until explicitly selected or proven:
 
-- A1 vs strengthened A2 trust-front-door architecture;
-- concrete human-authority provider;
+- exact `SADDLE_VERIFIED_INTENT_BOUNDARY` protocol and schema;
+- exact `EXECUTOR_EFFECT_AUTHORITY_BOUNDARY` protocol and schema;
+- concrete human-identity / request-origin / authority provider;
 - first production model/provider;
 - whether ScriptOps RC1 is the final first real-domain acceptance case;
 - whether/when Ginseng runtime is activated;

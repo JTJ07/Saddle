@@ -58,7 +58,8 @@ Hard rule:
 `WEB_AI_CALIBRATION != API_WORKER_EVIDENCE`.
 
 ## T6B — Phase 4B reproducible API worker evidence
-Status: `BLOCKED / NEXT HUMAN SECURITY ACTION`
+Status: `READY / NEXT`
+Blocker: `HUMAN SECURITY ACTION — OPENAI_API_KEY REPOSITORY SECRET REQUIRED`.
 Direction/scaffold: `PASS / FROZEN`.
 Formal worker evidence: `OPEN`.
 

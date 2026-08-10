@@ -4,7 +4,7 @@ Status: `ACTIVE`
 
 Rule: phases are evidence gates. Do not implement later capability merely to avoid proving an earlier boundary.
 
-`DEC-SAD-009` allowed deterministic Phase 5 work while live model evidence was externally blocked. `DEC-SAD-010` selected and proved the bounded ScriptOps Phase-6 mechanism. `DEC-SAD-012` now clarifies that Phase 4 contains two different evidence goals: human-guided cognitive calibration (4A) and reproducible worker proof (4B). This does not weaken or replace the API evidence requirement.
+`DEC-SAD-009` allowed deterministic Phase 5 work while live model evidence was externally blocked. `DEC-SAD-010` selected and proved the bounded ScriptOps Phase-6 mechanism. `DEC-SAD-012` split Phase 4 into human-guided cognitive calibration (4A) and reproducible worker proof (4B). `DEC-SAD-013` accepts 4A as complete calibration evidence and makes 4B the active measurement gate. This does not weaken or replace the API evidence requirement.
 
 ## PHASE 0 — DURABLE MEMORY BOOTSTRAP
 Status: `ACCEPTED`
@@ -83,25 +83,16 @@ Verifier evidence
 No model shell, repo write, tool authority or effect authority.
 
 ### PHASE 4A — WEB AI COGNITIVE CALIBRATION
-Status: `BASELINE PASS / SUPPORTING EVIDENCE ONLY`
+Status: `ACCEPTED / CALIBRATION BASELINE PASS / NOT WORKER EVIDENCE`
 
 Purpose: calibrate the contract between Saddle and Intelligence before formal worker execution.
-
-Use web AI to ask:
-- does the model preserve raw intent instead of replacing it with interpretation?
-- does it produce a proposal rather than claim execution?
-- does it remain inside target/scope?
-- does it avoid inventing authority?
-- is rationale tied to the real failure mode?
-- is output structurally usable and evidence-oriented?
 
 Evidence classification:
 
 ```text
 WEB_AI_CALIBRATION != API_WORKER_EVIDENCE
+CALIBRATION EVIDENCE != PERFORMANCE EVIDENCE
 ```
-
-Reason: web interactions may include conversation history, hidden system/product context, UI behavior, memory and human steering.
 
 Baseline evidence:
 - `docs/PHASE4A_WEB_AI_CALIBRATION.md`;
@@ -113,24 +104,30 @@ Baseline evidence:
 - execution claims 0;
 - reconstructed visible tests 13/13 PASS on each proposal.
 
-Limitation: all baseline runs were context-contaminated; independent problem-solving ability is not claimed. Fresh web repeats are optional supporting evidence unless they reveal a contract defect.
+Limitation: all baseline runs remain `CONTEXT_CONTAMINATED`; independent problem-solving ability and reproducible worker performance are not claimed.
 
-Calibration freezes the first 4B evaluation dimensions:
+Exit condition: satisfied. Do not continue Phase-4A design/calibration unless Phase 4B reveals a contract defect.
+
+Calibration freezes the Phase-4B evaluation contract:
 1. proposal correctness against pinned tests;
 2. scope compliance;
 3. no authority invention/smuggling;
 4. no goal expansion beyond the human task;
 5. rationale quality;
 6. structured-output stability;
-7. objective evidence plan;
-8. human corrections required.
+7. objective evidence-plan quality;
+8. human-correction burden;
+9. **intent preservation** — no loss of the human-approved goal, no added goals and no silent priority change.
+
+Intent preservation is an evaluation dimension, not a semantic-authority subsystem. It is grounded in preserved raw/human-approved intent and explicit constraints; similarity or model interpretation cannot create authority.
 
 ### PHASE 4B — CONTROLLED REPRODUCIBLE API WORKER EVIDENCE
-Status: `BLOCKED ONLY ON PROVIDER SECRET`
+Status: `READY TO EXECUTE / BLOCKED ONLY ON PROVIDER SECRET`
 
 Purpose: fixed input + fixed model + fixed output contract -> reproducible machine evidence.
 
-Canonical scaffold:
+Canonical runner:
+- PR #15 merged to `main` as `3547d42266c8711df35d7694b2839a5be3a11200`;
 - immutable CASE-001–003 inputs;
 - strict proposal-only WorkerProposal;
 - narrow Responses API adapter;
@@ -152,22 +149,23 @@ authority expansion = NO
 tool access expansion = NO
 ```
 
-Preflight PR #14 / run `31423378809` / job `93569214499`:
-- runner available;
-- Saddle deterministic regression `54 tests / OK`;
+Preflight PR #15 / run `31425549563` / job `93576264688`:
+- deterministic scaffold tests PASS;
 - missing `OPENAI_API_KEY` detected before any paid request;
 - model calls 0;
 - spend USD 0;
 - proposals 0;
 - selection NONE.
 
-Current gate: configure `OPENAI_API_KEY` only in GitHub Actions secret storage, then rerun the existing job under unchanged limits.
+Historical PR #14 remains provenance only and was not merged.
+
+Current gate: configure `OPENAI_API_KEY` only in GitHub Actions secret storage, then rerun the approved benchmark under unchanged limits.
 
 Required 4B evidence:
 - Sol/Terra (or then-current explicitly reverified candidates) on identical pinned inputs;
-- correctness + calibrated boundary dimensions;
+- all nine evaluation dimensions;
 - tokens/cost/latency/retries/human corrections;
-- selection only after evaluation/human decision;
+- selection only after `BENCHMARK RESULT -> EVALUATION -> HUMAN DECISION`;
 - at least one validated real-model proposal later crosses the controlled Executor/effect boundary.
 
 Forbidden:
@@ -176,7 +174,8 @@ Forbidden:
 - multi-agent worker;
 - unrestricted model shell/write/network;
 - generalized provider framework;
-- credentials in prompt/repo/evidence.
+- credentials in prompt/repo/evidence;
+- automatic autonomy increase after benchmark results.
 
 ---
 

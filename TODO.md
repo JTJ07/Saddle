@@ -83,8 +83,7 @@ Saddle PR #15:
 ```text
 branch: agent/phase4b-runner-rebased
 head: e4f0105b614f5de7cfa6393e6e49327e7505d9fb
-mergeable: true
-files: 4 runner/evaluation files
+functional diff: exactly 4 runner/evaluation files
 ```
 
 Clean preflight:
@@ -98,9 +97,11 @@ Clean preflight:
 - spend USD 0;
 - proposals 0.
 
+After later main-only evidence/docs commits, compare reports the branch `ahead_by 4 / behind_by 4`; a later PR snapshot reports `mergeable: false`. This does not block benchmark execution. Rebase/merge housekeeping is routine and should be reevaluated after evidence collection.
+
 Historical PR #14 is closed without merge and retained only as first-preflight provenance.
 
-### NEXT HUMAN SECURITY ACTION — only active blocker
+### NEXT HUMAN SECURITY ACTION — only active blocker for model execution
 
 Configure GitHub Actions repository secret:
 

@@ -1,6 +1,6 @@
 # Saddle
 
-Status: `PHASE 6 CONTROLLED WORKFLOW ACCEPTED / LIVE AI EVIDENCE NEXT / NOT YET FUNCTIONAL`
+Status: `PHASE 6 ACCEPTED / PHASE 4A CALIBRATION BASELINE PASS / PHASE 4B API EVIDENCE BLOCKED SECRET / NOT YET FUNCTIONAL`
 
 Saddle is a durable control/coupling layer between **human intent** and **arbitrarily capable AI**.
 
@@ -19,7 +19,7 @@ NO LAYER MAY SUBSTITUTE FOR A HIGHER-ORDER OWNER
 
 > **Do not constrain intelligence unnecessarily. Constrain unauthorized effects.**
 
-GitHub is durable project memory. Completion lock remains active until the first full functional acceptance.
+GitHub is durable project memory. Completion lock remains active until full functional acceptance.
 
 ## Read order
 
@@ -33,83 +33,68 @@ GitHub is durable project memory. Completion lock remains active until the first
 8. `ECOSYSTEM_MAP.md`
 9. `SOURCE_REGISTRY.md`
 
-## Frozen / accepted foundations
+## Accepted foundations
 
-### Phase 0 — durable memory
-Repository-only cold start passed.
+- **Phase 0** — repository-only durable-memory cold start.
+- **Phase 1** — responsibility/ecosystem reconciliation.
+- **Phase 2** — Protocol v0.1: `IntentEnvelope -> EffectProposal -> EffectReceipt -> StateDelta`.
+- **Phase 3** — fail-closed JSON/JSONL audit/eval foundation.
+- **Phase 5** — verified-intent + exact effect-authority boundaries; 15/15 deterministic tests PASS.
+- **Phase 6** — bounded ScriptOps controlled-workflow mechanism PASS, no maturity claim.
 
-### Phase 1 — responsibility / ecosystem reconciliation
-Ownership architecture is frozen: human intent, Saddle integrity, AI proposal, Executor consequence governance, Verifier facts.
+## Phase 4 — two evidence goals, not one
 
-### Phase 2 — Protocol v0.1
-Provider-independent:
+`DEC-SAD-012` separates calibration from formal worker proof:
 
-`IntentEnvelope → EffectProposal → EffectReceipt → StateDelta`.
+### Phase 4A — Web AI cognitive calibration
 
-### Phase 3 — audit/eval foundation
-Plain JSON/JSONL + stdlib fail-closed evidence harness.
+Human-guided web AI may be used to calibrate the contract between Saddle and Intelligence:
+- preserve raw human intent;
+- proposal, not execution claim;
+- exact scope;
+- no invented authority;
+- no goal expansion;
+- useful rationale/evidence plan;
+- stable structure.
 
-### Phase 4 — AI proposal worker direction
-Direction/scaffold PASS and frozen:
-
-```text
-pinned input
-→ proposal-only ModelGateway
-→ deterministic validation
-→ Executor effect boundary
-```
-
-**Live external model evidence remains open.** No real two-model benchmark, production worker selection or real-model Executor run is claimed yet.
-
-### Phase 5 — strict intent/effect boundary
-Accepted on deterministic adversarial evidence:
+Hard evidence rule:
 
 ```text
-raw human intent
-→ VerifiedIntentBinding
-→ AI EffectProposal
-→ separate exact EffectAuthority
-→ ALLOW / BLOCK
+WEB_AI_CALIBRATION != API_WORKER_EVIDENCE
 ```
 
-Proposal is never permission; AI interpretation cannot substitute for human intent/authority.
+First baseline: 3 manual CASE-001/002/003 runs, 3/3 boundary-discipline PASS, zero scope/authority/execution violations, reconstructed visible tests 13/13 PASS per proposal. All runs were context-contaminated, so independent problem-solving is **not claimed**.
 
-### Phase 6 — controlled ScriptOps workflow
-Accepted as a **mechanism proof only**, with no maturity claim.
+See:
+- `docs/PHASE4A_WEB_AI_CALIBRATION.md`;
+- `evidence/PHASE4A_WEB_AI_CALIBRATION_BASELINE_2026-08-10.md`.
 
-Human decision:
+### Phase 4B — Controlled reproducible API worker evidence
+
+Formal worker evidence still requires fixed inputs + fixed API model + fixed structured output + deterministic evaluation.
+
+Approved `DEC-SAD-011` bounds:
 
 ```text
-BASE: legacy/scriptops-v2-single.py
-REWRITE: NO
-NEW CAPABILITY: NO
-PHASE 6: reuse + hardening + proof
+budget <= USD 5
+calls <= 6
+automatic retries = 0
+benchmark only
+proposal only
+no capability / authority / tool expansion
 ```
 
-ScriptOps PR #7 merged as `daa6e5dc210e09171a530eeffe5601e0e74ae041` after both final checks passed. B1–B5 were closed without modifying the historical v2 artifact.
+PR #14 preflight proved the GitHub runner and 54-test regression work, then safely stopped before any API call because `OPENAI_API_KEY` is not configured. Calls: 0. Spend: USD 0.
 
-Evidence: `evidence/PHASE6_SCRIPTOPS_CONTROLLED_WORKFLOW_2026-08-10.md`.
+Current only blocker: configure `OPENAI_API_KEY` in GitHub Actions repository secret storage, never in chat/Git/evidence, then rerun the existing failed benchmark job.
 
-## Current gate — live AI-worker evidence
-
-Per the user's explicit ordering, after the bounded real-workflow proof Saddle returns to the deferred live AI-worker benchmark/effect proof.
-
-Required before worker selection:
-
-- authorized provider-API runner with secure credential handling;
-- explicit paid benchmark budget approval;
-- current model/API verification;
-- identical immutable CASE-001–003 across at least two current suitable candidates;
-- eval results for quality/result, scope/policy violations, tokens, cost, latency, retries and human corrections;
-- at least one validated real-model proposal through the controlled Executor/effect path.
-
-Do not add multi-agent, autonomous loops, AI memory service, dynamic routing, tool expansion, browser/computer use, agent framework or generalized IAM to solve this gate.
+The formal benchmark evaluates correctness, scope, authority discipline, goal preservation, rationale, structure, evidence plan, human corrections, tokens, cost, latency and retries. Results go to evaluation/human decision; no autonomy is automatically expanded.
 
 ## Functional acceptance
 
 Saddle is still **NOT YET FUNCTIONAL**.
 
-Final acceptance requires the complete observed chain:
+Final acceptance requires:
 
 ```text
 human raw intent

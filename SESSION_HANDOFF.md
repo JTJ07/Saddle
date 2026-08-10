@@ -56,7 +56,7 @@ ScriptOps PR #7 merged as `daa6e5dc210e09171a530eeffe5601e0e74ae041`; final veri
 
 ### Historical provenance
 
-PR #14 / run `31423378809` / job `93569214499` proved the first safe preflight: 54 tests OK, secret absent, 0 calls, USD 0. After canon moved, PR #14 became non-mergeable and was closed without merge. Retain it only as provenance.
+PR #14 / run `31423378809` / job `93569214499`: 54 tests OK, secret absent, 0 calls, USD 0. PR #14 was closed without merge after becoming stale and remains provenance only.
 
 ### Current exact runner
 
@@ -65,8 +65,7 @@ PR #15:
 ```text
 branch: agent/phase4b-runner-rebased
 head: e4f0105b614f5de7cfa6393e6e49327e7505d9fb
-mergeable: true
-changed files: 4 runner/evaluation files
+functional diff: exactly 4 runner/evaluation files
 ```
 
 Clean preflight:
@@ -81,11 +80,13 @@ Clean preflight:
 - proposals 0;
 - selection NONE.
 
+After later main-only evidence/documentation commits, compare reports PR #15 branch `ahead_by 4 / behind_by 4`, and a later PR snapshot reports `mergeable: false`. This does not block running the benchmark; rebase/merge housekeeping is routine and should be reevaluated after evidence collection.
+
 Evidence: `evidence/PHASE4_LIVE_BENCHMARK_PREFLIGHT_2026-08-10.md`.
 
 ## CURRENT BLOCKER
 
-Only one prerequisite remains:
+Only one prerequisite remains for executing model calls:
 
 > configure an OpenAI API key as GitHub Actions repository secret `OPENAI_API_KEY` in `litrgratis-pixel/Saddle`.
 

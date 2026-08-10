@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_6_ACCEPTED / PHASE_4_LIVE_EVIDENCE_ACTIVE / NOT_YET_FUNCTIONAL
+status: PHASE_6_ACCEPTED / PHASE_4_LIVE_EVIDENCE_BLOCKED_SECRET / NOT_YET_FUNCTIONAL
 updated_at: 2026-08-10
 ---
 
@@ -8,35 +8,44 @@ updated_at: 2026-08-10
 
 ## STATUS
 
-Phases 0–3 are canonical/frozen foundations. Phase-4 AI-worker direction/scaffold is frozen as PASS direction but its live real-model benchmark/effect evidence remains open. Phase 5 strict intent/effect boundary proof is accepted. Phase 6 ScriptOps controlled workflow mechanism proof is accepted with no maturity claim. Saddle remains `NOT_YET_FUNCTIONAL`.
+Phases 0–3 are canonical/frozen foundations. Phase-4 AI-worker direction/scaffold is frozen as PASS direction but live real-model evidence remains open. Phase 5 strict intent/effect boundary proof is accepted. Phase 6 ScriptOps controlled workflow mechanism proof is accepted with no maturity claim. Saddle remains `NOT_YET_FUNCTIONAL`.
 
 ## ACTIVE GATE
 
-`LIVE AI-WORKER BENCHMARK + CONTROLLED EFFECT EVIDENCE`
+`LIVE AI-WORKER BENCHMARK — BLOCKED ONLY ON PROVIDER SECRET`
 
-This intentionally returns to the deferred Phase-4 evidence after Phase 6. It is not an architecture rollback.
+## HUMAN DECISIONS
 
-## HUMAN DECISION JUST IMPLEMENTED
-
-`DEC-SAD-010` / ScriptOps `DEC-SO-010`:
+`DEC-SAD-010`:
 
 ```text
-DECISION: YES
-BASE: legacy/scriptops-v2-single.py
-REWRITE: NO
-NEW CAPABILITY: NO
-PHASE 6: reuse + hardening + proof
-MATURITY CLAIM: NONE
+PHASE 6: ACCEPTED
+CONTROLLED WORKFLOW: PROVEN
+MATURITY: NONE
 FUNCTIONAL_SADDLE_ACCEPTED: NOT YET
+```
+
+`DEC-SAD-011`:
+
+```text
+REAL AI WORKER BENCHMARK: APPROVED
+BUDGET: max USD 5
+CALLS: max 6
+AUTOMATIC RETRIES: 0
+SCOPE: benchmark only
+NEW CAPABILITY: NO
+AUTONOMOUS EXECUTION: NO
+AUTHORITY EXPANSION: NO
+TOOL ACCESS EXPANSION: NO
 ```
 
 ## PHASE 6 RESULT
 
-ScriptOps PR #7 is merged on `main` as:
+ScriptOps PR #7 merged as:
 
 `daa6e5dc210e09171a530eeffe5601e0e74ae041`
 
-Final verified pre-merge head:
+Final verified head:
 
 `acbfca79f96407dbd46f9806bf821caf6e02e1af`
 
@@ -44,68 +53,82 @@ Final checks:
 - `Verify repository state` run `31421752036` -> SUCCESS;
 - `Phase 6 ScriptOps smoke` run `31421752569` -> SUCCESS.
 
-B1–B5 closed:
-- task/preflight/context/candidate/impact clean Git lifecycle;
-- unrelated dirty state blocks candidate import;
-- accepted hash recomputed after status change;
-- explicit non-empty human `approve --why` required;
-- impact report before decision;
-- fresh temporary-Git end-to-end smoke.
+B1–B5 are closed. Historical `legacy/scriptops-v2-single.py` remains unchanged. Cross-repo evidence: `evidence/PHASE6_SCRIPTOPS_CONTROLLED_WORKFLOW_2026-08-10.md`.
 
-Historical `legacy/scriptops-v2-single.py` remains unchanged. The implementation is a bounded shim, not a rewrite.
+## LIVE BENCHMARK PREPARATION
 
-Cross-repo evidence:
-`evidence/PHASE6_SCRIPTOPS_CONTROLLED_WORKFLOW_2026-08-10.md`.
+Official OpenAI documentation was rechecked on 2026-08-10 and still lists:
+- `gpt-5.6-sol`;
+- `gpt-5.6-terra`.
 
-## RESPONSIBILITY RESULT
+Public API availability is not evidence of account-level access.
+
+Saddle PR #14 contains the bounded one-shot benchmark runner:
+- proposal-only model role;
+- strict structured output;
+- max 8192 output tokens per call;
+- max 6 calls;
+- zero automatic retries;
+- no target-repo push/write;
+- each proposal applied only in an ephemeral checkout for pinned target/full tests;
+- selection remains pending evaluation.
+
+## PREFLIGHT EVIDENCE
+
+GitHub Actions run `31423378809`, job `93569214499`:
+
+1. runner initialized successfully;
+2. complete deterministic Saddle regression: `54 tests / OK`;
+3. secret-presence gate checked only whether `OPENAI_API_KEY` existed;
+4. result: secret absent;
+5. paid benchmark step skipped.
+
+Observed totals:
 
 ```text
-candidate = proposal, not canon
-impact/evidence = review material, not authority
-human approve --why = semantic decision
-canonical write = consequence after decision
-Git + decision log = durable evidence
+MODEL CALLS: 0
+AUTOMATIC RETRIES: 0
+SPEND: USD 0
+PROPOSALS: 0
+MODEL SELECTION: NONE
 ```
 
-ScriptOps did not acquire intent interpretation, autonomous planning, independent authority or new AI/browser/agent capabilities.
-
-## OPEN EVIDENCE / NOT CLAIMED
-
-- no ScriptOps v5/RC1 maturity claim;
-- no independent product/user-value validation;
-- no production request-origin/identity provider;
-- no live real-model benchmark executed;
-- no real-model proposal routed through Executor yet;
-- no complete EffectReceipt/StateDelta/fresh-session acceptance proof;
-- no functional Saddle claim.
+Evidence: `evidence/PHASE4_LIVE_BENCHMARK_PREFLIGHT_2026-08-10.md`.
 
 ## CURRENT BLOCKER
 
-The live AI-worker gate needs all of:
+Only one prerequisite remains:
 
-1. authorized control-plane runner with outbound provider HTTPS;
-2. provider credential in secure runner secret storage/environment, never chat/GitHub/evidence;
-3. explicit human paid benchmark budget approval;
-4. current model/API candidate verification immediately before run.
+> configure an OpenAI API key as GitHub Actions repository secret `OPENAI_API_KEY` in `litrgratis-pixel/Saddle`.
 
-Earlier proposal: maximum 6 calls, zero automatic retries, USD 5 hard cap. This remains a recommendation, not spending authority.
+Never put the key in chat, Git content, a PR comment, workflow YAML, logs or evidence.
 
 ## ONE NEXT STEP
 
-After runner + credential + explicit budget approval exist, re-verify current provider/model candidates from official sources, run identical immutable CASE-001–003 across at least two candidates, record Phase-3 eval evidence, route at least one validated real-model proposal through the controlled Executor/effect path, and select the first worker only from evidence.
+After `OPENAI_API_KEY` is configured, re-run failed workflow run `31423378809` / job `93569214499` without changing the approved budget/call/retry/scope bounds.
+
+The benchmark must begin with CASE-001 for Sol and Terra. Results then move to `EVALUATION -> HUMAN DECISION`; no automatic autonomy/capability expansion follows.
+
+## OPEN EVIDENCE / NOT CLAIMED
+
+- no paid model call has occurred yet;
+- no real-model proposal exists yet;
+- no first worker model has been selected;
+- no real-model proposal has crossed the Executor effect boundary;
+- no production request-origin provider is selected;
+- no functional Saddle claim.
 
 ## EXACT FILES / REFS TO OPEN NEXT
 
 1. `PROJECT_STATE.md`
 2. `TODO.md` — T6
-3. `DECISION_LOG.md` — DEC-SAD-010
-4. `docs/MODEL_GATEWAY_v0.1.md`
-5. `evidence/PHASE4_PRE_CREDENTIAL_CHECKPOINT_2026-08-10.md`
-6. `evidence/PHASE6_SCRIPTOPS_CONTROLLED_WORKFLOW_2026-08-10.md`
-7. `config/model-benchmark-v0.1.json`
-8. `config/worker-cases-v0.1.json`
-9. `tools/model_gateway.py`
-10. `tools/phase4_preflight.py`
-11. `tools/phase4_benchmark.py`
-12. `litrgratis-pixel/scriptops` main `daa6e5dc210e09171a530eeffe5601e0e74ae041`
-13. `litrgratis-pixel/Executor` current main (re-verify before live run)
+3. `DECISION_LOG.md` — DEC-SAD-010/011
+4. `config/model-benchmark-v0.1.json`
+5. `config/worker-cases-v0.1.json`
+6. `tools/model_gateway.py`
+7. `tools/phase4_benchmark.py`
+8. `evidence/PHASE4_LIVE_BENCHMARK_PREFLIGHT_2026-08-10.md`
+9. Saddle PR #14
+10. workflow run `31423378809`, job `93569214499`
+11. `litrgratis-pixel/scriptops` main `daa6e5dc210e09171a530eeffe5601e0e74ae041`
+12. `litrgratis-pixel/Executor` current main (re-verify before controlled effect proof)

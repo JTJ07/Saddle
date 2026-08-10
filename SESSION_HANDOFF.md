@@ -1,82 +1,59 @@
 ---
 project: Saddle
-status: BOOTSTRAP_COMMITTED / ZERO_MEMORY_COLD_START_PENDING
+status: PHASE_0_ACCEPTED / PHASE_1_ACTIVE / NOT_YET_FUNCTIONAL
 updated_at: 2026-08-10
 ---
 
 # SESSION HANDOFF
 
 ## STATUS
-The Saddle bootstrap is now durably preserved in `litrgratis-pixel/Saddle` on the default branch. The repository, not this chat, is the current continuation source.
+
+The durable-memory bootstrap has a passing repository-only cold-start audit on the current work branch. Saddle is still `NOT YET FUNCTIONAL`.
 
 ## ACTIVE GATE
-`PHASE 0 — DURABLE MEMORY BOOTSTRAP`
+
+`PHASE 1 — ECOSYSTEM RECONCILIATION`
 
 ## WHAT CHANGED
 
-- created the durable Saddle repository memory layer;
-- committed the product thesis and prime memory law;
-- committed the completion lock and active restrictions;
-- committed the gated execution plan through first functional acceptance;
-- committed the canonical project state and decision log;
-- committed the future-ideas parking mechanism;
-- committed the ecosystem map and observed source-repository checkpoints;
-- committed the 2026-08-10 ecosystem audit;
-- committed the provider/agent-independent Saddle protocol draft;
-- committed the Codex delegation contract;
-- preserved the original AI Engineering OS instructions and README as references;
-- recorded the bootstrap inventory.
+- executed a fresh-session cold-start using committed Saddle repository content only;
+- recorded the evidence in `evidence/COLD_START_AUDIT_001.md`;
+- confirmed recovery of product definition, prime memory law, completion lock, phase, evidence boundary and one next step;
+- corrected the stale root README status label found by the audit;
+- updated `PROJECT_STATE.md` to close Phase 0 and identify Phase 1 as the active gate.
 
 ## EVIDENCE
 
-Canonical repository: `https://github.com/litrgratis-pixel/Saddle`
+- `evidence/COLD_START_AUDIT_001.md`
+- Phase-0 plan/DoD: `EXECUTION_PLAN.md`
+- source-of-truth state: `PROJECT_STATE.md`
 
-Initial durable-memory commit: `44f2e53b90f120baf666aa80b68f20ac15bd8446`
-
-The bootstrap inventory is recorded in `BOOTSTRAP_INVENTORY.txt`.
+The audit is evidence of resumability only. It is not evidence that Saddle is functional end-to-end.
 
 ## HUMAN DECISIONS RECORDED
 
-See `DECISION_LOG.md`, especially:
-
-- `DEC-SAD-001` GitHub is durable project memory;
-- `DEC-SAD-002` completion lock;
-- `DEC-SAD-003` universal Saddle product direction;
-- `DEC-SAD-004` intelligence freedom / effect control;
-- `DEC-SAD-005` reuse before rewrite.
+No new product-direction decision was created by the audit. Existing decisions in `DECISION_LOG.md` remain unchanged.
 
 ## IDEAS PARKED
-See `FUTURE_IDEAS.md`.
+
+None. No new product ideas were developed during this gate.
 
 ## BLOCKERS
 
-No repository-creation blocker remains.
+The Phase-0 cold-start blocker is removed on this work branch.
 
-Phase 0 is not yet accepted because the required independent zero-memory cold-start test has not been executed against the committed repository state.
+The next blocker is the Phase-1 reconciliation of active cross-repository work, beginning with the Executor trust/authority PR stack #51–#57.
 
 ## ONE NEXT STEP
 
-Run a fresh-session / zero-prior-memory cold-start audit using only the committed `litrgratis-pixel/Saddle` repository. Verify that the new agent can correctly recover:
-
-1. what Saddle is;
-2. the prime memory law;
-3. the active completion lock;
-4. the current phase;
-5. the current evidence boundary;
-6. exactly one next permitted step;
-
-without using this conversation.
+Classify Executor PRs #51–#57 against current `Executor/main` as canonical, draft, experimental, superseded or reusable evidence, then update Saddle's ecosystem/source state. Do not merge or rewrite Executor as part of this classification.
 
 ## EXACT FILES / REFS TO OPEN NEXT
 
-1. `README.md`
-2. `AGENTS.md`
-3. `PROJECT_STATE.md`
-4. `EXECUTION_PLAN.md`
-5. `RESTRICTIONS.md`
-6. `SESSION_HANDOFF.md`
-7. `DECISION_LOG.md`
-8. `ECOSYSTEM_MAP.md`
-9. `SOURCE_REGISTRY.md`
-
-Do not begin Phase 1 until the Phase-0 cold-start test is observed and recorded.
+1. `PROJECT_STATE.md`
+2. `EXECUTION_PLAN.md` — Phase 1
+3. `ECOSYSTEM_MAP.md`
+4. `SOURCE_REGISTRY.md`
+5. `litrgratis-pixel/Executor` main
+6. Executor PRs #51–#57
+7. `evidence/COLD_START_AUDIT_001.md`

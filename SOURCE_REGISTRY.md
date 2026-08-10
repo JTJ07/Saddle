@@ -17,14 +17,15 @@ The default branch of `litrgratis-pixel/Saddle` owns Saddle-specific product sta
 
 ## Saddle current references
 
-- `DECISION_LOG.md` — human decisions including responsibility boundary and operational delegation.
-- `PROJECT_STATE.md` — current phase/state.
+- `DECISION_LOG.md` — human decisions including responsibility boundary, operational delegation and Phase-6 ScriptOps base selection.
+- `PROJECT_STATE.md` — current evidence gate/state.
 - `EXECUTION_PLAN.md` — strategic gated completion path.
 - `TODO.md` — current operational queue; never overrides higher-authority state.
 - `docs/SADDLE_EXECUTOR_RESPONSIBILITY_BOUNDARY.md` — current intent/reasoning/effect/fact ownership split.
 - `docs/PHASE1_ECOSYSTEM_RECONCILIATION_2026-08-10.md` — Phase-1 classification.
 - `analysis/SADDLE_TEST_SESSION_2026-08-10.md` — six-part test interpretation.
 - `evidence/COLD_START_AUDIT_001.md` — Phase-0 continuity evidence.
+- `evidence/PHASE6_SCRIPTOPS_CONTROLLED_WORKFLOW_2026-08-10.md` — cross-repo Phase-6 mechanism proof.
 
 ## Component sources
 
@@ -44,10 +45,12 @@ The default branch of `litrgratis-pixel/Saddle` owns Saddle-specific product sta
 
 ### ScriptOps
 - Repo: https://github.com/litrgratis-pixel/scriptops
-- Current main after 2026-08-10 access-check reconciliation: `33c9d15a10dfd3f833a99dfcebea22dd77f26b65`
-- Key: `PROJECT_STATE.md`, `HANDOFF.md`, `sources/RC1_SCOPE_LOCK.md`, `legacy/scriptops-v2-single.py`, `analysis/RC1_V2_GAP_2026-08-10.md`.
-- Canonical fact: GitHub-side access check complete; no separate later RC1 build visible; local/off-GitHub artifacts unknown.
-- Technical recommendation: v2 is the smallest likely implementation base; this is not yet a human base-selection decision.
+- Current main after Phase-6 controlled-workflow merge: `daa6e5dc210e09171a530eeffe5601e0e74ae041`
+- Key: `PROJECT_STATE.md`, `HANDOFF.md`, `DECISION_LOG.md`, `sources/RC1_SCOPE_LOCK.md`, `legacy/scriptops-v2-single.py`, `analysis/RC1_V2_GAP_2026-08-10.md`, `phase6/scriptops-v2-hardening.py`, `tests/test_phase6_scriptops_smoke.py`, `evidence/PHASE6_CONTROLLED_WORKFLOW_PROOF_2026-08-10.md`.
+- Human decision: v2 selected as Phase-6 base; `REWRITE: NO`; `NEW CAPABILITY: NO`; `MATURITY CLAIM: NONE`.
+- Canonical result: B1–B5 bounded workflow hardening passed; historical v2 remains unchanged.
+- Final verified PR #7 head `acbfca79f96407dbd46f9806bf821caf6e02e1af`: repository verifier run `31421752036` SUCCESS; Phase-6 smoke run `31421752569` SUCCESS.
+- Classification: controlled workflow mechanism proof only. Do not infer ScriptOps v5/RC1 maturity, independent product value or functional Saddle.
 
 ### Executor
 - Repo: https://github.com/litrgratis-pixel/Executor
@@ -77,4 +80,4 @@ The Saddle root `AGENTS.md` specializes those principles with completion lock, d
 
 ## OpenAI references
 
-The bootstrap recorded official OpenAI product/help references. Re-check official OpenAI documentation before any current model/provider/Codex capability decision; do not rely on old capability assumptions.
+Re-check official OpenAI documentation immediately before any current model/provider/Codex capability or pricing decision; do not rely on old capability assumptions.

@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_5_ACCEPTED / PHASE_6_ACTIVE / HUMAN_BASE_DECISION_REQUIRED / NOT_YET_FUNCTIONAL
+status: PHASE_6_ACCEPTED / PHASE_4_LIVE_EVIDENCE_ACTIVE / NOT_YET_FUNCTIONAL
 completion_lock: ACTIVE
 state_owner: PROJECT_STATE.md
 updated_at: 2026-08-10
@@ -27,44 +27,27 @@ GitHub is durable memory. Completion lock remains ACTIVE.
 
 ## 2. Current objective
 
-Move from boundary definition into controlled proof of value without capability expansion.
-
-Final target remains:
+Complete the still-missing real-AI evidence without expanding capability:
 
 ```text
-human raw intent
-→ durable integrity/origin binding
-→ context recovery
-→ real AI proposal
+pinned human/task intent
+→ real model proposal only
+→ deterministic validation
 → exact effect authority
-→ bounded execution
-→ verifier evidence
-→ durable StateDelta
-→ zero-history resume
+→ controlled Executor/effect path
+→ verifier/test evidence
+→ eval record
 ```
 
-## 3. Human verdict / roadmap decision
+After this evidence exists, assemble the final fresh-session Saddle acceptance loop. Do not broaden models/tools/agents before the proof.
 
-Recorded in `DEC-SAD-008` and `DEC-SAD-009`:
-
-- `RESPONSIBILITY ARCHITECTURE: PASS`;
-- `OWNERSHIP MODEL: PASS`;
-- `PHASE 4 AI WORKER DIRECTION: PASS`;
-- `TRUST BOUNDARIES: OPEN — INTENTIONALLY`;
-- Phase 1–4 foundations are frozen against unnecessary redesign;
-- Phase 5 strict boundary proof was authorized as the next active work.
-
-Important evidence distinction:
-
-`PHASE 4 AI WORKER DIRECTION: PASS` does not mean the live Sol/Terra benchmark ran. It remains unexecuted evidence required before final functional acceptance.
-
-## 4. Canonical completed foundations
+## 3. Canonical completed foundations
 
 ### Phase 0 — ACCEPTED
 Repository-only zero-memory recovery.
 
 ### Phase 1 — ACCEPTED / FROZEN
-Responsibility architecture and cross-repository reconciliation.
+Responsibility architecture and ecosystem reconciliation.
 
 ### Phase 2 — ACCEPTED / FROZEN
 Provider-independent Protocol v0.1:
@@ -73,123 +56,148 @@ Provider-independent Protocol v0.1:
 ### Phase 3 — ACCEPTED / FROZEN
 Fail-closed stdlib JSON/JSONL audit/eval foundation.
 
-### Phase 4 — DIRECTION PASS / SCAFFOLD FROZEN / LIVE EVIDENCE OPEN
-Proposal-only ModelGateway direction, immutable CASE-001–003 pins and bounded validation exist.
+### Phase 4 — DIRECTION PASS / SCAFFOLD FROZEN / LIVE EVIDENCE ACTIVE
+The proposal-only ModelGateway direction is accepted and its scaffold is canonical.
+
+Already present:
+- immutable CASE-001–003 broken-input pins;
+- proposal-only WorkerProposal;
+- thin provider-neutral ModelGateway + narrow Responses adapter;
+- no model tool/shell/write/effect authority;
+- exact target/diff/hash validation;
+- two-model first-pass benchmark plan.
 
 Still unexecuted:
 - real external model calls;
-- two-model measured comparison;
-- real-model proposal routed through Executor;
-- observed model cost/latency/token evidence.
+- measured same-case two-model comparison;
+- real-model proposal routed through controlled Executor/effect path;
+- observed token/cost/latency/retry evidence;
+- evidence-based first-worker selection.
 
-Do not infer these results.
+This active gate is a return to deferred evidence, not a redesign or rollback of Phase 4.
 
-## 5. Phase 5 — ACCEPTED ON THIS CHANGE SET
+### Phase 5 — ACCEPTED / FROZEN
+Strict verified-intent/effect-authority boundary proof.
 
-### Phase 5A — Verified Intent Boundary
+Core outcomes:
+- independent `raw_intent_hash` for exact human input;
+- provider-independent `VerifiedIntentBinding`;
+- separate exact, time-bounded, single-use `EffectAuthority`;
+- no permission inferred from AI interpretation, semantic similarity, confidence or USER-like metadata;
+- 15/15 adversarial/positive-control tests PASS.
 
-Added `VerifiedIntentBinding`:
+Trust-provider selection remains intentionally open.
 
-- binds exact `intent_id` + envelope content hash;
-- adds independent `raw_intent_hash` derived from exact UTF-8 `raw_human_intent`;
-- binds a `principal_ref`;
-- binds immutable origin-event reference + hash + observation time;
-- has content-addressed identity, freshness and status.
+### Phase 6 — CONTROLLED WORKFLOW MECHANISM ACCEPTED / NO MATURITY CLAIM
 
-Critical result:
-
-`raw_intent_hash` is independent of `derived_interpretation`.
-
-AI can revise its interpretation without silently rewriting the preserved human statement.
-
-### Phase 5B — Effect Authority Boundary
-
-Added separate `EffectAuthority`:
-
-- exact verified-intent binding ID + hash;
-- exact EffectProposal ID + hash;
-- exact action + target;
-- evidence requirements;
-- explicit `ALLOW` / `DENY`;
-- issuer reference;
-- expiry;
-- single-use replay protection.
-
-Core rule:
+Human decision `DEC-SAD-010` selected:
 
 ```text
-EffectProposal != EffectAuthority
+BASE: legacy/scriptops-v2-single.py
+REWRITE: NO
+NEW CAPABILITY: NO
+PHASE 6: reuse + hardening + proof
+MATURITY CLAIM: NONE
+FUNCTIONAL_SADDLE_ACCEPTED: NOT YET
 ```
 
-Semantic similarity, AI confidence, derived interpretation or USER-like metadata never create permission.
+Canonical ScriptOps result:
+- repo: `litrgratis-pixel/scriptops`;
+- merged PR #7;
+- merge: `daa6e5dc210e09171a530eeffe5601e0e74ae041`;
+- final verified head: `acbfca79f96407dbd46f9806bf821caf6e02e1af`.
 
-### Implementation
+Final checks on that head:
+- `Verify repository state` run `31421752036` -> SUCCESS;
+- `Phase 6 ScriptOps smoke` run `31421752569` -> SUCCESS.
 
-- `authority/v0.1/verified-intent-binding.schema.json`;
-- `authority/v0.1/effect-authority.schema.json`;
-- `tools/phase5_boundaries.py`;
-- `tests/test_phase5_boundaries.py`;
-- `docs/PHASE5_STRICT_BOUNDARIES_v0.1.md`;
-- `evidence/PHASE5_STRICT_BOUNDARY_TEST_2026-08-10.md`.
+B1–B5 are technically closed:
+1. task/dirty-tree checkpoint lifecycle;
+2. generated preflight/context/candidate/impact lifecycle;
+3. fresh accepted scene hash after status transition;
+4. mandatory human `approve --why`;
+5. impact report + deterministic fresh-Git smoke proof.
 
-### Test evidence
+The historical v2 artifact remained unchanged. The Phase-6 hardening is a bounded shim over the selected substrate, not a rewrite.
 
-Local deterministic Phase-5 slice:
+Cross-repo evidence: `evidence/PHASE6_SCRIPTOPS_CONTROLLED_WORKFLOW_2026-08-10.md`.
+
+## 4. Responsibility-model evidence from Phase 6
+
+The controlled ScriptOps path preserves:
 
 ```text
-python -m compileall -q tools tests
-PASS
-
-python -m unittest discover -s tests -p 'test_phase5_boundaries.py' -v
-Ran 15 tests
-OK
+candidate artifact = proposal, not canon
+evidence/impact = review material, not authority
+human approve --why = semantic decision
+canonical write = consequence after decision
+decision log + Git = durable evidence
 ```
 
-Primary negative cases block:
-- proposal without separate authority;
-- goal-expanding AI interpretation without authority;
-- raw-intent mutation;
-- unverified USER-like origin;
-- authority for another effect;
-- proposal mutation after authority;
-- action/target mismatch;
-- stale binding/authority;
-- explicit deny;
-- replay;
-- wrong intent binding.
+ScriptOps did not become a replacement for Saddle or Executor and gained no autonomous interpretation/authority capability.
 
-Positive control: exact active binding + exact active one-use `ALLOW` authority for the exact proposal returns `ALLOW`.
+## 5. Current evidence boundary
 
-## 6. Trust boundary remains intentionally open
+Saddle remains `NOT_YET_FUNCTIONAL`.
 
-Phase 5 does not select or claim a production identity/request-origin provider.
+Phase 6 proves one controlled workflow mechanism. It does NOT prove:
+- ScriptOps v5/RC1 maturity;
+- independent product/user value;
+- a live real-model Saddle worker;
+- a live real-model proposal through Executor;
+- production request-origin authenticity;
+- complete `EffectReceipt -> StateDelta -> zero-history resume` acceptance;
+- final human acceptance.
 
-The boundary proves structure, integrity, exact binding, freshness and fail-closed behavior around a supplied trusted-origin event. Real-world authenticity of that event remains a later adapter/provider concern.
+## 6. Current live-AI blocker
 
-No enterprise IAM, federation, delegation graph or generalized authority platform was introduced.
+The Phase-4 scaffold previously reached the real external-model boundary.
 
-## 7. Functional acceptance remains open
+Continuation requires all of:
 
-Saddle is still `NOT_YET_FUNCTIONAL`.
+1. an authorized control-plane runner with outbound HTTPS to the selected provider API;
+2. provider credential configured in that runner's secret store/environment, never chat/GitHub/evidence;
+3. explicit human approval for paid benchmark spending;
+4. current provider/model availability re-verified immediately before execution.
 
-Final acceptance still requires:
-- live real-model benchmark evidence from Phase 4;
-- one controlled real user workflow;
-- real bounded Executor/effect execution;
-- verifier evidence;
-- required human review;
-- durable StateDelta;
-- second zero-history resume;
-- explicit final human acceptance.
+The earlier first-pass proposal was maximum 6 calls, zero automatic retries, recommended USD 5 hard cap. That spending recommendation is **not yet a human-approved budget**.
 
-## 8. Current blocker / Phase 6 gate
+## 7. Required next proof
 
-Phase 5 has no remaining strict-boundary blocker on this change set.
+Run the same immutable CASE-001–003 inputs against at least two current suitable model candidates, then for each result record:
 
-Phase 6 is active, but its first real workflow requires an explicit base selection. The existing technical recommendation remains ScriptOps using `legacy/scriptops-v2-single.py`, while earlier governance explicitly reserves that base selection as a human semantic decision.
+- model/version;
+- task result;
+- scope/policy violations;
+- tokens;
+- cost;
+- latency;
+- retries;
+- human corrections;
+- evidence refs.
 
-No runtime implementation should begin until that base is explicitly selected or rejected.
+At least one validated real-model proposal must cross the controlled Executor/effect boundary with objective verifier evidence before the live-AI gate can close.
+
+## 8. Functional acceptance remains unchanged
+
+Final acceptance still requires a fresh-session proof of:
+
+```text
+human raw intent
+→ durable integrity/origin binding
+→ context recovery
+→ real AI problem solving
+→ EffectProposal
+→ exact effect authority
+→ bounded real execution
+→ EffectReceipt / verifier evidence
+→ required human review
+→ StateDelta
+→ second zero-history resume
+```
+
+Only required evidence plus explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
 
 ## 9. One next step
 
-Human selects or rejects `legacy/scriptops-v2-single.py` as the Phase-6 real-workflow implementation base. Current technical recommendation: **select/reuse v2**. If selected, repair only the minimal task -> context -> candidate -> validation -> impact -> human decision with why -> accepted hash -> Git commit -> smoke-evidence path.
+Enable an authorized external model-runner, securely configure its provider credential, obtain explicit human approval for the bounded paid benchmark budget, re-verify current model candidates from official provider sources, and execute the identical pinned CASE-001–003 benchmark/effect proof before selecting the first worker model.

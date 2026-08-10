@@ -17,14 +17,17 @@ The default branch of `litrgratis-pixel/Saddle` owns Saddle-specific product sta
 
 ## Saddle current references
 
-- `DECISION_LOG.md` — human decisions including responsibility boundary, operational delegation and Phase-6 ScriptOps base selection.
+- `DECISION_LOG.md` — human decisions including responsibility boundary, operational delegation, ScriptOps base selection, benchmark approval and Phase-4A/4B evidence split.
 - `PROJECT_STATE.md` — current evidence gate/state.
 - `EXECUTION_PLAN.md` — strategic gated completion path.
 - `TODO.md` — current operational queue; never overrides higher-authority state.
 - `docs/SADDLE_EXECUTOR_RESPONSIBILITY_BOUNDARY.md` — current intent/reasoning/effect/fact ownership split.
 - `docs/PHASE1_ECOSYSTEM_RECONCILIATION_2026-08-10.md` — Phase-1 classification.
+- `docs/PHASE4A_WEB_AI_CALIBRATION.md` — evidence-class boundary for human-guided web calibration versus reproducible API worker proof.
 - `analysis/SADDLE_TEST_SESSION_2026-08-10.md` — six-part test interpretation.
 - `evidence/COLD_START_AUDIT_001.md` — Phase-0 continuity evidence.
+- `evidence/PHASE4A_WEB_AI_CALIBRATION_BASELINE_2026-08-10.md` — first 3-run web-AI calibration baseline; context-contaminated, not worker evidence.
+- `evidence/PHASE4_LIVE_BENCHMARK_PREFLIGHT_2026-08-10.md` — API runner preflight; 54 tests OK, secret absent, 0 calls, USD 0.
 - `evidence/PHASE6_SCRIPTOPS_CONTROLLED_WORKFLOW_2026-08-10.md` — cross-repo Phase-6 mechanism proof.
 
 ## Component sources
@@ -66,13 +69,16 @@ The default branch of `litrgratis-pixel/Saddle` owns Saddle-specific product sta
 - Repo: https://github.com/litrgratis-pixel/executor-pilot-target
 - Main observed: `dc094679ef3e2d5cf5f1aa0ff0fd54d16f201154`
 - Key: `PILOT_CONTRACT.md`, CASE-001–003 branches/tests.
+- Phase-4 immutable calibration/benchmark inputs:
+  - CASE-001 commit `3934a94a5eebf750079200589d6dc40e024d44a0`;
+  - CASE-002 commit `c3683bf37ad6a3f1d49c0ca05ebdd41627e9a5be`;
+  - CASE-003 commit `c42bead2bbbff9c84486f17637ec80f35eeffa25`.
 - Direct CASE-001 solve evidence: commit `313ebc9789a4518d91b8dea440b1aeba5629cb89`, PR #5.
 - Warning: PR #5 base is `case-001-broken`; do not merge the repair into that broken benchmark baseline.
 
 ## Original AI engineering operating package
 
 Preserved:
-
 - `references/AI_ENGINEERING_OS_AGENTS_ORIGINAL.md`
 - `references/README_AI_OS_ORIGINAL.md`
 

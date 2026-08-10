@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_5_ACCEPTED / PHASE_6_AWAITING_REAL_WORKFLOW_BASE_DECISION / NOT_YET_FUNCTIONAL
+status: PHASE_5_ACCEPTED / PHASE_6_ACTIVE / HUMAN_BASE_DECISION_REQUIRED / NOT_YET_FUNCTIONAL
 updated_at: 2026-08-10
 ---
 
@@ -72,7 +72,7 @@ Negative cases block for missing authority, goal-expanding interpretation, raw-i
 
 ## BLOCKER / HUMAN SEMANTIC GATE
 
-The next real workflow needs an explicit base selection.
+The active Phase-6 workflow needs an explicit base selection.
 
 Current technical recommendation remains:
 

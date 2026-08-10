@@ -1,41 +1,10 @@
 # Saddle
 
-Status: `PHASE 3 / AUDIT + EVAL FOUNDATION / NOT YET FUNCTIONAL`
+Status: `PHASE 4 / FIRST REAL AI WORKER / NOT YET FUNCTIONAL`
 
 Saddle is a durable control/coupling layer between **human intent** and **arbitrarily capable AI**.
 
-Its job is not to prescribe how intelligence should think. It preserves and binds human-owned intent, supplies durable context, keeps consequential effects behind authority boundaries, records evidence/state, and lets a fresh session resume from GitHub alone.
-
-## Prime memory law
-
-> Any AI session may end without warning and its conversational memory may be lost forever.
-
-Therefore GitHub is durable memory. A session is never the only owner of a decision, plan, blocker, result or next step.
-
-## Completion lock
-
-Until first functional end-to-end acceptance:
-
-- do not develop new product directions;
-- do not broaden scope;
-- do not add frameworks because they are interesting;
-- park every non-required new idea in `FUTURE_IDEAS.md`;
-- finish the current gated path first.
-
-## Read order for every new session
-
-1. `AGENTS.md`
-2. `PROJECT_STATE.md`
-3. `EXECUTION_PLAN.md`
-4. `TODO.md`
-5. `RESTRICTIONS.md`
-6. `SESSION_HANDOFF.md`
-7. `DECISION_LOG.md`
-8. `ECOSYSTEM_MAP.md`
-9. `SOURCE_REGISTRY.md`
-10. `FUTURE_IDEAS.md` only when needed for parking/reactivation checks
-
-## Responsibility law
+## Core laws
 
 ```text
 HUMAN OWNS INTENT
@@ -47,59 +16,65 @@ VERIFIER ESTABLISHES FACTS
 
 > **NO LAYER MAY SUBSTITUTE FOR A HIGHER-ORDER OWNER.**
 
-Core capability rule:
-
 > **Do not constrain intelligence unnecessarily. Constrain unauthorized effects.**
 
-## Frozen Saddle Protocol v0.1
+GitHub is durable project memory. Completion lock remains active until the first full functional acceptance.
 
-Phase 2 established a provider/model/agent-independent four-object contract:
+## Read order
 
-```text
-IntentEnvelope
-→ EffectProposal
-→ EffectReceipt
-→ StateDelta
-```
+1. `AGENTS.md`
+2. `PROJECT_STATE.md`
+3. `EXECUTION_PLAN.md`
+4. `TODO.md`
+5. `RESTRICTIONS.md`
+6. `SESSION_HANDOFF.md`
+7. `DECISION_LOG.md`
+8. `ECOSYSTEM_MAP.md`
+9. `SOURCE_REGISTRY.md`
 
-Normative description: `docs/SADDLE_PROTOCOL_v0.1.md`.
+## Completed foundations
+
+### Phase 0 — durable memory
+Repository-only cold start passed.
+
+### Phase 1 — reconciliation
+Executor/COS/ScriptOps/pilot material classified and responsibility boundary frozen.
+
+### Phase 2 — Protocol v0.1
+Frozen provider-independent:
+
+`IntentEnvelope → EffectProposal → EffectReceipt → StateDelta`.
 
 Schemas: `protocol/v0.1/`.
+Protocol evidence: 14 tests PASS.
 
-Deterministic utilities/tests:
-- `tools/protocol_v01.py`
-- `tests/test_protocol_v01.py`
+### Phase 3 — audit/eval foundation
+Plain JSON/JSONL + stdlib harness:
 
-Phase-2 evidence: compileall PASS, 14 tests OK. This proves protocol mechanics only, not a functional Saddle.
+- fail-closed eval records and aggregation;
+- state/handoff continuity audit;
+- lane registry for cold-start, Reconstructor, Executor, pilot CASE-001–003 and later ScriptOps;
+- measured fields for model/prompt/result/violations/tokens/cost/latency/retries/human corrections/evidence.
 
-## Current gate
+Phase-3 tests: 12 PASS; combined Phase-2+3 regression: 26 PASS.
 
-Phase 3 builds the smallest stdlib Python + JSON/JSONL audit/eval foundation required to measure later work without adding a full observability platform.
+## Current gate — Phase 4
 
-Target lanes:
-- Saddle/COS cold-start;
-- Reconstructor regression;
-- Executor policy/security;
-- executor-pilot-target CASE-001–003;
-- later ScriptOps smoke.
-
-## Functional Saddle definition
-
-Saddle is **not functional** merely because schemas, documents or components exist.
-
-Functional acceptance still requires:
+Build the first **real** model-generated worker path:
 
 ```text
-human request
-→ durable intent
-→ context recovery
+pinned task/source/tests
+→ thin ModelGateway
 → real AI proposal
-→ exact effect authority
-→ bounded execution
-→ observable evidence
-→ required human review
-→ durable StateDelta/handoff
-→ brand-new zero-history session resumes correctly
+→ bounded validation
+→ Executor effect path
+→ tests + eval evidence
 ```
 
-Until that passes with required human acceptance, status remains `NOT YET FUNCTIONAL`.
+Before model selection, verify current official information and benchmark at least two sensible candidates on the same immutable CASE-001–003 inputs.
+
+No dynamic routing platform, multi-agent system, unrestricted worker shell/write/network, or provider framework.
+
+## Functional acceptance
+
+Saddle is still **NOT YET FUNCTIONAL**. Functional acceptance requires the full human-intent → real AI → authority → bounded effect → evidence → durable StateDelta → zero-history resume loop plus required human acceptance.

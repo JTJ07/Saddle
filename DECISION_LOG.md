@@ -120,12 +120,34 @@ Only explicit human decisions or decisions already clearly established by the pr
 - Explicitly forbidden during this work: multi-agent, autonomous loops, AI memory service, dynamic model routing, tool expansion, browser/computer use, agent framework, generalized IAM/delegation platform.
 - Method: `MODEL -> ATTACK -> INVARIANT -> IMPLEMENTATION -> TEST`.
 
+## DEC-SAD-010 — ScriptOps v2 is the Phase-6 real-workflow base
+
+- Date: 2026-08-10
+- Owner: USER
+- Status: ACTIVE / PHASE-6 SCOPE DECISION
+- Decision:
+  - `YES` — use `legacy/scriptops-v2-single.py` as the Phase-6 implementation base;
+  - `REWRITE: NO`;
+  - `NEW CAPABILITY: NO`;
+  - Phase 6 is `reuse + hardening + proof`;
+  - `MATURITY CLAIM: NONE`;
+  - `FUNCTIONAL_SADDLE_ACCEPTED: NOT YET`.
+- Rationale: choose the shortest path to one working, evidenced controlled flow by preserving known lifecycle, failure modes, decision history and existing mechanisms rather than rebuilding them.
+- Exact implementation scope: close only ScriptOps blockers B1–B5 — Git lifecycle/dirty-tree checkpoints, generated-artifact lifecycle before approval, fresh accepted hash, mandatory human `why`, and impact-report + smoke evidence.
+- Responsibility consequence:
+  - ScriptOps remains an execution/canon-control substrate, not a new semantic owner;
+  - it does not gain intent interpretation, autonomous goal planning or independent effect authority;
+  - a candidate remains a proposal artifact until explicit human approval;
+  - canonical change follows human decision and produces durable evidence.
+- Evidence: ScriptOps PR #7 merged as `daa6e5dc210e09171a530eeffe5601e0e74ae041`; final verified head `acbfca79f96407dbd46f9806bf821caf6e02e1af`; final GitHub Actions `Verify repository state` run `31421752036` PASS and `Phase 6 ScriptOps smoke` run `31421752569` PASS.
+- Next-order decision: after the bounded Phase-6 mechanism proof, return to the still-open live AI-worker benchmark/effect evidence before expanding capability.
+
 ## Not yet a decision
 
 The following remain open until explicitly selected or proven:
 
 - concrete human-identity / request-origin / authority provider;
 - first production model/provider based on real benchmark evidence;
-- whether ScriptOps RC1 is the final first real-domain acceptance case;
+- whether ScriptOps is also the final Phase-7 acceptance domain beyond the completed Phase-6 mechanism proof;
 - whether/when Ginseng runtime is activated;
 - multi-agent architecture.

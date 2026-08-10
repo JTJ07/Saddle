@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:saddle:schema:effect-authority:0.1",
+  "title": "Saddle EffectAuthority v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "authority_id",
+    "content_hash",
+    "decision",
+    "intent_binding_id",
+    "intent_binding_hash",
+    "effect_id",
+    "effect_content_hash",
+    "authorized_action",
+    "authorized_target",
+    "evidence_requirements",
+    "issuer_kind",
+    "issuer_ref",
+    "source_refs",
+    "status",
+    "max_uses",
+    "issued_at",
+    "expires_at",
+    "reason"
+  ],
+  "properties": {
+    "schema_version": {"const": "saddle-effect-authority/0.1"},
+    "authority_id": {"type": "string", "pattern": "^effect-authority:sha256:[0-9a-f]{64}$"},
+    "content_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "decision": {"enum": ["ALLOW", "DENY"]},
+    "intent_binding_id": {"type": "string", "pattern": "^verified-intent:sha256:[0-9a-f]{64}$"},
+    "intent_binding_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "effect_id": {"type": "string", "pattern": "^effect:sha256:[0-9a-f]{64}$"},
+    "effect_content_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "authorized_action": {"type": "string", "minLength": 1},
+    "authorized_target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "ref"],
+      "properties": {
+        "kind": {"type": "string", "minLength": 1},
+        "ref": {"type": "string", "minLength": 1}
+      }
+    },
+    "evidence_requirements": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "issuer_kind": {"enum": ["HUMAN", "POLICY"]},
+    "issuer_ref": {"type": "string", "minLength": 1},
+    "source_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "status": {"enum": ["ACTIVE", "REVOKED", "EXPIRED"]},
+    "max_uses": {"const": 1},
+    "issued_at": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+    "expires_at": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+    "reason": {"type": "string", "minLength": 1}
+  }
+}

@@ -2,266 +2,309 @@
 
 Status: `ACTIVE`
 
-Rule: phases are gates. Do not implement a later phase to avoid finishing an earlier one.
+Rule: phases are gates. Do not implement a later capability merely to avoid proving an earlier boundary.
+
+Explicit roadmap decision `DEC-SAD-009` permits deterministic Phase 5 boundary work while the live external Phase-4 model benchmark remains blocked. This does **not** waive the real-model evidence required before final functional acceptance.
 
 ## PHASE 0 — DURABLE MEMORY BOOTSTRAP
 
-### Goal
-Create the canonical `litrgratis-pixel/Saddle` repository and prove a fresh session can recover the project without this conversation.
+Status: `ACCEPTED`
 
-### Work
-- import this bootstrap package;
-- verify default-branch files;
-- preserve source registry and observed checkpoints;
-- run an independent cold-start audit using only repository content;
-- correct only continuity failures found by the cold start.
+### Goal
+Create the canonical Saddle repository and prove a fresh session can recover the project without chat history.
 
 ### DoD
-- repository exists;
-- root instructions/state/plan/handoff are readable;
-- fresh agent identifies product definition, active completion lock, current blocker, and one next step correctly;
-- no chat transcript is required.
+Repository-only cold start recovers product definition, completion lock, evidence boundary and exactly one next step.
 
-### Forbidden
-- AI worker implementation;
-- authority provider selection;
-- new framework installation;
-- new product features.
+Evidence: `evidence/COLD_START_AUDIT_001.md`.
 
 ---
 
-## PHASE 1 — ECOSYSTEM RECONCILIATION
+## PHASE 1 — ECOSYSTEM / RESPONSIBILITY RECONCILIATION
+
+Status: `ACCEPTED / FOUNDATION FROZEN`
 
 ### Goal
-Make Saddle the current index of what is canonical, draft, experimental, superseded, temporary, and reusable across the existing repositories.
+Classify canonical/draft/experimental/superseded material and freeze the responsibility architecture.
 
-### Work
-- classify relevant open Executor PRs, especially #51–#57 and older experimental stacks;
-- classify COS PR #18 material by semantic value vs stale status;
-- close the GitHub-side ScriptOps access check: document that no later RC1 repo/build is visible in the accessible package; preserve explicit uncertainty about local/off-GitHub artifacts;
-- map current component responsibilities;
-- update `ECOSYSTEM_MAP.md`, `SOURCE_REGISTRY.md`, `PROJECT_STATE.md`.
+### Frozen ownership model
 
-### DoD
-A fresh agent can answer, without guessing:
+```text
+HUMAN OWNS INTENT
+SADDLE PRESERVES INTENT INTEGRITY
+INTELLIGENCE PROPOSES HOW
+EXECUTOR GOVERNS CONSEQUENCES
+VERIFIER ESTABLISHES FACTS
+NO LAYER MAY SUBSTITUTE FOR A HIGHER-ORDER OWNER
+```
 
-- what is canonical now;
-- what is only a draft;
-- which components Saddle reuses;
-- which historical experiments are evidence only;
-- what is blocked.
-
-### Forbidden
-Do not merge/rewrite source repositories merely to make the map look cleaner.
+Evidence: Phase-1 reconciliation docs and `DEC-SAD-006`.
 
 ---
 
-## PHASE 2 — FREEZE SADDLE PROTOCOL v0.1
+## PHASE 2 — SADDLE PROTOCOL v0.1
+
+Status: `ACCEPTED / FOUNDATION FROZEN`
 
 ### Goal
 Define the smallest provider/model/agent-independent coupling contract.
 
-### Required objects
+Frozen objects:
 
 1. `IntentEnvelope`
 2. `EffectProposal`
 3. `EffectReceipt`
 4. `StateDelta`
 
-### Work
-- convert `docs/SADDLE_PROTOCOL_v0.1_DRAFT.md` into reviewed JSON Schemas;
-- define canonical hashing/identity rules;
-- define provenance fields;
-- define authority references without choosing a provider;
-- add deterministic schema tests.
+Key hard separation:
 
-### DoD
-Four schemas can represent the first planned end-to-end path without requiring knowledge of OpenAI/Anthropic/Google, agent frameworks, ScriptOps internals, or a particular authority provider.
+```text
+raw_human_intent != derived_interpretation
+proposal != authority
+execution != proof
+```
 
-### Forbidden
-- provider SDK framework;
-- agent orchestration;
-- UI;
-- database unless schema tests prove plain files insufficient.
+Do not rebuild this foundation unless a later failing test proves a contract defect.
 
 ---
 
 ## PHASE 3 — AUDIT + EVAL FOUNDATION
 
+Status: `ACCEPTED / FOUNDATION FROZEN`
+
 ### Goal
-Make progress measurable and prevent documentation/state drift.
+Make progress measurable and fail closed on missing/negative evidence.
 
-### Work
-Build the smallest plain-Python tools needed for:
+Frozen minimum:
+- plain Python + JSON/JSONL;
+- state/handoff audit;
+- eval result record;
+- fail-closed aggregation;
+- scope/policy violation capture;
+- model/prompt/cost/latency/retry/human-correction fields when observed.
 
-- ecosystem audit snapshot;
-- eval case execution/aggregation;
-- JSON/JSONL result recording;
-- model/prompt/version + tokens/cost/latency + result + scope violations;
-- deterministic validation of state/handoff invariants.
-
-### Initial eval lanes
-
-- Reconstructor regression cases;
-- COS cold-start/resumption cases;
-- Executor security/policy tests;
-- executor-pilot-target CASE-001–003;
-- later ScriptOps smoke path.
-
-### DoD
-One command produces a reviewable result set and cannot silently convert failures into PASS.
-
-### Forbidden
-No Langfuse/LangGraph/full observability platform unless plain records demonstrably block progress.
+No observability platform/database/dashboard unless measured evidence later proves plain records insufficient.
 
 ---
 
-## PHASE 4 — FIRST REAL AI WORKER
+## PHASE 4 — AI PROPOSAL WORKER DIRECTION
+
+Status: `DIRECTION PASS / SCAFFOLD FROZEN / LIVE BENCHMARK EVIDENCE OPEN`
 
 ### Goal
-Replace the hard-coded GP001 repair proposal with a real model-generated proposal while keeping Executor as the effect gate.
+Keep intelligence in a proposal-only role while Executor remains the effect gate.
 
-### Architecture
+### Frozen direction
 
 ```text
 pinned task + source + tests
         ↓
-ModelGateway (control plane)
+ModelGateway control plane
         ↓
 AI proposal only
         ↓
-validation / bounded mutation conversion
+deterministic validation / mutation conversion
         ↓
-Executor effect path
+Executor effect boundary
         ↓
-tests + evidence
+evidence
 ```
 
-### Work
-- implement the thinnest model adapter needed for the benchmark;
-- keep provider credential outside worker sandbox and evidence artifacts;
-- benchmark at least two current capable models on the same cases before selecting the first production worker model;
-- deploy one winner for the first slice, not a dynamic routing platform.
+### Completed direction/scaffold
+- exact CASE-001–003 broken inputs pinned;
+- proposal-only WorkerProposal schema;
+- thin ModelGateway;
+- no model shell/write/tool/effect authority;
+- deterministic path/hash/diff-budget validation;
+- two-model benchmark plan.
 
-### DoD
-CASE-001–003 are solved by real AI-generated proposals from clean starts with:
+### Outstanding evidence
+The real Sol/Terra benchmark has not run because the available environment lacks authorized provider egress/credential/budget.
 
-- zero manual solution edits;
-- no protected-file changes;
-- no policy violations;
-- full tests passing;
-- recorded cost/latency/retries/human review.
+This evidence remains mandatory before final functional acceptance:
+- real model proposals from immutable inputs;
+- at least two candidates compared;
+- no protected-file/policy violations;
+- quality/cost/latency/retries recorded;
+- one worker selected only from evidence;
+- validated proposal routed through the controlled effect path.
+
+`DEC-SAD-009` explicitly allows Phase 5 to proceed without pretending this evidence exists.
 
 ### Forbidden
-- model gets unrestricted write/shell authority;
-- general worker internet;
+- dynamic model router;
 - multi-agent worker;
+- unrestricted worker shell/write/internet;
 - generalized provider framework.
 
 ---
 
-## PHASE 5 — VERIFIED INTENT / HUMAN AUTHORITY BRIDGE
+## PHASE 5 — VERIFIED INTENT + EFFECT AUTHORITY BOUNDARIES
+
+Status: `ACTIVE / STRICT SCOPE`
 
 ### Goal
-Close the gap between a verbatim user request and independently trustworthy authority for the exact intended transaction.
-
-### Inputs
-Reuse and reconcile Executor PR #51–#57 design work.
-
-### Required semantic separation
+Prove the minimal deterministic boundary:
 
 ```text
-human request content
-!= AI interpretation
-!= verified request origin
-!= approval of exact contract
-!= downstream effect permission
+raw human intent
+→ integrity/origin binding
+→ AI EffectProposal
+→ separate exact EffectAuthority
+→ ALLOW / BLOCK
 ```
 
-### Work
-- decide the Saddle-level front-door/verified-intent boundary;
-- preserve raw human intent;
-- define/implement a first `VerifiedIntentEnvelope` compatible with `IntentEnvelope` without coupling Saddle to one vendor;
-- implement only the first authority adapter necessary for the real pilot;
-- prove replay/staleness/scope attacks fail closed.
+Not: implement full authority/IAM.
+
+### Constitutional wording
+
+```text
+SADDLE PRESERVES THE INTEGRITY OF HUMAN INTENT
+```
+
+Not:
+- `Saddle understands intent`;
+- `Saddle authorizes meaning`.
+
+### Phase 5A — Verified Intent Boundary
+
+Prove only:
+
+> this exact raw human input is bound to this principal/source event under this immutable binding.
+
+Minimum:
+- `intent_id` + envelope hash;
+- stable `raw_intent_hash` from exact UTF-8 human input;
+- principal reference;
+- immutable origin event reference + hash;
+- freshness/status;
+- content-addressed binding identity.
+
+Trust-provider selection remains intentionally open.
+
+### Phase 5B — Effect Authority Boundary
+
+Prove only:
+
+> this exact `EffectProposal` is explicitly ALLOW or DENY under this exact verified-intent binding.
+
+Minimum:
+- separate authority object;
+- exact proposal ID + hash;
+- exact action + target;
+- exact verified-intent binding ID + hash;
+- evidence requirements;
+- issuer reference;
+- freshness;
+- single-use/replay protection.
+
+### Negative tests — primary acceptance evidence
+
+Must fail closed for:
+1. AI interpretation expands the human goal but no exact authority exists;
+2. raw intent changes after origin binding;
+3. USER-like metadata exists without verified origin;
+4. authority belongs to another proposal;
+5. proposal mutates after authority;
+6. action or target changes after authority;
+7. binding/authority is stale, expired or revoked;
+8. authority is replayed;
+9. authority explicitly denies;
+10. proposal references a different intent.
+
+Positive control: only exact active binding + exact active `ALLOW` authority for the exact proposal may return `ALLOW`.
+
+### Method
+
+```text
+MODEL
+↓
+ATTACK
+↓
+INVARIANT
+↓
+IMPLEMENTATION
+↓
+TEST
+```
 
 ### DoD
-The first real effect cannot become executable from self-declared model/user metadata alone.
+- provider-independent `VerifiedIntentBinding` and `EffectAuthority` contracts exist;
+- raw intent has an interpretation-independent integrity anchor;
+- no semantic similarity/model claim can create permission;
+- negative tests fail closed;
+- one exact positive-control path passes;
+- trust provider remains unselected;
+- no capability expansion occurs.
 
 ### Forbidden
-- enterprise IAM platform;
-- cross-provider identity federation;
+- enterprise IAM;
+- identity federation;
 - generalized delegation graph;
-- quorum/organization roles unless required by the first pilot.
+- autonomous loops;
+- AI memory service;
+- tool expansion;
+- browser/computer use;
+- agent framework;
+- multi-agent architecture.
 
 ---
 
-## PHASE 6 — SCRIPTOPS RC1 RECOVERY / FIRST REAL DOMAIN
+## PHASE 6 — FIRST REAL USER WORKFLOW
+
+Status: `BLOCKED UNTIL PHASE 5 ACCEPTED`
 
 ### Goal
-Use an existing real workflow instead of inventing a demo domain.
+Move from boundary proof to one controlled real-world workflow without broadening the architecture.
 
-### Work
-First resolve whether any later local/off-GitHub RC1/Codex artifact exists.
+Preferred existing candidate: ScriptOps, subject to the still-open human base-selection decision.
 
-If none exists, evolve the preserved v2 prototype with the smallest RC1 deltas:
+If ScriptOps v2 is selected, repair only the smallest path:
 
-- generic task contract;
-- HANDSHAKE/context export required by RC1;
-- complete validation;
-- minimal impact report;
-- human `approve / reject / revision` with mandatory `why`;
-- clear canonical-commit semantics;
-- full RC1 smoke test.
+```text
+task
+→ context
+→ candidate
+→ validation
+→ impact
+→ human approve/reject/revision with why
+→ accepted hash
+→ Git commit
+→ smoke evidence
+```
 
-Reuse existing v2 CLI/Git/context/hash/staging machinery. Do not rewrite from zero.
-
-### DoD
-One real narrative/canon change crosses the complete loop with human decision and evidence.
-
-### Forbidden
-Follow the existing RC1 scope lock: no browser helper, direct model automation, autonomous writing approval, GUI, vector DB, AI Guard, semantic graph platform, cloud sync, etc. unless Saddle functional acceptance has already been achieved and a new phase is authorized.
+Do not add browser helper, direct autonomous model approval, GUI, vector DB, graph platform or multi-user scope.
 
 ---
 
 ## PHASE 7 — FUNCTIONAL SADDLE ACCEPTANCE
 
-### Goal
-Prove the product, not the components.
+Status: `BLOCKED UNTIL REQUIRED PHASE 4–6 EVIDENCE`
 
-### Test
-Run from a fresh session with no prior chat memory.
+### Goal
+Prove the product, not components.
+
+Required fresh-session chain:
 
 ```text
 human intent
-→ Saddle durable intent
+→ durable raw-intent integrity
+→ verified intent binding
 → context recovery
-→ AI problem solving
-→ effect proposal
-→ authority/effect gate
-→ real bounded execution
-→ evidence
-→ human review
-→ durable state delta
-→ second fresh-session resume
+→ real AI proposal
+→ exact effect authority
+→ bounded real execution
+→ verifier evidence
+→ human review where required
+→ durable StateDelta
+→ second zero-history resume
 ```
 
-### Required evidence
-- input/request identity;
-- source/context references;
-- model and proposal record;
-- effect authorization binding;
-- exact changed artifacts;
-- tests/verifier result;
-- cost/latency;
-- human decision where required;
-- updated project state/handoff;
-- independent cold-start resume result.
+Required evidence includes the still-open real-model benchmark evidence from Phase 4.
 
-### DoD
-Only here may `PROJECT_STATE.md` be changed to:
+Only here, with required evidence and explicit human acceptance, may `PROJECT_STATE.md` become:
 
-`FUNCTIONAL_SADDLE_ACCEPTED`
+`FUNCTIONAL_SADDLE_ACCEPTED`.
 
 ---
 
@@ -269,12 +312,6 @@ Only here may `PROJECT_STATE.md` be changed to:
 
 This phase does not automatically start.
 
-The human reviews the evidence and explicitly decides whether to:
+The human explicitly decides whether to harden, broaden domains, increase autonomy, activate a parked idea, add more models/agents/tools or pursue later self-improvement/resource research.
 
-- continue hardening the current product;
-- activate one parked idea;
-- broaden domains;
-- increase autonomy;
-- add more models/agents/tools.
-
-Until that decision, `FUTURE_IDEAS.md` remains parking only.
+Until then `FUTURE_IDEAS.md` remains parking only.

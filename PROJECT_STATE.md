@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_4_ACTIVE / EXTERNAL_MODEL_RUN_BLOCKED / NOT_YET_FUNCTIONAL
+status: PHASE_5_ACCEPTED / PHASE_6_ACTIVE / HUMAN_BASE_DECISION_REQUIRED / NOT_YET_FUNCTIONAL
 completion_lock: ACTIVE
 state_owner: PROJECT_STATE.md
 updated_at: 2026-08-10
@@ -8,16 +8,18 @@ updated_at: 2026-08-10
 
 # PROJECT_STATE — Saddle
 
-## 1. Product definition
+## 1. Product constitution
 
 ```text
 HUMAN OWNS INTENT
-SADDLE PRESERVES AND BINDS INTENT
+SADDLE PRESERVES INTENT INTEGRITY
 INTELLIGENCE PROPOSES HOW
 EXECUTOR GOVERNS CONSEQUENCES
 VERIFIER ESTABLISHES FACTS
 NO LAYER MAY SUBSTITUTE FOR A HIGHER-ORDER OWNER
 ```
+
+> **Saddle preserves the integrity of human intent. It does not authorize meaning.**
 
 > **Maximize usable AI capability; constrain unauthorized effects, not intelligence itself.**
 
@@ -25,115 +27,169 @@ GitHub is durable memory. Completion lock remains ACTIVE.
 
 ## 2. Current objective
 
-Finish the smallest end-to-end path:
+Move from boundary definition into controlled proof of value without capability expansion.
+
+Final target remains:
 
 ```text
-human intent
-→ durable/bound intent
+human raw intent
+→ durable integrity/origin binding
 → context recovery
 → real AI proposal
 → exact effect authority
 → bounded execution
-→ evidence
+→ verifier evidence
 → durable StateDelta
-→ fresh-session resume
+→ zero-history resume
 ```
 
-## 3. Canonical completed foundations
+## 3. Human verdict / roadmap decision
 
-- Phase 0 durable-memory bootstrap: ACCEPTED.
-- Phase 1 ecosystem/responsibility reconciliation: ACCEPTED.
-- Phase 2 Protocol v0.1: ACCEPTED; merge `819449bab850fdd6cacabc67980d803e0ba43088`.
-- Phase 3 audit/eval foundation: ACCEPTED; merge `801f0561030b528efaa19db01f3a1a587235f437`.
+Recorded in `DEC-SAD-008` and `DEC-SAD-009`:
 
-Reconciled component checkpoints:
-- COS main `3220310267c3d0ba2184daaf3f2adad259a9cb20`;
-- Reconstructor main `defc7b029097284f94136fec54b75c313ac12f68`;
-- ScriptOps main `33c9d15a10dfd3f833a99dfcebea22dd77f26b65`;
-- Executor main `788443c3ed5b290ac8f1de145a93d02d2dd15317`;
-- executor-pilot-target main `dc094679ef3e2d5cf5f1aa0ff0fd54d16f201154`.
+- `RESPONSIBILITY ARCHITECTURE: PASS`;
+- `OWNERSHIP MODEL: PASS`;
+- `PHASE 4 AI WORKER DIRECTION: PASS`;
+- `TRUST BOUNDARIES: OPEN — INTENTIONALLY`;
+- Phase 1–4 foundations are frozen against unnecessary redesign;
+- Phase 5 strict boundary proof was authorized as the next active work.
 
-## 4. Critical current boundaries
+Important evidence distinction:
 
-- `USER PROVENANCE != VERIFIED REQUEST-ORIGIN EVIDENCE`.
-- naive A2 rejected.
-- strengthened-A2 principle retained at Saddle intent boundary.
-- A1 valid delegated/enterprise intake variant.
-- no trust provider selected.
-- ScriptOps v2 remains recommended, not yet human-selected as runtime base.
-- direct Codex CASE-001 solve demonstrates AI-worker capability only; do not merge it into `case-001-broken`.
+`PHASE 4 AI WORKER DIRECTION: PASS` does not mean the live Sol/Terra benchmark ran. It remains unexecuted evidence required before final functional acceptance.
 
-## 5. Phase 4 work completed before external-model boundary
+## 4. Canonical completed foundations
 
-Implemented on the current Phase-4 checkpoint:
+### Phase 0 — ACCEPTED
+Repository-only zero-memory recovery.
 
-- `worker/v0.1/worker-proposal.schema.json`;
-- `config/worker-cases-v0.1.json` with exact CASE-001–003 broken commit pins;
-- `config/model-benchmark-v0.1.json` with Sol/Terra first-pass candidates;
-- `tools/model_gateway.py` — proposal-only `ModelGateway` + narrow OpenAI Responses adapter;
-- `tools/phase4_preflight.py` — non-secret credential/case/model preflight;
-- `tools/phase4_benchmark.py` — exact-checkout proposal generator;
-- Phase-4 boundary tests;
-- `docs/MODEL_GATEWAY_v0.1.md`;
-- `evidence/PHASE4_PRE_CREDENTIAL_CHECKPOINT_2026-08-10.md`.
+### Phase 1 — ACCEPTED / FROZEN
+Responsibility architecture and cross-repository reconciliation.
 
-Model boundary:
-- no tools are supplied to the model;
-- no shell/write/network authority;
-- strict structured WorkerProposal only;
-- model cannot add authority fields;
-- control plane independently verifies exact case/path/diff budget and derives before/after SHA-256;
-- normalized mutation fields match current Executor `AuthorizedFileMutation` input.
+### Phase 2 — ACCEPTED / FROZEN
+Provider-independent Protocol v0.1:
+`IntentEnvelope -> EffectProposal -> EffectReceipt -> StateDelta`.
 
-Pinned broken inputs:
-- CASE-001 `3934a94a5eebf750079200589d6dc40e024d44a0`;
-- CASE-002 `c3683bf37ad6a3f1d49c0ca05ebdd41627e9a5be`;
-- CASE-003 `c42bead2bbbff9c84486f17637ec80f35eeffa25`.
+### Phase 3 — ACCEPTED / FROZEN
+Fail-closed stdlib JSON/JSONL audit/eval foundation.
 
-## 6. Model benchmark plan — not yet executed
+### Phase 4 — DIRECTION PASS / SCAFFOLD FROZEN / LIVE EVIDENCE OPEN
+Proposal-only ModelGateway direction, immutable CASE-001–003 pins and bounded validation exist.
 
-Current research candidates:
-- `gpt-5.6-sol`, medium reasoning;
-- `gpt-5.6-terra`, medium reasoning.
+Still unexecuted:
+- real external model calls;
+- two-model measured comparison;
+- real-model proposal routed through Executor;
+- observed model cost/latency/token evidence.
 
-First-pass proposal:
-- 3 cases × 2 models;
-- one call each = max 6 model calls;
-- zero automatic retries;
-- recommended hard cap USD 5.00;
-- budget status `HUMAN_APPROVAL_REQUIRED`.
+Do not infer these results.
 
-No production model has been selected.
+## 5. Phase 5 — ACCEPTED ON THIS CHANGE SET
 
-## 7. Current evidence boundary
+### Phase 5A — Verified Intent Boundary
 
-Local Phase-4 scaffold test slice: 13 tests PASS.
+Added `VerifiedIntentBinding`:
 
-Actual preflight against the pinned case/model config:
+- binds exact `intent_id` + envelope content hash;
+- adds independent `raw_intent_hash` derived from exact UTF-8 `raw_human_intent`;
+- binds a `principal_ref`;
+- binds immutable origin-event reference + hash + observation time;
+- has content-addressed identity, freshness and status.
+
+Critical result:
+
+`raw_intent_hash` is independent of `derived_interpretation`.
+
+AI can revise its interpretation without silently rewriting the preserved human statement.
+
+### Phase 5B — Effect Authority Boundary
+
+Added separate `EffectAuthority`:
+
+- exact verified-intent binding ID + hash;
+- exact EffectProposal ID + hash;
+- exact action + target;
+- evidence requirements;
+- explicit `ALLOW` / `DENY`;
+- issuer reference;
+- expiry;
+- single-use replay protection.
+
+Core rule:
 
 ```text
-status: BLOCKED
-credential_present: false
-reason: PROVIDER_CREDENTIAL_NOT_CONFIGURED
+EffectProposal != EffectAuthority
 ```
 
-Observed environment variables by presence only:
-`OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `GOOGLE_API_KEY`, `GEMINI_API_KEY` are all NOT SET.
+Semantic similarity, AI confidence, derived interpretation or USER-like metadata never create permission.
 
-The current execution container also lacks generic outbound DNS/HTTPS for arbitrary external API calls, and no installed/in-scope plugin exposes model-inference API execution.
+### Implementation
 
-Therefore NO real Sol/Terra call, quality result, token count, cost, latency or Executor AI-worker run has occurred. Do not infer or invent one.
+- `authority/v0.1/verified-intent-binding.schema.json`;
+- `authority/v0.1/effect-authority.schema.json`;
+- `tools/phase5_boundaries.py`;
+- `tests/test_phase5_boundaries.py`;
+- `docs/PHASE5_STRICT_BOUNDARIES_v0.1.md`;
+- `evidence/PHASE5_STRICT_BOUNDARY_TEST_2026-08-10.md`.
 
-## 8. Current blocker
+### Test evidence
 
-Phase 4 is legitimately blocked at an external human/infrastructure boundary. Real benchmark execution requires all three:
+Local deterministic Phase-5 slice:
 
-1. authorized control-plane runner with outbound HTTPS to the selected provider API;
-2. provider credential configured in that runner's secret environment/store, never pasted into chat or committed to GitHub/evidence;
-3. explicit human approval of the paid benchmark budget.
+```text
+python -m compileall -q tools tests
+PASS
 
-Recommended first-pass budget: hard cap USD 5.00, maximum six calls, no automatic retries.
+python -m unittest discover -s tests -p 'test_phase5_boundaries.py' -v
+Ran 15 tests
+OK
+```
+
+Primary negative cases block:
+- proposal without separate authority;
+- goal-expanding AI interpretation without authority;
+- raw-intent mutation;
+- unverified USER-like origin;
+- authority for another effect;
+- proposal mutation after authority;
+- action/target mismatch;
+- stale binding/authority;
+- explicit deny;
+- replay;
+- wrong intent binding.
+
+Positive control: exact active binding + exact active one-use `ALLOW` authority for the exact proposal returns `ALLOW`.
+
+## 6. Trust boundary remains intentionally open
+
+Phase 5 does not select or claim a production identity/request-origin provider.
+
+The boundary proves structure, integrity, exact binding, freshness and fail-closed behavior around a supplied trusted-origin event. Real-world authenticity of that event remains a later adapter/provider concern.
+
+No enterprise IAM, federation, delegation graph or generalized authority platform was introduced.
+
+## 7. Functional acceptance remains open
+
+Saddle is still `NOT_YET_FUNCTIONAL`.
+
+Final acceptance still requires:
+- live real-model benchmark evidence from Phase 4;
+- one controlled real user workflow;
+- real bounded Executor/effect execution;
+- verifier evidence;
+- required human review;
+- durable StateDelta;
+- second zero-history resume;
+- explicit final human acceptance.
+
+## 8. Current blocker / Phase 6 gate
+
+Phase 5 has no remaining strict-boundary blocker on this change set.
+
+Phase 6 is active, but its first real workflow requires an explicit base selection. The existing technical recommendation remains ScriptOps using `legacy/scriptops-v2-single.py`, while earlier governance explicitly reserves that base selection as a human semantic decision.
+
+No runtime implementation should begin until that base is explicitly selected or rejected.
 
 ## 9. One next step
 
-Provide/enable an authorized external model-runner environment with outbound provider API access, securely configure `OPENAI_API_KEY` there, and explicitly approve the first-pass benchmark budget; then execute Sol vs Terra on the exact pinned CASE-001–003 inputs and record results through the Phase-3 eval harness before selecting any worker model.
+Human selects or rejects `legacy/scriptops-v2-single.py` as the Phase-6 real-workflow implementation base. Current technical recommendation: **select/reuse v2**. If selected, repair only the minimal task -> context -> candidate -> validation -> impact -> human decision with why -> accepted hash -> Git commit -> smoke-evidence path.

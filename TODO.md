@@ -30,9 +30,24 @@ Status: `DONE / FROZEN`
 Evidence: canonical merge `801f0561...`, fail-closed JSON/JSONL harness.
 
 ## T6 — Phase 4 live AI-worker evidence
-Status: `READY / NEXT`
+Status: `BLOCKED / NEXT HUMAN SECURITY ACTION`
 Direction/scaffold: `PASS / FROZEN`.
 Live evidence: `OPEN`.
+
+Human authorization: `DEC-SAD-011`.
+
+Approved bound:
+
+```text
+BUDGET: max USD 5
+CALLS: max 6
+AUTOMATIC RETRIES: 0
+SCOPE: benchmark only
+NEW CAPABILITY: NO
+AUTONOMOUS EXECUTION: NO
+AUTHORITY EXPANSION: NO
+TOOL ACCESS EXPANSION: NO
+```
 
 Already completed:
 - immutable CASE-001–003 pins;
@@ -40,19 +55,34 @@ Already completed:
 - thin ModelGateway;
 - no model effect authority;
 - exact target/hash/diff validation;
-- first-pass two-model benchmark harness/plan.
+- Sol/Terra current public API availability reverified from official OpenAI sources;
+- GitHub Actions benchmark runner created in PR #14;
+- complete deterministic regression on that runner: `54 tests / OK`;
+- runner/effect token permissions remain read-only;
+- benchmark preflight run `31423378809`, job `93569214499` stopped before API because `OPENAI_API_KEY` is absent;
+- model calls `0`, retries `0`, spend `USD 0`.
 
-Required to close live evidence:
-1. authorized external runner with provider HTTPS;
-2. provider credential only in secure runner secret storage;
-3. explicit human paid benchmark budget approval;
-4. re-verify current model/API candidates immediately before run;
-5. same CASE-001–003 across at least two current suitable candidates;
-6. record quality/result, scope/policy violations, tokens, cost, latency, retries, human corrections and evidence refs;
-7. route at least one validated real-model proposal through the controlled Executor/effect boundary;
-8. select the first worker only from evidence.
+### READY / NEXT — only active item
 
-Earlier budget recommendation: max 6 calls, zero automatic retries, USD 5 hard cap. **Recommendation only; not yet approved spending authority.**
+Configure GitHub Actions repository secret:
+
+```text
+Repository: litrgratis-pixel/Saddle
+Secret name: OPENAI_API_KEY
+```
+
+Do **not** place the secret in chat, source files, PR comments, logs or evidence.
+
+After it is configured, re-run failed benchmark run `31423378809` / job `93569214499` under the unchanged approved limits.
+
+Then:
+1. compare Sol/Terra on CASE-001 first;
+2. continue CASE-002/003 only within call/budget guard;
+3. record proposal correctness, scope, structure, rationale, tests, tokens, cost, latency and retries;
+4. move result to `EVALUATION -> HUMAN DECISION`;
+5. do not automatically expand autonomy.
+
+Later, at least one selected validated proposal must cross the controlled Executor/effect boundary before live-AI evidence can fully close.
 
 No dynamic router, multi-agent, general tool expansion or unrestricted worker shell/write/network.
 

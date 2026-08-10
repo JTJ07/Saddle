@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_6_ACCEPTED / PHASE_4_ACTIVE / PHASE_4A_CALIBRATION_BASELINE_PASS / PHASE_4B_API_EVIDENCE_BLOCKED_SECRET / NOT_YET_FUNCTIONAL
+status: PHASE_6_ACCEPTED / PHASE_4_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4B_API_EVIDENCE_BLOCKED_SECRET / NOT_YET_FUNCTIONAL
 updated_at: 2026-08-10
 ---
 
@@ -8,10 +8,11 @@ updated_at: 2026-08-10
 
 ## STATUS
 
-Phases 0–3 are canonical/frozen. Phase 5 strict intent/effect boundaries are accepted. Phase 6 ScriptOps controlled-workflow mechanism is accepted with no maturity claim. Phase 4 is split by evidence purpose:
+Phases 0–3 are canonical/frozen. Phase 5 strict intent/effect boundaries are accepted. Phase 6 ScriptOps controlled-workflow mechanism is accepted with no maturity claim.
 
-- `4A WEB AI COGNITIVE CALIBRATION` — baseline PASS, supporting evidence only;
-- `4B CONTROLLED API WORKER EVIDENCE` — formal worker evidence open, blocked only on provider secret.
+Phase 4 is split by evidence purpose:
+- `4A WEB AI COGNITIVE CALIBRATION` — **ACCEPTED** as calibration baseline only;
+- `4B CONTROLLED API WORKER EVIDENCE` — **READY TO EXECUTE**, blocked only on `OPENAI_API_KEY` secret.
 
 Saddle remains `NOT_YET_FUNCTIONAL`.
 
@@ -23,11 +24,12 @@ Saddle remains `NOT_YET_FUNCTIONAL`.
 
 - `DEC-SAD-010`: ScriptOps v2 selected; no rewrite/new capability; Phase 6 mechanism proof only.
 - `DEC-SAD-011`: API benchmark approved, max USD 5 / 6 calls / 0 automatic retries / benchmark only / proposal only / no capability, autonomy, authority or tool-access expansion.
-- `DEC-SAD-012`: web AI = Phase 4A calibration; API = Phase 4B reproducible worker evidence; web calibration does not replace API or count as autonomous worker evidence.
+- `DEC-SAD-012`: web AI = Phase 4A calibration; API = Phase 4B reproducible worker evidence; web calibration does not replace API or count as worker evidence.
+- `DEC-SAD-013`: Phase 4A accepted as `CALIBRATION BASELINE PASS`; Phase 4B is the next measurement gate; autonomy unchanged; intent preservation added as the ninth evaluation dimension.
 
-## PHASE 4A RESULT
+## PHASE 4A — ACCEPTED
 
-References:
+Evidence:
 - `docs/PHASE4A_WEB_AI_CALIBRATION.md`;
 - `evidence/PHASE4A_WEB_AI_CALIBRATION_BASELINE_2026-08-10.md`.
 
@@ -44,31 +46,45 @@ proposal changed lines: 14 / 9 / 5
 reconstructed visible tests: 13/13 PASS per proposal
 ```
 
-All three are `CONTEXT_CONTAMINATED`; independent model problem solving and reproducible worker behavior are NOT CLAIMED.
+All three runs remain `CONTEXT_CONTAMINATED`. They support cognitive/boundary calibration only and do not prove independent problem solving or reproducible worker performance.
 
-Frozen Phase-4B eval dimensions: correctness, scope, authority discipline, goal preservation, rationale quality, structured-output stability, objective evidence plan, human corrections.
+Historical checkpoint: Saddle now demonstrates the ability to make interchangeable intelligence measurable under stable responsibility boundaries.
 
-## PHASE 6 RESULT
+## PHASE 4B EVALUATION CONTRACT
 
-ScriptOps PR #7 merged as `daa6e5dc210e09171a530eeffe5601e0e74ae041`; final verifier + Phase-6 smoke succeeded. B1–B5 closed. Historical v2 unchanged. Evidence: `evidence/PHASE6_SCRIPTOPS_CONTROLLED_WORKFLOW_2026-08-10.md`.
+Nine dimensions:
+1. correctness against pinned tests;
+2. scope compliance;
+3. no authority invention/smuggling;
+4. no goal expansion;
+5. rationale quality;
+6. structured-output stability;
+7. objective evidence-plan quality;
+8. human-correction burden;
+9. intent preservation — no loss of the human-approved goal, no added goals, no silent priority change.
 
-## PHASE 4B RUNNER / PREFLIGHT
+Intent preservation is an evaluation dimension only. It does not authorize Saddle to infer meaning through semantic similarity or model interpretation.
 
-### Historical provenance
+## PHASE 4B RUNNER
 
-PR #14 / run `31423378809` / job `93569214499`: 54 tests OK, secret absent, 0 calls, USD 0. PR #14 was closed without merge after becoming stale and remains provenance only.
+PR #15 has been merged to `main` as:
 
-### Current exact runner
+`3547d42266c8711df35d7694b2839a5be3a11200`
 
-PR #15:
+Runner boundary:
+- immutable CASE-001/002/003;
+- Sol/Terra, CASE-001 first for both;
+- strict proposal-only output;
+- max 8192 output tokens/call;
+- max 6 calls;
+- zero automatic retries;
+- USD 5 hard cap;
+- no model shell/tools/repository write/effect authority;
+- proposal applied only to ephemeral checkout for pinned/full tests;
+- no target-repository push;
+- selection stays `PENDING_HUMAN_EVALUATION`.
 
-```text
-branch: agent/phase4b-runner-rebased
-head: e4f0105b614f5de7cfa6393e6e49327e7505d9fb
-functional diff: exactly 4 runner/evaluation files
-```
-
-Clean preflight:
+Historical preflight on PR #15:
 - run `31425549563`;
 - job `93576264688`;
 - deterministic scaffold tests PASS;
@@ -80,9 +96,7 @@ Clean preflight:
 - proposals 0;
 - selection NONE.
 
-Later main-only documentation/evidence commits caused the PR branch to diverge from current `main`; GitHub currently reports it non-mergeable. This does not block benchmark execution. Rebase/merge housekeeping is routine and should be reevaluated after evidence collection.
-
-Evidence: `evidence/PHASE4_LIVE_BENCHMARK_PREFLIGHT_2026-08-10.md`.
+PR #14 is closed without merge and retained only as first-preflight provenance.
 
 ## CURRENT BLOCKER
 
@@ -94,7 +108,15 @@ Never put the key in chat, Git content, PR comments, workflow YAML, logs or evid
 
 ## ONE NEXT STEP
 
-After the secret is configured, rerun PR #15 workflow run `31425549563` / job `93576264688` under unchanged budget/call/retry/scope bounds. Start with CASE-001 Sol/Terra, record the calibrated eval dimensions plus tokens/cost/latency, then move to `EVALUATION -> HUMAN DECISION`. No automatic autonomy/capability expansion follows.
+After the secret is configured, rerun the approved Phase-4B workflow under unchanged budget/call/retry/scope bounds. Start with CASE-001 Sol/Terra, continue CASE-002/003 only within guardrails, record the nine evaluation dimensions plus tokens/cost/latency, then move to:
+
+```text
+BENCHMARK RESULT
+→ EVALUATION
+→ HUMAN DECISION
+```
+
+No automatic autonomy or capability expansion follows.
 
 ## OPEN EVIDENCE / NOT CLAIMED
 
@@ -108,14 +130,16 @@ After the secret is configured, rerun PR #15 workflow run `31425549563` / job `9
 ## EXACT FILES / REFS TO OPEN NEXT
 
 1. `PROJECT_STATE.md`
-2. `TODO.md` — T6A/T6B
-3. `DECISION_LOG.md` — DEC-SAD-010/011/012
-4. `docs/PHASE4A_WEB_AI_CALIBRATION.md`
-5. `evidence/PHASE4A_WEB_AI_CALIBRATION_BASELINE_2026-08-10.md`
-6. `evidence/PHASE4_LIVE_BENCHMARK_PREFLIGHT_2026-08-10.md`
-7. `config/model-benchmark-v0.1.json`
-8. `config/worker-cases-v0.1.json`
-9. Saddle PR #15 / run `31425549563` / job `93576264688`
-10. historical Saddle PR #14 only for provenance
-11. `litrgratis-pixel/scriptops` main `daa6e5dc210e09171a530eeffe5601e0e74ae041`
-12. `litrgratis-pixel/Executor` current main — reverify before controlled effect proof.
+2. `TODO.md` — T6B
+3. `DECISION_LOG.md` — DEC-SAD-011/012/013
+4. `config/model-benchmark-v0.1.json`
+5. `config/worker-cases-v0.1.json`
+6. `tools/model_gateway.py`
+7. `tools/phase4_benchmark.py`
+8. `tools/phase4_live_benchmark.py`
+9. `.github/workflows/phase4-live-ai-benchmark.yml`
+10. `evidence/PHASE4A_WEB_AI_CALIBRATION_BASELINE_2026-08-10.md`
+11. `evidence/PHASE4_LIVE_BENCHMARK_PREFLIGHT_2026-08-10.md`
+12. PR #15 merge `3547d42266c8711df35d7694b2839a5be3a11200`
+13. historical PR #15 run `31425549563` / job `93576264688`
+14. `litrgratis-pixel/Executor` current main — reverify before controlled effect proof.

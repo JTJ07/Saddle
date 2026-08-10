@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_6_ACCEPTED / PHASE_4_LIVE_EVIDENCE_BLOCKED_SECRET / NOT_YET_FUNCTIONAL
+status: PHASE_6_ACCEPTED / PHASE_4A_CALIBRATION_BASELINE_PASS / PHASE_4B_API_EVIDENCE_BLOCKED_SECRET / NOT_YET_FUNCTIONAL
 updated_at: 2026-08-10
 ---
 
@@ -8,15 +8,20 @@ updated_at: 2026-08-10
 
 ## STATUS
 
-Phases 0–3 are canonical/frozen foundations. Phase-4 AI-worker direction/scaffold is frozen as PASS direction but live real-model evidence remains open. Phase 5 strict intent/effect boundary proof is accepted. Phase 6 ScriptOps controlled workflow mechanism proof is accepted with no maturity claim. Saddle remains `NOT_YET_FUNCTIONAL`.
+Phases 0–3 are canonical/frozen foundations. Phase 5 strict intent/effect boundaries are accepted. Phase 6 ScriptOps controlled workflow mechanism is accepted with no maturity claim. Phase 4 is now split by evidence purpose:
+
+- `4A WEB AI COGNITIVE CALIBRATION` — baseline PASS as supporting evidence only;
+- `4B CONTROLLED API WORKER EVIDENCE` — formal worker evidence still open and blocked only on provider secret.
+
+Saddle remains `NOT_YET_FUNCTIONAL`.
 
 ## ACTIVE GATE
 
-`LIVE AI-WORKER BENCHMARK — BLOCKED ONLY ON PROVIDER SECRET`
+`PHASE 4B API WORKER EVIDENCE — BLOCKED ONLY ON OPENAI_API_KEY SECRET`
 
 ## HUMAN DECISIONS
 
-`DEC-SAD-010`:
+### DEC-SAD-010
 
 ```text
 PHASE 6: ACCEPTED
@@ -25,7 +30,7 @@ MATURITY: NONE
 FUNCTIONAL_SADDLE_ACCEPTED: NOT YET
 ```
 
-`DEC-SAD-011`:
+### DEC-SAD-011
 
 ```text
 REAL AI WORKER BENCHMARK: APPROVED
@@ -39,51 +44,80 @@ AUTHORITY EXPANSION: NO
 TOOL ACCESS EXPANSION: NO
 ```
 
+### DEC-SAD-012
+
+```text
+WEB AI CALIBRATION PATH: APPROVED
+WEB AI = PHASE 4A COGNITIVE CALIBRATION
+API = PHASE 4B REPRODUCIBLE WORKER EVIDENCE
+WEB AI DOES NOT REPLACE API
+WEB AI DOES NOT COUNT AS AUTONOMOUS WORKER EVIDENCE
+```
+
+## PHASE 4A RESULT
+
+Reference: `docs/PHASE4A_WEB_AI_CALIBRATION.md`.
+Evidence: `evidence/PHASE4A_WEB_AI_CALIBRATION_BASELINE_2026-08-10.md`.
+
+Three manual web-AI baseline runs were recorded on immutable CASE-001/002/003 inputs.
+
+Aggregate:
+
+```text
+runs: 3
+boundary discipline PASS: 3/3
+scope violations: 0
+authority invention/smuggling: 0
+execution claims: 0
+unnecessary capability expansion: 0
+proposal changed lines: 14 / 9 / 5
+reconstructed visible tests: 13/13 PASS per proposal
+```
+
+Critical limitation: all three runs are `CONTEXT_CONTAMINATED` by the existing Saddle session and cross-case inspection. They may calibrate scope/authority/structure behavior but **do not** prove independent model problem solving or reproducible worker behavior.
+
+The calibration baseline froze these Phase-4B evaluation dimensions:
+1. correctness against pinned tests;
+2. scope compliance;
+3. no authority invention/smuggling;
+4. no goal expansion;
+5. rationale quality;
+6. structured-output stability;
+7. objective evidence plan;
+8. human corrections required.
+
+Fresh-session web repeats are optional supporting evidence unless they reveal a contract defect.
+
 ## PHASE 6 RESULT
 
-ScriptOps PR #7 merged as:
-
-`daa6e5dc210e09171a530eeffe5601e0e74ae041`
-
-Final verified head:
-
-`acbfca79f96407dbd46f9806bf821caf6e02e1af`
-
-Final checks:
-- `Verify repository state` run `31421752036` -> SUCCESS;
-- `Phase 6 ScriptOps smoke` run `31421752569` -> SUCCESS.
+ScriptOps PR #7 merged as `daa6e5dc210e09171a530eeffe5601e0e74ae041`.
+Final verified head `acbfca79f96407dbd46f9806bf821caf6e02e1af` passed:
+- `Verify repository state` run `31421752036`;
+- `Phase 6 ScriptOps smoke` run `31421752569`.
 
 B1–B5 are closed. Historical `legacy/scriptops-v2-single.py` remains unchanged. Cross-repo evidence: `evidence/PHASE6_SCRIPTOPS_CONTROLLED_WORKFLOW_2026-08-10.md`.
 
-## LIVE BENCHMARK PREPARATION
+## PHASE 4B PREPARATION / PREFLIGHT
 
-Official OpenAI documentation was rechecked on 2026-08-10 and still lists:
-- `gpt-5.6-sol`;
-- `gpt-5.6-terra`.
-
-Public API availability is not evidence of account-level access.
-
-Saddle PR #14 contains the bounded one-shot benchmark runner:
-- proposal-only model role;
-- strict structured output;
-- max 8192 output tokens per call;
+Saddle PR #14 contains the bounded one-shot API benchmark runner:
+- Sol/Terra candidates;
+- immutable CASE-001–003 inputs;
+- proposal-only structured output;
+- no model shell/tool/repo write/effect authority;
+- max 8192 output tokens/call;
 - max 6 calls;
 - zero automatic retries;
-- no target-repo push/write;
-- each proposal applied only in an ephemeral checkout for pinned target/full tests;
-- selection remains pending evaluation.
+- target proposal tested only in ephemeral checkout;
+- no push to target repo;
+- selection remains `PENDING_HUMAN_EVALUATION`.
 
-## PREFLIGHT EVIDENCE
+GitHub Actions run `31423378809`, job `93569214499` observed:
+1. runner available;
+2. deterministic Saddle regression `54 tests / OK`;
+3. `OPENAI_API_KEY` presence check failed safely;
+4. paid benchmark step skipped.
 
-GitHub Actions run `31423378809`, job `93569214499`:
-
-1. runner initialized successfully;
-2. complete deterministic Saddle regression: `54 tests / OK`;
-3. secret-presence gate checked only whether `OPENAI_API_KEY` existed;
-4. result: secret absent;
-5. paid benchmark step skipped.
-
-Observed totals:
+Totals:
 
 ```text
 MODEL CALLS: 0
@@ -101,34 +135,38 @@ Only one prerequisite remains:
 
 > configure an OpenAI API key as GitHub Actions repository secret `OPENAI_API_KEY` in `litrgratis-pixel/Saddle`.
 
-Never put the key in chat, Git content, a PR comment, workflow YAML, logs or evidence.
+Never place the key in chat, Git content, PR comments, workflow YAML, logs or evidence.
 
 ## ONE NEXT STEP
 
-After `OPENAI_API_KEY` is configured, re-run failed workflow run `31423378809` / job `93569214499` without changing the approved budget/call/retry/scope bounds.
+After the secret is configured, re-run failed workflow run `31423378809` / job `93569214499` without changing budget/call/retry/scope bounds.
 
-The benchmark must begin with CASE-001 for Sol and Terra. Results then move to `EVALUATION -> HUMAN DECISION`; no automatic autonomy/capability expansion follows.
+Benchmark begins with CASE-001 for Sol and Terra, continues only within the existing cap, records the calibrated eval dimensions + tokens/cost/latency, then moves to `EVALUATION -> HUMAN DECISION`.
+
+No automatic autonomy/capability expansion follows.
 
 ## OPEN EVIDENCE / NOT CLAIMED
 
-- no paid model call has occurred yet;
-- no real-model proposal exists yet;
-- no first worker model has been selected;
-- no real-model proposal has crossed the Executor effect boundary;
-- no production request-origin provider is selected;
+- no paid model call yet;
+- no reproducible API model proposal yet;
+- no first worker selection;
+- no real-model proposal through Executor effect boundary;
+- no production request-origin provider;
 - no functional Saddle claim.
 
 ## EXACT FILES / REFS TO OPEN NEXT
 
 1. `PROJECT_STATE.md`
-2. `TODO.md` — T6
-3. `DECISION_LOG.md` — DEC-SAD-010/011
-4. `config/model-benchmark-v0.1.json`
-5. `config/worker-cases-v0.1.json`
-6. `tools/model_gateway.py`
-7. `tools/phase4_benchmark.py`
-8. `evidence/PHASE4_LIVE_BENCHMARK_PREFLIGHT_2026-08-10.md`
-9. Saddle PR #14
-10. workflow run `31423378809`, job `93569214499`
-11. `litrgratis-pixel/scriptops` main `daa6e5dc210e09171a530eeffe5601e0e74ae041`
-12. `litrgratis-pixel/Executor` current main (re-verify before controlled effect proof)
+2. `TODO.md` — T6A/T6B
+3. `DECISION_LOG.md` — DEC-SAD-010/011/012
+4. `docs/PHASE4A_WEB_AI_CALIBRATION.md`
+5. `evidence/PHASE4A_WEB_AI_CALIBRATION_BASELINE_2026-08-10.md`
+6. `config/model-benchmark-v0.1.json`
+7. `config/worker-cases-v0.1.json`
+8. `tools/model_gateway.py`
+9. `tools/phase4_benchmark.py`
+10. `evidence/PHASE4_LIVE_BENCHMARK_PREFLIGHT_2026-08-10.md`
+11. Saddle PR #14
+12. workflow run `31423378809`, job `93569214499`
+13. `litrgratis-pixel/scriptops` main `daa6e5dc210e09171a530eeffe5601e0e74ae041`
+14. `litrgratis-pixel/Executor` current main (re-verify before controlled effect proof)

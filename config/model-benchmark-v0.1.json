@@ -19,8 +19,16 @@
     }
   ],
   "cases": ["CASE-001", "CASE-002", "CASE-003"],
+  "first_pass_policy": {
+    "calls_per_candidate_per_case": 1,
+    "max_total_model_calls": 6,
+    "automatic_retries": 0,
+    "recommended_hard_cap_usd_minor": 500,
+    "budget_status": "HUMAN_APPROVAL_REQUIRED"
+  },
   "required_before_run": [
-    "OPENAI_API_KEY configured in control-plane environment, never chat/repo/evidence",
+    "authorized runner with outbound HTTPS to the provider API",
+    "OPENAI_API_KEY configured in runner secret environment, never chat/repo/evidence",
     "candidate model IDs verified against the authorized API account",
     "human-approved paid API benchmark budget",
     "immutable case commit checks pass"
@@ -28,7 +36,10 @@
   "selection_rule": "Do not select a production worker from reputation. Compare the same cases and record task result, scope/policy violations, tokens, cost, latency, retries and human corrections.",
   "official_sources": [
     "https://openai.com/index/gpt-5-6/",
-    "https://help.openai.com/en/articles/20001354-gpt-5-6-in-chatgpt",
+    "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+    "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+    "https://developers.openai.com/api/docs/models/compare",
+    "https://openai.com/api/pricing/",
     "https://platform.openai.com/docs/api-reference/responses",
     "https://platform.openai.com/docs/api-reference/models",
     "https://platform.openai.com/docs/quickstart"

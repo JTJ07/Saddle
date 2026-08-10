@@ -30,8 +30,8 @@ Status: `DONE / FROZEN`
 Evidence: canonical merge `801f0561...`, fail-closed JSON/JSONL harness.
 
 ## T6A — Phase 4A web-AI cognitive calibration
-Status: `BASELINE DONE / SUPPORTING EVIDENCE ONLY`
-Human decision: `DEC-SAD-012`.
+Status: `DONE / ACCEPTED / COGNITIVE CALIBRATION ONLY`
+Human decision: `DEC-SAD-012` + `DEC-SAD-013`.
 
 Evidence:
 - `docs/PHASE4A_WEB_AI_CALIBRATION.md`;
@@ -43,14 +43,16 @@ Evidence:
 - execution claims 0;
 - reconstructed visible tests 13/13 PASS per proposal.
 
-Limitation: all baseline runs were context-contaminated; independent model-solving ability is not evaluated or claimed. Fresh web repeats are optional supporting evidence unless they expose a contract defect.
+Hard limits:
+- all baseline runs remain `CONTEXT_CONTAMINATED`;
+- independent model-solving ability is not evaluated or claimed;
+- `WEB_AI_CALIBRATION != API_WORKER_EVIDENCE`.
 
-Hard rule: `WEB_AI_CALIBRATION != API_WORKER_EVIDENCE`.
+Do not perform more Phase-4A design/calibration unless Phase 4B evidence reveals a contract defect.
 
 ## T6B — Phase 4B reproducible API worker evidence
 Status: `READY / NEXT`
 Blocker: `HUMAN SECURITY ACTION — OPENAI_API_KEY REPOSITORY SECRET REQUIRED`.
-Direction/scaffold: `PASS / FROZEN`.
 Formal worker evidence: `OPEN`.
 
 Human approval `DEC-SAD-011`:
@@ -66,42 +68,33 @@ AUTHORITY EXPANSION: NO
 TOOL ACCESS EXPANSION: NO
 ```
 
-Calibration-frozen evaluation dimensions:
-1. proposal correctness against pinned tests;
+Canonical runner:
+- PR #15 merged as `3547d42266c8711df35d7694b2839a5be3a11200`;
+- proposal-only;
+- no model shell/tools/repo write/effect authority;
+- ephemeral pinned checkouts only;
+- no target-repo push.
+
+Evaluation contract:
+1. correctness against pinned tests;
 2. scope compliance;
 3. no authority invention/smuggling;
 4. no goal expansion beyond human task;
 5. rationale quality;
 6. structured-output stability;
-7. objective evidence plan;
-8. human corrections required.
+7. objective evidence-plan quality;
+8. human-correction burden;
+9. intent preservation against preserved human-approved intent — no lost goal, added goal or silent priority change.
 
-### Current exact runner
+`Intent preservation` must not become an automated semantic-authority mechanism.
 
-Saddle PR #15:
-
-```text
-branch: agent/phase4b-runner-rebased
-head: e4f0105b614f5de7cfa6393e6e49327e7505d9fb
-functional diff: exactly 4 runner/evaluation files
-```
-
-Clean preflight:
-- run `31425549563`;
-- job `93576264688`;
+Preflight evidence:
+- PR #15 run `31425549563`, job `93576264688`;
 - deterministic scaffold tests PASS;
-- `OPENAI_API_KEY` absent;
-- benchmark step skipped;
-- calls 0;
-- retries 0;
-- spend USD 0;
-- proposals 0.
+- missing `OPENAI_API_KEY` detected before any model call;
+- calls 0, retries 0, spend USD 0, proposals 0.
 
-Later main-only documentation/evidence commits caused the PR branch to diverge from current `main`; GitHub currently reports it non-mergeable. This does not block benchmark execution. Rebase/merge housekeeping is routine and should be reevaluated after evidence collection.
-
-Historical PR #14 is closed without merge and retained only as first-preflight provenance.
-
-### NEXT HUMAN SECURITY ACTION — only active blocker for model execution
+### READY / NEXT — only active item
 
 Configure GitHub Actions repository secret:
 
@@ -112,9 +105,17 @@ Secret name: OPENAI_API_KEY
 
 Never place the secret in chat, source, PR comments, workflow YAML, logs or evidence.
 
-After configuration, rerun PR #15 run `31425549563` / job `93576264688` under unchanged limits. Then compare Sol/Terra on immutable CASE-001–003, record calibrated eval dimensions + tokens/cost/latency/retries, and move results to `EVALUATION -> HUMAN DECISION`.
+After configuration, rerun the approved benchmark under unchanged bounds. Start CASE-001 Sol/Terra, then CASE-002/003 only within the same call/budget guard. Record the nine eval dimensions + tokens/cost/latency/retries.
 
-At least one later selected validated real-model proposal must cross the controlled Executor/effect boundary before live-AI evidence can fully close.
+Then:
+
+```text
+BENCHMARK RESULT -> EVALUATION -> HUMAN DECISION
+```
+
+No automatic model selection or autonomy/capability expansion.
+
+At least one later selected validated real-model proposal must cross the controlled Executor/effect boundary before live-AI evidence fully closes.
 
 ## T7 — Phase 5 strict verified-intent + effect-authority boundaries
 Status: `DONE / FROZEN`

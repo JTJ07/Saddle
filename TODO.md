@@ -3,19 +3,12 @@
 Status: `ACTIVE / COMPLETION LOCK ENFORCED`
 Updated: 2026-08-10
 
-## Authority
-1. `DECISION_LOG.md`
-2. `PROJECT_STATE.md`
-3. `EXECUTION_PLAN.md`
-4. `TODO.md`
-5. `SESSION_HANDOFF.md`
-6. draft analysis/PR material
+Authority: `DECISION_LOG.md` > `PROJECT_STATE.md` > `EXECUTION_PLAN.md` > `TODO.md` > `SESSION_HANDOFF.md` > draft analysis.
 
 Rules: work top-to-bottom; one implementation item at a time; `DONE` needs evidence; park new ideas; keep broken eval inputs reproducible; DEC-SAD-007 permits routine scheduled execution but not goal/lock/security/authority expansion or self-declared functional acceptance.
 
 ## T0 — Durable-memory bootstrap
 Status: `DONE`
-Evidence: cold-start audit + merged `b950660c...`.
 
 ## T1 — Preserve six-part test evidence
 Status: `DONE`
@@ -26,74 +19,61 @@ IDEA-SAD-014/015 remain `PARKED`.
 
 ## T3 — Ecosystem reconciliation
 Status: `DONE`
-Evidence: Phase-1 reconciliation + merged `2e0bd347...`.
+Evidence: canonical merge `2e0bd347...`.
 
 ## T4 — Freeze Saddle Protocol v0.1
 Status: `DONE`
-Evidence: frozen schemas/validator + 14 tests + merged `819449ba...`.
+Evidence: canonical merge `819449ba...`, 14 protocol tests.
 
 ## T5 — Minimal audit + eval foundation
-Status: `DONE ON CURRENT PHASE-3 CHANGE SET`
-
-Artifacts:
-- `eval/v0.1/eval-result.schema.json`;
-- `config/eval-lanes.json`;
-- `tools/eval_harness.py`;
-- `tests/test_eval_harness.py`;
-- `docs/EVAL_FOUNDATION_v0.1.md`;
-- smoke record/summary and Phase-3 evidence.
-
-Evidence:
-- 12/12 Phase-3 tests PASS;
-- combined Phase-2+3 regression 26/26 PASS;
-- empty result set => BLOCKED;
-- scope/policy violation => effective FAIL;
-- FAIL cannot be hidden by PASS;
-- synthetic scope-violation CLI smoke => overall FAIL / exit code 1.
-
-No dashboard/database/observability framework added.
+Status: `DONE`
+Evidence: canonical merge `801f0561...`, 12 Phase-3 tests / 26 combined regression.
 
 ## T6 — First real AI worker through Saddle/Executor
 Status: `READY / NEXT`
+Execution condition: `BLOCKED ON EXTERNAL HUMAN/INFRASTRUCTURE GATE`.
 
-Required path:
+Completed before blocker:
+- exact CASE-001–003 broken commits pinned;
+- proposal-only WorkerProposal schema;
+- thin ModelGateway + OpenAI Responses adapter;
+- no tools/shell/write/network authority for model;
+- exact target/diff budget/control-plane hashes;
+- non-secret preflight;
+- pinned-checkout proposal runner;
+- Sol/Terra first-pass candidate plan;
+- 13 local scaffold tests PASS.
 
-```text
-pinned task/source/tests
-→ thin ModelGateway
-→ real model-generated proposal
-→ bounded proposal validation
-→ Executor effect path
-→ tests + eval evidence
-```
+Current real preflight:
+`BLOCKED / PROVIDER_CREDENTIAL_NOT_CONFIGURED`.
 
-Immediate work:
-1. verify current official model/API candidates;
-2. define only the ModelGateway interface needed for CASE-001–003;
-3. determine authorized credential path with secret isolated from worker/evidence;
-4. benchmark at least two current candidates on identical cases;
-5. choose one first worker only after results;
-6. keep CASE inputs immutable;
-7. no unrestricted write/shell/internet, no dynamic routing, no multi-agent.
+Real benchmark requires:
+1. authorized runner with outbound provider HTTPS;
+2. `OPENAI_API_KEY` in that runner's secret store/environment, never chat/GitHub/evidence;
+3. explicit paid benchmark budget approval.
+
+Recommended first pass: 3 cases × 2 models × 1 call, zero automatic retries, USD 5.00 hard cap.
+
+After unblocking:
+- verify account access to both model IDs;
+- run identical pinned cases;
+- route validated proposal through Executor effect boundary;
+- record Phase-3 eval results;
+- select one worker only from evidence.
+
+Do not mark T6 DONE before real CASE-001–003 results.
 
 ## T7 — Verified intent / effect authority boundary
-Status: `BLOCKED UNTIL REQUIRED T6 FOUNDATION`
-
-Keep request content, AI interpretation, verified request origin, human decision and downstream effect authority distinct. Reuse Executor #51–#57 under Saddle ownership model. One minimal authority adapter only; no generalized IAM.
+Status: `BLOCKED UNTIL T6`
+Use Executor #51–#57 under Saddle ownership model; one minimal authority adapter only; no generalized IAM.
 
 ## T8 — Minimal ScriptOps real-domain path
-Status: `HUMAN SEMANTIC GATE + BLOCKED ON PRECEDING SADDLE GATES`
-
-Open decision: select/reject `legacy/scriptops-v2-single.py` as implementation base. Current technical recommendation: `YES — reuse v2`.
-
-If selected, repair only: task → context → candidate → validation → impact → human approve/reject/revision with why → accepted hash → Git commit → smoke evidence.
+Status: `HUMAN SEMANTIC GATE + BLOCKED ON T6–T7`
+Open decision: select/reject `legacy/scriptops-v2-single.py`; technical recommendation remains YES/reuse v2.
 
 ## T9 — Functional Saddle acceptance
 Status: `BLOCKED UNTIL T6–T8`
-
-Fresh-session proof: human intent → IntentEnvelope → context recovery → real AI → EffectProposal → authority/effect gate → bounded execution → EffectReceipt/evidence → required human review → StateDelta → second zero-history resume.
-
-Only required evidence + human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
+Required fresh-session loop: intent → IntentEnvelope → context recovery → real AI → EffectProposal → authority/effect gate → bounded execution → EffectReceipt/evidence → required human review → StateDelta → second zero-history resume.
 
 ## T10 — Post-acceptance human direction
 Status: `BLOCKED UNTIL T9`

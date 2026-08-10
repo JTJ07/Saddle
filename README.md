@@ -34,12 +34,15 @@ The current goal is **completion, not expansion**.
 1. `AGENTS.md`
 2. `PROJECT_STATE.md`
 3. `EXECUTION_PLAN.md`
-4. `RESTRICTIONS.md`
-5. `SESSION_HANDOFF.md`
-6. `DECISION_LOG.md`
-7. `ECOSYSTEM_MAP.md`
-8. `SOURCE_REGISTRY.md`
-9. `FUTURE_IDEAS.md` only when recording or checking a parked idea
+4. `TODO.md` — operational queue derived from current state and the strategic plan
+5. `RESTRICTIONS.md`
+6. `SESSION_HANDOFF.md`
+7. `DECISION_LOG.md`
+8. `ECOSYSTEM_MAP.md`
+9. `SOURCE_REGISTRY.md`
+10. `FUTURE_IDEAS.md` only when recording or checking a parked idea
+
+`EXECUTION_PLAN.md` defines the strategic gated path. `TODO.md` is the current operational projection of that path and must never override a higher-authority project decision or state.
 
 Then read only the source repositories and documents required by the active gate.
 

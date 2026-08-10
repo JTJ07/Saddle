@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_2_ACCEPTED / PHASE_3_ACTIVE / NOT_YET_FUNCTIONAL
+status: PHASE_3_ACCEPTED / PHASE_4_ACTIVE / NOT_YET_FUNCTIONAL
 updated_at: 2026-08-10
 ---
 
@@ -8,79 +8,58 @@ updated_at: 2026-08-10
 
 ## STATUS
 
-Phase 0 durable memory, Phase 1 reconciliation and Phase 2 protocol freeze have passing recorded evidence on the current change set. Saddle remains `NOT YET FUNCTIONAL`.
+Phases 0–3 have recorded evidence on the current change set. Saddle remains `NOT YET FUNCTIONAL`.
 
 ## ACTIVE GATE
 
-`PHASE 3 — AUDIT + EVAL FOUNDATION`
+`PHASE 4 — FIRST REAL AI WORKER`
 
 ## WHAT CHANGED
 
-- froze Saddle Protocol v0.1 as four provider/model/agent-independent JSON Schemas;
-- defined content-addressed IDs using SHA-256 over a restricted RFC-8785/JCS canonical JSON profile;
-- added provider-independent source/evidence/authority refs;
-- added stdlib-only canonicalizer/schema-subset validator/cross-object binding validator;
-- made `EffectProposal` structurally unable to carry executable authority;
-- made `EffectReceipt` require active `EFFECT_PERMISSION` bound to exact proposal ID+hash;
-- enforced HUMAN ownership for StateDelta decisions and decision binding for project-status changes;
-- marked the original illustrative protocol draft superseded.
+- added `eval/v0.1/eval-result.schema.json`;
+- added `config/eval-lanes.json` for cold-start, Reconstructor, Executor, pilot CASE-001–003 and later ScriptOps;
+- added stdlib `tools/eval_harness.py` with validate / aggregate / audit commands;
+- aggregation is fail-closed: zero results => BLOCKED; scope/policy violations => effective FAIL; FAIL/ERROR cannot be hidden by PASS records;
+- repository audit checks phase/state agreement, completion lock, one-next-step discipline, frozen protocol and machine-readable source SHAs;
+- refreshed ScriptOps observed main in `config/source-repos.json`;
+- encoded one historical cold-start baseline smoke without inventing missing metrics.
 
 ## EVIDENCE
 
-- `docs/SADDLE_PROTOCOL_v0.1.md`;
-- `protocol/v0.1/`;
-- `tools/protocol_v01.py`;
-- `tests/test_protocol_v01.py`;
-- `evidence/PHASE2_PROTOCOL_V01_TEST_2026-08-10.md`.
+- `docs/EVAL_FOUNDATION_v0.1.md`;
+- `evidence/PHASE3_AUDIT_EVAL_TEST_2026-08-10.md`;
+- `eval/examples/phase3-smoke.jsonl`;
+- `evidence/PHASE3_SMOKE_SUMMARY.json`;
+- Phase-3 tests: 12/12 PASS;
+- combined Phase-2+3 tests: 26/26 PASS;
+- synthetic scope-violation aggregate: overall FAIL, exit code 1.
 
-Local deterministic test evidence:
+No GitHub CI result is claimed for Phase 3.
 
-```text
-python -m compileall -q tools tests
-PASS
+## BOUNDARIES PRESERVED
 
-python -m unittest discover -s tests -v
-Ran 14 tests
-OK
-```
-
-No GitHub CI result is claimed for Phase 2.
-
-## DECISIONS / BOUNDARIES PRESERVED
-
-- HUMAN OWNS INTENT.
-- SADDLE PRESERVES AND BINDS INTENT.
-- INTELLIGENCE PROPOSES HOW.
-- EXECUTOR GOVERNS CONSEQUENCES.
-- VERIFIER ESTABLISHES FACTS.
-- NO LAYER MAY SUBSTITUTE FOR A HIGHER-ORDER OWNER.
-- completion lock remains ACTIVE.
-- no provider/model/framework/trust technology was selected by Phase 2.
-
-## IDEAS PARKED
-
-All existing future ideas remain parked, including resource/reinvestment and bounded self-improvement.
+- completion lock ACTIVE;
+- no model/provider selected;
+- no observability platform/database/dashboard added;
+- no remote result is inferred from local evidence;
+- missing latency/token/cost fields remain `null`, never invented.
 
 ## BLOCKERS
 
-Current blocker: no unified minimal audit/eval harness yet exists to produce and aggregate machine-readable evidence for later AI-worker and end-to-end runs.
+Current blocker: no real model-backed worker path exists yet.
 
 ## ONE NEXT STEP
 
-Implement Phase-3 stdlib-only audit/eval foundation with:
+Verify current official model/API options, define the thinnest ModelGateway needed only for CASE-001–003, and determine whether the available control plane has an authorized credential path that keeps provider secrets outside worker prompts/sandbox/evidence.
 
-- state/handoff invariant audit;
-- JSON/JSONL eval-result record;
-- fail-closed aggregation;
-- model/prompt/version, success/failure, scope/policy violations, tokens/cost/latency/retries/human corrections/evidence refs;
-- initial lane registry for cold-start, Reconstructor, Executor, pilot CASE-001–003 and later ScriptOps.
-
-## EXACT FILES TO OPEN NEXT
+## EXACT FILES / REFS TO OPEN NEXT
 
 1. `AGENTS.md`
 2. `PROJECT_STATE.md`
-3. `EXECUTION_PLAN.md` — Phase 3
-4. `TODO.md` — T5
+3. `EXECUTION_PLAN.md` — Phase 4
+4. `TODO.md` — T6
 5. `docs/SADDLE_PROTOCOL_v0.1.md`
-6. `tools/protocol_v01.py`
-7. `RESTRICTIONS.md`
+6. `docs/EVAL_FOUNDATION_v0.1.md`
+7. `tools/eval_harness.py`
+8. `litrgratis-pixel/Executor` main
+9. `litrgratis-pixel/executor-pilot-target` CASE-001–003

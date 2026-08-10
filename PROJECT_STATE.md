@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_0_ACCEPTED / PHASE_1_ACTIVE / NOT_YET_FUNCTIONAL
+status: PHASE_1_ACCEPTED / PHASE_2_ACTIVE / NOT_YET_FUNCTIONAL
 completion_lock: ACTIVE
 state_owner: PROJECT_STATE.md
 updated_at: 2026-08-10
@@ -10,188 +10,187 @@ updated_at: 2026-08-10
 
 ## 1. Current product definition
 
-Saddle is the durable control layer between human intent and arbitrary AI capability.
+Saddle is the durable control/coupling layer between human intent and arbitrary AI capability.
 
-It should preserve and verify the direction of travel without unnecessarily prescribing how the underlying intelligence solves the problem.
+It preserves and binds the human-owned intent, supplies durable context and decision lineage, keeps consequential effects behind authority boundaries, records evidence/state, and avoids unnecessarily prescribing how the underlying intelligence solves the problem.
 
-Core product rule:
+Core rules:
 
 > **Maximize usable AI capability; constrain unauthorized effects, not intelligence itself.**
 
-## 2. Current objective
+> **NO LAYER MAY SUBSTITUTE FOR A HIGHER-ORDER OWNER.**
 
-Finish the smallest end-to-end Saddle that can survive complete session loss and prove a real human-intent → AI → controlled effect → evidence → durable-state loop.
-
-The project is in **completion mode**. New product development is frozen.
-
-## 3. Confirmed current ecosystem
-
-Five source/component GitHub repositories are currently tracked under `litrgratis-pixel`:
-
-1. `COS`
-2. `creative-os-project-reconstructor`
-3. `scriptops`
-4. `Executor`
-5. `executor-pilot-target`
-
-The Saddle repository itself is the sixth accessible repository and owns Saddle-specific state.
-
-### Current default-branch checkpoints observed on 2026-08-10
-
-- COS: `3220310267c3d0ba2184daaf3f2adad259a9cb20`
-- creative-os-project-reconstructor: `defc7b029097284f94136fec54b75c313ac12f68`
-- scriptops: `90a5ba9863961c4b79472db84297cfb403cc5158`
-- Executor: `788443c3ed5b290ac8f1de145a93d02d2dd15317`
-- executor-pilot-target: `dc094679ef3e2d5cf5f1aa0ff0fd54d16f201154`
-
-These are observation checkpoints, not permanent pins unless a later contract explicitly pins them.
-
-## 4. What already exists and should be reused
-
-### COS
-
-Useful as canonical high-level state/project memory and session-resumption map.
-
-Strong reusable ideas:
-
-- Git-backed memory;
-- one owner for each piece of information;
-- explicit source hierarchy;
-- `BOOT / WORK / AUDIT / PORTFOLIO` modes;
-- truthful execution statuses;
-- one next step;
-- idea parking instead of scope hijack.
-
-### Project Reconstructor
-
-Useful as a context-recovery adapter for projects with fragmented conversations, attachments, aliases, and conflicting documentation.
-
-Current strength: stable v1.0 prompt, deterministic repository validator, regression scenarios.
-
-Current evidence gap: no long-term cross-model semantic validation or automated model eval runner.
-
-### ScriptOps
-
-Useful as the first strong real-domain candidate.
-
-The existing v2 prototype already contains substantial reusable mechanics:
-
-- CLI;
-- Git state checks/commits;
-- tasks;
-- context construction;
-- token budgets;
-- prompts;
-- pre/post AI validation;
-- hashing/provenance;
-- staging;
-- candidate approval path;
-- decision-log mechanics.
-
-RC1 is not proven implemented as a separate later build in the accessible GitHub package.
-
-### Executor
-
-Most mature technical control/effect component.
-
-Main already contains:
-
-- request-to-contract phase-1 formation boundary;
-- provenance separation of user request and model inference;
-- task/project/policy validation;
-- exact repository identity/snapshot checks;
-- action-authorization machinery;
-- networkless hardened Docker sandbox;
-- evidence and replay-oriented runtime controls;
-- controlled GP001 end-to-end path.
-
-Critical gap: current GP001 solution is still a hard-coded known mutation, not an AI-discovered repair.
-
-Critical main-branch authority gap: `RequestToContract001` stops at `AWAITING_VERIFIED_HUMAN_AUTHORIZATION`; verified human authority + freeze are intentionally not implemented on main.
-
-### executor-pilot-target
-
-Reusable deterministic laboratory with three pinned broken cases:
-
-- CASE-001 atomic batch insertion;
-- CASE-002 reopen authorization;
-- CASE-003 deterministic output.
-
-Use it to benchmark the first real AI worker without claiming business/product value.
-
-## 5. Important active unmerged work
-
-### Executor PR stack #51–#57
-
-This active draft stack designs the verified-human-authority/trust boundary.
-
-Most important current architectural finding:
+Current responsibility model:
 
 ```text
-USER PROVENANCE != VERIFIED REQUEST-ORIGIN EVIDENCE
+HUMAN OWNS INTENT
+SADDLE PRESERVES AND BINDS INTENT
+INTELLIGENCE PROPOSES HOW
+EXECUTOR GOVERNS CONSEQUENCES
+VERIFIER ESTABLISHES FACTS
 ```
 
-PR #57 compares:
+## 2. Current objective
 
-- A1: externalized governed request intake;
-- strengthened A2: Executor front door + direct external origin attestation before governed formation.
+Finish the smallest end-to-end Saddle that proves:
 
-No provider or final A1/A2 selection is canonical yet.
+```text
+human intent
+→ durable/bound intent
+→ correct context recovery
+→ real AI proposal
+→ effect authority boundary
+→ bounded execution
+→ objective evidence
+→ durable StateDelta
+→ fresh-session resume
+```
 
-### COS PR #18
+The project remains in completion mode. New product development is frozen.
 
-Contains valuable ecosystem/Ginseng semantics, especially:
+## 3. Current ecosystem checkpoints
 
-- Ginseng = Decision Intelligence Layer;
-- `FACT / DECISION / HYPOTHESIS` separation;
+Observed / reconciled on 2026-08-10:
+
+- Saddle: Phase-0 closure merge `b950660c84c6dcad1a093a7aba5ad2d70d472ee4` plus current Phase-1 sync branch;
+- COS main: `3220310267c3d0ba2184daaf3f2adad259a9cb20`;
+- creative-os-project-reconstructor main: `defc7b029097284f94136fec54b75c313ac12f68`;
+- ScriptOps main after access-check reconciliation: `33c9d15a10dfd3f833a99dfcebea22dd77f26b65`;
+- Executor main: `788443c3ed5b290ac8f1de145a93d02d2dd15317`;
+- executor-pilot-target main: `dc094679ef3e2d5cf5f1aa0ff0fd54d16f201154`.
+
+These are observed refs, not permanent implementation pins unless a later protocol explicitly pins one.
+
+## 4. Reconciled component roles
+
+### COS
+Reuse memory/source-hierarchy/session-handoff patterns.
+
+COS PR #18 classification:
+`REUSABLE GINSENG SEMANTICS + STALE/SUPERSEDED GLOBAL STATUS/PLACEMENT`.
+
+Reuse:
+- `FACT / DECISION / HYPOTHESIS`;
 - Decision Lineage;
-- impact reasoning via `ELEMENT → FUNCTION/CAPABILITY → EFFECT`;
-- prohibition on AI self-confirming its own relations.
+- source/proposer/confidence/status on important relations;
+- AI cannot confirm its own hypothesis/relation;
+- `ELEMENT -> FUNCTION/CAPABILITY -> EFFECT` reasoning.
 
-Its product-status assumptions are stale relative to later Executor work and must be reconciled before canonical reuse.
+Do not activate Ginseng runtime/UI under completion lock.
 
-## 6. Current gaps that must be closed for functional Saddle
+### Project Reconstructor
+Reuse as context-recovery adapter and regression source. Automated cross-model/large-set eval belongs in T5.
 
-1. Cross-repo canonical-state reconciliation.
-2. Minimal Saddle protocol contract.
-3. Unified eval/evidence harness.
-4. First real AI worker replacing the hard-coded GP001 solution proposal.
-5. Verified intent / verified human authority bridge adequate for the first real effect path.
-6. One real-domain path (recommended candidate: ScriptOps RC1, subject to source/access reconciliation).
-7. Fresh-session end-to-end acceptance proving resumability.
+### ScriptOps
+GitHub-side access check is now canonical. No separate later RC1 build was found in accessible GitHub; local/off-GitHub artifacts remain unknown.
+
+Preserved v2 already has most needed mechanics. Known minimal one-slice gaps:
+- clean-tree lifecycle conflict;
+- dirty-tree before approval;
+- stale accepted hash;
+- missing mandatory `why`;
+- missing impact report/smoke proof.
+
+Technical recommendation: reuse v2. This remains a recommendation until human base selection.
+
+### Executor
+Canonical effect-control implementation remains `Executor/main` at `788443c...`.
+
+Current main strengths:
+- request-to-contract formation boundary;
+- user-request vs model-interpretation separation;
+- policy/source/task/project checks;
+- action authorization machinery;
+- hardened sandbox;
+- evidence/replay controls;
+- GP001 controlled path.
+
+Current main gaps:
+- GP001 proposal is hard-coded rather than real-AI-generated;
+- verified human authority/freeze not implemented.
+
+Executor #51–#57 classification is recorded in `docs/PHASE1_ECOSYSTEM_RECONCILIATION_2026-08-10.md`.
+
+Critical retained trust findings:
+- `USER PROVENANCE != VERIFIED REQUEST-ORIGIN EVIDENCE`;
+- naive A2 rejected;
+- exact transaction-specific origin binding, anti-replay/freshness and explicit trust-domain rules;
+- approval/authentication do not automatically prove exact request origination.
+
+Global placement correction:
+`USER -> EXECUTOR` is superseded as Saddle's front door. Strengthened-A2 principle is retained at the Saddle intent boundary; A1 is a valid delegated/enterprise intake variant.
+
+### executor-pilot-target
+Repeatable technical lab for CASE-001–003.
+
+Direct Codex CASE-001 solve demonstrates `AI_WORKER_CAPABILITY`, not full Saddle execution.
+
+Do not merge the repair into `case-001-broken`; broken benchmark inputs remain reproducible.
+
+## 5. Phase results
+
+### Phase 0 — ACCEPTED
+
+Evidence: `evidence/COLD_START_AUDIT_001.md` and merged PR #1.
+
+A zero-history session recovered product definition, memory law, completion lock, evidence boundary and one next step from GitHub alone.
+
+### Phase 1 — ACCEPTED ON THIS CANONICAL SYNC
+
+Evidence:
+- `docs/PHASE1_ECOSYSTEM_RECONCILIATION_2026-08-10.md`;
+- `docs/SADDLE_EXECUTOR_RESPONSIBILITY_BOUNDARY.md`;
+- updated `ECOSYSTEM_MAP.md`;
+- updated `SOURCE_REGISTRY.md`;
+- ScriptOps access-check/gap analysis merged;
+- `DEC-SAD-006` responsibility boundary;
+- preserved test/evidence package and parked ideas.
+
+Phase-1 DoD result:
+a fresh agent can distinguish canonical implementation, active draft research, reusable semantics, superseded placement, experimental evidence and never-merge helpers for the components needed by the next phase.
+
+## 6. Current active gate
+
+`PHASE 2 — FREEZE SADDLE PROTOCOL v0.1`
+
+Required provider/model/agent-independent objects:
+
+1. `IntentEnvelope`;
+2. `EffectProposal`;
+3. `EffectReceipt`;
+4. `StateDelta`.
+
+Required work:
+- JSON Schemas;
+- deterministic canonical serialization/hash identity;
+- provenance/source references;
+- provider-independent authority references;
+- schema and invariant tests.
+
+Do not select a provider/model/agent framework merely to complete this gate.
 
 ## 7. Functional acceptance definition
 
-`FUNCTIONAL_SADDLE_ACCEPTED` may be recorded only after a real run demonstrates:
+`FUNCTIONAL_SADDLE_ACCEPTED` requires observable proof that:
 
-1. a human provides a natural request;
-2. the verbatim intent is durably preserved and has a stable identity;
-3. correct project state/context is recovered without hidden chat memory;
-4. real AI independently proposes the useful change/solution;
-5. the proposal is not itself treated as authority;
-6. a controlled effect path validates scope/permissions;
-7. the effect runs in the bounded environment;
-8. objective evidence verifies the result;
-9. the human can review/accept/reject the result at the correct boundary;
-10. canonical state and handoff are updated;
-11. a new session with no prior conversation correctly resumes from GitHub alone.
+1. a human supplies a natural request;
+2. verbatim intent is durably preserved with stable identity;
+3. project/context recovery needs no hidden chat memory;
+4. real AI independently proposes a useful solution;
+5. proposal is not authority;
+6. exact consequential effect is checked against scope/permission;
+7. effect executes in a bounded environment;
+8. objective evidence verifies the actual result;
+9. required human review/acceptance occurs at the correct boundary;
+10. canonical state/handoff is updated;
+11. another zero-history session resumes correctly.
 
-## 8. Phase 0 result
+## 8. Current blocker
 
-`PHASE 0 — DURABLE MEMORY BOOTSTRAP` has passing evidence in `evidence/COLD_START_AUDIT_001.md`.
+No Phase-1 reconciliation blocker remains on this change set.
 
-A fresh session recovered the product definition, prime memory law, completion lock, active phase, evidence boundary and one next step from committed repository content without prior bootstrap conversation context.
+The current blocker is absence of a frozen/tested Saddle Protocol v0.1 contract.
 
-The audit found one stale root status label in `README.md`; the same change set corrects it.
+## 9. One next step
 
-This closes only the durable-memory bootstrap gate. Saddle remains `NOT YET FUNCTIONAL`.
-
-## 9. Current blocker
-
-`PHASE 1 — ECOSYSTEM RECONCILIATION` is now the active gate.
-
-The immediate unresolved work is to classify the active Executor PR stack #51–#57 against current main and distinguish canonical implementation, draft design, reusable semantics and superseded/experimental material before later protocol or authority work relies on it.
-
-## 10. One next step
-
-Classify Executor PRs #51–#57 against current `Executor/main` and record the result in Saddle's ecosystem/source state without merging or rewriting the Executor repository.
+Implement and deterministically test the four Phase-2 protocol schemas (`IntentEnvelope`, `EffectProposal`, `EffectReceipt`, `StateDelta`) without coupling them to a model provider, agent framework, trust provider or UI.

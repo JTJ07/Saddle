@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_0_ACCEPTED / PHASE_1_ACTIVE / NOT_YET_FUNCTIONAL
+status: PHASE_1_ACCEPTED / PHASE_2_ACTIVE / NOT_YET_FUNCTIONAL
 updated_at: 2026-08-10
 ---
 
@@ -8,52 +8,86 @@ updated_at: 2026-08-10
 
 ## STATUS
 
-The durable-memory bootstrap has a passing repository-only cold-start audit on the current work branch. Saddle is still `NOT YET FUNCTIONAL`.
+Phase 0 durable-memory bootstrap is canonical and accepted. Phase 1 ecosystem reconciliation is complete on the current canonical-sync change set. Saddle remains `NOT YET FUNCTIONAL`.
 
 ## ACTIVE GATE
 
-`PHASE 1 — ECOSYSTEM RECONCILIATION`
+`PHASE 2 — FREEZE SADDLE PROTOCOL v0.1`
 
 ## WHAT CHANGED
 
-- executed a fresh-session cold-start using committed Saddle repository content only;
-- recorded the evidence in `evidence/COLD_START_AUDIT_001.md`;
-- confirmed recovery of product definition, prime memory law, completion lock, phase, evidence boundary and one next step;
-- corrected the stale root README status label found by the audit;
-- updated `PROJECT_STATE.md` to close Phase 0 and identify Phase 1 as the active gate.
+- merged Phase-0 cold-start closure to Saddle `main` (`b950660c...`);
+- merged ScriptOps GitHub-side access-check/v2 gap analysis (`33c9d15a...`) without selecting v2 as runtime base;
+- preserved six-part Saddle test questions/raw answers/analysis;
+- preserved IDEA-SAD-014 and IDEA-SAD-015 as `PARKED` only;
+- recorded DEC-SAD-006 responsibility ownership boundary;
+- recorded DEC-SAD-007 operational delegation through the existing completion path;
+- reconciled Executor #51–#57, older Executor experimental debt, COS #18 and ScriptOps state;
+- remapped request-origin/meaning findings to the Saddle intent boundary and consequence authority to Executor;
+- updated ecosystem/source registry and operational TODO.
 
 ## EVIDENCE
 
-- `evidence/COLD_START_AUDIT_001.md`
-- Phase-0 plan/DoD: `EXECUTION_PLAN.md`
-- source-of-truth state: `PROJECT_STATE.md`
-
-The audit is evidence of resumability only. It is not evidence that Saddle is functional end-to-end.
+- `evidence/COLD_START_AUDIT_001.md`;
+- `docs/PHASE1_ECOSYSTEM_RECONCILIATION_2026-08-10.md`;
+- `docs/SADDLE_EXECUTOR_RESPONSIBILITY_BOUNDARY.md`;
+- `analysis/SADDLE_TEST_SESSION_2026-08-10.md`;
+- `evidence/TEST_SESSION_2026-08-10/`;
+- `ECOSYSTEM_MAP.md`;
+- `SOURCE_REGISTRY.md`.
 
 ## HUMAN DECISIONS RECORDED
 
-No new product-direction decision was created by the audit. Existing decisions in `DECISION_LOG.md` remain unchanged.
+See `DECISION_LOG.md`, especially:
+
+- DEC-SAD-001 GitHub durable memory;
+- DEC-SAD-002 completion lock;
+- DEC-SAD-003 universal Saddle direction;
+- DEC-SAD-004 intelligence freedom / effect control;
+- DEC-SAD-005 reuse before rewrite;
+- DEC-SAD-006 responsibility boundary:
+  `HUMAN OWNS INTENT / SADDLE PRESERVES AND BINDS INTENT / INTELLIGENCE PROPOSES HOW / EXECUTOR GOVERNS CONSEQUENCES / VERIFIER ESTABLISHES FACTS`;
+- DEC-SAD-007 operational delegation: continue the scheduled completion path without repeated user interruption, while preserving reserved semantic/security/acceptance boundaries.
 
 ## IDEAS PARKED
 
-None. No new product ideas were developed during this gate.
+- IDEA-SAD-014 human-controlled value/reinvestment flywheel;
+- IDEA-SAD-015 bounded self-improvement loop;
+- all earlier future ideas remain parked.
+
+## IMPORTANT CLASSIFICATIONS
+
+- Executor `main` is canonical implementation; #51–#57 are draft/research/reusable trust material, not merged runtime.
+- Executor #57 trust findings survive; its global `USER -> EXECUTOR` front-door placement is superseded by Saddle.
+- strengthened-A2 principle is retained at Saddle intent boundary; naive A2 rejected; A1 valid delegated/enterprise variant; provider unselected.
+- COS #18 supplies reusable Ginseng semantics but stale global status/placement; do not activate runtime.
+- ScriptOps access-check is canonical; v2 is recommended but not yet human-selected as runtime base.
+- executor-pilot-target broken benchmark branches must remain reproducible; do not merge CASE-001 repair into `case-001-broken`.
+- direct Codex CASE-001 solve is AI-worker capability evidence, not full Saddle execution.
 
 ## BLOCKERS
 
-The Phase-0 cold-start blocker is removed on this work branch.
-
-The next blocker is the Phase-1 reconciliation of active cross-repository work, beginning with the Executor trust/authority PR stack #51–#57.
+Current blocker: Saddle Protocol v0.1 is still a draft, not a frozen/tested provider-independent contract.
 
 ## ONE NEXT STEP
 
-Classify Executor PRs #51–#57 against current `Executor/main` as canonical, draft, experimental, superseded or reusable evidence, then update Saddle's ecosystem/source state. Do not merge or rewrite Executor as part of this classification.
+Implement and deterministically test the four Phase-2 protocol schemas:
+
+1. `IntentEnvelope`;
+2. `EffectProposal`;
+3. `EffectReceipt`;
+4. `StateDelta`.
+
+Do not select provider/model/agent framework/UI/database to solve this gate.
 
 ## EXACT FILES / REFS TO OPEN NEXT
 
-1. `PROJECT_STATE.md`
-2. `EXECUTION_PLAN.md` — Phase 1
-3. `ECOSYSTEM_MAP.md`
-4. `SOURCE_REGISTRY.md`
-5. `litrgratis-pixel/Executor` main
-6. Executor PRs #51–#57
-7. `evidence/COLD_START_AUDIT_001.md`
+1. `AGENTS.md`
+2. `PROJECT_STATE.md`
+3. `EXECUTION_PLAN.md` — Phase 2
+4. `TODO.md` — T4
+5. `DECISION_LOG.md`
+6. `docs/SADDLE_PROTOCOL_v0.1_DRAFT.md`
+7. `docs/SADDLE_EXECUTOR_RESPONSIBILITY_BOUNDARY.md`
+8. `docs/PHASE1_ECOSYSTEM_RECONCILIATION_2026-08-10.md`
+9. `RESTRICTIONS.md`

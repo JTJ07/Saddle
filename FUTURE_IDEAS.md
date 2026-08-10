@@ -72,3 +72,15 @@ Reactivate when: operational run volume creates a repeated decision/visibility f
 Potential value: speed.
 Why not now: high-risk authority expansion before trust/effect proof.
 Reactivate when: lower-risk draft-PR flow is mature, rollback/evidence are proven, and human explicitly authorizes a narrower automation class.
+
+## IDEA-SAD-014 — Human-controlled value and reinvestment flywheel — PARKED
+Potential value: let Saddle-related work finance maintenance, research and bounded experiments by creating measurable value for users, while financial/legal authority remains with humans or human-controlled entities.
+Why not now: Saddle has not passed functional acceptance, and financial, contractual and legal mechanisms would expand the effect surface before the core authority boundary is proven.
+Reactivate when: `FUNCTIONAL_SADDLE_ACCEPTED` exists, at least one repeatable paid value case is evidenced, and the human explicitly approves a treasury/contract governance policy with appropriate legal/accounting review.
+Dependencies: functional acceptance; evidence/accounting records; explicit spending/contract authority boundary; human-controlled accounts and credentials.
+
+## IDEA-SAD-015 — Bounded self-improvement loop — PARKED
+Potential value: systematically observe recurring capability gaps, propose reversible improvements, run isolated experiments and improve task quality over time without creating a self-preservation or resource-acquisition objective.
+Why not now: the current completion path already defines nearer gates, and a self-improvement runtime before the eval/evidence and authority foundations exist would add a second control loop prematurely.
+Reactivate when: the eval foundation is operational, repeated capability gaps are recorded, experiments can run in a bounded environment, and adoption of any self-change remains an externally reviewable state transition under unchanged human-owned objectives and permissions.
+Dependencies: eval harness; immutable goal/authority boundary; sandboxed experiment contract; human or pre-authorized adoption gate; rollback/versioning.

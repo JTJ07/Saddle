@@ -97,7 +97,7 @@ Clean preflight:
 - spend USD 0;
 - proposals 0.
 
-After later main-only evidence/docs commits, compare reports the branch `ahead_by 4 / behind_by 4`; a later PR snapshot reports `mergeable: false`. This does not block benchmark execution. Rebase/merge housekeeping is routine and should be reevaluated after evidence collection.
+Later main-only documentation/evidence commits caused the PR branch to diverge from current `main`; GitHub currently reports it non-mergeable. This does not block benchmark execution. Rebase/merge housekeeping is routine and should be reevaluated after evidence collection.
 
 Historical PR #14 is closed without merge and retained only as first-preflight provenance.
 

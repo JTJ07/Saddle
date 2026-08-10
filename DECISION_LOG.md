@@ -169,6 +169,27 @@ Only explicit human decisions or decisions already clearly established by the pr
 - Evidence requirements: every paid call must be bound to an immutable case/input contract and stored as benchmark evidence; model output remains a proposal and cannot claim execution or authority.
 - Provider/model re-verification on 2026-08-10: official OpenAI documentation still lists `gpt-5.6-sol` and `gpt-5.6-terra` as API models; account-level access must be verified by the authorized runner at execution time.
 
+## DEC-SAD-012 — Web AI is the Phase-4A human-guided calibration environment
+
+- Date: 2026-08-10
+- Owner: USER
+- Status: ACTIVE / EVIDENCE-CLASSIFICATION DECISION
+- Decision:
+  - `APPROVE: WEB AI CALIBRATION PATH`;
+  - use high-capability web AI as **Phase 4A — cognitive calibration** for the contract between Saddle and Intelligence;
+  - keep API execution as **Phase 4B — controlled reproducible worker evidence**;
+  - web AI does **not** replace the API benchmark permanently and does **not** count as autonomous worker evidence.
+- Phase-4A purpose: calibrate intent preservation, proposal structure, scope discipline, authority discipline, rationale quality and eval criteria using human-guided web interactions before spending/automating more worker runs.
+- Phase-4B purpose: fixed input + fixed API model + fixed output contract -> reproducible machine-generated evidence including cost/latency/tokens and worker-selection data.
+- Boundary:
+  - web AI remains proposal-only;
+  - no shell, repo write, tool-access expansion, autonomous execution or effect authority;
+  - any hidden conversation/UI/system context or human steering must be treated as an evidence limitation, not silently ignored.
+- Context-contamination rule: a web calibration run with prior Saddle/case context may assess scope/authority/structure behavior but may not claim independent problem-solving ability.
+- Initial calibration set: 3–5 manual runs using immutable CASE-001/002/003 packets; record input, IntentEnvelope/intent refs where used, raw output, normalized proposal, violations, human corrections and deterministic test evidence when available.
+- Ordering consequence: Phase 4A calibration may proceed while Phase 4B remains blocked on the API secret. After calibration, return to the already approved bounded API benchmark; do not broaden capability based only on web calibration.
+- Reference: `docs/PHASE4A_WEB_AI_CALIBRATION.md`.
+
 ## Not yet a decision
 
 The following remain open until explicitly selected or proven:

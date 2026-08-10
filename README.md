@@ -1,6 +1,6 @@
 # Saddle
 
-Status: `PHASE 5 ACCEPTED / PHASE 6 REAL-WORKFLOW GATE / NOT YET FUNCTIONAL`
+Status: `PHASE 6 CONTROLLED WORKFLOW ACCEPTED / LIVE AI EVIDENCE NEXT / NOT YET FUNCTIONAL`
 
 Saddle is a durable control/coupling layer between **human intent** and **arbitrarily capable AI**.
 
@@ -33,14 +33,13 @@ GitHub is durable project memory. Completion lock remains active until the first
 8. `ECOSYSTEM_MAP.md`
 9. `SOURCE_REGISTRY.md`
 
-## Frozen foundations
+## Frozen / accepted foundations
 
 ### Phase 0 — durable memory
 Repository-only cold start passed.
 
 ### Phase 1 — responsibility / ecosystem reconciliation
-Ownership architecture is frozen:
-human intent, Saddle integrity, AI proposal, Executor consequence authority, Verifier facts.
+Ownership architecture is frozen: human intent, Saddle integrity, AI proposal, Executor consequence governance, Verifier facts.
 
 ### Phase 2 — Protocol v0.1
 Provider-independent:
@@ -60,11 +59,10 @@ pinned input
 → Executor effect boundary
 ```
 
-The live external Sol/Terra benchmark remains **unexecuted** and is still required before final functional acceptance. No model result is inferred.
+**Live external model evidence remains open.** No real two-model benchmark, production worker selection or real-model Executor run is claimed yet.
 
-## Phase 5 — strict boundary proof
-
-Accepted on deterministic evidence:
+### Phase 5 — strict intent/effect boundary
+Accepted on deterministic adversarial evidence:
 
 ```text
 raw human intent
@@ -74,28 +72,38 @@ raw human intent
 → ALLOW / BLOCK
 ```
 
-Key guarantees:
+Proposal is never permission; AI interpretation cannot substitute for human intent/authority.
 
-- exact raw human text has an independent `raw_intent_hash` anchor;
-- AI interpretation may change without silently replacing that raw anchor;
-- USER-like metadata is not verified origin;
-- proposal is never permission;
-- authority binds exact intent binding + exact proposal ID/hash + exact action/target;
-- stale, deny, mismatch and replay cases fail closed;
-- one exact active ALLOW control passes.
+### Phase 6 — controlled ScriptOps workflow
+Accepted as a **mechanism proof only**, with no maturity claim.
 
-See:
-- `docs/PHASE5_STRICT_BOUNDARIES_v0.1.md`;
-- `authority/v0.1/`;
-- `evidence/PHASE5_STRICT_BOUNDARY_TEST_2026-08-10.md`.
+Human decision:
 
-## Current gate — Phase 6
+```text
+BASE: legacy/scriptops-v2-single.py
+REWRITE: NO
+NEW CAPABILITY: NO
+PHASE 6: reuse + hardening + proof
+```
 
-Move into one controlled **real user workflow** without adding capability layers.
+ScriptOps PR #7 merged as `daa6e5dc210e09171a530eeffe5601e0e74ae041` after both final checks passed. B1–B5 were closed without modifying the historical v2 artifact.
 
-Current technical recommendation: reuse `legacy/scriptops-v2-single.py` as the smallest ScriptOps base. That base selection remains an explicit human semantic decision before runtime changes begin.
+Evidence: `evidence/PHASE6_SCRIPTOPS_CONTROLLED_WORKFLOW_2026-08-10.md`.
 
-No multi-agent, autonomous loops, AI memory service, dynamic routing, tool expansion, browser/computer use, agent framework or generalized IAM.
+## Current gate — live AI-worker evidence
+
+Per the user's explicit ordering, after the bounded real-workflow proof Saddle returns to the deferred live AI-worker benchmark/effect proof.
+
+Required before worker selection:
+
+- authorized provider-API runner with secure credential handling;
+- explicit paid benchmark budget approval;
+- current model/API verification;
+- identical immutable CASE-001–003 across at least two current suitable candidates;
+- eval results for quality/result, scope/policy violations, tokens, cost, latency, retries and human corrections;
+- at least one validated real-model proposal through the controlled Executor/effect path.
+
+Do not add multi-agent, autonomous loops, AI memory service, dynamic routing, tool expansion, browser/computer use, agent framework or generalized IAM to solve this gate.
 
 ## Functional acceptance
 
@@ -110,10 +118,10 @@ human raw intent
 → real AI proposal
 → exact effect authority
 → bounded real execution
-→ verifier evidence
+→ EffectReceipt / verifier evidence
 → required human review
 → StateDelta
 → second zero-history resume
 ```
 
-The still-open live Phase-4 model benchmark evidence is part of that final proof.
+Only the complete evidence set and explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.

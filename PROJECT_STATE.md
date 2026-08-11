@@ -3,7 +3,7 @@ project: Saddle
 status: PHASE_6_ACCEPTED / PHASE_4_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_READY_PAUSED / NOT_YET_FUNCTIONAL
 completion_lock: ACTIVE
 state_owner: PROJECT_STATE.md
-updated_at: 2026-08-10
+updated_at: 2026-08-11
 ---
 
 # PROJECT_STATE — Saddle
@@ -85,7 +85,7 @@ All three runs remain `CONTEXT_CONTAMINATED`; independent model problem solving 
 
 Evidence: `evidence/PHASE4C_SYNTHETIC_INTEGRATION_2026-08-10.md`.
 
-Exact run:
+Exact historical run:
 
 ```text
 Saddle PR: #16
@@ -97,6 +97,8 @@ fixture: litrgratis-pixel/executor-pilot-target@3934a94a5eebf750079200589d6dc40e
 artifact ID: 9078675806
 artifact ZIP SHA256: cac22ce36e2bfff030f1e3fb1aea3a5323dd55abf75a02d70962cda6165a75e1
 ```
+
+These locators are retained as historical provenance for the original run. Current repository locators after account transfer are `JTJ07/Executor` and `JTJ07/executor-pilot-target`; the pinned commit identities are unchanged.
 
 Provider-independent chain proved:
 
@@ -160,6 +162,29 @@ Phase 4C exposed trigger drift: opening PR #16 automatically started Phase-4B pr
 
 The Phase-4B workflow is therefore changed to explicit `workflow_dispatch` only. This pauses execution; it does not alter the benchmark contract or approval.
 
+### Repository migration state
+
+The critical repositories required by the current completion path were verified on 2026-08-11 under the `JTJ07` owner:
+
+```text
+JTJ07/executor-pilot-target
+JTJ07/Executor
+JTJ07/scriptops
+JTJ07/creative-os-project-reconstructor
+JTJ07/COS
+```
+
+Immutable benchmark identities remain unchanged:
+
+```text
+CASE-001 3934a94a5eebf750079200589d6dc40e024d44a0
+CASE-002 c3683bf37ad6a3f1d49c0ca05ebdd41627e9a5be
+CASE-003 c42bead2bbbff9c84486f17637ec80f35eeffa25
+Executor  788443c3ed5b290ac8f1de145a93d02d2dd15317
+```
+
+Current runtime/config locators must use `JTJ07/...`; historical evidence retains the locator that was true when the evidence was produced. The migration does not alter architecture, evidence classification or the Phase-4B benchmark contract.
+
 The nine evaluation dimensions remain:
 1. correctness against pinned tests;
 2. scope compliance;
@@ -184,7 +209,7 @@ Intent preservation is an evaluation dimension, not automated semantic authority
 
 ## 8. Next evidence gate
 
-Phase 4B is next after the accepted Phase-4C proof. Execute it only when the approved provider credential exists in GitHub Actions secret storage and the workflow is explicitly dispatched.
+Phase 4B is next after the accepted Phase-4C proof. Execute it only when the approved provider credential exists in GitHub Actions secret storage for `JTJ07/Saddle` and the workflow is explicitly dispatched.
 
 Replace only the synthetic Intelligence component with the controlled API worker. Preserve the same intent/proposal/authority/effect/evidence boundaries.
 

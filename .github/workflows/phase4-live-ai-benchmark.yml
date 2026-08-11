@@ -35,7 +35,7 @@ jobs:
 
       - name: Run approved benchmark
         run: |
-          python tools/phase4_live_benchmark.py \
+          python -m tools.phase4_live_benchmark \
             --root . \
             --output-dir benchmark-output \
             --budget-usd 5 \

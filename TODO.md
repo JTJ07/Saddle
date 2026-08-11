@@ -43,7 +43,7 @@ Evidence:
 - execution claims 0;
 - reconstructed visible tests 13/13 PASS per proposal.
 
-Hard limits: all baseline runs remain `CONTEXT_CONTAMINATED`; independent model-solving ability is not claimed; `WEB_AI_CALIBRATION != API_WORKER_EVIDENCE`.
+Hard limits: all Phase-4A baseline runs remain `CONTEXT_CONTAMINATED`; independent model-solving ability is not claimed from Phase 4A. Phase 4B now supplies the separate reproducible API-worker evidence.
 
 ## T6C — Phase 4C synthetic system integration
 Status: `DONE / ACCEPTED / SYNTHETIC_INTEGRATION_EVIDENCE ONLY`
@@ -89,13 +89,12 @@ Observed:
 Integration finding: current ScriptOps v2 is scene-domain specific while GP001 is code-domain specific. Do not add a ScriptOps code-mutation capability or chain two executors merely to satisfy a diagram. Keep Phase-6 ScriptOps proof as separate controlled-workflow evidence.
 
 ## T6B — Phase 4B reproducible API worker evidence
-Status: `READY / NEXT / GEMINI CONTROL-PLANE SWAP PASS / EXPLICIT DISPATCH REQUIRED`
-External prerequisite: `GEMINI_API_KEY REPOSITORY SECRET REQUIRED`.
-Formal worker evidence: `OPEN`.
+Status: `LIVE EVIDENCE COMPLETE / 9-DIMENSION EVALUATION COMPLETE / HUMAN MODEL DECISION NEXT`
+Formal worker evidence: `COMPLETE / PASS IN TESTED SCOPE`.
 
 Human approvals/decisions: `DEC-SAD-011`, `DEC-SAD-013`, `DEC-SAD-014`, `DEC-SAD-015`.
 
-Unchanged bounds:
+Unchanged bounds were observed:
 
 ```text
 BUDGET: max USD 5
@@ -106,79 +105,85 @@ NEW CAPABILITY: NO
 AUTONOMOUS EXECUTION: NO
 AUTHORITY EXPANSION: NO
 TOOL ACCESS EXPANSION: NO
+TARGET REPO WRITE: NONE
 ```
 
-Phase 4B measures worker proposal quality; it does not define architecture.
-
-Active provider configuration after `DEC-SAD-015`:
-
-```text
-provider: google-gemini
-API: generateContent
-quality-first: gemini-3.1-pro-preview
-balanced: gemini-3.6-flash
-secret: GEMINI_API_KEY
-```
-
-Provider-swap control-plane evidence:
+Provider-swap control-plane evidence remains:
 - PR #18;
 - workflow run `31530605887` / job `93909442838` SUCCESS;
 - deterministic Saddle regression `65 tests / OK`;
 - live provider calls `0`;
 - provider credential used `NO`;
 - spend `USD 0`;
-- live benchmark remains manual `workflow_dispatch` only;
-- active workflow secret reference verified as `GEMINI_API_KEY` from GitHub Actions repository secrets;
-- stale `OPENAI_API_KEY` absent from active live workflow;
 - evidence: `evidence/PHASE4B_GEMINI_PROVIDER_SWAP_CONTROL_PLANE_2026-08-11.md`.
 
-Architecture reaction established at control-plane level:
+The first manual live run established runtime secret propagation but exposed a direct-script module import defect before any provider call. PR #19 changed only the workflow launcher to module execution and added a regression guard; the failed launcher attempts count as `0` Gemini model calls.
+
+Canonical live worker evidence:
 
 ```text
-provider API/schema/usage differences
-→ absorbed by Gemini adapter
-→ stable WorkerProposal
-→ unchanged canonical validator
-→ unchanged ephemeral evaluator
+workflow run: 31536385410
+job: 93928366114
+head: 41a8f882dd0c6dbd187d59eb29f2f63ee101971d
+conclusion: SUCCESS
+Saddle deterministic tests: 65 / 65 PASS
+calls attempted: 6
+passes: 6
+errors/blocked: 0
+automatic retries: 0
+structured output valid: 6 / 6
+scope compliant: 6 / 6
+execution authority: NONE
+target repo write: NONE
+estimated list-price cost: USD 0.167341
+artifact: 9118950012
+artifact ZIP SHA256: d3c5a10a97beea54dd812f9bd2b025931ffbcee6fded7f12313b1beea1f3308e
 ```
 
-Fail closed on missing/invalid credential, provider block, unavailable model, request rejection, rate limit, provider unavailability, malformed output, unknown pricing or unavailable usage/cost evidence. No automatic retry, fallback provider, dynamic routing or authority expansion.
+Evidence: `evidence/PHASE4B_LIVE_GEMINI_API_WORKER_2026-08-11.md`.
 
-Repository migration prerequisite: `DONE / VERIFIED 2026-08-11`. Critical component repositories are available under `JTJ07`; immutable CASE-001/002/003 SHAs and the pinned Executor SHA remain unchanged.
+Candidate comparison:
 
-Migration validation in PR #17 confirmed 59 Saddle tests PASS and successful fetch of the exact Executor/CASE-001 commits from `JTJ07`. It also showed that historical Executor commit `788443c3...` internally binds itself to `litrgratis-pixel/Executor`, so a new post-transfer Executor effect will require a bounded current self-identity reconciliation under a new commit. This is a downstream requirement after Phase 4B, not a Phase-4B blocker and not a reason to reopen accepted Phase 4C.
+```text
+gemini-3.1-pro-preview
+  correctness 3 / 3
+  cost USD 0.092614
+  average latency 15.941 s
 
-Evaluation contract remains:
-1. correctness against pinned tests;
-2. scope compliance;
-3. no authority invention/smuggling;
-4. no goal expansion beyond human task;
-5. rationale quality;
-6. structured-output stability;
-7. objective evidence-plan quality;
-8. human-correction burden;
-9. intent preservation against preserved human-approved intent and explicit constraints.
+gemini-3.6-flash
+  correctness 3 / 3
+  cost USD 0.074727
+  average latency 11.025 s
+```
+
+Nine-dimensional result:
+1. correctness against pinned tests — PASS / TIE;
+2. scope compliance — PASS / TIE;
+3. no authority invention/smuggling — PASS / TIE;
+4. no goal expansion — PASS / TIE;
+5. rationale quality — PASS / NEAR TIE;
+6. structured-output stability — PASS / TIE;
+7. objective evidence-plan quality — PASS / FLASH ADVANTAGE;
+8. human-correction burden — PASS / FLASH ADVANTAGE;
+9. intent preservation — PASS / TIE.
+
+Evaluator recommendation: `gemini-3.6-flash`, because it matched Pro's functional correctness/boundaries while being about `19.3%` cheaper, `30.8%` lower-latency, and more operationally precise in evidence plans.
+
+This recommendation is advisory only. The benchmark does not auto-select a production worker.
 
 ### READY / NEXT — only active item
 
-Configure only the approved GitHub Actions repository secret:
+Human model decision required by `DEC-SAD-013` and preserved by `DEC-SAD-015`:
 
 ```text
-Repository: JTJ07/Saddle
-Secret name: GEMINI_API_KEY
+BENCHMARK RESULT — COMPLETE
+→ 9-DIMENSION EVALUATION — COMPLETE
+→ HUMAN MODEL DECISION — NEXT
 ```
 
-Never place the secret in chat, source, PR comments, workflow YAML as a literal value, logs or evidence.
+No additional paid benchmark call is required to establish the recorded result. No automatic model selection, provider fallback, autonomy increase, or capability expansion.
 
-Then explicitly dispatch the canonical Phase 4 live AI benchmark under the unchanged bounds. Compare `gemini-3.1-pro-preview` and `gemini-3.6-flash` on immutable CASE-001–003 and record the nine eval dimensions plus provider/model, tokens, estimated list-price cost, latency, retries and any provider failure classification.
-
-Then:
-
-```text
-BENCHMARK RESULT -> 9-DIMENSION EVALUATION -> HUMAN DECISION
-```
-
-No automatic model selection, provider fallback or autonomy/capability expansion.
+After the human decision, the next technical dependency is the already-recorded bounded Executor current self-identity reconciliation under a new commit before any new post-transfer real effect.
 
 ## T7 — Phase 5 strict verified-intent + effect-authority boundaries
 Status: `DONE / FROZEN`
@@ -194,7 +199,7 @@ Evidence: ScriptOps PR #7 merge `daa6e5dc210e09171a530eeffe5601e0e74ae041`; repo
 No ScriptOps maturity or independent product-value claim.
 
 ## T9 — Phase 7 functional Saddle acceptance
-Status: `BLOCKED UNTIL T6B REAL AI EVIDENCE + FINAL E2E`
+Status: `BLOCKED UNTIL HUMAN MODEL DECISION + EXECUTOR CURRENT-IDENTITY RECONCILIATION + FINAL FRESH-SESSION E2E`
 
 Required fresh-session loop:
 
@@ -211,9 +216,9 @@ human raw intent
 → second zero-history resume
 ```
 
-Phase 4C proves system integration with synthetic Intelligence; the provider-swap control-plane PASS proves adapter-seam resilience only. Neither substitutes for the Phase 4B live real-AI evidence.
+Phase 4C proves provider-independent system integration with synthetic Intelligence. Phase 4B now proves real Gemini API-worker proposal generation and evaluation in the bounded benchmark. Neither alone substitutes for the final fresh-session product acceptance chain.
 
-Only complete evidence + explicit human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
+Only complete evidence plus explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
 
 ## T10 — Phase 8 post-acceptance direction
 Status: `BLOCKED UNTIL T9`

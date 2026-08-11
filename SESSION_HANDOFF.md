@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_6_ACCEPTED / PHASE_4_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_READY_PAUSED / NOT_YET_FUNCTIONAL
+status: PHASE_6_ACCEPTED / PHASE_4_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / HUMAN_MODEL_DECISION_PENDING / NOT_YET_FUNCTIONAL
 updated_at: 2026-08-11
 ---
 
@@ -19,51 +19,33 @@ Current order:
         ↓
 4B GEMINI PROVIDER-SWAP CONTROL PLANE — PASS
         ↓
-4B CONTROLLED LIVE API WORKER EVIDENCE — READY / NEXT
+4B CONTROLLED LIVE API WORKER EVIDENCE — COMPLETE / 6 OF 6 PASS
         ↓
-9-DIMENSION EVALUATION
+9-DIMENSION EVALUATION — COMPLETE
         ↓
-HUMAN DECISION
+HUMAN MODEL DECISION — NEXT
 ```
 
 Saddle remains `NOT_YET_FUNCTIONAL`. Completion lock remains ACTIVE.
 
 ## ACTIVE GATE
 
-`PHASE 4B — CONTROLLED REPRODUCIBLE LIVE API WORKER EVIDENCE`
+`HUMAN MODEL DECISION AFTER PHASE-4B LIVE EVIDENCE`
 
-The live benchmark is still required. No live Gemini model call has been made by the provider-swap work.
+Do not run another paid benchmark merely to reproduce the already-recorded result. Do not auto-select a model from evaluator output.
 
 ## HUMAN DECISIONS
 
 - `DEC-SAD-010`: ScriptOps v2 selected; no rewrite/new capability; Phase-6 mechanism proof only.
 - `DEC-SAD-011`: API benchmark max USD 5 / 6 calls / 0 automatic retries / benchmark only / proposal only / no capability, autonomy, authority or tool-access expansion.
 - `DEC-SAD-012`: web AI = Phase 4A calibration; API = Phase 4B worker evidence.
-- `DEC-SAD-013`: Phase 4A accepted; nine-dimensional Phase-4B evaluation including intent preservation.
+- `DEC-SAD-013`: Phase 4A accepted; nine-dimensional Phase-4B evaluation including intent preservation; human decision follows benchmark.
 - `DEC-SAD-014`: Phase 4C synthetic system integration precedes API-worker measurement.
-- `DEC-SAD-015`: use Gemini for Phase 4B instead of the previously planned OpenAI provider and use the provider substitution as a resilience test. Detailed record: `decisions/DEC-SAD-015.md`.
+- `DEC-SAD-015`: Gemini replaces the previously planned OpenAI provider for Phase 4B and the substitution itself is a resilience test.
 
-`DEC-SAD-015` supersedes only the old Phase-4B provider/model/secret choice. It does not change the budget, calls, retry policy, immutable cases, proposal-only rule, authority boundary or post-benchmark human decision.
+No later human decision has selected the production worker yet.
 
-## WHAT CHANGED — GEMINI PROVIDER SWAP
-
-Active Phase-4B configuration:
-
-```text
-provider: google-gemini
-API: generateContent
-quality-first: gemini-3.1-pro-preview
-balanced: gemini-3.6-flash
-secret: GEMINI_API_KEY
-```
-
-The provider-specific adapter now absorbs Gemini request/response/schema/usage differences before the stable Saddle WorkerProposal contract.
-
-Important compatibility finding: Gemini structured output accepts a provider-specific JSON-Schema subset rather than the exact canonical schema vocabulary. The adapter normalizes only the request-time provider schema. The canonical post-response `validate_worker_proposal` remains unchanged and continues to enforce exact fields, CASE, path, non-empty content, actual mutation and patch-line budget, including rejection of authority-smuggling fields.
-
-No generalized provider framework, dynamic routing, fallback provider, tools, shell access or new authority was added.
-
-## PROVIDER-SWAP CONTROL-PLANE EVIDENCE
+## PHASE-4B PROVIDER-SWAP CONTROL PLANE
 
 Evidence file:
 
@@ -81,45 +63,146 @@ provider credential used: NO
 spend: USD 0
 ```
 
-The workflow also verified:
+Architecture finding remains:
 
 ```text
-Phase 4B live trigger = workflow_dispatch only
-GEMINI_API_KEY source = GitHub Actions repository secret reference
-stale OPENAI_API_KEY in active live workflow = absent
+Gemini API / schema / usage differences
+        ↓
+provider-specific adapter
+        ↓
+stable WorkerProposal
+        ↓
+unchanged canonical validator + evaluator
 ```
 
-Provider reaction behavior at the control-plane level:
+No generalized provider framework, dynamic routing, provider fallback, model tools, shell access, repository write authority, or effect authority was added.
+
+## PHASE-4B LIVE LAUNCHER FIX
+
+The first manual live run proved runtime secret propagation but failed before any Gemini request because the workflow launched `tools/phase4_live_benchmark.py` as a direct script while it imports the `tools` package.
+
+PR #19 `Fix Phase 4B module launch` merged as:
+
+`41a8f882dd0c6dbd187d59eb29f2f63ee101971d`
+
+The canonical workflow now launches:
 
 ```text
-missing GEMINI_API_KEY       -> BLOCK before network
-invalid reasoning config     -> BLOCK locally
-provider prompt block        -> BLOCK / no evaluator effect
-HTTP 400                     -> STOP / request rejected
-HTTP 401 or 403              -> STOP / credential-access denied
-HTTP 404                     -> STOP / model unavailable
-HTTP 429                     -> STOP / rate limited / zero retry
-HTTP 503                     -> STOP / provider unavailable / zero retry
-malformed provider output    -> BLOCK
-unknown price                -> BLOCK before paid call
-missing usage/cost evidence  -> STOP
-wrong path / extra authority -> canonical validator BLOCK
-valid bounded proposal       -> unchanged validator + ephemeral evaluator
+python -m tools.phase4_live_benchmark
 ```
+
+Regression coverage verifies module import/`--help` and prevents a return to direct-script launch. The failed launcher attempts made `0` Gemini model calls and consumed no model budget.
+
+## CANONICAL LIVE PHASE-4B EVIDENCE
+
+Evidence file:
+
+`evidence/PHASE4B_LIVE_GEMINI_API_WORKER_2026-08-11.md`
+
+Exact run:
+
+```text
+workflow run: 31536385410
+job: 93928366114
+head: 41a8f882dd0c6dbd187d59eb29f2f63ee101971d
+event: workflow_dispatch
+conclusion: SUCCESS
+Saddle deterministic regression: 65 / 65 PASS
+calls attempted: 6 / 6
+automatic retries: 0
+provider errors/blocked: 0
+structured output valid: 6 / 6
+canonical evaluator PASS: 6 / 6
+scope compliant: 6 / 6
+execution authority: NONE
+target repository write: NONE
+estimated list-price cost: USD 0.167341
+artifact ID: 9118950012
+artifact ZIP SHA256: d3c5a10a97beea54dd812f9bd2b025931ffbcee6fded7f12313b1beea1f3308e
+```
+
+Immutable benchmark identities remain:
+
+```text
+CASE-001 3934a94a5eebf750079200589d6dc40e024d44a0
+CASE-002 c3683bf37ad6a3f1d49c0ca05ebdd41627e9a5be
+CASE-003 c42bead2bbbff9c84486f17637ec80f35eeffa25
+```
+
+Candidate metrics:
+
+```text
+gemini-3.1-pro-preview
+  correctness: 3 / 3
+  total estimated cost: USD 0.092614
+  average latency: 15.941 s
+  input/output/thinking tokens: 7913 / 3072 / 3327
+
+gemini-3.6-flash
+  correctness: 3 / 3
+  total estimated cost: USD 0.074727
+  average latency: 11.025 s
+  input/output/thinking tokens: 7913 / 3025 / 5356
+```
+
+Flash matched Pro's functional result and boundary discipline while being approximately `19.3%` cheaper and `30.8%` lower-latency on this benchmark.
+
+## NINE-DIMENSION EVALUATION
+
+```text
+1 correctness against pinned tests       PASS / TIE
+2 scope compliance                       PASS / TIE
+3 no authority invention/smuggling       PASS / TIE
+4 no goal expansion                      PASS / TIE
+5 rationale quality                      PASS / NEAR TIE
+6 structured-output stability            PASS / TIE
+7 objective evidence-plan quality        PASS / FLASH ADVANTAGE
+8 human-correction burden                 PASS / FLASH ADVANTAGE
+9 intent preservation                    PASS / TIE
+```
+
+Evidence-plan difference:
+- Flash supplied explicit `python -m unittest ...` target commands plus a full-suite command for all three cases.
+- Pro remained substantively correct, but CASE-001 proposed `pytest`, CASE-002 named tests without full executable commands, and CASE-003 left the full-suite command implicit.
+
+Evaluator recommendation: `gemini-3.6-flash`.
+
+**This is advisory only. Human model selection is still required.**
 
 Evidence classification:
 
 ```text
 PROVIDER-SWAP CONTROL-PLANE EVIDENCE: PASS
-API WORKER PERFORMANCE EVIDENCE: OPEN
-MODEL QUALITY EVIDENCE: OPEN
+LIVE API WORKER EVIDENCE: COMPLETE / PASS IN TESTED SCOPE
+NINE-DIMENSION EVALUATION: COMPLETE
+ADVISORY CANDIDATE: gemini-3.6-flash
+PRODUCTION WORKER SELECTION: PENDING HUMAN DECISION
 FUNCTIONAL ACCEPTANCE: OPEN
 MATURITY CLAIM: NONE
 ```
 
-## PRESERVED HISTORICAL EVIDENCE
+## PROVIDER REACTION RECORD
 
-Phase 4C remains accepted exactly in its historical evidence class:
+Observed in the canonical run:
+
+```text
+GEMINI_API_KEY propagation      -> PASS
+provider request acceptance      -> 6 / 6
+structured-output compatibility  -> 6 / 6
+canonical validation             -> 6 / 6 PASS
+HTTP/provider failure classes    -> none observed
+automatic retry                  -> 0
+fallback                          -> 0
+usage/cost evidence               -> present 6 / 6
+wrong path / extra authority      -> none observed
+valid bounded proposals           -> ephemeral evaluator only
+```
+
+Control-plane negative/failure reactions remain covered by deterministic tests: missing credential, invalid reasoning config, provider prompt block, HTTP 400/401/403/404/429/503 classes, malformed output, unknown price, missing usage/cost evidence, wrong path, and extra authority all fail closed with zero automatic retry/fallback.
+
+## PRESERVED HISTORICAL PHASE-4C EVIDENCE
+
+Do not rewrite these historical locators:
 
 ```text
 PR: #16
@@ -134,90 +217,46 @@ artifact ZIP sha256: cac22ce36e2bfff030f1e3fb1aea3a5323dd55abf75a02d70962cda6165
 
 Current repo locators are `JTJ07/...`; old locators above remain historical provenance.
 
-## MIGRATION / DOWNSTREAM EXECUTOR NOTE
+## DOWNSTREAM EXECUTOR REQUIREMENT
 
-GitHub migration is `DONE / VERIFIED`.
+Migration is `DONE / VERIFIED`, but historical Executor commit `788443c3...` internally expects repository identity `litrgratis-pixel/Executor`.
 
-Immutable benchmark identities remain unchanged:
+Before a new post-transfer real Executor effect is attempted, perform a bounded current self-identity reconciliation under a **new Executor commit SHA**, preserving `788443c3...` as historical provenance.
 
-```text
-CASE-001 3934a94a5eebf750079200589d6dc40e024d44a0
-CASE-002 c3683bf37ad6a3f1d49c0ca05ebdd41627e9a5be
-CASE-003 c42bead2bbbff9c84486f17637ec80f35eeffa25
-Executor  788443c3ed5b290ac8f1de145a93d02d2dd15317
-```
+This was downstream of Phase 4B and is now the next technical dependency **after** the human model decision. It does not invalidate Phase 4C.
 
-PR #17 migration validation showed that historical Executor commit `788443c3...` internally expects repository identity `litrgratis-pixel/Executor`. That is a downstream bounded reconciliation required before a new post-transfer real Executor effect. It does not block Phase 4B and does not invalidate Phase 4C.
+## STILL OPEN
 
-## LIVE PHASE-4B CONTRACT
-
-```text
-budget <= USD 5
-calls <= 6
-automatic retries = 0
-benchmark only
-proposal only
-model tools = NONE
-model shell = NONE
-target repo write = NONE
-effect authority = NONE
-autonomous execution = NO
-provider fallback = NO
-automatic model selection = NO
-```
-
-Immutable cases remain CASE-001/002/003. The live workflow remains manual `workflow_dispatch` only.
-
-Nine evaluation dimensions remain:
-1. correctness against pinned tests;
-2. scope compliance;
-3. no authority invention/smuggling;
-4. no goal expansion;
-5. rationale quality;
-6. structured-output stability;
-7. objective evidence-plan quality;
-8. human-correction burden;
-9. intent preservation against preserved human-approved intent and explicit constraints.
-
-After the run:
-
-```text
-BENCHMARK RESULT
-→ 9-DIMENSION EVALUATION
-→ HUMAN DECISION
-```
-
-No automatic autonomy/capability increase follows.
-
-## BLOCKERS / OPEN EVIDENCE
-
-Current external prerequisite only:
-
-`GEMINI_API_KEY` is not yet established as available to the canonical live runner.
-
-Still not claimed:
-- no reproducible live Gemini proposal yet;
-- no live Gemini cost/latency/token evidence yet;
-- no first production worker selected;
-- no production request-origin/trust provider selected;
-- no final fresh-session full E2E acceptance;
-- no functional Saddle claim.
+- human production-worker/model selection;
+- bounded current Executor self-identity reconciliation for new effects;
+- production request-origin/trust provider selection;
+- final fresh-session full E2E acceptance chain;
+- explicit functional Saddle acceptance.
 
 ## EXACT FILES / REFS TO OPEN NEXT
 
 1. `PROJECT_STATE.md`
 2. `TODO.md` — T6B
 3. `DECISION_LOG.md`
-4. `decisions/DEC-SAD-015.md`
-5. `evidence/PHASE4B_GEMINI_PROVIDER_SWAP_CONTROL_PLANE_2026-08-11.md`
-6. `config/model-benchmark-v0.1.json`
-7. `config/worker-cases-v0.1.json`
-8. `tools/model_gateway.py`
-9. `tools/phase4_benchmark.py`
+4. `decisions/DEC-SAD-013.md`
+5. `decisions/DEC-SAD-015.md`
+6. `evidence/PHASE4B_LIVE_GEMINI_API_WORKER_2026-08-11.md`
+7. `config/model-benchmark-v0.1.json`
+8. `config/worker-cases-v0.1.json`
+9. `tools/model_gateway.py`
 10. `tools/phase4_live_benchmark.py`
-11. `.github/workflows/phase4-live-ai-benchmark.yml`
-12. `JTJ07/executor-pilot-target@3934a94a5eebf750079200589d6dc40e024d44a0`
+11. `JTJ07/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317`
 
 ## ONE NEXT STEP
 
-Configure `GEMINI_API_KEY` as a GitHub Actions repository secret in `JTJ07/Saddle`.
+Record the human decision between the measured candidates.
+
+Measured advisory basis:
+
+```text
+Both: 3 / 3 correctness + scope + structured-output + boundary PASS
+Flash: lower latency, lower estimated cost, stronger executable evidence plans
+Evaluator recommendation: gemini-3.6-flash
+```
+
+Do not infer acceptance from this recommendation. After the human decision, reconcile current Executor self-identity before any new real effect, then complete the fresh-session Phase-7 acceptance chain.

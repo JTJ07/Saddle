@@ -115,7 +115,9 @@ Canonical runner:
 - ephemeral pinned checkouts only;
 - no target-repository push.
 
-Repository migration prerequisite: `DONE / VERIFIED 2026-08-11`. Critical component repositories are available under `JTJ07`; immutable CASE-001/002/003 SHAs and the pinned Executor SHA remain unchanged. Current runtime locators are synchronized separately from historical evidence provenance.
+Repository migration prerequisite: `DONE / VERIFIED 2026-08-11`. Critical component repositories are available under `JTJ07`; immutable CASE-001/002/003 SHAs and the pinned Executor SHA remain unchanged. Current active runtime locators are synchronized separately from historical evidence provenance.
+
+Migration validation in PR #17 confirmed 59 Saddle tests PASS and successful fetch of the exact Executor/CASE-001 commits from `JTJ07`. It also showed that historical Executor commit `788443c3...` internally binds itself to `litrgratis-pixel/Executor`, so a new post-transfer Executor effect will require a bounded current self-identity reconciliation under a new commit. This is a downstream requirement after Phase 4B, not a Phase-4B blocker and not a reason to reopen accepted Phase 4C.
 
 The workflow trigger is manual `workflow_dispatch`. Opening unrelated PRs must not start the benchmark.
 

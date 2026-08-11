@@ -89,11 +89,13 @@ Observed:
 Integration finding: current ScriptOps v2 is scene-domain specific while GP001 is code-domain specific. Do not add a ScriptOps code-mutation capability or chain two executors merely to satisfy a diagram. Keep Phase-6 ScriptOps proof as separate controlled-workflow evidence.
 
 ## T6B — Phase 4B reproducible API worker evidence
-Status: `READY / NEXT / EXPLICIT DISPATCH REQUIRED`
-External prerequisite: `OPENAI_API_KEY REPOSITORY SECRET REQUIRED`.
+Status: `READY / NEXT / GEMINI CONTROL-PLANE SWAP PASS / EXPLICIT DISPATCH REQUIRED`
+External prerequisite: `GEMINI_API_KEY REPOSITORY SECRET REQUIRED`.
 Formal worker evidence: `OPEN`.
 
-Human approval `DEC-SAD-011` remains unchanged:
+Human approvals/decisions: `DEC-SAD-011`, `DEC-SAD-013`, `DEC-SAD-014`, `DEC-SAD-015`.
+
+Unchanged bounds:
 
 ```text
 BUDGET: max USD 5
@@ -106,28 +108,47 @@ AUTHORITY EXPANSION: NO
 TOOL ACCESS EXPANSION: NO
 ```
 
-Proof-order decision `DEC-SAD-014`: 4B was paused while 4C was active. With 4C accepted, 4B is again the next evidence gate. It measures worker proposal quality; it does not define architecture.
+Phase 4B measures worker proposal quality; it does not define architecture.
 
-Canonical runner:
-- PR #15 merge `3547d42266c8711df35d7694b2839a5be3a11200`;
-- proposal-only;
-- no model shell/tools/repository write/effect authority;
-- ephemeral pinned checkouts only;
-- no target-repository push.
+Active provider configuration after `DEC-SAD-015`:
 
-Repository migration prerequisite: `DONE / VERIFIED 2026-08-11`. Critical component repositories are available under `JTJ07`; immutable CASE-001/002/003 SHAs and the pinned Executor SHA remain unchanged. Current active runtime locators are synchronized separately from historical evidence provenance.
+```text
+provider: google-gemini
+API: generateContent
+quality-first: gemini-3.1-pro-preview
+balanced: gemini-3.6-flash
+secret: GEMINI_API_KEY
+```
+
+Provider-swap control-plane evidence:
+- PR #18;
+- workflow run `31530605887` / job `93909442838` SUCCESS;
+- deterministic Saddle regression `65 tests / OK`;
+- live provider calls `0`;
+- provider credential used `NO`;
+- spend `USD 0`;
+- live benchmark remains manual `workflow_dispatch` only;
+- active workflow secret reference verified as `GEMINI_API_KEY` from GitHub Actions repository secrets;
+- stale `OPENAI_API_KEY` absent from active live workflow;
+- evidence: `evidence/PHASE4B_GEMINI_PROVIDER_SWAP_CONTROL_PLANE_2026-08-11.md`.
+
+Architecture reaction established at control-plane level:
+
+```text
+provider API/schema/usage differences
+→ absorbed by Gemini adapter
+→ stable WorkerProposal
+→ unchanged canonical validator
+→ unchanged ephemeral evaluator
+```
+
+Fail closed on missing/invalid credential, provider block, unavailable model, request rejection, rate limit, provider unavailability, malformed output, unknown pricing or unavailable usage/cost evidence. No automatic retry, fallback provider, dynamic routing or authority expansion.
+
+Repository migration prerequisite: `DONE / VERIFIED 2026-08-11`. Critical component repositories are available under `JTJ07`; immutable CASE-001/002/003 SHAs and the pinned Executor SHA remain unchanged.
 
 Migration validation in PR #17 confirmed 59 Saddle tests PASS and successful fetch of the exact Executor/CASE-001 commits from `JTJ07`. It also showed that historical Executor commit `788443c3...` internally binds itself to `litrgratis-pixel/Executor`, so a new post-transfer Executor effect will require a bounded current self-identity reconciliation under a new commit. This is a downstream requirement after Phase 4B, not a Phase-4B blocker and not a reason to reopen accepted Phase 4C.
 
-The workflow trigger is manual `workflow_dispatch`. Opening unrelated PRs must not start the benchmark.
-
-Accidental pre-pause trigger evidence from PR #16:
-- run `31429930237` / job `93590580949`;
-- deterministic pre-model step PASS;
-- credential check failed because secret was absent;
-- benchmark/model step SKIPPED.
-
-Evaluation contract:
+Evaluation contract remains:
 1. correctness against pinned tests;
 2. scope compliance;
 3. no authority invention/smuggling;
@@ -144,20 +165,20 @@ Configure only the approved GitHub Actions repository secret:
 
 ```text
 Repository: JTJ07/Saddle
-Secret name: OPENAI_API_KEY
+Secret name: GEMINI_API_KEY
 ```
 
-Never place the secret in chat, source, PR comments, workflow YAML, logs or evidence.
+Never place the secret in chat, source, PR comments, workflow YAML as a literal value, logs or evidence.
 
-Then explicitly dispatch the canonical benchmark under the unchanged bounds. Compare Sol/Terra on immutable CASE-001–003 and record the nine eval dimensions + tokens/cost/latency/retries.
+Then explicitly dispatch the canonical Phase 4 live AI benchmark under the unchanged bounds. Compare `gemini-3.1-pro-preview` and `gemini-3.6-flash` on immutable CASE-001–003 and record the nine eval dimensions plus provider/model, tokens, estimated list-price cost, latency, retries and any provider failure classification.
 
 Then:
 
 ```text
-BENCHMARK RESULT -> EVALUATION -> HUMAN DECISION
+BENCHMARK RESULT -> 9-DIMENSION EVALUATION -> HUMAN DECISION
 ```
 
-No automatic model selection or autonomy/capability expansion.
+No automatic model selection, provider fallback or autonomy/capability expansion.
 
 ## T7 — Phase 5 strict verified-intent + effect-authority boundaries
 Status: `DONE / FROZEN`
@@ -190,7 +211,7 @@ human raw intent
 → second zero-history resume
 ```
 
-Phase 4C proves system integration with synthetic Intelligence; it does not satisfy the real-AI step.
+Phase 4C proves system integration with synthetic Intelligence; the provider-swap control-plane PASS proves adapter-seam resilience only. Neither substitutes for the Phase 4B live real-AI evidence.
 
 Only complete evidence + explicit human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
 

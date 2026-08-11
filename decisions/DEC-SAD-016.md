@@ -61,20 +61,33 @@ VERIFIER ESTABLISHES FACTS
 
 `AI RECOMMENDATION != HUMAN DECISION` remains an invariant; this record exists because the human explicitly made the decision.
 
-## Next technical gate
+## Required downstream gate at decision time
 
-Before a new post-transfer real Executor effect, reconcile the **current** Executor self identity to:
+Before a new post-transfer real Executor effect, the decision required reconciliation of the **current** Executor self identity to:
 
 ```text
 JTJ07/Executor
 ```
 
-under a new Executor commit.
-
-Historical Phase-4C provenance must remain untouched:
+under a new Executor commit, while preserving historical Phase-4C provenance:
 
 ```text
 litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317
 ```
 
-After that bounded reconciliation, proceed to the fresh-session Phase-7 full E2E acceptance chain. Completion lock remains ACTIVE and `FUNCTIONAL_SADDLE_ACCEPTED` remains false until the required evidence and explicit final human acceptance exist.
+## Subsequent verified completion
+
+That bounded downstream gate was completed after this human decision:
+
+```text
+Executor PR: JTJ07/Executor#58
+current Executor merge SHA: 728d23e56ec9f76fb7a37673ceb20efccf91e03d
+Verify Executor foundations: 31539013966 — SUCCESS
+GP001 replay repeatability: 31539014065 — SUCCESS
+```
+
+The reconciliation preserved fail-closed identity checks and did not rewrite the historical Phase-4C SHA or external pilot-fixture authority. Detailed evidence is recorded in:
+
+`evidence/EXECUTOR_CURRENT_SELF_IDENTITY_RECONCILIATION_2026-08-11.md`
+
+The next gate is therefore the fresh-session Phase-7 full E2E acceptance chain. Completion lock remains ACTIVE and `FUNCTIONAL_SADDLE_ACCEPTED` remains false until the required evidence and explicit final human acceptance exist.

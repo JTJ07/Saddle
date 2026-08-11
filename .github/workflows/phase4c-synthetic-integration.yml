@@ -55,7 +55,7 @@ jobs:
           executor="$RUNNER_TEMP/executor"
           rm -rf "$executor"
           git init -q "$executor"
-          git -C "$executor" remote add origin https://github.com/litrgratis-pixel/Executor.git
+          git -C "$executor" remote add origin https://github.com/JTJ07/Executor.git
           git -C "$executor" -c protocol.version=2 -c core.hooksPath=/dev/null -c credential.helper= fetch --no-tags --depth=1 origin 788443c3ed5b290ac8f1de145a93d02d2dd15317
           git -C "$executor" checkout -q --detach FETCH_HEAD
           test "$(git -C "$executor" rev-parse HEAD)" = "788443c3ed5b290ac8f1de145a93d02d2dd15317"
@@ -68,7 +68,7 @@ jobs:
           target="$RUNNER_TEMP/gp001-target"
           rm -rf "$target"
           git init -q "$target"
-          git -C "$target" remote add origin https://github.com/litrgratis-pixel/executor-pilot-target.git
+          git -C "$target" remote add origin https://github.com/JTJ07/executor-pilot-target.git
           git -C "$target" -c protocol.version=2 -c core.hooksPath=/dev/null -c credential.helper= fetch --no-tags --depth=1 origin 3934a94a5eebf750079200589d6dc40e024d44a0
           git -C "$target" checkout -q --detach FETCH_HEAD
           test "$(git -C "$target" rev-parse HEAD)" = "3934a94a5eebf750079200589d6dc40e024d44a0"

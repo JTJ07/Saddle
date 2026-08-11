@@ -47,7 +47,8 @@ jobs:
           workflow = Path('.github/workflows/phase4-live-ai-benchmark.yml').read_text(encoding='utf-8')
           if 'workflow_dispatch:' not in workflow or 'pull_request:' in workflow:
               raise SystemExit('Phase 4B live benchmark must remain manual workflow_dispatch only')
-          if 'GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}' not in workflow:
+          expected_secret_ref = 'GEMINI_API_KEY: $' + '{{ secrets.GEMINI_API_KEY }}'
+          if expected_secret_ref not in workflow:
               raise SystemExit('Phase 4B must source GEMINI_API_KEY only from repository secrets')
           if 'OPENAI_API_KEY' in workflow:
               raise SystemExit('stale OPENAI_API_KEY reference remains in active Phase 4B workflow')

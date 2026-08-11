@@ -22,7 +22,7 @@ def _load(path: Path) -> dict[str, Any]:
     return value
 
 
-def run_preflight(root: Path, *, credential_env: str = "OPENAI_API_KEY") -> dict[str, Any]:
+def run_preflight(root: Path, *, credential_env: str = "GEMINI_API_KEY") -> dict[str, Any]:
     models = _load(root / "config" / "model-benchmark-v0.1.json")
     cases = _load(root / "config" / "worker-cases-v0.1.json")
 
@@ -66,6 +66,8 @@ def run_preflight(root: Path, *, credential_env: str = "OPENAI_API_KEY") -> dict
     return {
         "schema_version": "saddle-phase4-preflight/0.1",
         "status": status,
+        "provider": models.get("provider"),
+        "api": models.get("api"),
         "candidate_models": model_ids,
         "cases": case_ids,
         "credential_env": credential_env,
@@ -77,7 +79,7 @@ def run_preflight(root: Path, *, credential_env: str = "OPENAI_API_KEY") -> dict
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=Path("."))
-    parser.add_argument("--credential-env", default="OPENAI_API_KEY")
+    parser.add_argument("--credential-env", default="GEMINI_API_KEY")
     args = parser.parse_args(argv)
     try:
         result = run_preflight(args.root, credential_env=args.credential_env)

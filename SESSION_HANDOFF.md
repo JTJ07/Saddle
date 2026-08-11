@@ -58,7 +58,9 @@ CASE-003 c42bead2bbbff9c84486f17637ec80f35eeffa25
 Executor  788443c3ed5b290ac8f1de145a93d02d2dd15317
 ```
 
-Rule: current configs/runtime locators use `JTJ07/...`; historical evidence keeps the locator that was true when the original event occurred. Do not rewrite historical evidence to make it look as if old runs happened after the transfer.
+Rule: current active configs/runtime locators use `JTJ07/...`; historical evidence keeps the locator that was true when the original event occurred. Frozen Phase-4C proof tooling remains tied to its historical locator/identity pair. Do not rewrite historical evidence to make it look as if old runs happened after the transfer.
+
+Migration validation in PR #17 / run `31526922252` produced a useful downstream finding: 59 Saddle tests passed, the exact Executor and CASE-001 commits were fetched successfully from their `JTJ07` repositories, and the subsequent full 4C rerun blocked fail-closed because historical Executor commit `788443c3...` internally expects repository identity `litrgratis-pixel/Executor`. This does not invalidate accepted Phase 4C and does not block Phase 4B. Before a new post-4B real Executor effect, reconcile current Executor self-identity under a new current commit while preserving the historical pinned SHA.
 
 ## PHASE 4A — ACCEPTED
 
@@ -183,6 +185,7 @@ No automatic model selection or autonomy/capability expansion follows.
 - no reproducible API model proposal yet;
 - no model cost/latency/token evidence yet;
 - no first production worker selected;
+- current Executor self-identity is not yet reconciled for a new post-transfer real effect run; this is downstream of Phase 4B;
 - no production request-origin/trust provider;
 - no final fresh-session full E2E acceptance;
 - no functional Saddle claim.

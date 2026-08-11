@@ -5,7 +5,8 @@ no tools, shell, write access, or authority. Each proposal is applied only to an
 ephemeral checkout for deterministic tests. Nothing is pushed to the target repo.
 
 Human-approved bound (2026-08-10): max USD 5, max 6 model calls, zero automatic
-retries, benchmark only.
+retries, benchmark only. Provider swapped to Gemini by explicit human decision on
+2026-08-11 without changing those bounds.
 """
 from __future__ import annotations
 
@@ -29,8 +30,8 @@ class LiveBenchmarkError(RuntimeError):
 
 
 PRICES_PER_MILLION = {
-    "gpt-5.6-sol": {"input": 5.0, "output": 30.0},
-    "gpt-5.6-terra": {"input": 2.5, "output": 15.0},
+    "gemini-3.1-pro-preview": {"input": 2.0, "output": 12.0},
+    "gemini-3.6-flash": {"input": 1.5, "output": 7.5},
 }
 
 
@@ -87,21 +88,31 @@ def _contract_hash(case: dict[str, Any]) -> str:
     return "sha256:" + hashlib.sha256(raw.encode("utf-8")).hexdigest()
 
 
-def _actual_cost(model_id: str, usage: dict[str, Any]) -> float | None:
+def _estimated_cost(model_id: str, usage: dict[str, Any]) -> float | None:
     prices = PRICES_PER_MILLION.get(model_id)
     input_tokens = usage.get("input_tokens")
     output_tokens = usage.get("output_tokens")
+    reasoning_tokens = usage.get("reasoning_tokens")
     if not prices or not isinstance(input_tokens, int) or not isinstance(output_tokens, int):
         return None
-    return (input_tokens * prices["input"] + output_tokens * prices["output"]) / 1_000_000
+    billed_output_tokens = output_tokens + (reasoning_tokens if isinstance(reasoning_tokens, int) else 0)
+    return (input_tokens * prices["input"] + billed_output_tokens * prices["output"]) / 1_000_000
 
 
 def _conservative_max_call_cost(model_id: str, case: dict[str, Any], max_output_tokens: int) -> float:
-    prices = PRICES_PER_MILLION[model_id]
+    prices = PRICES_PER_MILLION.get(model_id)
+    if prices is None:
+        raise LiveBenchmarkError(f"no approved price table for model {model_id}")
     input_bytes = len(
         (case["problem"] + case["case_contract"] + case["target_source"] + case["tests_source"]).encode("utf-8")
     ) + 20_000
-    return (input_bytes * prices["input"] + max_output_tokens * prices["output"]) / 1_000_000
+    # Gemini bills thinking tokens at the output rate. Reserve a second max-output
+    # allowance for thinking so the pre-call guard remains conservative.
+    conservative_output_tokens = max_output_tokens * 2
+    return (
+        input_bytes * prices["input"]
+        + conservative_output_tokens * prices["output"]
+    ) / 1_000_000
 
 
 def _evaluate_proposal(run_checkout: Path, case: dict[str, Any], artifact: dict[str, Any]) -> dict[str, Any]:
@@ -132,12 +143,14 @@ def _evaluate_proposal(run_checkout: Path, case: dict[str, Any], artifact: dict[
 
 
 def run_benchmark(*, root: Path, output_dir: Path, budget_usd: float, max_calls: int) -> dict[str, Any]:
-    if not os.environ.get("OPENAI_API_KEY"):
-        raise CredentialUnavailable("OPENAI_API_KEY is not configured in the benchmark runner environment")
+    if not os.environ.get("GEMINI_API_KEY"):
+        raise CredentialUnavailable("GEMINI_API_KEY is not configured in the benchmark runner environment")
 
     benchmark = _load_json(root / "config" / "model-benchmark-v0.1.json")
     cases_cfg = _load_json(root / "config" / "worker-cases-v0.1.json")
     policy = benchmark["first_pass_policy"]
+    if benchmark.get("provider") != "google-gemini" or benchmark.get("api") != "generateContent":
+        raise LiveBenchmarkError("active benchmark provider/API is not the approved Gemini generateContent pair")
     if policy.get("automatic_retries") != 0:
         raise LiveBenchmarkError("benchmark config violates zero-retry decision")
     if max_calls > 6 or max_calls > int(policy.get("max_total_model_calls", 0)):
@@ -156,7 +169,7 @@ def run_benchmark(*, root: Path, output_dir: Path, budget_usd: float, max_calls:
     spent_usd = 0.0
     calls_attempted = 0
     stop_reason: str | None = None
-    max_output_tokens = 8192
+    max_output_tokens = int(policy.get("max_output_tokens_per_call", 8192))
 
     repo_url = "https://github.com/" + cases_cfg["repository"] + ".git"
 
@@ -186,6 +199,8 @@ def run_benchmark(*, root: Path, output_dir: Path, budget_usd: float, max_calls:
 
             record: dict[str, Any] = {
                 "schema_version": "saddle-live-ai-benchmark-result/0.1",
+                "provider": benchmark["provider"],
+                "api": benchmark["api"],
                 "case_id": case_id,
                 "model_id": model_id,
                 "commit": case["commit"],
@@ -198,6 +213,7 @@ def run_benchmark(*, root: Path, output_dir: Path, budget_usd: float, max_calls:
                 "execution_authority": "NONE",
                 "target_repo_write": "NONE",
                 "decision": "PENDING_EVALUATION",
+                "cost_basis": "PUBLISHED_STANDARD_LIST_PRICE_ESTIMATE_2026-08-11",
             }
             calls_attempted += 1
 
@@ -208,14 +224,15 @@ def run_benchmark(*, root: Path, output_dir: Path, budget_usd: float, max_calls:
                     case_id=case_id,
                     model_id=model_id,
                     reasoning_effort="medium",
+                    api_key_env="GEMINI_API_KEY",
                     max_output_tokens=max_output_tokens,
                 )
                 record["proposal"] = artifact
                 record["structured_output_valid"] = True
                 evaluation = _evaluate_proposal(run_checkout, case, artifact)
                 record["evaluation"] = evaluation
-                cost = _actual_cost(model_id, artifact.get("usage", {}))
-                record["cost_usd"] = cost
+                cost = _estimated_cost(model_id, artifact.get("usage", {}))
+                record["estimated_cost_usd"] = cost
                 if cost is None:
                     record["result"] = "BLOCKED_COST_UNKNOWN"
                     stop_reason = "USAGE_OR_COST_UNKNOWN"
@@ -227,12 +244,19 @@ def run_benchmark(*, root: Path, output_dir: Path, budget_usd: float, max_calls:
                 record["result"] = "ERROR"
                 record["error_type"] = type(exc).__name__
                 record["error"] = str(exc)
-                if "HTTP 401" in str(exc) or "HTTP 403" in str(exc):
+                message = str(exc)
+                if "HTTP 401" in message or "HTTP 403" in message:
                     stop_reason = "PROVIDER_CREDENTIAL_OR_ACCESS_DENIED"
-                elif "HTTP 404" in str(exc):
+                elif "HTTP 404" in message:
                     stop_reason = "MODEL_NOT_AVAILABLE_TO_ACCOUNT"
+                elif "HTTP 429" in message:
+                    stop_reason = "PROVIDER_RATE_LIMITED_NO_RETRY"
+                elif "HTTP 503" in message:
+                    stop_reason = "PROVIDER_UNAVAILABLE_NO_RETRY"
+                elif "HTTP 400" in message:
+                    stop_reason = "PROVIDER_REQUEST_REJECTED"
 
-            record["cumulative_cost_usd"] = round(spent_usd, 8)
+            record["cumulative_estimated_cost_usd"] = round(spent_usd, 8)
             results.append(record)
             with results_path.open("a", encoding="utf-8") as fh:
                 fh.write(json.dumps(record, sort_keys=True, ensure_ascii=False) + "\n")
@@ -248,11 +272,14 @@ def run_benchmark(*, root: Path, output_dir: Path, budget_usd: float, max_calls:
     summary = {
         "schema_version": "saddle-live-ai-benchmark-summary/0.1",
         "status": "COMPLETE" if calls_attempted == len(matrix) and stop_reason is None else "PARTIAL_OR_BLOCKED",
+        "provider": benchmark["provider"],
+        "api": benchmark["api"],
         "calls_attempted": calls_attempted,
         "max_calls_approved": max_calls,
         "automatic_retries": 0,
         "budget_usd_approved": budget_usd,
-        "actual_cost_usd": round(spent_usd, 8),
+        "estimated_cost_usd": round(spent_usd, 8),
+        "cost_basis": "PUBLISHED_STANDARD_LIST_PRICE_ESTIMATE_2026-08-11",
         "passed": passed,
         "failed": failed,
         "errors_or_blocked": errors,

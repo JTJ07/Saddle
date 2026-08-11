@@ -298,7 +298,8 @@ human decision
 - Evidence basis: canonical Phase-4B live run `31536385410` / job `93928366114`; both benchmark candidates achieved `3/3` functional correctness and preserved tested boundaries, while Flash had lower measured cost/latency and an evaluator advantage in evidence-plan quality and human-correction burden.
 - Authority consequence: this is the explicit human decision required after the benchmark; the evaluator recommendation did not select the model automatically.
 - Preserved boundaries: no new shell/tool access, repository-write authority, effect authority, autonomy, retry/fallback, dynamic routing, spending authority, maturity claim or functional acceptance follows.
-- Next technical gate: bounded current Executor self-identity reconciliation under a new current commit, preserving `litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317` as historical Phase-4C provenance.
+- Required downstream gate at decision time: bounded current Executor self-identity reconciliation under a new current commit, preserving `litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317` as historical Phase-4C provenance.
+- Subsequent verified completion: Executor PR #58 merged as `728d23e56ec9f76fb7a37673ceb20efccf91e03d`; `Verify Executor foundations` run `31539013966` and `GP001 replay repeatability` run `31539014065` both succeeded. The next gate is the fresh-session Phase-7 full E2E acceptance chain.
 - Detailed decision record: `decisions/DEC-SAD-016.md`.
 
 ## Not yet a decision

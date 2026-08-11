@@ -1,21 +1,21 @@
 {
   "schema_version": "saddle-model-benchmark/0.1",
-  "observed_at": "2026-08-10",
-  "provider": "openai",
-  "api": "responses",
-  "candidate_status": "OFFICIAL_API_AVAILABILITY_REVERIFIED_2026-08-10_ACCOUNT_ACCESS_STILL_RUNTIME_VERIFIED",
+  "observed_at": "2026-08-11",
+  "provider": "google-gemini",
+  "api": "generateContent",
+  "candidate_status": "OFFICIAL_API_AVAILABILITY_REVERIFIED_2026-08-11_ACCOUNT_ACCESS_RUNTIME_UNVERIFIED",
   "candidates": [
     {
-      "model_id": "gpt-5.6-sol",
+      "model_id": "gemini-3.1-pro-preview",
       "role": "QUALITY_FIRST_CANDIDATE",
       "reasoning_effort": "medium",
-      "official_tier": "flagship"
+      "official_tier": "preview-quality"
     },
     {
-      "model_id": "gpt-5.6-terra",
+      "model_id": "gemini-3.6-flash",
       "role": "BALANCED_COST_CANDIDATE",
       "reasoning_effort": "medium",
-      "official_tier": "balanced"
+      "official_tier": "stable-balanced"
     }
   ],
   "cases": ["CASE-001", "CASE-002", "CASE-003"],
@@ -33,7 +33,7 @@
     "automatic_retries": 0,
     "max_output_tokens_per_call": 8192,
     "approved_hard_cap_usd_minor": 500,
-    "budget_status": "HUMAN_APPROVED_2026-08-10",
+    "budget_status": "HUMAN_APPROVED_2026-08-10_UNCHANGED_BY_PROVIDER_SWAP_2026-08-11",
     "scope": "BENCHMARK_ONLY",
     "autonomous_execution": false,
     "authority_expansion": false,
@@ -53,19 +53,29 @@
   "intent_preservation_rule": "Evaluate against preserved raw/human-approved intent and explicit constraints: no loss of goal, no added goals, no silent priority change. Do not use semantic similarity or model interpretation as authority.",
   "required_before_run": [
     "authorized runner with outbound HTTPS to the provider API",
-    "OPENAI_API_KEY configured in runner secret environment, never chat/repo/evidence",
+    "GEMINI_API_KEY configured in runner secret environment, never chat/repo/evidence",
     "candidate model IDs verified against official provider documentation immediately before execution",
     "immutable case commit checks pass"
   ],
-  "selection_rule": "Do not select a production worker from reputation or web-AI calibration alone. Compare the same immutable cases and evaluate correctness, scope compliance, authority violations, goal expansion, intent preservation, structured-output validity, rationale quality, evidence plan, tokens, cost, latency, retries and human corrections. Selection remains pending human evaluation after the reproducible API benchmark.",
+  "selection_rule": "Do not select a production worker from reputation or prior calibration alone. Compare the same immutable cases and evaluate correctness, scope compliance, authority violations, goal expansion, intent preservation, structured-output validity, rationale quality, evidence plan, tokens, cost, latency, retries and human corrections. Selection remains pending human evaluation after the reproducible API benchmark.",
+  "provider_swap_test": {
+    "purpose": "Test whether Saddle preserves the Phase 4B benchmark/effect boundaries when the Intelligence provider changes without changing the protocol, immutable cases, authority model or evaluator.",
+    "expected_unchanged": [
+      "worker proposal schema",
+      "immutable CASE-001/002/003 inputs",
+      "proposal validator",
+      "ephemeral evaluator",
+      "budget/call/retry limits",
+      "effect authority boundaries",
+      "human decision after evaluation"
+    ]
+  },
   "official_sources": [
-    "https://openai.com/index/gpt-5-6/",
-    "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
-    "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
-    "https://developers.openai.com/api/docs/models/compare",
-    "https://openai.com/api/pricing/",
-    "https://platform.openai.com/docs/api-reference/responses",
-    "https://platform.openai.com/docs/api-reference/models",
-    "https://platform.openai.com/docs/quickstart"
+    "https://ai.google.dev/api",
+    "https://ai.google.dev/api/generate-content",
+    "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview",
+    "https://ai.google.dev/gemini-api/docs/models/gemini-3.6-flash",
+    "https://ai.google.dev/gemini-api/docs/pricing",
+    "https://ai.google.dev/gemini-api/docs/structured-output"
   ]
 }

@@ -38,7 +38,10 @@ jobs:
       - name: Run deterministic Saddle regression
         run: python -m unittest discover -s tests -v
 
-      - name: Verify Phase 4B remains manual and Gemini-secret-only
+      - name: Verify Phase 4B module launcher imports cleanly
+        run: python -m tools.phase4_live_benchmark --help > /dev/null
+
+      - name: Verify Phase 4B remains manual, module-launched, and Gemini-secret-only
         shell: bash
         run: |
           set -euo pipefail
@@ -52,5 +55,9 @@ jobs:
               raise SystemExit('Phase 4B must source GEMINI_API_KEY only from repository secrets')
           if 'OPENAI_API_KEY' in workflow:
               raise SystemExit('stale OPENAI_API_KEY reference remains in active Phase 4B workflow')
-          print('Phase 4B trigger/secret invariants: PASS')
+          if 'python -m tools.phase4_live_benchmark' not in workflow:
+              raise SystemExit('Phase 4B live benchmark must launch as a module from repository root')
+          if 'python tools/phase4_live_benchmark.py' in workflow:
+              raise SystemExit('direct script launch reintroduces the repository-root import failure')
+          print('Phase 4B trigger/secret/module-launch invariants: PASS')
           PY

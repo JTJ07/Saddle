@@ -1,9 +1,9 @@
 # SADDLE TODO — OPERATIONAL COMPLETION QUEUE
 
 Status: `ACTIVE / COMPLETION LOCK ENFORCED`
-Updated: 2026-08-10
+Updated: 2026-08-11
 
-Authority: `DECISION_LOG.md` > `PROJECT_STATE.md` > `EXECUTION_PLAN.md` > `TODO.md` > `SESSION_HANDOFF.md` > draft analysis.
+Authority: `DECISION_LOG.md` > accepted Saddle state/contracts (`PROJECT_STATE.md`) > accepted component canonical sources > merged implementation + tests/evidence > `SESSION_HANDOFF.md` > `TODO.md` as operational projection > drafts/history/AI inference.
 
 Rules: work by current evidence dependency; require observable evidence for PASS/DONE; park new ideas; preserve broken benchmarks; do not broaden capability before the active proof gate. DEC-SAD-007 permits routine execution but not goal/lock/security/financial/authority expansion or self-declared functional acceptance.
 
@@ -115,6 +115,8 @@ Canonical runner:
 - ephemeral pinned checkouts only;
 - no target-repository push.
 
+Repository migration prerequisite: `DONE / VERIFIED 2026-08-11`. Critical component repositories are available under `JTJ07`; immutable CASE-001/002/003 SHAs and the pinned Executor SHA remain unchanged. Current runtime locators are synchronized separately from historical evidence provenance.
+
 The workflow trigger is manual `workflow_dispatch`. Opening unrelated PRs must not start the benchmark.
 
 Accidental pre-pause trigger evidence from PR #16:
@@ -139,7 +141,7 @@ Evaluation contract:
 Configure only the approved GitHub Actions repository secret:
 
 ```text
-Repository: litrgratis-pixel/Saddle
+Repository: JTJ07/Saddle
 Secret name: OPENAI_API_KEY
 ```
 

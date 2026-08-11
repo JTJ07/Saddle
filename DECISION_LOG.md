@@ -289,12 +289,23 @@ human decision
 - Evidence classification: deterministic adapter/control-plane PASS is `PROVIDER-SWAP CONTROL-PLANE EVIDENCE`, not API-worker performance evidence, model-quality evidence, maturity or functional acceptance.
 - Detailed decision record: `decisions/DEC-SAD-015.md`.
 
+## DEC-SAD-016 — Select Gemini 3.6 Flash as the first production worker model
+
+- Date: 2026-08-11
+- Owner: USER
+- Status: ACTIVE / PHASE-4B MODEL-SELECTION DECISION
+- Human decision: select `gemini-3.6-flash` under provider `google-gemini` as the first production worker/model for the next bounded Saddle acceptance path.
+- Evidence basis: canonical Phase-4B live run `31536385410` / job `93928366114`; both benchmark candidates achieved `3/3` functional correctness and preserved tested boundaries, while Flash had lower measured cost/latency and an evaluator advantage in evidence-plan quality and human-correction burden.
+- Authority consequence: this is the explicit human decision required after the benchmark; the evaluator recommendation did not select the model automatically.
+- Preserved boundaries: no new shell/tool access, repository-write authority, effect authority, autonomy, retry/fallback, dynamic routing, spending authority, maturity claim or functional acceptance follows.
+- Next technical gate: bounded current Executor self-identity reconciliation under a new current commit, preserving `litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317` as historical Phase-4C provenance.
+- Detailed decision record: `decisions/DEC-SAD-016.md`.
+
 ## Not yet a decision
 
 The following remain open until explicitly selected or proven:
 
 - concrete human-identity / request-origin / authority provider;
-- first production model/provider based on real benchmark evidence;
 - whether ScriptOps is also the final Phase-7 acceptance domain beyond the completed Phase-6 mechanism proof;
 - whether/when Ginseng runtime is activated;
 - multi-agent architecture.

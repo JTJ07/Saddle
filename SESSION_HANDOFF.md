@@ -1,7 +1,7 @@
 ---
 project: Saddle
 status: PHASE_6_ACCEPTED / PHASE_4_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_READY_PAUSED / NOT_YET_FUNCTIONAL
-updated_at: 2026-08-10
+updated_at: 2026-08-11
 ---
 
 # SESSION HANDOFF
@@ -24,7 +24,7 @@ EVALUATION
 HUMAN DECISION
 ```
 
-Saddle remains `NOT_YET_FUNCTIONAL`.
+Saddle remains `NOT_YET_FUNCTIONAL`. Completion lock remains active.
 
 ## HUMAN DECISIONS
 
@@ -33,6 +33,32 @@ Saddle remains `NOT_YET_FUNCTIONAL`.
 - `DEC-SAD-012`: web AI = Phase 4A calibration; API = Phase 4B worker evidence.
 - `DEC-SAD-013`: Phase 4A accepted; nine-dimensional 4B eval including intent preservation.
 - `DEC-SAD-014`: API benchmark is performance measurement, not architecture blocker; prove Phase 4C synthetic system integration first. Reference: `decisions/DEC-SAD-014.md`.
+
+## GITHUB MIGRATION — VERIFIED
+
+The account/repository transfer is an operational locator migration, not an architecture change.
+
+Current canonical locators verified on 2026-08-11:
+
+```text
+JTJ07/Saddle
+JTJ07/executor-pilot-target
+JTJ07/Executor
+JTJ07/scriptops
+JTJ07/creative-os-project-reconstructor
+JTJ07/COS
+```
+
+Pinned provenance identities remain unchanged:
+
+```text
+CASE-001 3934a94a5eebf750079200589d6dc40e024d44a0
+CASE-002 c3683bf37ad6a3f1d49c0ca05ebdd41627e9a5be
+CASE-003 c42bead2bbbff9c84486f17637ec80f35eeffa25
+Executor  788443c3ed5b290ac8f1de145a93d02d2dd15317
+```
+
+Rule: current configs/runtime locators use `JTJ07/...`; historical evidence keeps the locator that was true when the original event occurred. Do not rewrite historical evidence to make it look as if old runs happened after the transfer.
 
 ## PHASE 4A — ACCEPTED
 
@@ -46,7 +72,7 @@ Three `CONTEXT_CONTAMINATED` web runs established calibration/boundary disciplin
 
 Evidence: `evidence/PHASE4C_SYNTHETIC_INTEGRATION_2026-08-10.md`.
 
-Exact proof:
+Exact historical proof:
 
 ```text
 PR: #16
@@ -58,6 +84,8 @@ fixture: litrgratis-pixel/executor-pilot-target@3934a94a5eebf750079200589d6dc40e
 artifact: 9078675806
 artifact ZIP sha256: cac22ce36e2bfff030f1e3fb1aea3a5323dd55abf75a02d70962cda6165a75e1
 ```
+
+The old owner locators above are intentionally preserved because they describe the original run. Current repositories are `JTJ07/Executor` and `JTJ07/executor-pilot-target` at the same pinned commit identities.
 
 Proved chain:
 
@@ -115,7 +143,7 @@ authority expansion = NO
 tool access expansion = NO
 ```
 
-The benchmark workflow is now manual `workflow_dispatch` only.
+The benchmark workflow is manual `workflow_dispatch` only.
 
 Why: opening Phase-4C PR #16 exposed trigger drift. Old Phase-4B trigger auto-started run `31429930237` / job `93590580949`. The credential step failed because `OPENAI_API_KEY` was absent and the model benchmark step was `SKIPPED`; no model call ran. The trigger was then corrected without changing benchmark logic.
 
@@ -134,7 +162,7 @@ Nine eval dimensions:
 
 Before Phase-4B execution:
 
-> configure `OPENAI_API_KEY` only as GitHub Actions repository secret in `litrgratis-pixel/Saddle`.
+> configure `OPENAI_API_KEY` only as GitHub Actions repository secret in `JTJ07/Saddle`.
 
 Never put it in chat, source, PR comments, workflow YAML, logs or evidence.
 
@@ -162,17 +190,18 @@ No automatic model selection or autonomy/capability expansion follows.
 ## EXACT FILES / REFS TO OPEN NEXT
 
 1. `PROJECT_STATE.md`
-2. `TODO.md` — T6C then T6B
+2. `TODO.md` — T6B
 3. `DECISION_LOG.md` and `decisions/DEC-SAD-014.md`
-4. `evidence/PHASE4C_SYNTHETIC_INTEGRATION_2026-08-10.md`
-5. `tools/phase4c_synthetic_integration.py`
-6. `.github/workflows/phase4c-synthetic-integration.yml`
-7. `config/model-benchmark-v0.1.json`
-8. `config/worker-cases-v0.1.json`
-9. `tools/model_gateway.py`
-10. `tools/phase4_benchmark.py`
-11. `tools/phase4_live_benchmark.py`
-12. `.github/workflows/phase4-live-ai-benchmark.yml`
-13. Phase-4C run `31429931199` / job `93590584463` / artifact `9078675806`
-14. `litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317`
-15. `litrgratis-pixel/scriptops@daa6e5dc210e09171a530eeffe5601e0e74ae041`
+4. `config/model-benchmark-v0.1.json`
+5. `config/worker-cases-v0.1.json`
+6. `tools/model_gateway.py`
+7. `tools/phase4_benchmark.py`
+8. `tools/phase4_live_benchmark.py`
+9. `.github/workflows/phase4-live-ai-benchmark.yml`
+10. `JTJ07/executor-pilot-target@3934a94a5eebf750079200589d6dc40e024d44a0`
+11. `JTJ07/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317`
+12. `JTJ07/scriptops@daa6e5dc210e09171a530eeffe5601e0e74ae041`
+
+## ONE NEXT STEP
+
+Configure `OPENAI_API_KEY` as a GitHub Actions repository secret in `JTJ07/Saddle`.

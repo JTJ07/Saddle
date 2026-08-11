@@ -183,7 +183,15 @@ CASE-003 c42bead2bbbff9c84486f17637ec80f35eeffa25
 Executor  788443c3ed5b290ac8f1de145a93d02d2dd15317
 ```
 
-Current runtime/config locators must use `JTJ07/...`; historical evidence retains the locator that was true when the evidence was produced. The migration does not alter architecture, evidence classification or the Phase-4B benchmark contract.
+Current active runtime/config locators use `JTJ07/...`; historical evidence retains the locator that was true when the evidence was produced. Frozen Phase-4C proof tooling remains tied to its historical locator/identity pair and is not rewritten as part of the account migration. The migration does not alter architecture, evidence classification or the Phase-4B benchmark contract.
+
+Migration validation in Saddle PR #17 / workflow run `31526922252` established:
+- all 59 deterministic Saddle regression tests PASS;
+- exact `788443c3ed5b290ac8f1de145a93d02d2dd15317` is fetchable from `JTJ07/Executor`;
+- exact CASE-001 `3934a94a5eebf750079200589d6dc40e024d44a0` is fetchable from `JTJ07/executor-pilot-target`;
+- a full Phase-4C rerun using the old pinned Executor content with a new repository locator blocks fail-closed because that historical Executor commit internally binds repository identity to `litrgratis-pixel/Executor`.
+
+This compatibility finding does **not** invalidate the accepted historical Phase-4C evidence and does **not** block Phase 4B. Before a new post-4B real Executor effect is attempted, Executor current self-identity must be reconciled to `JTJ07/Executor` in a bounded migration change under a new current commit, while preserving `788443c3...` as historical provenance.
 
 The nine evaluation dimensions remain:
 1. correctness against pinned tests;
@@ -203,6 +211,7 @@ Intent preservation is an evaluation dimension, not automated semantic authority
 - no reproducible API model proposal yet;
 - no first production model/provider selected;
 - no model cost/latency/token comparison yet;
+- current Executor self-identity is not yet reconciled for new post-transfer effect runs; this is downstream of Phase 4B and does not change the historical Phase-4C claim;
 - no production human-identity/request-origin trust provider selected;
 - no final fresh-session full Saddle acceptance run;
 - `FUNCTIONAL_SADDLE_ACCEPTED` remains false.

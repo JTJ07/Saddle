@@ -1,0 +1,55 @@
+name: Phase 4B control-plane tests
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - tools/model_gateway.py
+      - tools/phase4_benchmark.py
+      - tools/phase4_live_benchmark.py
+      - tools/phase4_preflight.py
+      - tests/test_model_gateway.py
+      - tests/test_phase4_benchmark.py
+      - tests/test_phase4_live_benchmark.py
+      - tests/test_phase4_preflight.py
+      - config/model-benchmark-v0.1.json
+      - config/worker-cases-v0.1.json
+      - .github/workflows/phase4-live-ai-benchmark.yml
+      - .github/workflows/phase4b-control-plane-tests.yml
+
+permissions:
+  contents: read
+
+jobs:
+  deterministic-control-plane:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout Saddle
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.11"
+
+      - name: Run deterministic Saddle regression
+        run: python -m unittest discover -s tests -v
+
+      - name: Verify Phase 4B remains manual and Gemini-secret-only
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          workflow = Path('.github/workflows/phase4-live-ai-benchmark.yml').read_text(encoding='utf-8')
+          if 'workflow_dispatch:' not in workflow or 'pull_request:' in workflow:
+              raise SystemExit('Phase 4B live benchmark must remain manual workflow_dispatch only')
+          if 'GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}' not in workflow:
+              raise SystemExit('Phase 4B must source GEMINI_API_KEY only from repository secrets')
+          if 'OPENAI_API_KEY' in workflow:
+              raise SystemExit('stale OPENAI_API_KEY reference remains in active Phase 4B workflow')
+          print('Phase 4B trigger/secret invariants: PASS')
+          PY

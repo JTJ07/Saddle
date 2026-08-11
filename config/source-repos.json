@@ -2,27 +2,27 @@
   "observed_at": "2026-08-10",
   "repositories": [
     {
-      "name": "litrgratis-pixel/COS",
+      "name": "JTJ07/COS",
       "observed_main": "3220310267c3d0ba2184daaf3f2adad259a9cb20",
       "role": "canonical high-level state/memory"
     },
     {
-      "name": "litrgratis-pixel/creative-os-project-reconstructor",
+      "name": "JTJ07/creative-os-project-reconstructor",
       "observed_main": "defc7b029097284f94136fec54b75c313ac12f68",
       "role": "context/project reconstruction"
     },
     {
-      "name": "litrgratis-pixel/scriptops",
+      "name": "JTJ07/scriptops",
       "observed_main": "daa6e5dc210e09171a530eeffe5601e0e74ae041",
       "role": "Phase-6 controlled real-workflow substrate / canon-control mechanism proof"
     },
     {
-      "name": "litrgratis-pixel/Executor",
+      "name": "JTJ07/Executor",
       "observed_main": "788443c3ed5b290ac8f1de145a93d02d2dd15317",
       "role": "controlled effect engine"
     },
     {
-      "name": "litrgratis-pixel/executor-pilot-target",
+      "name": "JTJ07/executor-pilot-target",
       "observed_main": "dc094679ef3e2d5cf5f1aa0ff0fd54d16f201154",
       "role": "deterministic technical benchmark"
     }

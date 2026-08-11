@@ -43,7 +43,7 @@ Evidence:
 - execution claims 0;
 - reconstructed visible tests 13/13 PASS per proposal.
 
-Hard limits: all Phase-4A baseline runs remain `CONTEXT_CONTAMINATED`; independent model-solving ability is not claimed from Phase 4A. Phase 4B now supplies the separate reproducible API-worker evidence.
+Hard limits: all Phase-4A baseline runs remain `CONTEXT_CONTAMINATED`; independent model-solving ability is not claimed from Phase 4A. Phase 4B supplies the separate reproducible API-worker evidence.
 
 ## T6C — Phase 4C synthetic system integration
 Status: `DONE / ACCEPTED / SYNTHETIC_INTEGRATION_EVIDENCE ONLY`
@@ -71,8 +71,8 @@ Evidence:
 - PR #16;
 - workflow run `31429931199` / job `93590584463` SUCCESS;
 - deterministic Saddle regression `59 tests / OK`;
-- exact Executor `788443c3ed5b290ac8f1de145a93d02d2dd15317`;
-- exact CASE-001 fixture `3934a94a5eebf750079200589d6dc40e024d44a0`;
+- exact historical Executor `litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317`;
+- exact historical CASE-001 fixture `litrgratis-pixel/executor-pilot-target@3934a94a5eebf750079200589d6dc40e024d44a0`;
 - artifact `9078675806`, ZIP SHA256 `cac22ce36e2bfff030f1e3fb1aea3a5323dd55abf75a02d70962cda6165a75e1`;
 - `evidence/PHASE4C_SYNTHETIC_INTEGRATION_2026-08-10.md`.
 
@@ -89,12 +89,12 @@ Observed:
 Integration finding: current ScriptOps v2 is scene-domain specific while GP001 is code-domain specific. Do not add a ScriptOps code-mutation capability or chain two executors merely to satisfy a diagram. Keep Phase-6 ScriptOps proof as separate controlled-workflow evidence.
 
 ## T6B — Phase 4B reproducible API worker evidence
-Status: `LIVE EVIDENCE COMPLETE / 9-DIMENSION EVALUATION COMPLETE / HUMAN MODEL DECISION NEXT`
+Status: `DONE / LIVE EVIDENCE COMPLETE / 9-DIMENSION EVALUATION COMPLETE / HUMAN MODEL SELECTED`
 Formal worker evidence: `COMPLETE / PASS IN TESTED SCOPE`.
 
-Human approvals/decisions: `DEC-SAD-011`, `DEC-SAD-013`, `DEC-SAD-014`, `DEC-SAD-015`.
+Human approvals/decisions: `DEC-SAD-011`, `DEC-SAD-013`, `DEC-SAD-014`, `DEC-SAD-015`, `DEC-SAD-016`.
 
-Unchanged bounds were observed:
+Observed bounds:
 
 ```text
 BUDGET: max USD 5
@@ -108,7 +108,7 @@ TOOL ACCESS EXPANSION: NO
 TARGET REPO WRITE: NONE
 ```
 
-Provider-swap control-plane evidence remains:
+Provider-swap control-plane evidence:
 - PR #18;
 - workflow run `31530605887` / job `93909442838` SUCCESS;
 - deterministic Saddle regression `65 tests / OK`;
@@ -167,23 +167,36 @@ Nine-dimensional result:
 8. human-correction burden — PASS / FLASH ADVANTAGE;
 9. intent preservation — PASS / TIE.
 
-Evaluator recommendation: `gemini-3.6-flash`, because it matched Pro's functional correctness/boundaries while being about `19.3%` cheaper, `30.8%` lower-latency, and more operationally precise in evidence plans.
-
-This recommendation is advisory only. The benchmark does not auto-select a production worker.
-
-### READY / NEXT — only active item
-
-Human model decision required by `DEC-SAD-013` and preserved by `DEC-SAD-015`:
+Human decision `DEC-SAD-016`:
 
 ```text
-BENCHMARK RESULT — COMPLETE
-→ 9-DIMENSION EVALUATION — COMPLETE
-→ HUMAN MODEL DECISION — NEXT
+SELECTED PRODUCTION WORKER MODEL: gemini-3.6-flash
+PROVIDER: google-gemini
 ```
 
-No additional paid benchmark call is required to establish the recorded result. No automatic model selection, provider fallback, autonomy increase, or capability expansion.
+The selection is human-owned and does not expand authority, tools, capability, spending authority, fallback/retry behavior, maturity, or functional status. No additional paid benchmark call is required unless the human explicitly requests a new measurement.
 
-After the human decision, the next technical dependency is the already-recorded bounded Executor current self-identity reconciliation under a new commit before any new post-transfer real effect.
+## T6D — Executor current self-identity reconciliation
+Status: `DONE / VERIFIED`
+
+Purpose: allow new post-transfer Executor effects to verify the current live repository as `JTJ07/Executor` without rewriting historical Phase-4C provenance.
+
+Evidence:
+
+```text
+Executor PR: #58
+historical Phase-4C base SHA: 788443c3ed5b290ac8f1de145a93d02d2dd15317
+current Executor merge SHA: 728d23e56ec9f76fb7a37673ceb20efccf91e03d
+Verify Executor foundations run: 31539013966 — SUCCESS
+GP001 replay repeatability run: 31539014065 — SUCCESS
+```
+
+PR #58 updated only current self-identity bindings plus directly coupled tests/workflow. It preserved fail-closed identity validation and added regression coverage that the previous owner is rejected by the current self-identity gate.
+
+Explicitly preserved:
+- historical `litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317` Phase-4C provenance;
+- historical/external pilot-fixture authority and GP001 target binding;
+- capability, authority, network/secrets, auto-merge, maturity and functional-acceptance boundaries.
 
 ## T7 — Phase 5 strict verified-intent + effect-authority boundaries
 Status: `DONE / FROZEN`
@@ -199,7 +212,13 @@ Evidence: ScriptOps PR #7 merge `daa6e5dc210e09171a530eeffe5601e0e74ae041`; repo
 No ScriptOps maturity or independent product-value claim.
 
 ## T9 — Phase 7 functional Saddle acceptance
-Status: `BLOCKED UNTIL HUMAN MODEL DECISION + EXECUTOR CURRENT-IDENTITY RECONCILIATION + FINAL FRESH-SESSION E2E`
+Status: `READY / NEXT / FRESH-SESSION E2E REQUIRED`
+
+Use:
+- human-selected worker `google-gemini / gemini-3.6-flash`;
+- current reconciled Executor `JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d`;
+- existing verified-intent/effect-authority boundaries;
+- no capability expansion.
 
 Required fresh-session loop:
 
@@ -216,9 +235,11 @@ human raw intent
 → second zero-history resume
 ```
 
-Phase 4C proves provider-independent system integration with synthetic Intelligence. Phase 4B now proves real Gemini API-worker proposal generation and evaluation in the bounded benchmark. Neither alone substitutes for the final fresh-session product acceptance chain.
+Phase 4C proves provider-independent system integration with synthetic Intelligence. Phase 4B proves real Gemini API-worker proposal generation/evaluation in the bounded benchmark. T6D proves the current Executor self locator can be verified after transfer. None alone substitutes for the final fresh-session product acceptance chain.
 
-Only complete evidence plus explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
+The production human-identity/request-origin trust provider remains intentionally open; Phase 7 must not fake verified origin or promote a user label/model inference into origin evidence.
+
+Only complete Phase-7 evidence plus explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
 
 ## T10 — Phase 8 post-acceptance direction
 Status: `BLOCKED UNTIL T9`

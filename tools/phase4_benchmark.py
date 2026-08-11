@@ -16,7 +16,7 @@ from typing import Any
 from tools.model_gateway import (
     CredentialUnavailable,
     GatewayError,
-    OpenAIResponsesGateway,
+    GeminiGenerateContentGateway,
     validate_worker_proposal,
 )
 
@@ -102,11 +102,11 @@ def generate_proposal(
     case_id: str,
     model_id: str,
     reasoning_effort: str,
-    api_key_env: str = "OPENAI_API_KEY",
+    api_key_env: str = "GEMINI_API_KEY",
     max_output_tokens: int = 8192,
 ) -> dict[str, Any]:
     case = load_case(root, checkout, case_id)
-    gateway = OpenAIResponsesGateway(
+    gateway = GeminiGenerateContentGateway(
         model_id=model_id,
         reasoning_effort=reasoning_effort,
         api_key_env=api_key_env,
@@ -129,6 +129,8 @@ def generate_proposal(
     )
     return {
         "schema_version": "saddle-phase4-proposal-artifact/0.1",
+        "provider": "google-gemini",
+        "api": "generateContent",
         "case_id": case_id,
         "repository": case["repository"],
         "commit": case["commit"],
@@ -151,7 +153,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--case", required=True)
     parser.add_argument("--model", required=True)
     parser.add_argument("--reasoning-effort", default="medium")
-    parser.add_argument("--api-key-env", default="OPENAI_API_KEY")
+    parser.add_argument("--api-key-env", default="GEMINI_API_KEY")
     parser.add_argument("--max-output-tokens", type=int, default=8192)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args(argv)

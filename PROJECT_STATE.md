@@ -30,6 +30,7 @@ GitHub is durable memory. Completion lock remains ACTIVE.
 Prove the complete Saddle product/control path independently of model quality, then measure the AI worker without changing the already-proven boundaries.
 
 Human proof-order decision: `DEC-SAD-014` (`decisions/DEC-SAD-014.md`).
+Current Phase-4B provider-swap decision: `DEC-SAD-015` (`decisions/DEC-SAD-015.md`).
 
 ```text
 Phase 4A — WEB AI COGNITIVE CALIBRATION
@@ -39,7 +40,8 @@ Phase 4C — SYNTHETIC INTELLIGENCE INTEGRATION
         ACCEPTED / PASS IN TESTED SCOPE
         ↓
 Phase 4B — CONTROLLED API WORKER EVIDENCE
-        READY / PAUSED UNTIL EXPLICIT DISPATCH + PROVIDER SECRET
+        GEMINI CONTROL-PLANE SWAP PASS
+        READY / PAUSED UNTIL EXPLICIT DISPATCH + GEMINI SECRET
         ↓
 EVALUATION
         ↓
@@ -141,7 +143,7 @@ ScriptOps Phase-6 remains separately valid controlled-workflow evidence. Phase 4
 
 ## 6. Phase 4B — READY BUT PAUSED
 
-Human authorization: `DEC-SAD-011`. Evaluation contract: `DEC-SAD-013`.
+Human authorization: `DEC-SAD-011`. Evaluation contract: `DEC-SAD-013`. Provider-swap decision: `DEC-SAD-015`.
 
 Approved bounds remain unchanged:
 
@@ -156,11 +158,60 @@ AUTHORITY EXPANSION: NO
 TOOL ACCESS EXPANSION: NO
 ```
 
-Canonical runner was merged by PR #15 as `3547d42266c8711df35d7694b2839a5be3a11200`.
+The Phase-4B workflow remains explicit `workflow_dispatch` only.
 
-Phase 4C exposed trigger drift: opening PR #16 automatically started Phase-4B preflight run `31429930237` / job `93590580949` even though 4B was now paused. Credential check failed, the benchmark step was skipped, and no model call ran.
+### Gemini provider-swap resilience test
 
-The Phase-4B workflow is therefore changed to explicit `workflow_dispatch` only. This pauses execution; it does not alter the benchmark contract or approval.
+The user explicitly replaced the planned OpenAI provider credential with Gemini for the pending Phase 4B run and made the substitution itself a resilience test.
+
+Active provider boundary:
+
+```text
+provider: google-gemini
+API: generateContent
+quality-first: gemini-3.1-pro-preview
+balanced: gemini-3.6-flash
+secret: GEMINI_API_KEY
+```
+
+Evidence: `evidence/PHASE4B_GEMINI_PROVIDER_SWAP_CONTROL_PLANE_2026-08-11.md`.
+
+Deterministic control-plane result from PR #18:
+
+```text
+workflow run: 31530605887
+job: 93909442838
+result: SUCCESS
+regression: 65 / 65 PASS
+live model calls: 0
+credential used: NO
+spend: USD 0
+```
+
+Observed architecture result:
+
+```text
+PROVIDER-SPECIFIC API / SCHEMA / USAGE
+              ↓
+     PROVIDER ADAPTER
+              ↓
+STABLE WORKER PROPOSAL CONTRACT
+              ↓
+UNCHANGED SADDLE VALIDATION / EVALUATION
+```
+
+Gemini's structured-output JSON-Schema subset differs from the canonical Saddle proposal schema vocabulary. The Gemini adapter normalizes only the provider request schema; the canonical post-response `validate_worker_proposal` remains unchanged and still rejects wrong target, unexpected/authority fields, empty content and excessive patch scope.
+
+Fail-closed provider reactions are now explicit: missing credential, provider block, request rejection, access denial, unavailable model, rate limit, provider unavailability, malformed output, unknown pricing or unavailable usage/cost evidence stop the benchmark without automatic retry/fallback or authority expansion.
+
+Evidence classification is strict:
+
+```text
+PROVIDER-SWAP CONTROL-PLANE EVIDENCE = PASS
+API WORKER PERFORMANCE EVIDENCE = OPEN
+MODEL QUALITY EVIDENCE = OPEN
+FUNCTIONAL ACCEPTANCE = OPEN
+```
 
 ### Repository migration state
 
@@ -183,7 +234,7 @@ CASE-003 c42bead2bbbff9c84486f17637ec80f35eeffa25
 Executor  788443c3ed5b290ac8f1de145a93d02d2dd15317
 ```
 
-Current active runtime/config locators use `JTJ07/...`; historical evidence retains the locator that was true when the evidence was produced. Frozen Phase-4C proof tooling remains tied to its historical locator/identity pair and is not rewritten as part of the account migration. The migration does not alter architecture, evidence classification or the Phase-4B benchmark contract.
+Current active runtime/config locators use `JTJ07/...`; historical evidence retains the locator that was true when the evidence was produced. Frozen Phase-4C proof tooling remains tied to its historical locator/identity pair and is not rewritten as part of the account migration.
 
 Migration validation in Saddle PR #17 / workflow run `31526922252` established:
 - all 59 deterministic Saddle regression tests PASS;
@@ -208,9 +259,9 @@ Intent preservation is an evaluation dimension, not automated semantic authority
 
 ## 7. What is still open
 
-- no reproducible API model proposal yet;
+- no reproducible live Gemini API model proposal yet;
 - no first production model/provider selected;
-- no model cost/latency/token comparison yet;
+- no live model cost/latency/token comparison yet;
 - current Executor self-identity is not yet reconciled for new post-transfer effect runs; this is downstream of Phase 4B and does not change the historical Phase-4C claim;
 - no production human-identity/request-origin trust provider selected;
 - no final fresh-session full Saddle acceptance run;
@@ -218,9 +269,9 @@ Intent preservation is an evaluation dimension, not automated semantic authority
 
 ## 8. Next evidence gate
 
-Phase 4B is next after the accepted Phase-4C proof. Execute it only when the approved provider credential exists in GitHub Actions secret storage for `JTJ07/Saddle` and the workflow is explicitly dispatched.
+Phase 4B remains the single next evidence gate. Execute it only when `GEMINI_API_KEY` exists as an approved GitHub Actions repository secret in `JTJ07/Saddle` and the workflow is explicitly dispatched.
 
-Replace only the synthetic Intelligence component with the controlled API worker. Preserve the same intent/proposal/authority/effect/evidence boundaries.
+The live benchmark replaces only the Intelligence provider. Preserve the same immutable cases, proposal validator, ephemeral evaluator, intent/proposal/authority/effect boundaries and nine-dimensional evaluation contract.
 
 After results:
 
@@ -232,7 +283,7 @@ BENCHMARK RESULT
 HUMAN DECISION
 ```
 
-No automatic model selection, autonomy increase or capability expansion follows.
+No automatic model selection, provider fallback, autonomy increase or capability expansion follows.
 
 ## 9. Functional acceptance remains open
 

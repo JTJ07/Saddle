@@ -265,6 +265,30 @@ human decision
 - Phase-4B consequence: its benchmark contract, approved budget/calls/retries and proposal-only boundary remain unchanged. While paused, the workflow should require explicit dispatch rather than auto-running on unrelated PRs.
 - Detailed decision record: `decisions/DEC-SAD-014.md`.
 
+## DEC-SAD-015 — Use Gemini for the Phase 4B provider-swap resilience test
+
+- Date: 2026-08-11
+- Owner: USER
+- Status: ACTIVE / PHASE-4B PROVIDER-SWAP DECISION
+- Decision:
+  - use Gemini API credentials for the pending Phase 4B benchmark instead of the previously planned OpenAI credential;
+  - use the provider substitution itself as evidence about provider-independence and function/boundary behavior;
+  - active provider/API becomes `google-gemini / generateContent`;
+  - benchmark candidates become `gemini-3.1-pro-preview` and `gemini-3.6-flash`;
+  - the runner secret becomes `GEMINI_API_KEY` in `JTJ07/Saddle`.
+- Preserved gate:
+  - budget remains `<= USD 5`;
+  - calls remain `<= 6`;
+  - automatic retries remain `0`;
+  - benchmark remains proposal-only;
+  - no tools, shell, repository write, effect authority, autonomous execution or automatic model selection;
+  - immutable CASE-001/002/003 inputs and SHAs remain unchanged;
+  - the proposal validator, evaluator, authority model and nine-dimensional evaluation contract remain unchanged.
+- Resilience-test rule: provider-specific schema/request/response/usage differences must be absorbed at the Intelligence adapter. They must not leak into downstream authority semantics or silently weaken local proposal validation.
+- Failure rule: missing/invalid credentials, provider blocks, unavailable models, rate limits, unsupported schema behavior, malformed output and unavailable usage/cost data fail closed. They do not trigger automatic retries, provider fallback, capability expansion or architecture redesign.
+- Evidence classification: deterministic adapter/control-plane PASS is `PROVIDER-SWAP CONTROL-PLANE EVIDENCE`, not API-worker performance evidence, model-quality evidence, maturity or functional acceptance.
+- Detailed decision record: `decisions/DEC-SAD-015.md`.
+
 ## Not yet a decision
 
 The following remain open until explicitly selected or proven:

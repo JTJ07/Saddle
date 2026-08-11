@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
     steps:
       - name: Checkout Saddle
         uses: actions/checkout@v4
@@ -27,8 +27,8 @@ jobs:
       - name: Check benchmark credential without revealing it
         shell: bash
         run: |
-          if [ -z "${OPENAI_API_KEY:-}" ]; then
-            echo "BLOCKED: OPENAI_API_KEY repository secret is not configured for this runner."
+          if [ -z "${GEMINI_API_KEY:-}" ]; then
+            echo "BLOCKED: GEMINI_API_KEY repository secret is not configured for this runner."
             exit 3
           fi
           echo "Credential presence check: PASS (value not printed)."

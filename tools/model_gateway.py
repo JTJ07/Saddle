@@ -11,6 +11,7 @@ import json
 import os
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from dataclasses import dataclass
 from typing import Any, Callable, Protocol
@@ -129,34 +130,60 @@ def validate_worker_proposal(
     }
 
 
-class OpenAIResponsesGateway:
-    """Single-provider adapter, intentionally not a generalized provider framework."""
+def _gemini_schema(value: Any) -> Any:
+    """Adapt the canonical proposal schema to Gemini's supported JSON-Schema subset.
+
+    The canonical post-response validator remains authoritative. Provider-specific
+    structured-output limitations must not weaken Saddle's local validation.
+    """
+    if isinstance(value, dict):
+        return {
+            key: _gemini_schema(item)
+            for key, item in value.items()
+            if key not in {"minLength"}
+        }
+    if isinstance(value, list):
+        return [_gemini_schema(item) for item in value]
+    return value
+
+
+class GeminiGenerateContentGateway:
+    """Single-provider Gemini adapter; intentionally not a provider framework."""
 
     def __init__(
         self,
         *,
         model_id: str,
         reasoning_effort: str = "medium",
-        endpoint: str = "https://api.openai.com/v1/responses",
-        api_key_env: str = "OPENAI_API_KEY",
+        endpoint_base: str = "https://generativelanguage.googleapis.com/v1beta/models",
+        api_key_env: str = "GEMINI_API_KEY",
         timeout_s: int = 120,
         max_output_tokens: int = 8192,
         transport: Callable[[dict[str, Any], str], dict[str, Any]] | None = None,
     ) -> None:
+        normalized_effort = reasoning_effort.strip().upper()
+        if normalized_effort not in {"MINIMAL", "LOW", "MEDIUM", "HIGH"}:
+            raise ValueError("Gemini reasoning_effort must be minimal, low, medium or high")
         self.model_id = model_id
-        self.reasoning_effort = reasoning_effort
-        self.endpoint = endpoint
+        self.reasoning_effort = normalized_effort
+        self.endpoint_base = endpoint_base.rstrip("/")
         self.api_key_env = api_key_env
         self.timeout_s = timeout_s
         self.max_output_tokens = max_output_tokens
         self._transport = transport or self._http_transport
+
+    @property
+    def endpoint(self) -> str:
+        encoded_model = urllib.parse.quote(self.model_id, safe="-._")
+        return f"{self.endpoint_base}/{encoded_model}:generateContent"
 
     def _http_transport(self, payload: dict[str, Any], api_key: str) -> dict[str, Any]:
         request = urllib.request.Request(
             self.endpoint,
             data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
             headers={
-                "Authorization": f"Bearer {api_key}",
+                "x-goog-api-key": api_key,
+                "x-goog-api-client": "saddle-phase4b/0.1",
                 "Content-Type": "application/json",
             },
             method="POST",
@@ -165,34 +192,45 @@ class OpenAIResponsesGateway:
             with urllib.request.urlopen(request, timeout=self.timeout_s) as response:
                 body = response.read().decode("utf-8")
         except urllib.error.HTTPError as exc:
-            raise GatewayResponseError(f"OpenAI Responses request failed with HTTP {exc.code}") from exc
+            raise GatewayResponseError(
+                f"Gemini generateContent request failed with HTTP {exc.code}"
+            ) from exc
         except (urllib.error.URLError, TimeoutError, OSError) as exc:
             raise GatewayResponseError(
-                f"OpenAI Responses request failed before a valid response was received: {type(exc).__name__}"
+                "Gemini generateContent request failed before a valid response was received: "
+                f"{type(exc).__name__}"
             ) from exc
         try:
             value = json.loads(body)
         except json.JSONDecodeError as exc:
-            raise GatewayResponseError("OpenAI Responses endpoint returned invalid JSON") from exc
+            raise GatewayResponseError("Gemini generateContent endpoint returned invalid JSON") from exc
         if not isinstance(value, dict):
-            raise GatewayResponseError("OpenAI Responses endpoint returned a non-object payload")
+            raise GatewayResponseError("Gemini generateContent endpoint returned a non-object payload")
         return value
 
     @staticmethod
     def _output_text(response: dict[str, Any]) -> str:
+        prompt_feedback = response.get("promptFeedback")
+        if isinstance(prompt_feedback, dict) and isinstance(prompt_feedback.get("blockReason"), str):
+            raise GatewayResponseError(
+                f"Gemini response blocked before generation: {prompt_feedback['blockReason']}"
+            )
+
+        candidates = response.get("candidates")
+        if not isinstance(candidates, list) or not candidates or not isinstance(candidates[0], dict):
+            raise GatewayResponseError("Gemini response contains no candidate proposal")
+        candidate = candidates[0]
+        content = candidate.get("content")
+        parts = content.get("parts") if isinstance(content, dict) else None
         chunks: list[str] = []
-        for item in response.get("output", []):
-            if not isinstance(item, dict) or item.get("type") != "message":
-                continue
-            for content in item.get("content", []):
-                if (
-                    isinstance(content, dict)
-                    and content.get("type") == "output_text"
-                    and isinstance(content.get("text"), str)
-                ):
-                    chunks.append(content["text"])
+        if isinstance(parts, list):
+            for part in parts:
+                if isinstance(part, dict) and isinstance(part.get("text"), str):
+                    chunks.append(part["text"])
         if not chunks:
-            raise GatewayResponseError("OpenAI response contains no output_text proposal")
+            finish_reason = candidate.get("finishReason")
+            suffix = f": {finish_reason}" if isinstance(finish_reason, str) else ""
+            raise GatewayResponseError(f"Gemini response contains no text proposal{suffix}")
         return "".join(chunks)
 
     def generate(
@@ -223,23 +261,33 @@ class OpenAIResponsesGateway:
             "or describe actions outside the allowed file."
         )
         payload = {
-            "model": self.model_id,
-            "store": False,
-            "reasoning": {"effort": self.reasoning_effort},
-            "max_output_tokens": self.max_output_tokens,
-            "instructions": (
-                "You are a coding proposal generator inside Saddle. You may reason freely, "
-                "but you have no execution authority. Produce only the requested structured proposal."
-            ),
-            "input": input_text,
-            "text": {
-                "format": {
-                    "type": "json_schema",
-                    "name": "saddle_worker_proposal",
-                    "strict": True,
-                    "schema": WORKER_PROPOSAL_SCHEMA,
+            "contents": [
+                {
+                    "role": "user",
+                    "parts": [{"text": input_text}],
                 }
+            ],
+            "systemInstruction": {
+                "parts": [
+                    {
+                        "text": (
+                            "You are a coding proposal generator inside Saddle. You may reason freely, "
+                            "but you have no execution authority. Produce only the requested structured proposal."
+                        )
+                    }
+                ]
             },
+            "generationConfig": {
+                "candidateCount": 1,
+                "maxOutputTokens": self.max_output_tokens,
+                "responseMimeType": "application/json",
+                "responseJsonSchema": _gemini_schema(WORKER_PROPOSAL_SCHEMA),
+                "thinkingConfig": {
+                    "thinkingLevel": self.reasoning_effort,
+                    "includeThoughts": False,
+                },
+            },
+            "store": False,
         }
 
         started = time.monotonic()
@@ -253,24 +301,27 @@ class OpenAIResponsesGateway:
         if not isinstance(proposal, dict):
             raise GatewayResponseError("structured model output is not an object")
 
-        usage = raw.get("usage") if isinstance(raw.get("usage"), dict) else {}
-        output_details = (
-            usage.get("output_tokens_details")
-            if isinstance(usage.get("output_tokens_details"), dict)
-            else {}
-        )
+        usage = raw.get("usageMetadata") if isinstance(raw.get("usageMetadata"), dict) else {}
         return ModelResult(
             model_id=self.model_id,
             proposal=proposal,
             latency_ms=latency_ms,
             usage=ModelUsage(
-                input_tokens=usage.get("input_tokens") if isinstance(usage.get("input_tokens"), int) else None,
-                output_tokens=usage.get("output_tokens") if isinstance(usage.get("output_tokens"), int) else None,
+                input_tokens=(
+                    usage.get("promptTokenCount")
+                    if isinstance(usage.get("promptTokenCount"), int)
+                    else None
+                ),
+                output_tokens=(
+                    usage.get("candidatesTokenCount")
+                    if isinstance(usage.get("candidatesTokenCount"), int)
+                    else None
+                ),
                 reasoning_tokens=(
-                    output_details.get("reasoning_tokens")
-                    if isinstance(output_details.get("reasoning_tokens"), int)
+                    usage.get("thoughtsTokenCount")
+                    if isinstance(usage.get("thoughtsTokenCount"), int)
                     else None
                 ),
             ),
-            response_id=raw.get("id") if isinstance(raw.get("id"), str) else None,
+            response_id=raw.get("responseId") if isinstance(raw.get("responseId"), str) else None,
         )

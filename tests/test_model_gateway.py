@@ -1,3 +1,4 @@
+import json
 import os
 import unittest
 from pathlib import Path
@@ -9,7 +10,7 @@ sys.path.insert(0, str(ROOT))
 from tools.model_gateway import (  # noqa: E402
     CredentialUnavailable,
     GatewayResponseError,
-    OpenAIResponsesGateway,
+    GeminiGenerateContentGateway,
     validate_worker_proposal,
 )
 
@@ -21,7 +22,7 @@ class ModelGatewayTests(unittest.TestCase):
         name = "SADDLE_TEST_NO_KEY"
         old = os.environ.pop(name, None)
         try:
-            gateway = OpenAIResponsesGateway(model_id="candidate", api_key_env=name)
+            gateway = GeminiGenerateContentGateway(model_id="gemini-test", api_key_env=name)
             with self.assertRaises(CredentialUnavailable):
                 gateway.generate(
                     case_id="CASE-X",
@@ -42,29 +43,31 @@ class ModelGatewayTests(unittest.TestCase):
             self.assertEqual(api_key, "not-recorded")
             seen.update(payload)
             return {
-                "id": "resp_test",
-                "output": [
+                "responseId": "resp_test",
+                "candidates": [
                     {
-                        "type": "message",
-                        "content": [
-                            {
-                                "type": "output_text",
-                                "text": '{"case_id":"CASE-X","target_path":"a.py","replacement_text":"def f():\\n    return 2\\n","reason":"fix","evidence_plan":["run tests"]}',
-                            }
-                        ],
+                        "finishReason": "STOP",
+                        "content": {
+                            "parts": [
+                                {
+                                    "text": '{"case_id":"CASE-X","target_path":"a.py","replacement_text":"def f():\\n    return 2\\n","reason":"fix","evidence_plan":["run tests"]}'
+                                }
+                            ]
+                        },
                     }
                 ],
-                "usage": {
-                    "input_tokens": 10,
-                    "output_tokens": 8,
-                    "output_tokens_details": {"reasoning_tokens": 3},
+                "usageMetadata": {
+                    "promptTokenCount": 10,
+                    "candidatesTokenCount": 8,
+                    "thoughtsTokenCount": 3,
+                    "totalTokenCount": 21,
                 },
             }
 
         os.environ["SADDLE_TEST_KEY"] = "not-recorded"
         try:
-            result = OpenAIResponsesGateway(
-                model_id="candidate",
+            result = GeminiGenerateContentGateway(
+                model_id="gemini-test",
                 api_key_env="SADDLE_TEST_KEY",
                 transport=transport,
             ).generate(
@@ -80,11 +83,44 @@ class ModelGatewayTests(unittest.TestCase):
 
         self.assertFalse(seen["store"])
         self.assertNotIn("tools", seen)
-        self.assertEqual(seen["text"]["format"]["type"], "json_schema")
-        self.assertTrue(seen["text"]["format"]["strict"])
-        self.assertNotIn("not-recorded", str(seen))
+        generation = seen["generationConfig"]
+        self.assertEqual(generation["responseMimeType"], "application/json")
+        self.assertEqual(generation["thinkingConfig"]["thinkingLevel"], "MEDIUM")
+        self.assertFalse(generation["thinkingConfig"]["includeThoughts"])
+        schema_text = json.dumps(generation["responseJsonSchema"])
+        self.assertNotIn("minLength", schema_text)
+        self.assertNotIn("not-recorded", json.dumps(seen))
         self.assertEqual(result.usage.input_tokens, 10)
+        self.assertEqual(result.usage.output_tokens, 8)
         self.assertEqual(result.usage.reasoning_tokens, 3)
+        self.assertEqual(result.response_id, "resp_test")
+
+    def test_provider_block_is_fail_closed(self):
+        def transport(payload, api_key):
+            return {"promptFeedback": {"blockReason": "SAFETY"}}
+
+        os.environ["SADDLE_TEST_KEY"] = "not-recorded"
+        try:
+            gateway = GeminiGenerateContentGateway(
+                model_id="gemini-test",
+                api_key_env="SADDLE_TEST_KEY",
+                transport=transport,
+            )
+            with self.assertRaisesRegex(GatewayResponseError, "blocked before generation"):
+                gateway.generate(
+                    case_id="CASE-X",
+                    target_path="a.py",
+                    problem="fix",
+                    case_contract="one file",
+                    target_source=BEFORE,
+                    tests_source="test",
+                )
+        finally:
+            os.environ.pop("SADDLE_TEST_KEY", None)
+
+    def test_invalid_reasoning_effort_is_rejected_locally(self):
+        with self.assertRaises(ValueError):
+            GeminiGenerateContentGateway(model_id="gemini-test", reasoning_effort="unbounded")
 
     def test_validator_requires_exact_pinned_target(self):
         proposal = {

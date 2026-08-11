@@ -20,9 +20,9 @@ from tools.model_gateway import validate_worker_proposal
 from tools.phase5_boundaries import authorize_effect, raw_intent_hash, with_boundary_identity
 from tools.protocol_v01 import sha256_ref, validate_bundle, with_derived_identity
 
-EXECUTOR_REPOSITORY = "JTJ07/Executor"
+EXECUTOR_REPOSITORY = "litrgratis-pixel/Executor"
 EXECUTOR_COMMIT = "788443c3ed5b290ac8f1de145a93d02d2dd15317"
-FIXTURE_REPOSITORY = "JTJ07/executor-pilot-target"
+FIXTURE_REPOSITORY = "litrgratis-pixel/executor-pilot-target"
 FIXTURE_COMMIT = "3934a94a5eebf750079200589d6dc40e024d44a0"
 CASE_ID = "CASE-001"
 TARGET_PATH = "project_registry/registry.py"

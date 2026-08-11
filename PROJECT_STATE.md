@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_6_ACCEPTED / PHASE_4_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / HUMAN_MODEL_DECISION_PENDING / NOT_YET_FUNCTIONAL
+status: PHASE_6_ACCEPTED / PHASE_4_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_READY / NOT_YET_FUNCTIONAL
 completion_lock: ACTIVE
 state_owner: PROJECT_STATE.md
 updated_at: 2026-08-11
@@ -27,10 +27,11 @@ GitHub is durable memory. Completion lock remains ACTIVE.
 
 ## 2. Current objective
 
-The provider-independent control path is already proved. Phase 4B has now measured the real external AI worker without changing the already-proven boundaries.
+The provider-independent control path is proved, the real external AI worker has been measured, the human has selected `gemini-3.6-flash`, and the current Executor self identity has been reconciled to `JTJ07/Executor` under a new commit. The next gate is the fresh-session Phase-7 full E2E acceptance chain.
 
 Human proof-order decision: `DEC-SAD-014` (`decisions/DEC-SAD-014.md`).
-Current Phase-4B provider-swap decision: `DEC-SAD-015` (`decisions/DEC-SAD-015.md`).
+Phase-4B provider-swap decision: `DEC-SAD-015` (`decisions/DEC-SAD-015.md`).
+Human model-selection decision: `DEC-SAD-016` (`decisions/DEC-SAD-016.md`).
 
 ```text
 Phase 4A — WEB AI COGNITIVE CALIBRATION
@@ -46,10 +47,16 @@ Phase 4B — CONTROLLED LIVE API WORKER EVIDENCE
         COMPLETE
         ↓
 HUMAN MODEL DECISION
+        GEMINI 3.6 FLASH SELECTED
+        ↓
+EXECUTOR CURRENT SELF-IDENTITY RECONCILIATION
+        COMPLETE / JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d
+        ↓
+PHASE 7 — FRESH-SESSION FULL E2E ACCEPTANCE
         NEXT
 ```
 
-No automatic model selection, autonomy increase, capability expansion, or functional acceptance follows from the benchmark result.
+No autonomy increase, capability expansion, or functional acceptance follows automatically from the benchmark, model selection, or identity reconciliation.
 
 ## 3. Canonical completed foundations
 
@@ -82,7 +89,7 @@ Observed baseline:
 - unnecessary capability expansion `0`;
 - reconstructed visible registry/CLI suite `13/13 PASS` for each proposal.
 
-All three Phase-4A runs remain `CONTEXT_CONTAMINATED`; independent model problem solving is not claimed from Phase 4A. The independent/reproducible worker evidence is now supplied separately by Phase 4B.
+All three Phase-4A runs remain `CONTEXT_CONTAMINATED`; independent model problem solving is not claimed from Phase 4A. The independent/reproducible worker evidence is supplied separately by Phase 4B.
 
 ## 5. Phase 4C — ACCEPTED synthetic integration proof
 
@@ -101,7 +108,7 @@ artifact ID: 9078675806
 artifact ZIP SHA256: cac22ce36e2bfff030f1e3fb1aea3a5323dd55abf75a02d70962cda6165a75e1
 ```
 
-These locators are retained as historical provenance for the original run. Current repository locators after account transfer are `JTJ07/Executor` and `JTJ07/executor-pilot-target`; the pinned commit identities are unchanged.
+These locators remain historical provenance for the original run and are not rewritten by later repository migration work.
 
 Provider-independent chain proved:
 
@@ -140,11 +147,11 @@ functional_saddle_accepted = false
 
 Current accepted ScriptOps Phase-6 v2 is scene-domain specific; Executor GP001 is code-domain specific. Phase 4C did not invent a new ScriptOps code-mutation capability or artificially chain two executors for one effect.
 
-ScriptOps Phase-6 remains separately valid controlled-workflow evidence. Phase 4C proves the real Saddle → authority gate → Executor → evidence/verifier core that the measured AI worker can later feed after the required human choice and downstream migration reconciliation.
+ScriptOps Phase-6 remains separately valid controlled-workflow evidence. Phase 4C proves the real Saddle → authority gate → Executor → evidence/verifier core that the selected AI worker can feed during the bounded Phase-7 acceptance chain.
 
-## 6. Phase 4B — LIVE EVIDENCE COMPLETE / HUMAN DECISION PENDING
+## 6. Phase 4B — LIVE EVIDENCE COMPLETE / MODEL SELECTED
 
-Human authorization: `DEC-SAD-011`. Evaluation contract: `DEC-SAD-013`. Provider-swap decision: `DEC-SAD-015`.
+Human authorization: `DEC-SAD-011`. Evaluation contract: `DEC-SAD-013`. Provider-swap decision: `DEC-SAD-015`. Human model selection: `DEC-SAD-016`.
 
 Approved bounds remained unchanged and were observed:
 
@@ -231,7 +238,7 @@ gemini-3.6-flash:
   average model latency: 11.025 s
 ```
 
-Flash matched Pro's functional result and boundary discipline while being approximately `19.3%` cheaper and `30.8%` lower-latency on this measured workload. Flash also produced more consistently executable evidence-plan commands. This is an evaluator recommendation signal only, not model-selection authority.
+Flash matched Pro's functional result and boundary discipline while being approximately `19.3%` cheaper and `30.8%` lower-latency on this measured workload. Flash also produced more consistently executable evidence-plan commands.
 
 ### Nine-dimension result
 
@@ -245,99 +252,100 @@ Flash matched Pro's functional result and boundary discipline while being approx
 8. human-correction burden — `PASS / FLASH ADVANTAGE`;
 9. intent preservation — `PASS / TIE`.
 
+Human decision on that evidence:
+
+```text
+DEC-SAD-016
+SELECTED PRODUCTION WORKER MODEL = gemini-3.6-flash
+PROVIDER = google-gemini
+```
+
 Evidence classification:
 
 ```text
 PROVIDER-SWAP CONTROL-PLANE EVIDENCE = PASS
 LIVE API WORKER EVIDENCE = COMPLETE / PASS IN TESTED SCOPE
 NINE-DIMENSION EVALUATION = COMPLETE
-ADVISORY CANDIDATE = gemini-3.6-flash
-PRODUCTION WORKER SELECTION = PENDING HUMAN DECISION
+PRODUCTION WORKER SELECTION = gemini-3.6-flash / HUMAN DECISION
 FUNCTIONAL ACCEPTANCE = OPEN
 MATURITY CLAIM = NONE
 ```
 
-## 7. Repository migration / downstream Executor state
+No additional benchmark calls are required unless the human explicitly requests a new measurement.
 
-The critical repositories required by the current completion path were verified on 2026-08-11 under the `JTJ07` owner:
+## 7. Repository migration / Executor current self identity
 
-```text
-JTJ07/executor-pilot-target
-JTJ07/Executor
-JTJ07/scriptops
-JTJ07/creative-os-project-reconstructor
-JTJ07/COS
-```
+The critical repositories required by the current completion path are available under the `JTJ07` owner.
 
-Immutable benchmark identities remain unchanged:
+Immutable benchmark case identities remain unchanged:
 
 ```text
 CASE-001 3934a94a5eebf750079200589d6dc40e024d44a0
 CASE-002 c3683bf37ad6a3f1d49c0ca05ebdd41627e9a5be
 CASE-003 c42bead2bbbff9c84486f17637ec80f35eeffa25
-Executor  788443c3ed5b290ac8f1de145a93d02d2dd15317
 ```
 
-Current active runtime/config locators use `JTJ07/...`; historical evidence retains the locator that was true when the evidence was produced. Frozen Phase-4C proof tooling remains tied to its historical locator/identity pair and is not rewritten as part of the account migration.
+Historical Phase-4C Executor provenance remains unchanged:
 
-Migration validation in Saddle PR #17 / workflow run `31526922252` established:
-- all 59 deterministic Saddle regression tests PASS;
-- exact `788443c3ed5b290ac8f1de145a93d02d2dd15317` is fetchable from `JTJ07/Executor`;
-- exact CASE-001 `3934a94a5eebf750079200589d6dc40e024d44a0` is fetchable from `JTJ07/executor-pilot-target`;
-- a full Phase-4C rerun using the old pinned Executor content with a new repository locator blocks fail-closed because that historical Executor commit internally binds repository identity to `litrgratis-pixel/Executor`.
+```text
+litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317
+```
 
-This compatibility finding does **not** invalidate accepted historical Phase-4C evidence and did **not** block Phase 4B. Before a new post-transfer real Executor effect is attempted, Executor current self-identity must be reconciled to `JTJ07/Executor` in a bounded migration change under a new current commit, while preserving `788443c3...` as historical provenance.
+Current post-transfer Executor identity is now separately established:
+
+```text
+repository: JTJ07/Executor
+current merge SHA: 728d23e56ec9f76fb7a37673ceb20efccf91e03d
+PR: JTJ07/Executor#58
+base historical SHA: 788443c3ed5b290ac8f1de145a93d02d2dd15317
+Verify Executor foundations run: 31539013966 — SUCCESS
+GP001 replay repeatability run: 31539014065 — SUCCESS
+```
+
+PR #58 changed only active/current self-identity bindings and their directly coupled tests/workflow. Runtime fail-closed identity checks were preserved: current self checkouts now require `JTJ07/Executor`, and regression coverage proves that the previous owner is rejected by the current self-identity gate.
+
+Intentionally unchanged by PR #58:
+- historical Phase-4C locator/SHA;
+- `EXECUTOR_POLICY.yaml` Controlled External Fixture authority for the historical pilot fixture;
+- canonical GP001 external-fixture target binding and historical real-E2E evidence;
+- capabilities, effect authority, network/secrets defaults, auto-merge, product goal, maturity and functional-acceptance semantics.
 
 ## 8. What is still open
 
-- human selection of the first production worker/model is pending;
-- current Executor self-identity is not yet reconciled for new post-transfer effect runs;
 - no production human-identity/request-origin trust provider is selected;
 - no final fresh-session full Saddle acceptance run exists;
 - `FUNCTIONAL_SADDLE_ACCEPTED` remains false;
 - completion lock remains ACTIVE.
 
-No additional benchmark calls are required to establish the recorded Phase-4B result unless the human explicitly requests a new measurement.
+## 9. Next evidence gate
 
-## 9. Next evidence / decision gate
+The single next gate is **Phase 7 fresh-session full E2E functional acceptance evidence** using the human-selected `gemini-3.6-flash` and the current reconciled Executor `JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d`.
 
-The single next gate is the human model decision required by `DEC-SAD-013` and preserved by `DEC-SAD-015`.
-
-Measured advisory result:
-
-```text
-both candidates: 3 / 3 correctness, scope, structured-output and boundary PASS
-Flash: lower measured latency + lower measured cost + better evidence-plan precision
-```
-
-The evaluator therefore recommends `gemini-3.6-flash`, but Saddle must not convert that recommendation into a production selection automatically.
-
-After the human decision:
-
-```text
-HUMAN MODEL DECISION
-        ↓
-BOUNDED EXECUTOR CURRENT SELF-IDENTITY RECONCILIATION
-        ↓
-FRESH-SESSION PHASE-7 FULL E2E ACCEPTANCE CHAIN
-```
-
-## 10. Functional acceptance remains open
-
-Final acceptance still requires:
+Required fresh-session loop:
 
 ```text
 human raw intent
 → durable integrity/origin binding
 → context recovery
-→ real AI problem solving
+→ real AI problem solving with selected worker
 → EffectProposal
-→ exact effect authority
-→ bounded real execution
+→ exact EffectAuthority
+→ bounded real execution through current Executor
 → EffectReceipt / verifier evidence
 → required human review
 → StateDelta
 → second zero-history resume
 ```
 
-Only the complete evidence set plus explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`. Phase-4B live success alone does not do so.
+This step must preserve all existing authority and intent-integrity boundaries. It is not permission to broaden capabilities or bypass the intentionally open production request-origin/trust-provider question.
+
+## 10. Functional acceptance remains open
+
+Only the complete Phase-7 evidence set plus explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
+
+```text
+PHASE 4B LIVE SUCCESS
++ HUMAN MODEL SELECTION
++ EXECUTOR SELF-IDENTITY RECONCILIATION
+!= FUNCTIONAL SADDLE ACCEPTANCE
+```

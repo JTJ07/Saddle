@@ -24,3 +24,4 @@
 +        self._projects.update(to_add)
  
      def transition(
+         self,

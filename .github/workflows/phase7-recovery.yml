@@ -56,12 +56,13 @@ jobs:
           attempt = json.loads(Path('evidence/phase7/attempt-001.json').read_text(encoding='utf-8'))
           source = Path('tools/phase7_recover_evidence.py').read_text(encoding='utf-8')
           workflow = Path('.github/workflows/phase7-recovery.yml').read_text(encoding='utf-8')
+          secret_name = 'GEMINI' + '_API_KEY'
           assert cfg['status'] == 'MODEL_CALL_CONSUMED_RECOVERY_ONLY'
           assert attempt['recovery_rule']['additional_model_calls_allowed'] == 0
           assert attempt['worker']['automatic_retries'] == 0
-          assert 'GEMINI_API_KEY' not in source
+          assert secret_name not in source
           assert 'model_gateway' not in source
-          assert 'GEMINI_API_KEY' not in workflow
+          assert secret_name not in workflow
           assert 'secrets.' not in workflow
           print('Phase 7 no-model recovery gate: PASS')
           PY

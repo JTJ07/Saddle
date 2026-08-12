@@ -1,0 +1,83 @@
+{
+  "schema_version": "saddle-phase7-attempt-evidence/0.1",
+  "attempt": 1,
+  "github_run_id": 31564368431,
+  "github_run_attempt": 1,
+  "saddle_sha": "522e48ba50ac106b6c85a67ece634044f53788e1",
+  "actor": "JTJ07",
+  "event": "push",
+  "ref": "refs/heads/main",
+  "status": "EFFECT_SUCCEEDED_FINAL_PROTOCOL_VALIDATION_FAILED",
+  "failure": {
+    "stage": "validate_bundle",
+    "reason": "$.origin.evidence_refs[0].kind: value 'ORIGIN' not in enum",
+    "classification": "CONTROL_PLANE_SCHEMA_KIND_BUG_AFTER_EFFECT"
+  },
+  "artifact": {
+    "id": 9128908360,
+    "name": "phase7-functional-acceptance-evidence",
+    "digest": "sha256:c767da695b1331aef5e240b976a9526d4c905c110937078c72b4e457a9a59555",
+    "retention_expires_at": "2026-09-11T04:47:40Z"
+  },
+  "origin_event": {
+    "content_hash": "sha256:6a86742226260eff46b1007d13fec7f2e73f9d797b210bde2bf92cf8ed338df3",
+    "raw_intent_hash": "sha256:31c277d7438c565dcbdb80e1841fa586ea0b7a138ecbc4e46e72877c133e412b",
+    "principal_ref": "github-user:JTJ07",
+    "provider": "github-actions-push-actor/acceptance-only",
+    "observed_at": "2026-08-12T04:47:25Z"
+  },
+  "worker": {
+    "provider": "google-gemini",
+    "api": "generateContent",
+    "model_id": "gemini-3.6-flash",
+    "provider_response_id": "3fp7asHlEtGfqtsPiszR0QM",
+    "proposal_content_hash": "sha256:f2abb3bb8f72f772a2c00a46b624821b84e6ca1a6b22c0115f96094a1a0c81c4",
+    "latency_ms": 13414,
+    "estimated_cost_usd": "0.027561",
+    "automatic_retries": 0,
+    "usage": {
+      "input_tokens": 2024,
+      "output_tokens": 982,
+      "reasoning_tokens": 2288
+    },
+    "mutation": {
+      "path": "project_registry/registry.py",
+      "changed_lines": 14,
+      "expected_before_sha256": "bf18f6a6dc6adfe4d5afd0e63d0db79ff400293148b6c3528c355e38075c8f0d",
+      "expected_after_sha256": "26baef8666b6a37ff784ba0d303f9638aaa9769985831019218191fa16367b01"
+    },
+    "reason": "Make ProjectRegistry.add_many atomic by materializing the input batch, checking for duplicates against both existing registry state and within the batch itself, and only mutating state once all items are validated."
+  },
+  "authority": {
+    "result": "ALLOW",
+    "reason": "EXACT_EFFECT_AUTHORITY_MATCH",
+    "authority_id": "effect-authority:sha256:f90396a1eec18b3bce014ebd4f389c7da9b73137b16b55c6334885bb020f7370",
+    "result_content_hash": "sha256:809ed41c374345cee79b68b6f98820d8c0f441fbb8ecff1220f30cf7d43f82d3"
+  },
+  "executor": {
+    "repository": "litrgratis-pixel/executor-pilot-target",
+    "input_commit": "3934a94a5eebf750079200589d6dc40e024d44a0",
+    "current_executor_commit": "728d23e56ec9f76fb7a37673ceb20efccf91e03d",
+    "report_content_hash": "sha256:ce515ba4aa885adbe3fcf879d164fe9162eaca9277864cbeac826d165460a4db",
+    "status": "ACTION_COMPLETED_REVIEW_REQUIRED",
+    "human_decision_required": true,
+    "changed_paths": ["project_registry/registry.py"],
+    "evidence": {
+      "fixture_authority": "BOUND",
+      "input_identity": "MATCH",
+      "pre_change_target_test": "FAIL",
+      "post_change_target_test": "PASS",
+      "regression_checks": "PASS",
+      "diff_scope": "ALLOWED",
+      "protected_material": "UNCHANGED",
+      "execution_limits": "RESPECTED",
+      "result_artifact": "PRESENT"
+    }
+  },
+  "recovery_rule": {
+    "additional_model_calls_allowed": 0,
+    "reuse_exact_worker_mutation": true,
+    "correct_origin_reference_kind_to": "EVIDENCE",
+    "new_exact_effect_authority_required_before_reexecution": true
+  }
+}

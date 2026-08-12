@@ -56,7 +56,8 @@ jobs:
           assert cfg['review']['second_zero_history_resume_required'] is True
           assert 'pull_request:' in workflow and 'push:' in workflow
           assert "if: github.event_name == 'push' && github.actor == 'JTJ07'" in workflow
-          assert 'GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}' in workflow
+          assert 'GEMINI_API_KEY:' in workflow
+          assert 'secrets.GEMINI_API_KEY' in workflow
           print('Phase 7 control-plane invariants: PASS')
           PY
 

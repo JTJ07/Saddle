@@ -1,6 +1,6 @@
 {
   "schema_version": "saddle-phase7-acceptance-run/0.1",
-  "status": "ARMED_ONCE_FOR_PHASE7_ACCEPTANCE",
+  "status": "MODEL_CALL_CONSUMED_RECOVERY_ONLY",
   "case_id": "CASE-001",
   "raw_human_intent": "Kontynuuj Saddle od canonical GitHub state i wykonaj Phase 7",
   "origin": {

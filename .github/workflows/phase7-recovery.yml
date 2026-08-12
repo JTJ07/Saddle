@@ -1,0 +1,182 @@
+name: Phase 7 consumed-worker recovery
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - config/phase7-acceptance-run-v0.1.json
+      - evidence/phase7/attempt-001.json
+      - evidence/phase7/attempt-001-model.patch
+      - tools/phase7_recover_evidence.py
+      - tests/test_phase7_recover_evidence.py
+      - .github/workflows/phase7-recovery.yml
+      - .github/workflows/phase7-functional-acceptance.yml
+  push:
+    branches: [main]
+    paths:
+      - config/phase7-acceptance-run-v0.1.json
+      - evidence/phase7/attempt-001.json
+      - evidence/phase7/attempt-001-model.patch
+      - tools/phase7_recover_evidence.py
+      - tests/test_phase7_recover_evidence.py
+      - .github/workflows/phase7-recovery.yml
+      - .github/workflows/phase7-functional-acceptance.yml
+
+permissions:
+  contents: read
+
+jobs:
+  recovery-control-plane:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact event SHA
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.11"
+
+      - name: Run deterministic Saddle regression
+        run: python -m unittest discover -s tests -v
+
+      - name: Verify recovery cannot call a model
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          cfg = json.loads(Path('config/phase7-acceptance-run-v0.1.json').read_text(encoding='utf-8'))
+          attempt = json.loads(Path('evidence/phase7/attempt-001.json').read_text(encoding='utf-8'))
+          source = Path('tools/phase7_recover_evidence.py').read_text(encoding='utf-8')
+          workflow = Path('.github/workflows/phase7-recovery.yml').read_text(encoding='utf-8')
+          secret_name = 'GEMINI' + '_API_KEY'
+          secrets_prefix = 'secrets' + '.'
+          assert cfg['status'] == 'MODEL_CALL_CONSUMED_RECOVERY_ONLY'
+          assert attempt['recovery_rule']['additional_model_calls_allowed'] == 0
+          assert attempt['worker']['automatic_retries'] == 0
+          assert secret_name not in source
+          assert 'model_gateway' not in source
+          assert secret_name not in workflow
+          assert secrets_prefix not in workflow
+          print('Phase 7 no-model recovery gate: PASS')
+          PY
+
+  recovery-e2e:
+    if: github.event_name == 'push' && github.actor == 'JTJ07'
+    needs: recovery-control-plane
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact event SHA
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.11"
+
+      - name: Acquire current reconciled Executor
+        shell: bash
+        run: |
+          set -euo pipefail
+          executor="$RUNNER_TEMP/executor"
+          rm -rf "$executor"
+          git init -q "$executor"
+          git -C "$executor" remote add origin https://github.com/JTJ07/Executor.git
+          git -C "$executor" -c protocol.version=2 -c core.hooksPath=/dev/null -c credential.helper= fetch --no-tags --depth=1 origin 728d23e56ec9f76fb7a37673ceb20efccf91e03d
+          git -C "$executor" checkout -q --detach FETCH_HEAD
+          test "$(git -C "$executor" rev-parse HEAD)" = "728d23e56ec9f76fb7a37673ceb20efccf91e03d"
+          test -z "$(git -C "$executor" status --porcelain)"
+
+      - name: Acquire exact CASE-001 controlled fixture
+        shell: bash
+        run: |
+          set -euo pipefail
+          target="$RUNNER_TEMP/gp001-target"
+          rm -rf "$target"
+          git init -q "$target"
+          git -C "$target" remote add origin https://github.com/litrgratis-pixel/executor-pilot-target.git
+          git -C "$target" -c protocol.version=2 -c core.hooksPath=/dev/null -c credential.helper= fetch --no-tags --depth=1 origin 3934a94a5eebf750079200589d6dc40e024d44a0
+          git -C "$target" checkout -q --detach FETCH_HEAD
+          test "$(git -C "$target" rev-parse HEAD)" = "3934a94a5eebf750079200589d6dc40e024d44a0"
+          test -z "$(git -C "$target" status --porcelain)"
+
+      - name: Resolve immutable sandbox image
+        id: image
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker pull python:3.11-slim
+          image="$(docker image inspect --format='{{.Id}}' python:3.11-slim)"
+          case "$image" in
+            sha256:????????????????????????????????????????????????????????????????) ;;
+            *) echo "unexpected immutable image id: $image" >&2; exit 1 ;;
+          esac
+          echo "image=$image" >> "$GITHUB_OUTPUT"
+
+      - name: Recover consumed Phase 7 worker evidence without model call
+        shell: bash
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          set -euo pipefail
+          python -m tools.phase7_recover_evidence \
+            --root "$GITHUB_WORKSPACE" \
+            --executor-root "$RUNNER_TEMP/executor" \
+            --workspace "$RUNNER_TEMP/gp001-target" \
+            --runs-root "$RUNNER_TEMP/phase7-recovery-runs" \
+            --image "${{ steps.image.outputs.image }}" \
+            --output-dir "$RUNNER_TEMP/phase7-recovery-evidence"
+
+      - name: Verify recovered evidence stops at human review
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          s = json.loads((Path(os.environ['RUNNER_TEMP']) / 'phase7-recovery-evidence' / 'summary.json').read_text(encoding='utf-8'))
+          assert s['status'] == 'E2E_EFFECT_COMPLETE_REVIEW_REQUIRED'
+          assert s['original_model_calls'] == 1
+          assert s['recovery_model_calls'] == 0
+          assert s['total_phase7_model_calls'] == 1
+          assert s['automatic_model_retries'] == 0
+          assert s['protocol_bundle'] == 'PASS'
+          assert s['changed_paths'] == ['project_registry/registry.py']
+          assert s['human_review_required'] is True
+          assert s['second_zero_history_resume_required'] is True
+          assert s['functional_saddle_accepted'] is False
+          assert s['completion_lock_release_authorized'] is False
+          print('Phase 7 recovered review boundary: PASS')
+          PY
+
+      - name: Upload recovered Phase 7 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase7-recovered-functional-acceptance-evidence
+          path: ${{ runner.temp }}/phase7-recovery-evidence/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Verify sandbox cleanup
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          remaining="$(docker ps -a --filter label=creative-os-executor-gp001=first-vertical-runtime-slice --format '{{.ID}}')"
+          if [ -n "$remaining" ]; then
+            echo "Phase 7 recovery container cleanup failure: $remaining" >&2
+            exit 1
+          fi

@@ -35,14 +35,15 @@ class Phase7FunctionalAcceptanceTests(unittest.TestCase):
             "PHASE7_RUN_ATTEMPT": "1",
         }
 
-    def test_config_preserves_literal_current_human_intent_and_bounds(self):
-        validate_config(self.config)
+    def test_model_call_gate_is_consumed_and_original_runner_fails_closed(self):
+        self.assertEqual(self.config["status"], "MODEL_CALL_CONSUMED_RECOVERY_ONLY")
+        with self.assertRaises(Phase7Error):
+            validate_config(self.config)
         self.assertEqual(RAW_HUMAN_INTENT, "Kontynuuj Saddle od canonical GitHub state i wykonaj Phase 7")
         self.assertEqual(self.config["raw_human_intent"], RAW_HUMAN_INTENT)
         self.assertEqual(self.config["worker"]["model_id"], "gemini-3.6-flash")
         self.assertEqual(self.config["limits"]["max_model_calls"], 1)
         self.assertEqual(self.config["limits"]["automatic_retries"], 0)
-        self.assertTrue(self.config["review"]["required"])
 
     def test_origin_requires_authenticated_main_push_by_expected_actor(self):
         event, ref_id, content_hash = origin_evidence(self.config, self.env, self.now)

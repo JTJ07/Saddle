@@ -1,0 +1,191 @@
+name: Phase 7 functional acceptance
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - config/phase7-acceptance-run-v0.1.json
+      - tools/phase7_functional_acceptance.py
+      - tests/test_phase7_functional_acceptance.py
+      - .github/workflows/phase7-functional-acceptance.yml
+  push:
+    branches: [main]
+    paths:
+      - config/phase7-acceptance-run-v0.1.json
+      - tools/phase7_functional_acceptance.py
+      - tests/test_phase7_functional_acceptance.py
+      - .github/workflows/phase7-functional-acceptance.yml
+
+permissions:
+  contents: read
+
+jobs:
+  control-plane:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact event SHA
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.11"
+
+      - name: Run deterministic Saddle regression
+        run: python -m unittest discover -s tests -v
+
+      - name: Verify Phase 7 workflow invariants
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          cfg = json.loads(Path('config/phase7-acceptance-run-v0.1.json').read_text(encoding='utf-8'))
+          workflow = Path('.github/workflows/phase7-functional-acceptance.yml').read_text(encoding='utf-8')
+          assert cfg['raw_human_intent'] == 'Kontynuuj Saddle od canonical GitHub state i wykonaj Phase 7'
+          assert cfg['worker']['model_id'] == 'gemini-3.6-flash'
+          assert cfg['limits']['max_model_calls'] == 1
+          assert cfg['limits']['automatic_retries'] == 0
+          assert cfg['review']['required'] is True
+          assert cfg['review']['second_zero_history_resume_required'] is True
+          assert 'pull_request:' in workflow and 'push:' in workflow
+          assert "if: github.event_name == 'push' && github.actor == 'JTJ07'" in workflow
+          assert 'GEMINI_API_KEY:' in workflow
+          assert 'secrets.GEMINI_API_KEY' in workflow
+          print('Phase 7 control-plane invariants: PASS')
+          PY
+
+  phase7-e2e:
+    if: github.event_name == 'push' && github.actor == 'JTJ07'
+    needs: control-plane
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      PHASE7_EVENT_NAME: ${{ github.event_name }}
+      PHASE7_REPOSITORY: ${{ github.repository }}
+      PHASE7_ACTOR: ${{ github.actor }}
+      PHASE7_REF: ${{ github.ref }}
+      PHASE7_SHA: ${{ github.sha }}
+      PHASE7_RUN_ID: ${{ github.run_id }}
+      PHASE7_RUN_ATTEMPT: ${{ github.run_attempt }}
+
+    steps:
+      - name: Checkout Saddle exact event SHA
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.11"
+
+      - name: Verify Gemini credential without exposing it
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${GEMINI_API_KEY:-}"
+          echo "Phase 7 Gemini credential gate: PASS"
+
+      - name: Acquire current reconciled Executor
+        shell: bash
+        run: |
+          set -euo pipefail
+          executor="$RUNNER_TEMP/executor"
+          rm -rf "$executor"
+          git init -q "$executor"
+          git -C "$executor" remote add origin https://github.com/JTJ07/Executor.git
+          git -C "$executor" -c protocol.version=2 -c core.hooksPath=/dev/null -c credential.helper= fetch --no-tags --depth=1 origin 728d23e56ec9f76fb7a37673ceb20efccf91e03d
+          git -C "$executor" checkout -q --detach FETCH_HEAD
+          test "$(git -C "$executor" rev-parse HEAD)" = "728d23e56ec9f76fb7a37673ceb20efccf91e03d"
+          test -z "$(git -C "$executor" status --porcelain)"
+
+      - name: Acquire exact CASE-001 controlled fixture
+        shell: bash
+        run: |
+          set -euo pipefail
+          target="$RUNNER_TEMP/gp001-target"
+          rm -rf "$target"
+          git init -q "$target"
+          git -C "$target" remote add origin https://github.com/litrgratis-pixel/executor-pilot-target.git
+          git -C "$target" -c protocol.version=2 -c core.hooksPath=/dev/null -c credential.helper= fetch --no-tags --depth=1 origin 3934a94a5eebf750079200589d6dc40e024d44a0
+          git -C "$target" checkout -q --detach FETCH_HEAD
+          test "$(git -C "$target" rev-parse HEAD)" = "3934a94a5eebf750079200589d6dc40e024d44a0"
+          test -z "$(git -C "$target" status --porcelain)"
+
+      - name: Resolve immutable sandbox image
+        id: image
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker pull python:3.11-slim
+          image="$(docker image inspect --format='{{.Id}}' python:3.11-slim)"
+          case "$image" in
+            sha256:????????????????????????????????????????????????????????????????) ;;
+            *) echo "unexpected immutable image id: $image" >&2; exit 1 ;;
+          esac
+          echo "image=$image" >> "$GITHUB_OUTPUT"
+
+      - name: Run one-call fresh-session Phase 7 chain
+        shell: bash
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          set -euo pipefail
+          python -m tools.phase7_functional_acceptance \
+            --root "$GITHUB_WORKSPACE" \
+            --executor-root "$RUNNER_TEMP/executor" \
+            --workspace "$RUNNER_TEMP/gp001-target" \
+            --runs-root "$RUNNER_TEMP/phase7-runs" \
+            --image "${{ steps.image.outputs.image }}" \
+            --output-dir "$RUNNER_TEMP/phase7-evidence"
+
+      - name: Verify Phase 7 stops at human review boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          summary = json.loads((Path(os.environ['RUNNER_TEMP']) / 'phase7-evidence' / 'summary.json').read_text(encoding='utf-8'))
+          assert summary['status'] == 'E2E_EFFECT_COMPLETE_REVIEW_REQUIRED'
+          assert summary['human_review_required'] is True
+          assert summary['second_zero_history_resume_required'] is True
+          assert summary['explicit_final_human_acceptance_required'] is True
+          assert summary['functional_saddle_accepted'] is False
+          assert summary['completion_lock_release_authorized'] is False
+          assert summary['worker']['model_calls'] == 1
+          assert summary['worker']['automatic_retries'] == 0
+          assert summary['effect']['changed_paths'] == ['project_registry/registry.py']
+          print('Phase 7 human-review boundary: PASS')
+          PY
+
+      - name: Upload Phase 7 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase7-functional-acceptance-evidence
+          path: ${{ runner.temp }}/phase7-evidence/
+          if-no-files-found: ignore
+          retention-days: 30
+
+      - name: Verify sandbox cleanup
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          remaining="$(docker ps -a --filter label=creative-os-executor-gp001=first-vertical-runtime-slice --format '{{.ID}}')"
+          if [ -n "$remaining" ]; then
+            echo "Phase 7 container cleanup failure: $remaining" >&2
+            docker ps -a --no-trunc
+            exit 1
+          fi

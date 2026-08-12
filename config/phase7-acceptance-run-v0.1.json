@@ -1,0 +1,39 @@
+{
+  "schema_version": "saddle-phase7-acceptance-run/0.1",
+  "status": "ARMED_ONCE_FOR_PHASE7_ACCEPTANCE",
+  "case_id": "CASE-001",
+  "raw_human_intent": "Kontynuuj Saddle od canonical GitHub state i wykonaj Phase 7",
+  "origin": {
+    "provider": "github-actions-push-actor/acceptance-only",
+    "principal_ref": "github-user:JTJ07",
+    "repository": "JTJ07/Saddle",
+    "required_ref": "refs/heads/main",
+    "required_actor": "JTJ07"
+  },
+  "worker": {
+    "provider": "google-gemini",
+    "api": "generateContent",
+    "model_id": "gemini-3.6-flash",
+    "reasoning_effort": "medium",
+    "max_output_tokens": 8192
+  },
+  "executor": {
+    "repository": "JTJ07/Executor",
+    "commit": "728d23e56ec9f76fb7a37673ceb20efccf91e03d"
+  },
+  "fixture": {
+    "repository": "litrgratis-pixel/executor-pilot-target",
+    "commit": "3934a94a5eebf750079200589d6dc40e024d44a0",
+    "target_path": "project_registry/registry.py"
+  },
+  "limits": {
+    "max_model_calls": 1,
+    "automatic_retries": 0,
+    "max_estimated_model_spend_usd": "0.50"
+  },
+  "review": {
+    "required": true,
+    "second_zero_history_resume_required": true,
+    "functional_acceptance_requires_explicit_human_decision": true
+  }
+}

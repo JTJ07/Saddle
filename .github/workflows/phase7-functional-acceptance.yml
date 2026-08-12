@@ -48,10 +48,11 @@ jobs:
           from pathlib import Path
           cfg = json.loads(Path('config/phase7-acceptance-run-v0.1.json').read_text(encoding='utf-8'))
           workflow = Path('.github/workflows/phase7-functional-acceptance.yml').read_text(encoding='utf-8')
+          secret_name = 'GEMINI' + '_API_KEY'
           assert cfg['status'] == 'MODEL_CALL_CONSUMED_RECOVERY_ONLY'
           assert cfg['limits']['max_model_calls'] == 1
           assert cfg['limits']['automatic_retries'] == 0
-          assert 'GEMINI_API_KEY' not in workflow
+          assert secret_name not in workflow
           assert 'phase7-e2e' not in workflow
           print('Phase 7 paid model path consumed: PASS')
           PY

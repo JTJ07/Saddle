@@ -160,7 +160,9 @@ FUNCTIONAL_SADDLE_ACCEPTED: NO
 Current ScriptOps v2 is scene-domain specific; GP001 is code-domain specific. Do not add a ScriptOps code-mutation capability or artificial second execution layer to make one diagram look uniform. ScriptOps remains separately proven Phase-6 controlled-workflow evidence.
 
 ### PHASE 4B — CONTROLLED REPRODUCIBLE API WORKER EVIDENCE
-Status: `READY / NEXT / EXPLICIT DISPATCH + PROVIDER SECRET REQUIRED`
+Status: `COMPLETE / 6 OF 6 PASS IN TESTED SCOPE / HUMAN MODEL SELECTED`
+
+Completion evidence: `evidence/PHASE4B_LIVE_GEMINI_API_WORKER_2026-08-11.md`. Human decision `DEC-SAD-016` selected `google-gemini / gemini-3.6-flash`. The bounded execution contract below remains the historical gate contract; provider substitution was authorized by `DEC-SAD-015` without changing downstream authority semantics.
 
 Purpose: replace only the synthetic Intelligence component with a fixed API model/input/output contract and measure worker proposal quality under the already-proven control path.
 
@@ -201,7 +203,7 @@ Nine-dimensional evaluation contract:
 
 `Intent preservation` is evaluation, not semantic authority.
 
-After results:
+Observed result flow:
 
 ```text
 BENCHMARK RESULT
@@ -266,9 +268,9 @@ ScriptOps PR #7 merge `daa6e5dc210e09171a530eeffe5601e0e74ae041`; verifier + Pha
 ---
 
 ## PHASE 7 — FUNCTIONAL SADDLE ACCEPTANCE
-Status: `BLOCKED UNTIL PHASE-4B REAL AI EVIDENCE + FINAL E2E PROOF`
+Status: `TECHNICAL E2E COMPLETE THROUGH HUMAN-REVIEW BOUNDARY / HUMAN REVIEW OPEN / FUNCTIONAL ACCEPTANCE OPEN`
 
-Required fresh-session chain:
+Observed technical chain:
 
 ```text
 human intent
@@ -279,14 +281,16 @@ human intent
 → exact effect authority
 → bounded real execution
 → EffectReceipt / verifier evidence
-→ human review where required
 → durable StateDelta
-→ second zero-history resume
+→ human review — OPEN
+→ second zero-history resume — REQUIRED AFTER HUMAN REVIEW
 ```
 
-Phase 4C proves the system path with synthetic Intelligence; it does not satisfy the real-AI requirement.
+Evidence: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`.
 
-Only the complete evidence set and explicit human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
+Technical status is `E2E_EFFECT_COMPLETE_REVIEW_REQUIRED`. The provider-independent Protocol v0.1 bundle passed, the single consumed real-worker proposal crossed exact authority, and the current Executor returned `ACTION_COMPLETED_REVIEW_REQUIRED`. No additional model call or repeated Executor effect is required.
+
+The current gate is human review. If accepted, the next operation is the required second zero-history repository-only resume. Neither this evidence nor this plan update creates a human decision. Only the remaining resume gate plus explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
 
 ---
 

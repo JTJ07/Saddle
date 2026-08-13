@@ -1,9 +1,9 @@
 ---
 project: Saddle
-status: PHASE_6_ACCEPTED / PHASE_4_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_READY / NOT_YET_FUNCTIONAL
+status: PHASE_6_ACCEPTED / PHASE_7_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_E2E_EFFECT_COMPLETE_REVIEW_REQUIRED / HUMAN_REVIEW_OPEN / NOT_YET_FUNCTIONAL
 completion_lock: ACTIVE
 state_owner: PROJECT_STATE.md
-updated_at: 2026-08-11
+updated_at: 2026-08-13
 ---
 
 # PROJECT_STATE — Saddle
@@ -27,7 +27,7 @@ GitHub is durable memory. Completion lock remains ACTIVE.
 
 ## 2. Current objective
 
-The provider-independent control path is proved, the real external AI worker has been measured, the human has selected `gemini-3.6-flash`, and the current Executor self identity has been reconciled to `JTJ07/Executor` under a new commit. The next gate is the fresh-session Phase-7 full E2E acceptance chain.
+The provider-independent control path is proved, the real external AI worker has been measured, the human has selected `gemini-3.6-flash`, the current Executor self identity has been reconciled to `JTJ07/Executor`, and the Phase-7 technical E2E is complete through the required human-review boundary. The active gate is human review of `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`.
 
 Human proof-order decision: `DEC-SAD-014` (`decisions/DEC-SAD-014.md`).
 Phase-4B provider-swap decision: `DEC-SAD-015` (`decisions/DEC-SAD-015.md`).
@@ -53,7 +53,13 @@ EXECUTOR CURRENT SELF-IDENTITY RECONCILIATION
         COMPLETE / JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d
         ↓
 PHASE 7 — FRESH-SESSION FULL E2E ACCEPTANCE
-        NEXT
+        TECHNICAL E2E COMPLETE THROUGH HUMAN-REVIEW BOUNDARY
+        ↓
+HUMAN REVIEW
+        OPEN
+        ↓
+SECOND ZERO-HISTORY RESUME
+        REQUIRED AFTER HUMAN REVIEW
 ```
 
 No autonomy increase, capability expansion, or functional acceptance follows automatically from the benchmark, model selection, or identity reconciliation.
@@ -313,15 +319,29 @@ Intentionally unchanged by PR #58:
 ## 8. What is still open
 
 - no production human-identity/request-origin trust provider is selected;
-- no final fresh-session full Saddle acceptance run exists;
+- Phase-7 evidence human review remains open;
+- the second zero-history repository-only resume is required after human review and has not yet been performed;
+- explicit final human functional acceptance remains open;
 - `FUNCTIONAL_SADDLE_ACCEPTED` remains false;
 - completion lock remains ACTIVE.
 
-## 9. Next evidence gate
+## 9. One next step
 
-The single next gate is **Phase 7 fresh-session full E2E functional acceptance evidence** using the human-selected `gemini-3.6-flash` and the current reconciled Executor `JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d`.
+The single next gate is **human review of the completed Phase-7 technical E2E evidence** in `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`.
 
-Required fresh-session loop:
+Observed technical state:
+
+```text
+E2E_EFFECT_COMPLETE_REVIEW_REQUIRED
+HUMAN_REVIEW_ACCEPTED = OPEN
+SECOND_ZERO_HISTORY_RESUME = REQUIRED AFTER HUMAN REVIEW
+FUNCTIONAL_SADDLE_ACCEPTED = false
+COMPLETION_LOCK = ACTIVE
+```
+
+If the human accepts the evidence, the following operation is the required second zero-history repository-only resume. No acceptance decision is created by this factual state reconciliation.
+
+Completed technical loop:
 
 ```text
 human raw intent
@@ -332,9 +352,9 @@ human raw intent
 → exact EffectAuthority
 → bounded real execution through current Executor
 → EffectReceipt / verifier evidence
-→ required human review
 → StateDelta
-→ second zero-history resume
+→ required human review — OPEN
+→ second zero-history resume — REQUIRED AFTER HUMAN REVIEW
 ```
 
 This step must preserve all existing authority and intent-integrity boundaries. It is not permission to broaden capabilities or bypass the intentionally open production request-origin/trust-provider question.

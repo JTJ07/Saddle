@@ -1,7 +1,7 @@
 # SADDLE TODO — OPERATIONAL COMPLETION QUEUE
 
 Status: `ACTIVE / COMPLETION LOCK ENFORCED`
-Updated: 2026-08-11
+Updated: 2026-08-13
 
 Authority: `DECISION_LOG.md` > accepted Saddle state/contracts (`PROJECT_STATE.md`) > accepted component canonical sources > merged implementation + tests/evidence > `SESSION_HANDOFF.md` > `TODO.md` as operational projection > drafts/history/AI inference.
 
@@ -212,34 +212,31 @@ Evidence: ScriptOps PR #7 merge `daa6e5dc210e09171a530eeffe5601e0e74ae041`; repo
 No ScriptOps maturity or independent product-value claim.
 
 ## T9 — Phase 7 functional Saddle acceptance
-Status: `READY / NEXT / FRESH-SESSION E2E REQUIRED`
+Status: `TECHNICAL E2E COMPLETE THROUGH HUMAN-REVIEW BOUNDARY / HUMAN REVIEW OPEN`
 
-Use:
-- human-selected worker `google-gemini / gemini-3.6-flash`;
-- current reconciled Executor `JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d`;
-- existing verified-intent/effect-authority boundaries;
-- no capability expansion.
+Evidence: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`.
 
-Required fresh-session loop:
+Observed technical result:
 
 ```text
-human raw intent
-→ integrity/origin binding
-→ context recovery
-→ real AI proposal
-→ exact effect authority
-→ bounded real execution
-→ verifier / EffectReceipt evidence
-→ required human review
-→ StateDelta
-→ second zero-history resume
+E2E_EFFECT_COMPLETE_REVIEW_REQUIRED
+protocol bundle = PASS
+worker = google-gemini / gemini-3.6-flash
+total Phase-7 model calls = 1
+automatic retries = 0
+Executor = JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d
+Executor status = ACTION_COMPLETED_REVIEW_REQUIRED
+HUMAN_REVIEW_ACCEPTED = OPEN
+SECOND_ZERO_HISTORY_RESUME = REQUIRED AFTER HUMAN REVIEW
+FUNCTIONAL_SADDLE_ACCEPTED = false
+COMPLETION_LOCK = ACTIVE
 ```
 
-Phase 4C proves provider-independent system integration with synthetic Intelligence. Phase 4B proves real Gemini API-worker proposal generation/evaluation in the bounded benchmark. T6D proves the current Executor self locator can be verified after transfer. None alone substitutes for the final fresh-session product acceptance chain.
+Phase 7 used the existing verified-intent/effect-authority boundaries and added no capability. The original attempt and recovery provenance remain immutable in `evidence/phase7/attempt-001.json` and `evidence/phase7/attempt-001-model.patch`.
 
 The production human-identity/request-origin trust provider remains intentionally open; Phase 7 must not fake verified origin or promote a user label/model inference into origin evidence.
 
-Only complete Phase-7 evidence plus explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
+The next gate is human review. If the human accepts the evidence, the required following operation is the second zero-history repository-only resume. Only that remaining gate plus explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED` or release the completion lock.
 
 ## T10 — Phase 8 post-acceptance direction
 Status: `BLOCKED UNTIL T9`

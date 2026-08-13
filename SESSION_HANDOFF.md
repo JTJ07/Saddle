@@ -1,7 +1,7 @@
 ---
 project: Saddle
-status: PHASE_6_ACCEPTED / PHASE_4_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_READY / NOT_YET_FUNCTIONAL
-updated_at: 2026-08-11
+status: PHASE_6_ACCEPTED / PHASE_7_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_E2E_EFFECT_COMPLETE_REVIEW_REQUIRED / HUMAN_REVIEW_OPEN / NOT_YET_FUNCTIONAL
+updated_at: 2026-08-13
 ---
 
 # SESSION HANDOFF
@@ -27,16 +27,20 @@ HUMAN MODEL DECISION — GEMINI 3.6 FLASH SELECTED
         ↓
 EXECUTOR CURRENT SELF-IDENTITY RECONCILIATION — COMPLETE
         ↓
-PHASE 7 FRESH-SESSION FULL E2E ACCEPTANCE — NEXT
+PHASE 7 TECHNICAL E2E — COMPLETE THROUGH HUMAN-REVIEW BOUNDARY
+        ↓
+HUMAN REVIEW — OPEN
+        ↓
+SECOND ZERO-HISTORY RESUME — REQUIRED AFTER HUMAN REVIEW
 ```
 
 Saddle remains `NOT_YET_FUNCTIONAL`. Completion lock remains ACTIVE.
 
 ## ACTIVE GATE
 
-`PHASE 7 — FRESH-SESSION FULL E2E FUNCTIONAL ACCEPTANCE EVIDENCE`
+`PHASE 7 — HUMAN REVIEW OF COMPLETED TECHNICAL E2E EVIDENCE`
 
-Do not run another paid Phase-4B benchmark merely to reproduce the already-recorded result. Do not broaden capability, authority, tools, retries, provider routing, or autonomy from the model selection.
+Review packet: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`. Do not create or simulate the human verdict. Do not rerun the paid worker or Executor effect. Do not broaden capability, authority, tools, retries, provider routing, or autonomy.
 
 ## HUMAN DECISIONS
 
@@ -190,47 +194,45 @@ user provenance != verified request-origin evidence
 
 Model selection grants no shell/tools/repository-write/effect authority. The current production request-origin/trust provider remains intentionally unselected. Phase 7 must not fake verified origin or treat a `USER` label/model inference as origin evidence.
 
-## PHASE-7 REQUIRED FRESH-SESSION CHAIN
+## PHASE-7 TECHNICAL E2E — COMPLETE THROUGH HUMAN-REVIEW BOUNDARY
 
 ```text
-human raw intent
-→ durable integrity/origin binding
-→ context recovery
-→ real AI problem solving with gemini-3.6-flash
-→ EffectProposal
-→ exact EffectAuthority
-→ bounded real execution through JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d
-→ EffectReceipt / verifier evidence
-→ required human review
-→ StateDelta
-→ second zero-history resume
+status: E2E_EFFECT_COMPLETE_REVIEW_REQUIRED
+protocol bundle: PASS
+worker: google-gemini / gemini-3.6-flash
+total Phase-7 model calls: 1
+automatic retries: 0
+current Executor: JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d
+Executor status: ACTION_COMPLETED_REVIEW_REQUIRED
+human review: OPEN
+second zero-history resume: REQUIRED AFTER HUMAN REVIEW
+functional saddle accepted: false
+completion lock: ACTIVE
 ```
 
-Only the complete evidence set plus explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
+Canonical evidence: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`. Permanent consumed-call provenance remains in `evidence/phase7/attempt-001.json` and `evidence/phase7/attempt-001-model.patch`.
+
+The technical E2E evidence does not itself accept Phase 7. If the human accepts it, the required next operation is the second zero-history repository-only resume. Only that remaining gate plus explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
 
 ## STILL OPEN
 
 - production request-origin / human-identity trust provider selection;
-- final fresh-session full E2E acceptance evidence;
+- human review of the completed Phase-7 technical E2E evidence;
+- second zero-history repository-only resume after human review;
 - explicit final human functional acceptance;
 - maturity remains unclaimed.
 
 ## EXACT FILES / REFS TO OPEN NEXT
 
 1. `PROJECT_STATE.md`
-2. `TODO.md` — T9
-3. `DECISION_LOG.md`
-4. `decisions/DEC-SAD-016.md`
-5. `evidence/PHASE4B_LIVE_GEMINI_API_WORKER_2026-08-11.md`
-6. `config/model-benchmark-v0.1.json`
-7. `config/worker-cases-v0.1.json`
-8. `tools/model_gateway.py`
-9. `tools/phase4_live_benchmark.py`
-10. `JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d`
-11. historical reference only: `litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317`
+2. `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`
+3. `evidence/phase7/attempt-001.json`
+4. `evidence/phase7/attempt-001-model.patch`
+5. `TODO.md` — T9
+6. `DECISION_LOG.md`
+7. `JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d`
+8. historical reference only: `litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317`
 
 ## ONE NEXT STEP
 
-Run the **fresh-session Phase-7 full E2E acceptance chain** under the existing boundaries using the human-selected `gemini-3.6-flash` and current reconciled Executor.
-
-Do not claim functional Saddle status before the full chain, second zero-history resume, objective evidence, required human review, and explicit final human acceptance are complete.
+The human reviews `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md` and records an explicit verdict. Until then, `HUMAN_REVIEW_ACCEPTED` remains `OPEN`.

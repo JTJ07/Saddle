@@ -28,13 +28,14 @@ def base_record(result="PASS"):
     })
 
 
-def write_good_repo(root: Path, state_phase=3, handoff_phase=3, ready_count=1):
+def write_good_repo(root: Path, state_phase=3, handoff_phase=3, ready_count=1, human_review_count=0):
     for rel in ["AGENTS.md", "EXECUTION_PLAN.md", "RESTRICTIONS.md", "DECISION_LOG.md", "ECOSYSTEM_MAP.md", "SOURCE_REGISTRY.md"]:
         (root / rel).write_text("ok\n", encoding="utf-8")
     (root / "PROJECT_STATE.md").write_text(f"---\nstatus: PHASE_2_ACCEPTED / PHASE_{state_phase}_ACTIVE / NOT_YET_FUNCTIONAL\ncompletion_lock: ACTIVE\n---\n## 9. One next step\nDo it.\n", encoding="utf-8")
     (root / "SESSION_HANDOFF.md").write_text(f"---\nstatus: PHASE_2_ACCEPTED / PHASE_{handoff_phase}_ACTIVE / NOT_YET_FUNCTIONAL\n---\n## ONE NEXT STEP\nDo it.\n", encoding="utf-8")
     ready = "\n".join(["Status: `READY / NEXT`" for _ in range(ready_count)])
-    (root / "TODO.md").write_text(ready + "\n", encoding="utf-8")
+    human_review = "\n".join(["Status: `TECHNICAL E2E COMPLETE THROUGH HUMAN-REVIEW BOUNDARY / HUMAN REVIEW OPEN`" for _ in range(human_review_count)])
+    (root / "TODO.md").write_text("\n".join(item for item in (ready, human_review) if item) + "\n", encoding="utf-8")
     (root / "docs").mkdir()
     (root / "docs" / "SADDLE_PROTOCOL_v0.1.md").write_text("frozen\n", encoding="utf-8")
     (root / "docs" / "SADDLE_PROTOCOL_v0.1_DRAFT.md").write_text("SUPERSEDED\n", encoding="utf-8")
@@ -101,6 +102,30 @@ class RepositoryAuditTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             write_good_repo(root, ready_count=2)
+            self.assertEqual(audit_repository(root)["overall"], "FAIL")
+
+    def test_human_review_gate_passes_without_ready_next(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_good_repo(root, ready_count=0, human_review_count=1)
+            self.assertEqual(audit_repository(root)["overall"], "PASS")
+
+    def test_multiple_human_review_gates_fail(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_good_repo(root, ready_count=0, human_review_count=2)
+            self.assertEqual(audit_repository(root)["overall"], "FAIL")
+
+    def test_mixed_ready_next_and_human_review_gate_fails(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_good_repo(root, ready_count=1, human_review_count=1)
+            self.assertEqual(audit_repository(root)["overall"], "FAIL")
+
+    def test_missing_active_gate_fails(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_good_repo(root, ready_count=0)
             self.assertEqual(audit_repository(root)["overall"], "FAIL")
 
     def test_missing_completion_lock_fails(self):

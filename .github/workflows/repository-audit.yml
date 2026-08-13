@@ -1,0 +1,42 @@
+name: Repository state audit
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - PROJECT_STATE.md
+      - SESSION_HANDOFF.md
+      - TODO.md
+      - EXECUTION_PLAN.md
+      - DECISION_LOG.md
+      - SOURCE_REGISTRY.md
+      - config/source-repos.json
+      - tools/eval_harness.py
+      - tests/**
+      - docs/EVAL_FOUNDATION_v0.1.md
+      - .github/workflows/repository-audit.yml
+
+permissions:
+  contents: read
+
+jobs:
+  deterministic-repository-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact pull request SHA
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.11"
+
+      - name: Run repository audit
+        run: python tools/eval_harness.py audit --root .
+
+      - name: Run full deterministic regression
+        run: python -B -m unittest discover -s tests -v

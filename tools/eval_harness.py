@@ -19,6 +19,11 @@ TOP_KEYS = {
 }
 TS_RE = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$")
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
+READY_NEXT_STATUS_RE = re.compile(r"^Status:\s*`READY / NEXT(?: / [^`]*)?`\s*$", re.MULTILINE)
+HUMAN_REVIEW_OPEN_STATUS_RE = re.compile(
+    r"^Status:\s*`TECHNICAL E2E COMPLETE THROUGH HUMAN-REVIEW BOUNDARY / HUMAN REVIEW OPEN`\s*$",
+    re.MULTILINE,
+)
 
 
 class EvalError(ValueError):
@@ -240,8 +245,13 @@ def audit_repository(root: Path) -> dict[str, Any]:
         check("handoff-one-next-step-section", handoff_text.count("## ONE NEXT STEP") == 1, "SESSION_HANDOFF.md")
     if todo_path.is_file():
         todo_text = todo_path.read_text(encoding="utf-8")
-        ready_count = todo_text.count("Status: `READY / NEXT`")
-        check("todo-exactly-one-ready-next", ready_count == 1, f"count={ready_count}")
+        ready_count = len(READY_NEXT_STATUS_RE.findall(todo_text))
+        human_review_count = len(HUMAN_REVIEW_OPEN_STATUS_RE.findall(todo_text))
+        check(
+            "todo-exactly-one-active-gate",
+            ready_count + human_review_count == 1,
+            f"ready_next={ready_count}; human_review_open={human_review_count}",
+        )
     frozen = root / "docs" / "SADDLE_PROTOCOL_v0.1.md"
     historical = root / "docs" / "SADDLE_PROTOCOL_v0.1_DRAFT.md"
     check("frozen-protocol-present", frozen.is_file(), str(frozen.relative_to(root)))

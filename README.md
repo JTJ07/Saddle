@@ -1,6 +1,6 @@
 # Saddle
 
-Status: `PHASE 6 ACCEPTED / PHASE 4A CALIBRATION BASELINE PASS / PHASE 4B API EVIDENCE BLOCKED SECRET / NOT YET FUNCTIONAL`
+Status: `PHASE 7 TECHNICAL EVIDENCE ACCEPTED / SECOND ZERO-HISTORY RESUME PASS / FINAL HUMAN ACCEPTANCE OPEN / NOT YET FUNCTIONAL`
 
 Saddle is a durable control/coupling layer between **human intent** and **arbitrarily capable AI**.
 
@@ -71,7 +71,7 @@ See:
 
 ### Phase 4B — Controlled reproducible API worker evidence
 
-Formal worker evidence still requires fixed inputs + fixed API model + fixed structured output + deterministic evaluation.
+Formal worker evidence used fixed inputs, fixed API models, fixed structured output, and deterministic evaluation.
 
 Approved `DEC-SAD-011` bounds:
 
@@ -84,11 +84,7 @@ proposal only
 no capability / authority / tool expansion
 ```
 
-PR #14 preflight proved the GitHub runner and 54-test regression work, then safely stopped before any API call because `OPENAI_API_KEY` is not configured. Calls: 0. Spend: USD 0.
-
-Current only blocker: configure `OPENAI_API_KEY` in GitHub Actions repository secret storage, never in chat/Git/evidence, then rerun the existing failed benchmark job.
-
-The formal benchmark evaluates correctness, scope, authority discipline, goal preservation, rationale, structure, evidence plan, human corrections, tokens, cost, latency and retries. Results go to evaluation/human decision; no autonomy is automatically expanded.
+The bounded Gemini benchmark completed with 6/6 canonical evaluator PASS, 0 automatic retries, and no execution authority or target-repository write. The human selected `google-gemini / gemini-3.6-flash` in `DEC-SAD-016`. Model selection did not expand autonomy or authority.
 
 ## Functional acceptance
 
@@ -104,9 +100,10 @@ human raw intent
 → exact effect authority
 → bounded real execution
 → EffectReceipt / verifier evidence
-→ required human review
 → StateDelta
-→ second zero-history resume
+→ required human review — ACCEPTED
+→ second zero-history resume — PASS
+→ explicit final human acceptance — OPEN
 ```
 
-Only the complete evidence set and explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
+Only a separate explicit final human acceptance may now produce `FUNCTIONAL_SADDLE_ACCEPTED`. Until then, completion lock remains ACTIVE.

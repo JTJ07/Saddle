@@ -212,9 +212,9 @@ Evidence: ScriptOps PR #7 merge `daa6e5dc210e09171a530eeffe5601e0e74ae041`; repo
 No ScriptOps maturity or independent product-value claim.
 
 ## T9 — Phase 7 functional Saddle acceptance
-Status: `READY / NEXT / SECOND ZERO-HISTORY REPOSITORY-ONLY RESUME`
+Status: `READY / NEXT / EXPLICIT FINAL HUMAN ACCEPTANCE`
 
-Evidence: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`.
+Evidence: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md` and `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md`.
 
 Observed technical result:
 
@@ -227,7 +227,8 @@ automatic retries = 0
 Executor = JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d
 Executor status = ACTION_COMPLETED_REVIEW_REQUIRED
 HUMAN_REVIEW_ACCEPTED = true
-SECOND_ZERO_HISTORY_RESUME = NEXT
+SECOND_ZERO_HISTORY_RESUME = PASS
+EXPLICIT_FINAL_HUMAN_ACCEPTANCE = OPEN
 FUNCTIONAL_SADDLE_ACCEPTED = false
 COMPLETION_LOCK = ACTIVE
 ```
@@ -236,7 +237,7 @@ Phase 7 used the existing verified-intent/effect-authority boundaries and added 
 
 The production human-identity/request-origin trust provider remains intentionally open; Phase 7 must not fake verified origin or promote a user label/model inference into origin evidence.
 
-Human review was accepted in `DEC-SAD-017`. The next gate is the second zero-history repository-only resume. It must use canonical repository state only and must not repeat the Gemini call or Executor effect. Only a passing resume plus a later explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED` or release the completion lock.
+Human review was accepted in `DEC-SAD-017`, and the second zero-history repository-only resume passed from canonical state without repeating the Gemini call or Executor effect. The only next gate is a separate explicit final human acceptance. Until it occurs, functional acceptance remains false and the completion lock remains ACTIVE.
 
 ## T10 — Phase 8 post-acceptance direction
 Status: `BLOCKED UNTIL T9`

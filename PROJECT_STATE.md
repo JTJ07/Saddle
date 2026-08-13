@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_6_ACCEPTED / PHASE_7_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_TECHNICAL_EVIDENCE_ACCEPTED / SECOND_ZERO_HISTORY_RESUME_REQUIRED / NOT_YET_FUNCTIONAL
+status: PHASE_6_ACCEPTED / PHASE_7_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_TECHNICAL_EVIDENCE_ACCEPTED / SECOND_ZERO_HISTORY_RESUME_PASS / FINAL_HUMAN_ACCEPTANCE_REQUIRED / NOT_YET_FUNCTIONAL
 completion_lock: ACTIVE
 state_owner: PROJECT_STATE.md
 updated_at: 2026-08-13
@@ -27,7 +27,7 @@ GitHub is durable memory. Completion lock remains ACTIVE.
 
 ## 2. Current objective
 
-The provider-independent control path is proved, the real external AI worker has been measured, the human has selected `gemini-3.6-flash`, the current Executor self identity has been reconciled to `JTJ07/Executor`, and the Phase-7 technical E2E evidence has been accepted by the human. The active gate is the required second zero-history repository-only resume.
+The provider-independent control path is proved, the real external AI worker has been measured, the human has selected `gemini-3.6-flash`, the current Executor self identity has been reconciled to `JTJ07/Executor`, and the Phase-7 technical E2E evidence has been accepted by the human. The required second zero-history repository-only resume passed from canonical repository state at starting `main` SHA `ba7f7dc0f7dff201047feee3a695a02515e96d38`. The active gate is the separate explicit final human acceptance decision.
 
 Human proof-order decision: `DEC-SAD-014` (`decisions/DEC-SAD-014.md`).
 Phase-4B provider-swap decision: `DEC-SAD-015` (`decisions/DEC-SAD-015.md`).
@@ -60,7 +60,10 @@ HUMAN REVIEW
         ACCEPTED / DEC-SAD-017
         ↓
 SECOND ZERO-HISTORY RESUME
-        READY / NEXT
+        PASS
+        ↓
+EXPLICIT FINAL HUMAN ACCEPTANCE
+        OPEN / NEXT
 ```
 
 No autonomy increase, capability expansion, or functional acceptance follows automatically from the benchmark, model selection, or identity reconciliation.
@@ -320,26 +323,27 @@ Intentionally unchanged by PR #58:
 ## 8. What is still open
 
 - no production human-identity/request-origin trust provider is selected;
-- the second zero-history repository-only resume is the active gate and has not yet been performed;
+- the second zero-history repository-only resume passed and is recorded in `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md`;
 - explicit final human functional acceptance remains open;
 - `FUNCTIONAL_SADDLE_ACCEPTED` remains false;
 - completion lock remains ACTIVE.
 
 ## 9. One next step
 
-The single next gate is the **second zero-history repository-only resume** required after the human accepted the completed Phase-7 technical E2E evidence in `DEC-SAD-017`.
+The single next gate is the **explicit final human functional-acceptance decision**. This is a human-owned boundary; repository reconstruction cannot make that decision.
 
 Observed technical state:
 
 ```text
 PHASE_7_TECHNICAL_EVIDENCE_ACCEPTED
 HUMAN_REVIEW_ACCEPTED = true
-SECOND_ZERO_HISTORY_RESUME = NEXT
+SECOND_ZERO_HISTORY_RESUME = PASS
+EXPLICIT_FINAL_HUMAN_ACCEPTANCE = OPEN
 FUNCTIONAL_SADDLE_ACCEPTED = false
 COMPLETION_LOCK = ACTIVE
 ```
 
-The resume must recover this state from canonical repository content only. It must not repeat the Gemini call or Executor effect, and it cannot itself create final functional acceptance.
+The resume recovered this state from canonical repository content only, without repeating the Gemini call or Executor effect. Its PASS cannot itself create final functional acceptance.
 
 Completed technical loop:
 
@@ -354,14 +358,15 @@ human raw intent
 → EffectReceipt / verifier evidence
 → StateDelta
 → required human review — ACCEPTED / DEC-SAD-017
-→ second zero-history resume — READY / NEXT
+→ second zero-history resume — PASS
+→ explicit final human acceptance — OPEN / NEXT
 ```
 
 This step must preserve all existing authority and intent-integrity boundaries. It is not permission to broaden capabilities or bypass the intentionally open production request-origin/trust-provider question.
 
 ## 10. Functional acceptance remains open
 
-Only the complete Phase-7 evidence set plus explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
+Only the complete Phase-7 evidence set, including the passing second zero-history resume, plus explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
 
 ```text
 PHASE 4B LIVE SUCCESS

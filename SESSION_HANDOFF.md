@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_6_ACCEPTED / PHASE_7_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_E2E_EFFECT_COMPLETE_REVIEW_REQUIRED / HUMAN_REVIEW_OPEN / NOT_YET_FUNCTIONAL
+status: PHASE_6_ACCEPTED / PHASE_7_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_TECHNICAL_EVIDENCE_ACCEPTED / SECOND_ZERO_HISTORY_RESUME_REQUIRED / NOT_YET_FUNCTIONAL
 updated_at: 2026-08-13
 ---
 
@@ -29,18 +29,18 @@ EXECUTOR CURRENT SELF-IDENTITY RECONCILIATION — COMPLETE
         ↓
 PHASE 7 TECHNICAL E2E — COMPLETE THROUGH HUMAN-REVIEW BOUNDARY
         ↓
-HUMAN REVIEW — OPEN
+HUMAN REVIEW — ACCEPTED / DEC-SAD-017
         ↓
-SECOND ZERO-HISTORY RESUME — REQUIRED AFTER HUMAN REVIEW
+SECOND ZERO-HISTORY RESUME — READY / NEXT
 ```
 
 Saddle remains `NOT_YET_FUNCTIONAL`. Completion lock remains ACTIVE.
 
 ## ACTIVE GATE
 
-`PHASE 7 — HUMAN REVIEW OF COMPLETED TECHNICAL E2E EVIDENCE`
+`PHASE 7 — SECOND ZERO-HISTORY REPOSITORY-ONLY RESUME`
 
-Review packet: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`. Do not create or simulate the human verdict. Do not rerun the paid worker or Executor effect. Do not broaden capability, authority, tools, retries, provider routing, or autonomy.
+Accepted review packet: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`; decision: `DEC-SAD-017`. Do not rerun the paid worker or Executor effect. Do not broaden capability, authority, tools, retries, provider routing, or autonomy.
 
 ## HUMAN DECISIONS
 
@@ -51,8 +51,9 @@ Review packet: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`. Do not create 
 - `DEC-SAD-014`: Phase 4C synthetic system integration precedes API-worker measurement.
 - `DEC-SAD-015`: Gemini replaces the previously planned OpenAI provider for Phase 4B and the substitution itself is a resilience test.
 - `DEC-SAD-016`: USER explicitly selected `google-gemini / gemini-3.6-flash` as the first production worker/model for the next bounded Saddle acceptance path.
+- `DEC-SAD-017`: USER explicitly accepted the Phase-7 technical E2E evidence; second zero-history repository-only resume is NEXT; functional acceptance remains false and completion lock remains ACTIVE.
 
-`AI RECOMMENDATION != HUMAN DECISION` remains an invariant. `DEC-SAD-016` exists because the human explicitly made the selection after the benchmark.
+`AI RECOMMENDATION != HUMAN DECISION` remains an invariant. `DEC-SAD-016` and `DEC-SAD-017` exist because the human explicitly made those decisions.
 
 ## PHASE-4B LIVE EVIDENCE
 
@@ -204,21 +205,20 @@ total Phase-7 model calls: 1
 automatic retries: 0
 current Executor: JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d
 Executor status: ACTION_COMPLETED_REVIEW_REQUIRED
-human review: OPEN
-second zero-history resume: REQUIRED AFTER HUMAN REVIEW
+human review: ACCEPTED / DEC-SAD-017
+second zero-history resume: READY / NEXT
 functional saddle accepted: false
 completion lock: ACTIVE
 ```
 
 Canonical evidence: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`. Permanent consumed-call provenance remains in `evidence/phase7/attempt-001.json` and `evidence/phase7/attempt-001-model.patch`.
 
-The technical E2E evidence does not itself accept Phase 7. If the human accepts it, the required next operation is the second zero-history repository-only resume. Only that remaining gate plus explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
+The technical E2E evidence was accepted by the human in `DEC-SAD-017`. The required next operation is the second zero-history repository-only resume. Only that remaining gate plus explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
 
 ## STILL OPEN
 
 - production request-origin / human-identity trust provider selection;
-- human review of the completed Phase-7 technical E2E evidence;
-- second zero-history repository-only resume after human review;
+- second zero-history repository-only resume after accepted human review;
 - explicit final human functional acceptance;
 - maturity remains unclaimed.
 
@@ -230,9 +230,10 @@ The technical E2E evidence does not itself accept Phase 7. If the human accepts 
 4. `evidence/phase7/attempt-001-model.patch`
 5. `TODO.md` — T9
 6. `DECISION_LOG.md`
-7. `JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d`
-8. historical reference only: `litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317`
+7. `decisions/DEC-SAD-017.md`
+8. `JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d`
+9. historical reference only: `litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317`
 
 ## ONE NEXT STEP
 
-The human reviews `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md` and records an explicit verdict. Until then, `HUMAN_REVIEW_ACCEPTED` remains `OPEN`.
+Perform the second zero-history repository-only resume from canonical repository state. Do not repeat the Gemini call or Executor effect. A PASS must still leave explicit final human acceptance open, `FUNCTIONAL_SADDLE_ACCEPTED = false`, and completion lock ACTIVE.

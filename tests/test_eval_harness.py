@@ -6,7 +6,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from tools.eval_harness import EvalError, aggregate, audit_repository, validate_result, with_run_id
+from tools.eval_harness import EvalError, aggregate, audit_repository, validate_result, with_run_id  # noqa: E402
 
 
 def base_record(result="PASS"):

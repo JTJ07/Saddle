@@ -95,7 +95,7 @@ Observed baseline:
 - unnecessary capability expansion `0`;
 - reconstructed visible registry/CLI suite `13/13 PASS` for each proposal.
 
-All three Phase-4A baseline runs remain `CONTEXT_CONTAMINATED`; independent model problem solving is not claimed from Phase 4A. The independent/reproducible worker evidence is supplied separately by Phase 4B.
+All three Phase-4A runs remain `CONTEXT_CONTAMINATED`; independent model problem solving is not claimed from Phase 4A. The independent/reproducible worker evidence is supplied separately by Phase 4B.
 
 ## 5. Phase 4C — ACCEPTED synthetic integration proof
 

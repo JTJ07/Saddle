@@ -299,7 +299,8 @@ human decision
 - Authority consequence: this is the explicit human decision required after the benchmark; the evaluator recommendation did not select the model automatically.
 - Preserved boundaries: no new shell/tool access, repository-write authority, effect authority, autonomy, retry/fallback, dynamic routing, spending authority, maturity claim or functional acceptance follows.
 - Required downstream gate at decision time: bounded current Executor self-identity reconciliation under a new current commit, preserving `litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317` as historical Phase-4C provenance.
-- Subsequent verified completion: Executor PR #58 merged as `728d23e56ec9f76fb7a37673ceb20efccf91e03d`; `Verify Executor foundations` run `31539013966` and `GP001 replay repeatability` run `31539014065` both succeeded. The next gate is the fresh-session Phase-7 full E2E acceptance chain.
+- Subsequent verified completion: Executor PR #58 merged as `728d23e56ec9f76fb7a37673ceb20efccf91e03d`; `Verify Executor foundations` run `31539013966` and `GP001 replay repeatability` run `31539014065` both succeeded. At that checkpoint, the next gate was the fresh-session Phase-7 full E2E acceptance chain.
+- Subsequent factual evidence, not a decision: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md` records `E2E_EFFECT_COMPLETE_REVIEW_REQUIRED`. Human review remains open; the second zero-history resume remains required after human review; `FUNCTIONAL_SADDLE_ACCEPTED` remains false; completion lock remains ACTIVE.
 - Detailed decision record: `decisions/DEC-SAD-016.md`.
 
 ## Not yet a decision
@@ -307,6 +308,8 @@ human decision
 The following remain open until explicitly selected or proven:
 
 - concrete human-identity / request-origin / authority provider;
+- acceptance or rejection of the Phase-7 technical E2E evidence;
+- explicit final functional Saddle acceptance after the required second zero-history resume;
 - whether ScriptOps is also the final Phase-7 acceptance domain beyond the completed Phase-6 mechanism proof;
 - whether/when Ginseng runtime is activated;
 - multi-agent architecture.

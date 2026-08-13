@@ -1,6 +1,6 @@
 # SADDLE SOURCE REGISTRY
 
-Reconciled: 2026-08-11
+Reconciled: 2026-08-13
 
 ## Authority order inside Saddle
 
@@ -44,6 +44,8 @@ Migration changes the current locator, not immutable content identity. Existing 
 - `evidence/PHASE4A_WEB_AI_CALIBRATION_BASELINE_2026-08-10.md` — first 3-run web-AI calibration baseline; context-contaminated, not worker evidence.
 - `evidence/PHASE4_LIVE_BENCHMARK_PREFLIGHT_2026-08-10.md` — API runner preflight; 54 tests OK, secret absent, 0 calls, USD 0.
 - `evidence/PHASE6_SCRIPTOPS_CONTROLLED_WORKFLOW_2026-08-10.md` — cross-repo Phase-6 mechanism proof.
+- `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md` — Phase-7 technical E2E complete through the human-review boundary; `HUMAN_REVIEW_ACCEPTED` remains open.
+- `evidence/phase7/attempt-001.json` + `evidence/phase7/attempt-001-model.patch` — immutable consumed-call metadata and exact Phase-7 worker patch provenance.
 
 ## Component sources
 
@@ -72,7 +74,8 @@ Migration changes the current locator, not immutable content identity. Existing 
 
 ### Executor
 - Repo: https://github.com/JTJ07/Executor
-- Main observed: `788443c3ed5b290ac8f1de145a93d02d2dd15317`
+- Current main observed after self-identity reconciliation: `728d23e56ec9f76fb7a37673ceb20efccf91e03d`
+- Historical Phase-4C provenance: `litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317`
 - Key current implementation: `executor/request_to_contract.py`, GP001 runtime, authorization/policy/sandbox/evidence code, task/project/policy contracts.
 - Canonical implementation source: `main`.
 - PR #51–#57: draft/research stack; use only according to Phase-1 classification.

@@ -240,8 +240,13 @@ def audit_repository(root: Path) -> dict[str, Any]:
         check("handoff-one-next-step-section", handoff_text.count("## ONE NEXT STEP") == 1, "SESSION_HANDOFF.md")
     if todo_path.is_file():
         todo_text = todo_path.read_text(encoding="utf-8")
-        ready_count = todo_text.count("Status: `READY / NEXT`")
-        check("todo-exactly-one-ready-next", ready_count == 1, f"count={ready_count}")
+        ready_count = len(re.findall(r"^Status:\s*`READY / NEXT(?: / [^`]*)?`\s*$", todo_text, re.MULTILINE))
+        human_review_count = len(re.findall(r"^Status:\s*`[^`\n]*HUMAN REVIEW OPEN[^`\n]*`\s*$", todo_text, re.MULTILINE))
+        check(
+            "todo-exactly-one-active-gate",
+            ready_count + human_review_count == 1,
+            f"ready_next={ready_count}; human_review_open={human_review_count}",
+        )
     frozen = root / "docs" / "SADDLE_PROTOCOL_v0.1.md"
     historical = root / "docs" / "SADDLE_PROTOCOL_v0.1_DRAFT.md"
     check("frozen-protocol-present", frozen.is_file(), str(frozen.relative_to(root)))

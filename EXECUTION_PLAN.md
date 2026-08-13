@@ -268,7 +268,7 @@ ScriptOps PR #7 merge `daa6e5dc210e09171a530eeffe5601e0e74ae041`; verifier + Pha
 ---
 
 ## PHASE 7 — FUNCTIONAL SADDLE ACCEPTANCE
-Status: `TECHNICAL E2E EVIDENCE ACCEPTED / SECOND ZERO-HISTORY RESUME NEXT / FUNCTIONAL ACCEPTANCE OPEN`
+Status: `TECHNICAL E2E EVIDENCE ACCEPTED / SECOND ZERO-HISTORY RESUME PASS / FINAL HUMAN ACCEPTANCE OPEN`
 
 Observed technical chain:
 
@@ -283,14 +283,15 @@ human intent
 → EffectReceipt / verifier evidence
 → durable StateDelta
 → human review — ACCEPTED / DEC-SAD-017
-→ second zero-history resume — READY / NEXT
+→ second zero-history resume — PASS
+→ explicit final human acceptance — OPEN / NEXT
 ```
 
-Evidence: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`.
+Evidence: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md` and `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md`.
 
 Technical status is `E2E_EFFECT_COMPLETE_REVIEW_REQUIRED`. The provider-independent Protocol v0.1 bundle passed, the single consumed real-worker proposal crossed exact authority, and the current Executor returned `ACTION_COMPLETED_REVIEW_REQUIRED`. No additional model call or repeated Executor effect is required.
 
-The human accepted the technical evidence in `DEC-SAD-017`. The current gate is the required second zero-history repository-only resume. It must not repeat the Gemini call or Executor effect. Only the remaining resume gate plus a later explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
+The human accepted the technical evidence in `DEC-SAD-017`, and the second zero-history repository-only resume passed without repeating the Gemini call or Executor effect. The current and final Phase-7 gate is a separate explicit human acceptance decision. Until then, `FUNCTIONAL_SADDLE_ACCEPTED = false` and completion lock remains ACTIVE.
 
 ---
 

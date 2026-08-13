@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_6_ACCEPTED / PHASE_7_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_TECHNICAL_EVIDENCE_ACCEPTED / SECOND_ZERO_HISTORY_RESUME_REQUIRED / NOT_YET_FUNCTIONAL
+status: PHASE_6_ACCEPTED / PHASE_7_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_TECHNICAL_EVIDENCE_ACCEPTED / SECOND_ZERO_HISTORY_RESUME_PASS / FINAL_HUMAN_ACCEPTANCE_REQUIRED / NOT_YET_FUNCTIONAL
 updated_at: 2026-08-13
 ---
 
@@ -31,16 +31,18 @@ PHASE 7 TECHNICAL E2E — COMPLETE THROUGH HUMAN-REVIEW BOUNDARY
         ↓
 HUMAN REVIEW — ACCEPTED / DEC-SAD-017
         ↓
-SECOND ZERO-HISTORY RESUME — READY / NEXT
+SECOND ZERO-HISTORY RESUME — PASS
+        ↓
+EXPLICIT FINAL HUMAN ACCEPTANCE — OPEN / NEXT
 ```
 
 Saddle remains `NOT_YET_FUNCTIONAL`. Completion lock remains ACTIVE.
 
 ## ACTIVE GATE
 
-`PHASE 7 — SECOND ZERO-HISTORY REPOSITORY-ONLY RESUME`
+`PHASE 7 — EXPLICIT FINAL HUMAN ACCEPTANCE`
 
-Accepted review packet: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`; decision: `DEC-SAD-017`. Do not rerun the paid worker or Executor effect. Do not broaden capability, authority, tools, retries, provider routing, or autonomy.
+The second zero-history repository-only resume passed from canonical state and is recorded in `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md`. Do not rerun the paid worker or Executor effect. Do not broaden capability, authority, tools, retries, provider routing, or autonomy. Only the human may make the remaining final acceptance decision.
 
 ## HUMAN DECISIONS
 
@@ -206,34 +208,30 @@ automatic retries: 0
 current Executor: JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d
 Executor status: ACTION_COMPLETED_REVIEW_REQUIRED
 human review: ACCEPTED / DEC-SAD-017
-second zero-history resume: READY / NEXT
+second zero-history resume: PASS
+explicit final human acceptance: OPEN / NEXT
 functional saddle accepted: false
 completion lock: ACTIVE
 ```
 
 Canonical evidence: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`. Permanent consumed-call provenance remains in `evidence/phase7/attempt-001.json` and `evidence/phase7/attempt-001-model.patch`.
 
-The technical E2E evidence was accepted by the human in `DEC-SAD-017`. The required next operation is the second zero-history repository-only resume. Only that remaining gate plus explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
+The technical E2E evidence was accepted by the human in `DEC-SAD-017`, and the second zero-history repository-only resume passed. Only a separate explicit final human acceptance may now produce `FUNCTIONAL_SADDLE_ACCEPTED`.
 
 ## STILL OPEN
 
 - production request-origin / human-identity trust provider selection;
-- second zero-history repository-only resume after accepted human review;
 - explicit final human functional acceptance;
 - maturity remains unclaimed.
 
 ## EXACT FILES / REFS TO OPEN NEXT
 
 1. `PROJECT_STATE.md`
-2. `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`
-3. `evidence/phase7/attempt-001.json`
-4. `evidence/phase7/attempt-001-model.patch`
+2. `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md`
+3. `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`
+4. `decisions/DEC-SAD-017.md`
 5. `TODO.md` — T9
-6. `DECISION_LOG.md`
-7. `decisions/DEC-SAD-017.md`
-8. `JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d`
-9. historical reference only: `litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317`
 
 ## ONE NEXT STEP
 
-Perform the second zero-history repository-only resume from canonical repository state. Do not repeat the Gemini call or Executor effect. A PASS must still leave explicit final human acceptance open, `FUNCTIONAL_SADDLE_ACCEPTED = false`, and completion lock ACTIVE.
+Human explicitly accepts or rejects final functional Saddle acceptance based on the complete Phase-7 evidence set and the passing second zero-history resume. Until that decision, `EXPLICIT_FINAL_HUMAN_ACCEPTANCE = OPEN`, `FUNCTIONAL_SADDLE_ACCEPTED = false`, and completion lock remains ACTIVE.

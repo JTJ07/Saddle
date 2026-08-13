@@ -44,7 +44,7 @@ Migration changes the current locator, not immutable content identity. Existing 
 - `evidence/PHASE4A_WEB_AI_CALIBRATION_BASELINE_2026-08-10.md` — first 3-run web-AI calibration baseline; context-contaminated, not worker evidence.
 - `evidence/PHASE4_LIVE_BENCHMARK_PREFLIGHT_2026-08-10.md` — API runner preflight; 54 tests OK, secret absent, 0 calls, USD 0.
 - `evidence/PHASE6_SCRIPTOPS_CONTROLLED_WORKFLOW_2026-08-10.md` — cross-repo Phase-6 mechanism proof.
-- `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md` — Phase-7 technical E2E complete through the human-review boundary; `HUMAN_REVIEW_ACCEPTED` remains open.
+- `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md` — Phase-7 technical E2E complete through the human-review boundary; accepted by the human in `DEC-SAD-017`; second zero-history resume remains required.
 - `evidence/phase7/attempt-001.json` + `evidence/phase7/attempt-001-model.patch` — immutable consumed-call metadata and exact Phase-7 worker patch provenance.
 
 ## Component sources

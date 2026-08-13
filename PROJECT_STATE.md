@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_6_ACCEPTED / PHASE_7_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_E2E_EFFECT_COMPLETE_REVIEW_REQUIRED / HUMAN_REVIEW_OPEN / NOT_YET_FUNCTIONAL
+status: PHASE_6_ACCEPTED / PHASE_7_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_TECHNICAL_EVIDENCE_ACCEPTED / SECOND_ZERO_HISTORY_RESUME_REQUIRED / NOT_YET_FUNCTIONAL
 completion_lock: ACTIVE
 state_owner: PROJECT_STATE.md
 updated_at: 2026-08-13
@@ -27,11 +27,12 @@ GitHub is durable memory. Completion lock remains ACTIVE.
 
 ## 2. Current objective
 
-The provider-independent control path is proved, the real external AI worker has been measured, the human has selected `gemini-3.6-flash`, the current Executor self identity has been reconciled to `JTJ07/Executor`, and the Phase-7 technical E2E is complete through the required human-review boundary. The active gate is human review of `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`.
+The provider-independent control path is proved, the real external AI worker has been measured, the human has selected `gemini-3.6-flash`, the current Executor self identity has been reconciled to `JTJ07/Executor`, and the Phase-7 technical E2E evidence has been accepted by the human. The active gate is the required second zero-history repository-only resume.
 
 Human proof-order decision: `DEC-SAD-014` (`decisions/DEC-SAD-014.md`).
 Phase-4B provider-swap decision: `DEC-SAD-015` (`decisions/DEC-SAD-015.md`).
 Human model-selection decision: `DEC-SAD-016` (`decisions/DEC-SAD-016.md`).
+Phase-7 technical-evidence acceptance: `DEC-SAD-017` (`decisions/DEC-SAD-017.md`).
 
 ```text
 Phase 4A — WEB AI COGNITIVE CALIBRATION
@@ -56,10 +57,10 @@ PHASE 7 — FRESH-SESSION FULL E2E ACCEPTANCE
         TECHNICAL E2E COMPLETE THROUGH HUMAN-REVIEW BOUNDARY
         ↓
 HUMAN REVIEW
-        OPEN
+        ACCEPTED / DEC-SAD-017
         ↓
 SECOND ZERO-HISTORY RESUME
-        REQUIRED AFTER HUMAN REVIEW
+        READY / NEXT
 ```
 
 No autonomy increase, capability expansion, or functional acceptance follows automatically from the benchmark, model selection, or identity reconciliation.
@@ -319,27 +320,26 @@ Intentionally unchanged by PR #58:
 ## 8. What is still open
 
 - no production human-identity/request-origin trust provider is selected;
-- Phase-7 evidence human review remains open;
-- the second zero-history repository-only resume is required after human review and has not yet been performed;
+- the second zero-history repository-only resume is the active gate and has not yet been performed;
 - explicit final human functional acceptance remains open;
 - `FUNCTIONAL_SADDLE_ACCEPTED` remains false;
 - completion lock remains ACTIVE.
 
 ## 9. One next step
 
-The single next gate is **human review of the completed Phase-7 technical E2E evidence** in `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`.
+The single next gate is the **second zero-history repository-only resume** required after the human accepted the completed Phase-7 technical E2E evidence in `DEC-SAD-017`.
 
 Observed technical state:
 
 ```text
-E2E_EFFECT_COMPLETE_REVIEW_REQUIRED
-HUMAN_REVIEW_ACCEPTED = OPEN
-SECOND_ZERO_HISTORY_RESUME = REQUIRED AFTER HUMAN REVIEW
+PHASE_7_TECHNICAL_EVIDENCE_ACCEPTED
+HUMAN_REVIEW_ACCEPTED = true
+SECOND_ZERO_HISTORY_RESUME = NEXT
 FUNCTIONAL_SADDLE_ACCEPTED = false
 COMPLETION_LOCK = ACTIVE
 ```
 
-If the human accepts the evidence, the following operation is the required second zero-history repository-only resume. No acceptance decision is created by this factual state reconciliation.
+The resume must recover this state from canonical repository content only. It must not repeat the Gemini call or Executor effect, and it cannot itself create final functional acceptance.
 
 Completed technical loop:
 
@@ -353,8 +353,8 @@ human raw intent
 → bounded real execution through current Executor
 → EffectReceipt / verifier evidence
 → StateDelta
-→ required human review — OPEN
-→ second zero-history resume — REQUIRED AFTER HUMAN REVIEW
+→ required human review — ACCEPTED / DEC-SAD-017
+→ second zero-history resume — READY / NEXT
 ```
 
 This step must preserve all existing authority and intent-integrity boundaries. It is not permission to broaden capabilities or bypass the intentionally open production request-origin/trust-provider question.

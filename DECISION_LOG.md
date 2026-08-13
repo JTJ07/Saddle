@@ -300,15 +300,28 @@ human decision
 - Preserved boundaries: no new shell/tool access, repository-write authority, effect authority, autonomy, retry/fallback, dynamic routing, spending authority, maturity claim or functional acceptance follows.
 - Required downstream gate at decision time: bounded current Executor self-identity reconciliation under a new current commit, preserving `litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317` as historical Phase-4C provenance.
 - Subsequent verified completion: Executor PR #58 merged as `728d23e56ec9f76fb7a37673ceb20efccf91e03d`; `Verify Executor foundations` run `31539013966` and `GP001 replay repeatability` run `31539014065` both succeeded. At that checkpoint, the next gate was the fresh-session Phase-7 full E2E acceptance chain.
-- Subsequent factual evidence, not a decision: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md` records `E2E_EFFECT_COMPLETE_REVIEW_REQUIRED`. Human review remains open; the second zero-history resume remains required after human review; `FUNCTIONAL_SADDLE_ACCEPTED` remains false; completion lock remains ACTIVE.
+- Subsequent factual evidence, not a decision: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md` records `E2E_EFFECT_COMPLETE_REVIEW_REQUIRED`. At the PR #25 reconciliation checkpoint, human review remained open; the second zero-history resume remained required after human review; `FUNCTIONAL_SADDLE_ACCEPTED` remained false; completion lock remained ACTIVE.
 - Detailed decision record: `decisions/DEC-SAD-016.md`.
+
+## DEC-SAD-017 — Accept Phase-7 technical E2E evidence
+
+- Date: 2026-08-13
+- Owner: USER
+- Status: ACTIVE / PHASE-7 TECHNICAL-EVIDENCE ACCEPTANCE
+- Human decision: `Akceptuję techniczne evidence Phase 7`.
+- Evidence basis: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`, reconciled to canonical `main` by PR #25 merge `7aa8da9662604e07ca3781f6bd2834860d789ac7`.
+- Decision consequence: `HUMAN_REVIEW_ACCEPTED = true`; `SECOND_ZERO_HISTORY_RESUME = NEXT`.
+- Preserved boundary: `FUNCTIONAL_SADDLE_ACCEPTED = false`; completion lock remains ACTIVE; explicit final human functional acceptance remains open.
+- No-repeat boundary: no new Gemini call and no repeated Executor effect are authorized or required.
+- Authority consequence: no new capability, autonomy, effect authority, repository-write authority or trust-provider selection follows.
+- Required next gate: second zero-history repository-only resume from canonical state. A PASS still cannot establish final functional acceptance without a later separate explicit human decision.
+- Detailed decision record: `decisions/DEC-SAD-017.md`.
 
 ## Not yet a decision
 
 The following remain open until explicitly selected or proven:
 
 - concrete human-identity / request-origin / authority provider;
-- acceptance or rejection of the Phase-7 technical E2E evidence;
 - explicit final functional Saddle acceptance after the required second zero-history resume;
 - whether ScriptOps is also the final Phase-7 acceptance domain beyond the completed Phase-6 mechanism proof;
 - whether/when Ginseng runtime is activated;

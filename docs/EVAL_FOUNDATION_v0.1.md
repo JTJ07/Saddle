@@ -44,7 +44,8 @@ Rules:
 - `PROJECT_STATE.md` and `SESSION_HANDOFF.md` agree on active phase;
 - completion lock remains active before functional acceptance;
 - exactly one next-step section exists in state and handoff;
-- exactly one `READY / NEXT` item exists in TODO;
+- exactly one active operational gate exists in TODO: either one executable `READY / NEXT` status or the explicit human-owned `TECHNICAL E2E COMPLETE THROUGH HUMAN-REVIEW BOUNDARY / HUMAN REVIEW OPEN` status;
+- zero active gates, duplicate gates, or mixed simultaneous gate types fail closed;
 - frozen Protocol v0.1 exists;
 - historical protocol draft is marked superseded;
 - `config/source-repos.json` is machine-readable and contains valid observed commit SHAs.

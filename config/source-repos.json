@@ -1,5 +1,5 @@
 {
-  "observed_at": "2026-08-10",
+  "observed_at": "2026-08-13",
   "repositories": [
     {
       "name": "JTJ07/COS",
@@ -18,12 +18,12 @@
     },
     {
       "name": "JTJ07/Executor",
-      "observed_main": "788443c3ed5b290ac8f1de145a93d02d2dd15317",
+      "observed_main": "728d23e56ec9f76fb7a37673ceb20efccf91e03d",
       "role": "controlled effect engine"
     },
     {
       "name": "JTJ07/executor-pilot-target",
-      "observed_main": "dc094679ef3e2d5cf5f1aa0ff0fd54d16f201154",
+      "observed_main": "6c18230d2e1223a8145885b19c5073ec1ce20662",
       "role": "deterministic technical benchmark"
     }
   ]

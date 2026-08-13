@@ -6,7 +6,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from tools.eval_harness import EvalError, aggregate, audit_repository, validate_result, with_run_id  # noqa: E402
+from tools.eval_harness import EvalError, aggregate, audit_repository, validate_result, with_run_id
 
 
 def base_record(result="PASS"):
@@ -109,6 +109,18 @@ class RepositoryAuditTests(unittest.TestCase):
             root = Path(tmp)
             write_good_repo(root, ready_count=0, human_review_count=1)
             self.assertEqual(audit_repository(root)["overall"], "PASS")
+
+    def test_multiple_human_review_gates_fail(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_good_repo(root, ready_count=0, human_review_count=2)
+            self.assertEqual(audit_repository(root)["overall"], "FAIL")
+
+    def test_mixed_ready_next_and_human_review_gate_fails(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_good_repo(root, ready_count=1, human_review_count=1)
+            self.assertEqual(audit_repository(root)["overall"], "FAIL")
 
     def test_missing_active_gate_fails(self):
         with tempfile.TemporaryDirectory() as tmp:

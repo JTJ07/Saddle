@@ -85,7 +85,7 @@ Migration changes the current locator, not immutable content identity. Existing 
 
 ### Executor Pilot Target
 - Repo: https://github.com/JTJ07/executor-pilot-target
-- Main observed: `dc094679ef3e2d5cf5f1aa0ff0fd54d16f201154`
+- Main observed: `6c18230d2e1223a8145885b19c5073ec1ce20662`
 - Key: `PILOT_CONTRACT.md`, CASE-001–003 branches/tests.
 - Phase-4 immutable calibration/benchmark inputs:
   - CASE-001 commit `3934a94a5eebf750079200589d6dc40e024d44a0`;

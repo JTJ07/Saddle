@@ -1,6 +1,6 @@
 ---
 project: Saddle
-status: PHASE_6_ACCEPTED / PHASE_4_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_E2E_EFFECT_COMPLETE_REVIEW_REQUIRED / HUMAN_REVIEW_OPEN / NOT_YET_FUNCTIONAL
+status: PHASE_6_ACCEPTED / PHASE_7_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_E2E_EFFECT_COMPLETE_REVIEW_REQUIRED / HUMAN_REVIEW_OPEN / NOT_YET_FUNCTIONAL
 completion_lock: ACTIVE
 state_owner: PROJECT_STATE.md
 updated_at: 2026-08-13
@@ -95,7 +95,7 @@ Observed baseline:
 - unnecessary capability expansion `0`;
 - reconstructed visible registry/CLI suite `13/13 PASS` for each proposal.
 
-All three Phase-4A runs remain `CONTEXT_CONTAMINATED`; independent model problem solving is not claimed from Phase 4A. The independent/reproducible worker evidence is supplied separately by Phase 4B.
+All three Phase-4A baseline runs remain `CONTEXT_CONTAMINATED`; independent model problem solving is not claimed from Phase 4A. The independent/reproducible worker evidence is supplied separately by Phase 4B.
 
 ## 5. Phase 4C — ACCEPTED synthetic integration proof
 

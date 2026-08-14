@@ -1,9 +1,11 @@
 {
   "schema_version": "saddle-completion-lock/0.1",
-  "status": "ACTIVE",
-  "release_condition": "PROJECT_STATE records FUNCTIONAL_SADDLE_ACCEPTED based on Phase 7 evidence and human acceptance",
-  "new_feature_policy": "PARK_ONLY",
+  "status": "RELEASED",
+  "release_condition": "SATISFIED by DEC-SAD-018: PROJECT_STATE records FUNCTIONAL_SADDLE_ACCEPTED based on Phase 7 evidence and explicit final human acceptance",
+  "released_by_decision": "DEC-SAD-018",
+  "released_at": "2026-08-14",
+  "new_feature_policy": "POST_ACCEPTANCE_REQUIRES_EXPLICIT_ACTIVATION",
   "idea_file": "FUTURE_IDEAS.md",
-  "active_plan": "EXECUTION_PLAN.md",
-  "max_active_next_steps": 1
+  "active_plan": null,
+  "max_active_next_steps": 0
 }

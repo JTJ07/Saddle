@@ -14,9 +14,10 @@ Only explicit human decisions or decisions already clearly established by the pr
 
 - Date: 2026-08-10
 - Owner: USER
-- Status: ACTIVE
+- Status: SATISFIED / RELEASED BY DEC-SAD-018
 - Decision: Do not develop new ideas/features before Saddle is functional. Preserve every new idea in future-development files and return to completion work.
-- Consequence: `FUTURE_IDEAS.md` is append-only parking until functional acceptance or explicit human override.
+- Consequence while active: `FUTURE_IDEAS.md` was append-only parking until functional acceptance or explicit human override.
+- Final consequence: `DEC-SAD-018` established `FUNCTIONAL_SADDLE_ACCEPTED` and explicitly authorized completion-lock release. Parked ideas remain parked until separately activated; lock release is not automatic roadmap authorization.
 
 ## DEC-SAD-003 — Saddle product direction
 
@@ -67,7 +68,7 @@ Only explicit human decisions or decisions already clearly established by the pr
 
 - Date: 2026-08-10
 - Owner: USER
-- Status: ACTIVE OPERATIONAL DELEGATION
+- Status: SATISFIED / COMPLETION PATH FINISHED
 - Decision: Continue the existing Saddle execution plan and operational TODO without interrupting the user for routine operational choices; keep working through the scheduled gates until the project reaches the next genuinely human-owned semantic/acceptance boundary or becomes technically blocked.
 - Scope granted:
   - inspect/reconcile repositories and draft PRs;
@@ -78,12 +79,12 @@ Only explicit human decisions or decisions already clearly established by the pr
   - keep exactly one active implementation path and park new ideas.
 - Scope not granted:
   - change the product goal or semantic direction;
-  - disable or weaken `COMPLETION_LOCK`;
+  - disable or weaken `COMPLETION_LOCK` without human authority;
   - promote an AI recommendation/hypothesis into a new human product decision;
   - expand secrets, credentials, financial/legal authority or external permissions beyond an already approved gate;
   - weaken security/evidence requirements;
   - declare `FUNCTIONAL_SADDLE_ACCEPTED` without the final acceptance evidence and required human acceptance defined by the plan.
-- Consequence: routine schedule execution should proceed autonomously; do not repeatedly stop for confirmation that is already covered by this delegation.
+- Final consequence: the completion path reached the human-owned final boundary and the human explicitly supplied that authority in `DEC-SAD-018`. Future roadmap execution requires fresh applicable human scope rather than silently extending this completion delegation.
 
 ## DEC-SAD-008 — Saddle preserves intent integrity; it does not authorize meaning
 
@@ -104,14 +105,14 @@ Only explicit human decisions or decisions already clearly established by the pr
 
 - Date: 2026-08-10
 - Owner: USER
-- Status: ACTIVE ROADMAP DECISION
+- Status: ACTIVE ROADMAP DECISION / COMPLETED PATH
 - Human verdict:
   - `RESPONSIBILITY ARCHITECTURE: PASS`;
   - `OWNERSHIP MODEL: PASS`;
   - `PHASE 4 AI WORKER DIRECTION: PASS`;
   - `TRUST BOUNDARIES: OPEN — INTENTIONALLY`.
 - Decision: Do not rebuild the Phase 1–4 responsibility/protocol/eval/AI-proposal foundations. Make Phase 5 the active workstream with strict scope: prove the minimal `verified intent -> proposal -> governed effect` boundary before broader real-user workflows.
-- Evidence boundary: this does **not** claim the blocked real Sol/Terra benchmark was executed or that Phase-4 runtime evidence is complete. That benchmark remains required evidence before final functional acceptance.
+- Evidence boundary at decision time: the blocked real Sol/Terra benchmark had not been executed and Phase-4 runtime evidence was incomplete. Later Phase-4B Gemini evidence supplied the required live worker measurement.
 - Phase-5 scope:
   - Phase 5A: prove origin/integrity binding for exact raw intent using origin reference, principal binding, hash and immutable event reference;
   - Phase 5B: prove an exact `EffectProposal` is ALLOW/BLOCK only through a separate effect-authority object;
@@ -131,7 +132,7 @@ Only explicit human decisions or decisions already clearly established by the pr
   - `NEW CAPABILITY: NO`;
   - Phase 6 is `reuse + hardening + proof`;
   - `MATURITY CLAIM: NONE`;
-  - `FUNCTIONAL_SADDLE_ACCEPTED: NOT YET`.
+  - `FUNCTIONAL_SADDLE_ACCEPTED: NOT YET` at that checkpoint.
 - Rationale: choose the shortest path to one working, evidenced controlled flow by preserving known lifecycle, failure modes, decision history and existing mechanisms rather than rebuilding them.
 - Exact implementation scope: close only ScriptOps blockers B1–B5 — Git lifecycle/dirty-tree checkpoints, generated-artifact lifecycle before approval, fresh accepted hash, mandatory human `why`, and impact-report + smoke evidence.
 - Responsibility consequence:
@@ -140,18 +141,18 @@ Only explicit human decisions or decisions already clearly established by the pr
   - a candidate remains a proposal artifact until explicit human approval;
   - canonical change follows human decision and produces durable evidence.
 - Evidence: ScriptOps PR #7 merged as `daa6e5dc210e09171a530eeffe5601e0e74ae041`; final verified head `acbfca79f96407dbd46f9806bf821caf6e02e1af`; final GitHub Actions `Verify repository state` run `31421752036` PASS and `Phase 6 ScriptOps smoke` run `31421752569` PASS.
-- Next-order decision: after the bounded Phase-6 mechanism proof, return to the still-open live AI-worker benchmark/effect evidence before expanding capability.
+- Next-order decision at that checkpoint: return to the then-open live AI-worker benchmark/effect evidence before expanding capability.
 
 ## DEC-SAD-011 — Approve bounded live AI worker benchmark
 
 - Date: 2026-08-10
 - Owner: USER
-- Status: ACTIVE / SPENDING + EVAL GATE APPROVAL
+- Status: ACTIVE / SPENDING + EVAL GATE APPROVAL / COMPLETED
 - Decision:
   - `PHASE 6: ACCEPTED`;
   - `STATUS: CONTROLLED WORKFLOW PROVEN`;
   - `MATURITY: NONE`;
-  - `FUNCTIONAL_SADDLE_ACCEPTED: NOT YET`;
+  - `FUNCTIONAL_SADDLE_ACCEPTED: NOT YET` at that checkpoint;
   - `NEXT: REAL AI WORKER EVIDENCE`;
   - benchmark budget `APPROVED` up to `USD 5`;
   - maximum `6` model calls;
@@ -167,7 +168,7 @@ Only explicit human decisions or decisions already clearly established by the pr
 - Evaluation intent: measure whether a model produces useful proposals inside Saddle/Executor boundaries, not generic intelligence. Record correctness, scope compliance, structural validity, proposal rationale, tokens, cost, latency, retries, evidence and any required human corrections.
 - Ordering: begin with the smallest deterministic case; benchmark evidence is followed by evaluation and a separate evidence-based model/capability decision.
 - Evidence requirements: every paid call must be bound to an immutable case/input contract and stored as benchmark evidence; model output remains a proposal and cannot claim execution or authority.
-- Provider/model re-verification on 2026-08-10: official OpenAI documentation still lists `gpt-5.6-sol` and `gpt-5.6-terra` as API models; account-level access must be verified by the authorized runner at execution time.
+- Historical provider/model note: the original OpenAI plan was later superseded for this benchmark by `DEC-SAD-015`, which selected Gemini as a provider-swap resilience test without changing the downstream boundary contract.
 
 ## DEC-SAD-012 — Web AI is the Phase-4A human-guided calibration environment
 
@@ -187,7 +188,7 @@ Only explicit human decisions or decisions already clearly established by the pr
   - any hidden conversation/UI/system context or human steering must be treated as an evidence limitation, not silently ignored.
 - Context-contamination rule: a web calibration run with prior Saddle/case context may assess scope/authority/structure behavior but may not claim independent problem-solving ability.
 - Initial calibration set: 3–5 manual runs using immutable CASE-001/002/003 packets; record input, IntentEnvelope/intent refs where used, raw output, normalized proposal, violations, human corrections and deterministic test evidence when available.
-- Ordering consequence: Phase 4A calibration may proceed while Phase 4B remains blocked on the API secret. After calibration, return to the already approved bounded API benchmark; do not broaden capability based only on web calibration.
+- Ordering consequence at the time: Phase 4A calibration could proceed while Phase 4B remained blocked on the API secret. After calibration, return to the already approved bounded API benchmark; do not broaden capability based only on web calibration.
 - Reference: `docs/PHASE4A_WEB_AI_CALIBRATION.md`.
 
 ## DEC-SAD-013 — Accept Phase 4A calibration baseline and execute Phase 4B next
@@ -201,7 +202,6 @@ Only explicit human decisions or decisions already clearly established by the pr
   - `EVIDENCE TYPE: COGNITIVE CALIBRATION ONLY`;
   - `NOT: WORKER EVIDENCE`;
   - `PHASE 4B: READY TO EXECUTE`;
-  - `GATE: OPENAI_API_KEY + CONTROLLED API RUN`;
   - `AUTONOMY: UNCHANGED`.
 - Decision: stop further architecture expansion at this gate. The next information must come from measurement, not additional design.
 - Methodological consequence: preserve `CONTEXT_CONTAMINATED` classification. Calibration evidence may establish boundary/structure discipline but may not be promoted into independent performance or worker evidence.
@@ -216,8 +216,8 @@ Only explicit human decisions or decisions already clearly established by the pr
   8. human-correction burden;
   9. **intent preservation** — no loss of the human-approved goal, no added goals, and no silent priority change.
 - Intent-preservation consequence: this is an evaluation dimension, not a new semantic-authority subsystem. Saddle must not infer or authorize meaning through an automated similarity score. Evaluation is grounded in the preserved raw/human-approved intent and explicit constraints.
-- Historical checkpoint: Phase 4A is the first evidence that Saddle can not only constrain AI effects but also make interchangeable intelligence measurable under stable boundaries.
-- Ordering at the time of this decision: canonicalize the bounded Phase-4B runner; configure the provider secret only in approved secret storage; execute the already approved Sol/Terra benchmark; then `BENCHMARK RESULT -> EVALUATION -> HUMAN DECISION`. No automatic autonomy increase follows.
+- Historical checkpoint: Phase 4A was the first evidence that Saddle could not only constrain AI effects but also make interchangeable intelligence measurable under stable boundaries.
+- Ordering at the time: canonicalize the bounded Phase-4B runner; configure the provider secret only in approved secret storage; execute the approved benchmark; then `BENCHMARK RESULT -> EVALUATION -> HUMAN DECISION`. No automatic autonomy increase follows.
 
 ## DEC-SAD-014 — Prove synthetic system integration before API worker measurement
 
@@ -260,7 +260,7 @@ human decision
 - Evidence boundary:
   - `SYNTHETIC_INTEGRATION_EVIDENCE != API_WORKER_EVIDENCE`;
   - `SYNTHETIC_INTEGRATION_EVIDENCE != MODEL_PERFORMANCE_EVIDENCE`;
-  - Phase-4C PASS cannot select a model, increase autonomy, establish maturity or produce `FUNCTIONAL_SADDLE_ACCEPTED`.
+  - Phase-4C PASS cannot select a model, increase autonomy, establish maturity or by itself produce `FUNCTIONAL_SADDLE_ACCEPTED`.
 - ScriptOps composition consequence: current accepted ScriptOps Phase-6 v2 is scene-domain specific while Executor GP001 is code-domain specific. Do not invent a ScriptOps code-mutation capability or artificially chain two executors merely to satisfy a diagram. Keep ScriptOps Phase-6 as separate controlled-workflow evidence.
 - Phase-4B consequence: its benchmark contract, approved budget/calls/retries and proposal-only boundary remain unchanged. While paused, the workflow should require explicit dispatch rather than auto-running on unrelated PRs.
 - Detailed decision record: `decisions/DEC-SAD-014.md`.
@@ -297,10 +297,10 @@ human decision
 - Human decision: select `gemini-3.6-flash` under provider `google-gemini` as the first production worker/model for the next bounded Saddle acceptance path.
 - Evidence basis: canonical Phase-4B live run `31536385410` / job `93928366114`; both benchmark candidates achieved `3/3` functional correctness and preserved tested boundaries, while Flash had lower measured cost/latency and an evaluator advantage in evidence-plan quality and human-correction burden.
 - Authority consequence: this is the explicit human decision required after the benchmark; the evaluator recommendation did not select the model automatically.
-- Preserved boundaries: no new shell/tool access, repository-write authority, effect authority, autonomy, retry/fallback, dynamic routing, spending authority, maturity claim or functional acceptance follows.
+- Preserved boundaries: no new shell/tool access, repository-write authority, effect authority, autonomy, retry/fallback, dynamic routing, spending authority, maturity claim or functional acceptance followed automatically.
 - Required downstream gate at decision time: bounded current Executor self-identity reconciliation under a new current commit, preserving `litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317` as historical Phase-4C provenance.
-- Subsequent verified completion: Executor PR #58 merged as `728d23e56ec9f76fb7a37673ceb20efccf91e03d`; `Verify Executor foundations` run `31539013966` and `GP001 replay repeatability` run `31539014065` both succeeded. At that checkpoint, the next gate was the fresh-session Phase-7 full E2E acceptance chain.
-- Subsequent factual evidence, not a decision: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md` records `E2E_EFFECT_COMPLETE_REVIEW_REQUIRED`. At the PR #25 reconciliation checkpoint, human review remained open; the second zero-history resume remained required after human review; `FUNCTIONAL_SADDLE_ACCEPTED` remained false; completion lock remained ACTIVE.
+- Subsequent verified completion: Executor PR #58 merged as `728d23e56ec9f76fb7a37673ceb20efccf91e03d`; `Verify Executor foundations` run `31539013966` and `GP001 replay repeatability` run `31539014065` both succeeded.
+- Subsequent factual evidence: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md` records the bounded Phase-7 real-worker/Executor result that later entered the human acceptance chain.
 - Detailed decision record: `decisions/DEC-SAD-016.md`.
 
 ## DEC-SAD-017 — Accept Phase-7 technical E2E evidence
@@ -310,19 +310,44 @@ human decision
 - Status: ACTIVE / PHASE-7 TECHNICAL-EVIDENCE ACCEPTANCE
 - Human decision: `Akceptuję techniczne evidence Phase 7`.
 - Evidence basis: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`, reconciled to canonical `main` by PR #25 merge `7aa8da9662604e07ca3781f6bd2834860d789ac7`.
-- Decision consequence: `HUMAN_REVIEW_ACCEPTED = true`; `SECOND_ZERO_HISTORY_RESUME = NEXT`.
-- Preserved boundary: `FUNCTIONAL_SADDLE_ACCEPTED = false`; completion lock remains ACTIVE; explicit final human functional acceptance remains open.
-- No-repeat boundary: no new Gemini call and no repeated Executor effect are authorized or required.
-- Authority consequence: no new capability, autonomy, effect authority, repository-write authority or trust-provider selection follows.
-- Required next gate: second zero-history repository-only resume from canonical state. A PASS still cannot establish final functional acceptance without a later separate explicit human decision.
+- Decision consequence: `HUMAN_REVIEW_ACCEPTED = true`; the required `SECOND_ZERO_HISTORY_RESUME` was permitted to proceed.
+- Preserved boundary at that checkpoint: `FUNCTIONAL_SADDLE_ACCEPTED = false`; completion lock remained ACTIVE; explicit final human functional acceptance remained open.
+- No-repeat boundary: no new Gemini call and no repeated Executor effect were authorized or required.
+- Authority consequence: no new capability, autonomy, effect authority, repository-write authority or trust-provider selection followed.
+- Subsequent factual result: `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md` records `SECOND_ZERO_HISTORY_RESUME = PASS` with repository audit PASS and 76 tests / OK, without a new Gemini call or repeated Executor effect.
 - Detailed decision record: `decisions/DEC-SAD-017.md`.
 
-## Not yet a decision
+## DEC-SAD-018 — Final functional Saddle acceptance and completion-lock release
 
-The following remain open until explicitly selected or proven:
+- Date: 2026-08-14
+- Owner: USER
+- Status: ACTIVE / FINAL FUNCTIONAL ACCEPTANCE / COMPLETION LOCK RELEASE
+- Human decision: `Finalnie akceptuję Saddle jako FUNCTIONAL_SADDLE_ACCEPTED i zezwalam na zwolnienie completion lock.`
+- Canonical pre-decision state: `JTJ07/Saddle@8ac32052cf43dc55c816a279bac14a837e2d4c10`.
+- Evidence basis:
+  - `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md` — bounded real selected-worker → exact authority → current Executor → receipt/verifier/state-delta evidence;
+  - `DEC-SAD-017` — explicit human acceptance of Phase-7 technical evidence;
+  - `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md` — repository-only second resume PASS, no new model call and no repeated Executor effect.
+- Decision consequence:
+  - `EXPLICIT_FINAL_HUMAN_ACCEPTANCE = ACCEPTED`;
+  - `PHASE_7 = ACCEPTED`;
+  - `FUNCTIONAL_SADDLE_ACCEPTED = true`;
+  - `COMPLETION_LOCK = RELEASED`;
+  - Phase 8 completion-lock release is complete;
+  - no active completion gate remains.
+- Preserved boundaries:
+  - no maturity or arbitrary-environment production-readiness claim;
+  - no production human-identity/request-origin trust provider is selected;
+  - no automatic autonomy, effect-authority, repository-write, secrets, tools, provider-routing, retry, spending, deployment or legal-authority expansion;
+  - no `FUTURE_IDEAS.md` item is activated automatically.
+- Detailed decision record: `decisions/DEC-SAD-018.md`.
 
-- concrete human-identity / request-origin / authority provider;
-- explicit final functional Saddle acceptance after the required second zero-history resume;
-- whether ScriptOps is also the final Phase-7 acceptance domain beyond the completed Phase-6 mechanism proof;
+## Not yet a decision / post-acceptance directions
+
+The following remain open until explicitly selected, activated, or proven:
+
+- concrete production human-identity / request-origin / authority provider;
+- maturity and arbitrary-environment production-readiness criteria beyond the accepted functional scope;
 - whether/when Ginseng runtime is activated;
-- multi-agent architecture.
+- multi-agent architecture;
+- any other parked `FUTURE_IDEAS.md` direction.

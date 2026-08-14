@@ -28,11 +28,27 @@ def base_record(result="PASS"):
     })
 
 
-def write_good_repo(root: Path, state_phase=3, handoff_phase=3, ready_count=1, human_review_count=0):
+def write_good_repo(root: Path, state_phase=3, handoff_phase=3, ready_count=1, human_review_count=0, functional=False):
     for rel in ["AGENTS.md", "EXECUTION_PLAN.md", "RESTRICTIONS.md", "DECISION_LOG.md", "ECOSYSTEM_MAP.md", "SOURCE_REGISTRY.md"]:
         (root / rel).write_text("ok\n", encoding="utf-8")
-    (root / "PROJECT_STATE.md").write_text(f"---\nstatus: PHASE_2_ACCEPTED / PHASE_{state_phase}_ACTIVE / NOT_YET_FUNCTIONAL\ncompletion_lock: ACTIVE\n---\n## 9. One next step\nDo it.\n", encoding="utf-8")
-    (root / "SESSION_HANDOFF.md").write_text(f"---\nstatus: PHASE_2_ACCEPTED / PHASE_{handoff_phase}_ACTIVE / NOT_YET_FUNCTIONAL\n---\n## ONE NEXT STEP\nDo it.\n", encoding="utf-8")
+    if functional:
+        state_status = "PHASE_2_ACCEPTED / PHASE_7_ACCEPTED / FUNCTIONAL_SADDLE_ACCEPTED / COMPLETION_LOCK_RELEASED"
+        handoff_status = state_status
+        state_lock = "RELEASED"
+        config_lock = "RELEASED"
+    else:
+        state_status = f"PHASE_2_ACCEPTED / PHASE_{state_phase}_ACTIVE / NOT_YET_FUNCTIONAL"
+        handoff_status = f"PHASE_2_ACCEPTED / PHASE_{handoff_phase}_ACTIVE / NOT_YET_FUNCTIONAL"
+        state_lock = "ACTIVE"
+        config_lock = "ACTIVE"
+    (root / "PROJECT_STATE.md").write_text(
+        f"---\nstatus: {state_status}\ncompletion_lock: {state_lock}\n---\n## 9. One next step\nDo it.\n",
+        encoding="utf-8",
+    )
+    (root / "SESSION_HANDOFF.md").write_text(
+        f"---\nstatus: {handoff_status}\n---\n## ONE NEXT STEP\nDo it.\n",
+        encoding="utf-8",
+    )
     ready = "\n".join(["Status: `READY / NEXT`" for _ in range(ready_count)])
     human_review = "\n".join(["Status: `TECHNICAL E2E COMPLETE THROUGH HUMAN-REVIEW BOUNDARY / HUMAN REVIEW OPEN`" for _ in range(human_review_count)])
     (root / "TODO.md").write_text("\n".join(item for item in (ready, human_review) if item) + "\n", encoding="utf-8")
@@ -41,6 +57,10 @@ def write_good_repo(root: Path, state_phase=3, handoff_phase=3, ready_count=1, h
     (root / "docs" / "SADDLE_PROTOCOL_v0.1_DRAFT.md").write_text("SUPERSEDED\n", encoding="utf-8")
     (root / "config").mkdir()
     (root / "config" / "source-repos.json").write_text(json.dumps({"repositories": [{"name": "x/y", "observed_main": "a" * 40, "role": "test"}]}), encoding="utf-8")
+    (root / "config" / "completion-lock.json").write_text(
+        json.dumps({"schema_version": "saddle-completion-lock/0.1", "status": config_lock}),
+        encoding="utf-8",
+    )
 
 
 class EvalResultTests(unittest.TestCase):
@@ -122,18 +142,48 @@ class RepositoryAuditTests(unittest.TestCase):
             write_good_repo(root, ready_count=1, human_review_count=1)
             self.assertEqual(audit_repository(root)["overall"], "FAIL")
 
-    def test_missing_active_gate_fails(self):
+    def test_missing_active_gate_fails_before_functional_acceptance(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             write_good_repo(root, ready_count=0)
             self.assertEqual(audit_repository(root)["overall"], "FAIL")
 
-    def test_missing_completion_lock_fails(self):
+    def test_missing_completion_lock_fails_before_functional_acceptance(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             write_good_repo(root)
             p = root / "PROJECT_STATE.md"
             p.write_text(p.read_text().replace("completion_lock: ACTIVE\n", ""), encoding="utf-8")
+            self.assertEqual(audit_repository(root)["overall"], "FAIL")
+
+    def test_functional_terminal_state_passes_without_active_gate(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_good_repo(root, ready_count=0, functional=True)
+            self.assertEqual(audit_repository(root)["overall"], "PASS")
+
+    def test_functional_terminal_state_rejects_active_gate(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_good_repo(root, ready_count=1, functional=True)
+            self.assertEqual(audit_repository(root)["overall"], "FAIL")
+
+    def test_functional_terminal_state_requires_released_state_lock(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_good_repo(root, ready_count=0, functional=True)
+            p = root / "PROJECT_STATE.md"
+            p.write_text(p.read_text().replace("completion_lock: RELEASED", "completion_lock: ACTIVE"), encoding="utf-8")
+            self.assertEqual(audit_repository(root)["overall"], "FAIL")
+
+    def test_functional_terminal_state_requires_released_config_lock(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_good_repo(root, ready_count=0, functional=True)
+            p = root / "config" / "completion-lock.json"
+            data = json.loads(p.read_text(encoding="utf-8"))
+            data["status"] = "ACTIVE"
+            p.write_text(json.dumps(data), encoding="utf-8")
             self.assertEqual(audit_repository(root)["overall"], "FAIL")
 
 

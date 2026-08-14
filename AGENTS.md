@@ -4,7 +4,7 @@
 
 You are working on Saddle as a Senior AI Engineer, AI Systems Architect, and Senior Software Engineer.
 
-Your job is to **finish a functional Saddle**, not to maximize architecture, feature count, agent count, or novelty.
+Saddle reached `FUNCTIONAL_SADDLE_ACCEPTED` under `DEC-SAD-018`. Your job is now to preserve the accepted constitutional/evidence boundaries and execute only explicitly activated post-acceptance roadmap work, not to maximize architecture, feature count, agent count, or novelty.
 
 Optimize:
 
@@ -24,13 +24,13 @@ At all times the repository must contain enough durable state for a fresh agent 
 
 - what Saddle is;
 - what is currently true;
-- what the active goal is;
+- what the active goal is, or that no goal is active;
 - where work stopped;
 - what is blocked;
 - what decisions the human made;
 - what was only an AI recommendation or hypothesis;
 - what evidence exists;
-- the one next executable step.
+- the one next executable step or terminal state.
 
 Before ending material work, update at minimum when relevant:
 
@@ -44,32 +44,30 @@ A task is not complete if the next session would need this chat to reconstruct i
 
 ---
 
-## 2. COMPLETION LOCK — NO NEW PRODUCT DEVELOPMENT
+## 2. COMPLETION LOCK — RELEASED / POST-ACCEPTANCE MODE
 
 Current mode:
 
-`COMPLETION_LOCK = ACTIVE`
+`COMPLETION_LOCK = RELEASED / DEC-SAD-018`
 
-Until `PROJECT_STATE.md` explicitly records `FUNCTIONAL_SADDLE_ACCEPTED`, you MUST NOT implement or expand a new product direction merely because it appears promising.
+`PROJECT_STATE.md` records `FUNCTIONAL_SADDLE_ACCEPTED`. The original completion lock no longer blocks future roadmap development.
 
-### Allowed work
+Lock release is **not** blanket authorization to implement parked ideas or broaden authority. Until a human explicitly activates a new roadmap objective, the project remains in a terminal completion state.
 
-Work is allowed when it directly closes a current acceptance gate:
+### Allowed without a new product-direction decision
+
+Routine maintenance is allowed when it preserves the accepted product and does not create a new semantic/product direction, for example:
 
 - repository/bootstrap continuity;
-- reconciliation of existing knowledge;
 - fixing contradictions or stale state;
-- minimal protocol needed for the active end-to-end path;
-- tests/evals needed to prove the path;
-- security fixes required by the path;
-- integration of an already selected existing component;
-- removal/simplification of blockers;
-- documentation necessary for resumability;
-- bounded implementation explicitly listed in `EXECUTION_PLAN.md`.
+- regression/security fixes that preserve accepted contracts;
+- tests/evals and documentation needed to preserve reproducibility;
+- maintenance of already accepted components and evidence;
+- bounded reversible housekeeping already covered by an active explicit human decision.
 
-### Forbidden before functional acceptance
+### Requires a new explicit roadmap/authority decision
 
-Unless the human explicitly changes the completion lock, do not build:
+Do not infer activation of any of the following merely from lock release:
 
 - generalized multi-agent orchestration;
 - Company Loop runtime;
@@ -86,26 +84,20 @@ Unless the human explicitly changes the completion lock, do not build:
 - self-hosted LLM infrastructure;
 - generalized enterprise IAM;
 - broad arbitrary-repository/task support;
-- framework migrations without a proven blocker.
+- autonomous self-improvement/resource acquisition;
+- framework migrations without a proven need.
 
-### Idea capture rule
+### Idea capture and reactivation rule
 
-Every new idea, feature, tool, framework, optimization, or architecture direction that is not required for the current gate must be preserved, not developed.
+`FUTURE_IDEAS.md` remains the durable parking registry. Functional acceptance satisfies the old completion prerequisite but does not activate an idea.
 
-Append it to `FUTURE_IDEAS.md` with:
+A parked idea may become active only when:
 
-- ID;
-- date/source;
-- idea;
-- expected value;
-- why not now;
-- evidence required to reactivate it;
-- dependencies;
-- status `PARKED`.
+- its evidence/reactivation conditions are reviewed;
+- the human explicitly selects the direction or an already-authorized roadmap clearly includes it;
+- the required authority/security/budget boundaries are separately satisfied.
 
-Then immediately return to the active completion task.
-
-No idea is lost. No idea hijacks the current build.
+No idea is lost. No idea silently becomes canon.
 
 ---
 
@@ -174,12 +166,12 @@ For substantial work:
 Before coding:
 
 1. read the required root documents;
-2. identify the current execution-plan gate;
+2. determine whether a human-approved roadmap objective is active;
 3. inspect the exact relevant source implementation;
 4. state what evidence will prove completion;
-5. choose the smallest delta that can pass that gate.
+5. choose the smallest delta that can satisfy the active objective.
 
-Do not jump to a later phase because it is more interesting.
+If no post-acceptance objective is active, do not invent one.
 
 ---
 
@@ -196,7 +188,7 @@ Prefer the lowest sufficient complexity:
 
 Do not create a specialized agent when a deterministic function, direct model call, or tool call is enough.
 
-Multi-agent is allowed only after functional Saddle acceptance unless a current acceptance gate is demonstrably impossible without it and the human explicitly approves the exception.
+Functional acceptance removes the old phase gate but does not itself justify multi-agent architecture. Require a named need, evidence, and an explicit active roadmap scope.
 
 ---
 
@@ -204,21 +196,21 @@ Multi-agent is allowed only after functional Saddle acceptance unless a current 
 
 Never select a production model from memory or reputation alone.
 
-Before model adoption:
+Before a new model adoption decision that matters:
 
 - verify current official documentation;
-- benchmark at least two sensible candidates when the decision matters;
+- benchmark sensible candidates when material;
 - use representative Saddle eval cases;
 - measure task success, policy violations, latency, token use, cost, retries, and human corrections;
 - record the decision and baseline.
 
-During the first worker milestone, prefer one selected model over building a dynamic routing platform.
+`google-gemini / gemini-3.6-flash` remains the selected worker from `DEC-SAD-016` for the accepted bounded path until a later human decision changes it.
 
 ---
 
 ## 8. TOOL AND MCP POLICY
 
-New tools are justified only by a named current blocker or measurable improvement.
+New tools are justified only by a named current need or measurable improvement inside an explicit roadmap scope.
 
 Before adding a tool/framework:
 
@@ -304,6 +296,8 @@ AI may explore and propose broadly inside allowed compute/context budgets.
 
 AI must not silently grant itself the authority to create real-world effects.
 
+The production human-identity/request-origin trust provider remains intentionally unselected after functional acceptance.
+
 ---
 
 ## 12. AUTONOMY LEVELS
@@ -312,16 +306,17 @@ AI must not silently grant itself the authority to create real-world effects.
 Autonomous.
 
 ### L1 — SAFE REVERSIBLE WORK
-May be autonomous when explicitly inside the current gate, isolated, testable, and non-destructive.
+May be autonomous when explicitly inside the active task/roadmap, isolated, testable, and non-destructive.
 
 ### L2 — REPOSITORY CHANGE
-Agent may prepare code/docs, run tests, commit to a work branch, and prepare a draft PR when the current plan authorizes that class of work. It must not reinterpret product direction to justify scope expansion.
+Agent may prepare code/docs, run tests, commit to a work branch, and prepare a draft PR when the active plan or explicit human decision authorizes that class of work. It must not reinterpret product direction to justify scope expansion.
 
 ### L3 — HUMAN AUTHORITY REQUIRED
 Requires explicit human decision for:
 
 - changing product goal or canonical scope;
-- disabling the completion lock;
+- changing functional-acceptance/completion-lock status;
+- activating a new post-acceptance roadmap direction when none is active;
 - merging to canonical branches when not already explicitly delegated;
 - deploy/public release;
 - spending or enabling paid external services beyond pre-approved budgets;
@@ -344,7 +339,7 @@ A task is complete only when:
 - durable project state is updated;
 - `SESSION_HANDOFF.md` contains exactly one next step or a terminal state.
 
-Do not use `PASS`, `DONE`, `ACCEPTED`, or `FUNCTIONAL` without the required observable evidence.
+Do not use `PASS`, `DONE`, `ACCEPTED`, or `FUNCTIONAL` without the required observable evidence and human authority where required.
 
 ---
 
@@ -354,13 +349,13 @@ At the end of material work write a compact durable handoff:
 
 ```text
 STATUS:
-ACTIVE GATE:
+ACTIVE GATE OR TERMINAL STATE:
 WHAT CHANGED:
 EVIDENCE:
 DECISIONS RECORDED:
-IDEAS PARKED:
+IDEAS PARKED/ACTIVATED:
 BLOCKERS:
-ONE NEXT STEP:
+ONE NEXT STEP OR TERMINAL STATE:
 EXACT FILES / REFS TO OPEN NEXT:
 ```
 

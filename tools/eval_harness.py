@@ -231,6 +231,7 @@ def audit_repository(root: Path) -> dict[str, Any]:
     state_path = root / "PROJECT_STATE.md"
     handoff_path = root / "SESSION_HANDOFF.md"
     todo_path = root / "TODO.md"
+    functional_accepted = False
     if state_path.is_file() and handoff_path.is_file():
         state_text = state_path.read_text(encoding="utf-8")
         handoff_text = handoff_path.read_text(encoding="utf-8")
@@ -238,8 +239,29 @@ def audit_repository(root: Path) -> dict[str, Any]:
         handoff_status = _frontmatter_status(handoff_text)
         check("state-status-present", state_status is not None, str(state_status))
         check("handoff-status-present", handoff_status is not None, str(handoff_status))
-        check("active-phase-match", _active_phase(state_status) == _active_phase(handoff_status) and _active_phase(state_status) is not None, f"state={state_status}; handoff={handoff_status}")
-        if "FUNCTIONAL_SADDLE_ACCEPTED" not in (state_status or ""):
+        state_functional = "FUNCTIONAL_SADDLE_ACCEPTED" in (state_status or "")
+        handoff_functional = "FUNCTIONAL_SADDLE_ACCEPTED" in (handoff_status or "")
+        check(
+            "functional-state-match",
+            state_functional == handoff_functional,
+            f"state={state_status}; handoff={handoff_status}",
+        )
+        functional_accepted = state_functional and handoff_functional
+        state_phase = _active_phase(state_status)
+        handoff_phase = _active_phase(handoff_status)
+        if functional_accepted:
+            check(
+                "terminal-no-active-phase",
+                state_phase is None and handoff_phase is None,
+                f"state={state_status}; handoff={handoff_status}",
+            )
+            check("completion-lock-released", "completion_lock: RELEASED" in state_text, "PROJECT_STATE.md")
+        else:
+            check(
+                "active-phase-match",
+                state_phase == handoff_phase and state_phase is not None,
+                f"state={state_status}; handoff={handoff_status}",
+            )
             check("completion-lock-active", "completion_lock: ACTIVE" in state_text, "PROJECT_STATE.md")
         check("state-one-next-step-section", state_text.count("## 9. One next step") == 1, "PROJECT_STATE.md")
         check("handoff-one-next-step-section", handoff_text.count("## ONE NEXT STEP") == 1, "SESSION_HANDOFF.md")
@@ -247,11 +269,33 @@ def audit_repository(root: Path) -> dict[str, Any]:
         todo_text = todo_path.read_text(encoding="utf-8")
         ready_count = len(READY_NEXT_STATUS_RE.findall(todo_text))
         human_review_count = len(HUMAN_REVIEW_OPEN_STATUS_RE.findall(todo_text))
+        expected_gate_count = 0 if functional_accepted else 1
         check(
-            "todo-exactly-one-active-gate",
-            ready_count + human_review_count == 1,
-            f"ready_next={ready_count}; human_review_open={human_review_count}",
+            "todo-active-gate-count",
+            ready_count + human_review_count == expected_gate_count,
+            f"expected={expected_gate_count}; ready_next={ready_count}; human_review_open={human_review_count}",
         )
+
+    lock_path = root / "config" / "completion-lock.json"
+    if lock_path.is_file():
+        try:
+            lock = strict_loads(lock_path.read_text(encoding="utf-8"))
+            expected_lock_status = "RELEASED" if functional_accepted else "ACTIVE"
+            valid_lock = (
+                isinstance(lock, dict)
+                and lock.get("schema_version") == "saddle-completion-lock/0.1"
+                and lock.get("status") == expected_lock_status
+            )
+            check(
+                "completion-lock-config",
+                valid_lock,
+                f"expected={expected_lock_status}; observed={lock.get('status') if isinstance(lock, dict) else type(lock).__name__}",
+            )
+        except EvalError as exc:
+            check("completion-lock-config", False, str(exc))
+    else:
+        check("completion-lock-config", False, "config/completion-lock.json missing")
+
     frozen = root / "docs" / "SADDLE_PROTOCOL_v0.1.md"
     historical = root / "docs" / "SADDLE_PROTOCOL_v0.1_DRAFT.md"
     check("frozen-protocol-present", frozen.is_file(), str(frozen.relative_to(root)))

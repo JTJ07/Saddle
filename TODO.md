@@ -1,11 +1,11 @@
 # SADDLE TODO — OPERATIONAL COMPLETION QUEUE
 
-Status: `ACTIVE / COMPLETION LOCK ENFORCED`
-Updated: 2026-08-13
+Status: `COMPLETE / FUNCTIONAL_SADDLE_ACCEPTED / COMPLETION LOCK RELEASED`
+Updated: 2026-08-14
 
 Authority: `DECISION_LOG.md` > accepted Saddle state/contracts (`PROJECT_STATE.md`) > accepted component canonical sources > merged implementation + tests/evidence > `SESSION_HANDOFF.md` > `TODO.md` as operational projection > drafts/history/AI inference.
 
-Rules: work by current evidence dependency; require observable evidence for PASS/DONE; park new ideas; preserve broken benchmarks; do not broaden capability before the active proof gate. DEC-SAD-007 permits routine execution but not goal/lock/security/financial/authority expansion or self-declared functional acceptance.
+The completion queue is terminally complete under `DEC-SAD-018`. No post-acceptance feature, capability, autonomy, trust, spending, deployment, or tool expansion is activated by this status alone.
 
 ## T0 — Durable-memory bootstrap
 Status: `DONE`
@@ -15,7 +15,7 @@ Status: `DONE`
 
 ## T2 — Preserve new ideas without activation
 Status: `DONE`
-IDEA-SAD-014/015 remain `PARKED`.
+IDEA-SAD-014/015 and all other future ideas remain `PARKED` until explicitly reactivated.
 
 ## T3 — Ecosystem / responsibility reconciliation
 Status: `DONE / FROZEN`
@@ -84,7 +84,7 @@ Observed:
 - protocol bundle PASS;
 - model performance claim NONE;
 - maturity claim NONE;
-- functional acceptance FALSE.
+- functional acceptance was false at that historical checkpoint.
 
 Integration finding: current ScriptOps v2 is scene-domain specific while GP001 is code-domain specific. Do not add a ScriptOps code-mutation capability or chain two executors merely to satisfy a diagram. Keep Phase-6 ScriptOps proof as separate controlled-workflow evidence.
 
@@ -174,7 +174,7 @@ SELECTED PRODUCTION WORKER MODEL: gemini-3.6-flash
 PROVIDER: google-gemini
 ```
 
-The selection is human-owned and does not expand authority, tools, capability, spending authority, fallback/retry behavior, maturity, or functional status. No additional paid benchmark call is required unless the human explicitly requests a new measurement.
+The selection is human-owned and does not expand authority, tools, capability, spending authority, fallback/retry behavior or maturity status. No additional paid benchmark call was required for final functional acceptance.
 
 ## T6D — Executor current self-identity reconciliation
 Status: `DONE / VERIFIED`
@@ -196,7 +196,7 @@ PR #58 updated only current self-identity bindings plus directly coupled tests/w
 Explicitly preserved:
 - historical `litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317` Phase-4C provenance;
 - historical/external pilot-fixture authority and GP001 target binding;
-- capability, authority, network/secrets, auto-merge, maturity and functional-acceptance boundaries.
+- capability, authority, network/secrets, auto-merge and maturity boundaries.
 
 ## T7 — Phase 5 strict verified-intent + effect-authority boundaries
 Status: `DONE / FROZEN`
@@ -212,11 +212,11 @@ Evidence: ScriptOps PR #7 merge `daa6e5dc210e09171a530eeffe5601e0e74ae041`; repo
 No ScriptOps maturity or independent product-value claim.
 
 ## T9 — Phase 7 functional Saddle acceptance
-Status: `READY / NEXT / EXPLICIT FINAL HUMAN ACCEPTANCE`
+Status: `DONE / FUNCTIONAL_SADDLE_ACCEPTED / DEC-SAD-018`
 
-Evidence: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md` and `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md`.
+Evidence: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`, `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md`, `decisions/DEC-SAD-017.md`, and final human decision `decisions/DEC-SAD-018.md`.
 
-Observed technical result:
+Accepted terminal result:
 
 ```text
 PHASE_7_TECHNICAL_EVIDENCE_ACCEPTED
@@ -226,23 +226,23 @@ total Phase-7 model calls = 1
 automatic retries = 0
 Executor = JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d
 Executor status = ACTION_COMPLETED_REVIEW_REQUIRED
-HUMAN_REVIEW_ACCEPTED = true
+HUMAN_REVIEW_ACCEPTED = true / DEC-SAD-017
 SECOND_ZERO_HISTORY_RESUME = PASS
-EXPLICIT_FINAL_HUMAN_ACCEPTANCE = OPEN
-FUNCTIONAL_SADDLE_ACCEPTED = false
-COMPLETION_LOCK = ACTIVE
+EXPLICIT_FINAL_HUMAN_ACCEPTANCE = ACCEPTED / DEC-SAD-018
+FUNCTIONAL_SADDLE_ACCEPTED = true
 ```
 
 Phase 7 used the existing verified-intent/effect-authority boundaries and added no capability. The original attempt and recovery provenance remain immutable in `evidence/phase7/attempt-001.json` and `evidence/phase7/attempt-001-model.patch`.
 
-The production human-identity/request-origin trust provider remains intentionally open; Phase 7 must not fake verified origin or promote a user label/model inference into origin evidence.
+The production human-identity/request-origin trust provider remains intentionally open. Functional acceptance does not promote the acceptance-only GitHub origin evidence into a production trust-provider selection.
 
-Human review was accepted in `DEC-SAD-017`, and the second zero-history repository-only resume passed from canonical state without repeating the Gemini call or Executor effect. The only next gate is a separate explicit final human acceptance. Until it occurs, functional acceptance remains false and the completion lock remains ACTIVE.
+## T10 — Phase 8 release completion lock
+Status: `DONE / COMPLETION LOCK RELEASED / DEC-SAD-018`
 
-## T10 — Phase 8 post-acceptance direction
-Status: `BLOCKED UNTIL T9`
-Completion lock does not release automatically.
+The user explicitly authorized lock release after final functional acceptance. `config/completion-lock.json` records `RELEASED` and the completion queue has zero active gates.
 
-# EXPLICITLY NOT TODO BEFORE FUNCTIONAL ACCEPTANCE
+Lock release does not activate any parked idea and does not itself expand autonomy, authority, credentials, spending, deployment, tooling, or production trust semantics.
 
-No multi-agent/swarm runtime, Company Loop, full Ginseng runtime/UI, vector DB/general RAG, browser automation, broad MCP marketplace, dynamic model routing, hidden agent memory, dashboard, self-hosted model platform, generalized enterprise IAM, autonomous resource acquisition, self-preservation objective, or autonomous self-modification outside bounded eval/sandbox/adoption gates.
+# POST-ACCEPTANCE DIRECTIONS — NOT ACTIVATED
+
+The completion lock no longer blocks future roadmap work, but no future direction is active merely because functional acceptance occurred. Multi-agent/swarm runtime, Company Loop, full Ginseng runtime/UI, vector DB/general RAG, browser automation, broad MCP marketplace, dynamic model routing, hidden agent memory, dashboard, self-hosted model platform, generalized enterprise IAM, autonomous resource acquisition, self-preservation objectives, and autonomous self-modification remain `PARKED` unless a later explicit human decision activates a bounded next objective.

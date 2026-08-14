@@ -1,9 +1,9 @@
 ---
 project: Saddle
-status: PHASE_6_ACCEPTED / PHASE_7_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_TECHNICAL_EVIDENCE_ACCEPTED / SECOND_ZERO_HISTORY_RESUME_PASS / FINAL_HUMAN_ACCEPTANCE_REQUIRED / NOT_YET_FUNCTIONAL
-completion_lock: ACTIVE
+status: PHASE_6_ACCEPTED / PHASE_7_ACCEPTED / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_TECHNICAL_EVIDENCE_ACCEPTED / SECOND_ZERO_HISTORY_RESUME_PASS / FINAL_HUMAN_ACCEPTANCE_ACCEPTED / FUNCTIONAL_SADDLE_ACCEPTED / COMPLETION_LOCK_RELEASED
+completion_lock: RELEASED
 state_owner: PROJECT_STATE.md
-updated_at: 2026-08-13
+updated_at: 2026-08-14
 ---
 
 # PROJECT_STATE — Saddle
@@ -23,16 +23,17 @@ NO LAYER MAY SUBSTITUTE FOR A HIGHER-ORDER OWNER
 
 > **Maximize usable AI capability; constrain unauthorized effects, not intelligence itself.**
 
-GitHub is durable memory. Completion lock remains ACTIVE.
+GitHub is durable memory. The completion lock was released by the explicit human decision `DEC-SAD-018` after the full Phase-7 acceptance chain was satisfied.
 
 ## 2. Current objective
 
-The provider-independent control path is proved, the real external AI worker has been measured, the human has selected `gemini-3.6-flash`, the current Executor self identity has been reconciled to `JTJ07/Executor`, and the Phase-7 technical E2E evidence has been accepted by the human. The required second zero-history repository-only resume passed from canonical repository state at starting `main` SHA `ba7f7dc0f7dff201047feee3a695a02515e96d38`. The active gate is the separate explicit final human acceptance decision.
+The completion-path objective is complete. The provider-independent control path is proved, the real external AI worker has been measured, the human selected `gemini-3.6-flash`, current Executor self identity is reconciled to `JTJ07/Executor`, Phase-7 technical E2E evidence was accepted by the human, the required second zero-history repository-only resume passed, and the human then explicitly issued final functional acceptance and authorized completion-lock release in `DEC-SAD-018`.
 
 Human proof-order decision: `DEC-SAD-014` (`decisions/DEC-SAD-014.md`).
 Phase-4B provider-swap decision: `DEC-SAD-015` (`decisions/DEC-SAD-015.md`).
 Human model-selection decision: `DEC-SAD-016` (`decisions/DEC-SAD-016.md`).
 Phase-7 technical-evidence acceptance: `DEC-SAD-017` (`decisions/DEC-SAD-017.md`).
+Final functional acceptance and lock release: `DEC-SAD-018` (`decisions/DEC-SAD-018.md`).
 
 ```text
 Phase 4A — WEB AI COGNITIVE CALIBRATION
@@ -63,10 +64,16 @@ SECOND ZERO-HISTORY RESUME
         PASS
         ↓
 EXPLICIT FINAL HUMAN ACCEPTANCE
-        OPEN / NEXT
+        ACCEPTED / DEC-SAD-018
+        ↓
+FUNCTIONAL_SADDLE_ACCEPTED
+        TRUE
+        ↓
+COMPLETION LOCK
+        RELEASED
 ```
 
-No autonomy increase, capability expansion, or functional acceptance follows automatically from the benchmark, model selection, or identity reconciliation.
+Functional acceptance does not automatically increase autonomy, expand capabilities, select a production request-origin trust provider, or create a maturity/production-readiness claim.
 
 ## 3. Canonical completed foundations
 
@@ -143,21 +150,21 @@ Observed cases:
 - authority replay: `BLOCK / EFFECT_AUTHORITY_REPLAYED`;
 - Protocol bundle: `PASS`.
 
-Evidence classification remains strict:
+Evidence classification remains strict for that historical Phase-4C run:
 
 ```text
 SYNTHETIC_INTEGRATION_EVIDENCE
 worker_evidence = false
 model_performance_claim = false
 maturity_claim = NONE
-functional_saddle_accepted = false
+functional_saddle_accepted_at_that_checkpoint = false
 ```
 
 ### ScriptOps integration finding
 
 Current accepted ScriptOps Phase-6 v2 is scene-domain specific; Executor GP001 is code-domain specific. Phase 4C did not invent a new ScriptOps code-mutation capability or artificially chain two executors for one effect.
 
-ScriptOps Phase-6 remains separately valid controlled-workflow evidence. Phase 4C proves the real Saddle → authority gate → Executor → evidence/verifier core that the selected AI worker can feed during the bounded Phase-7 acceptance chain.
+ScriptOps Phase-6 remains separately valid controlled-workflow evidence. Phase 4C proves the real Saddle → authority gate → Executor → evidence/verifier core that the selected AI worker later fed during the bounded Phase-7 acceptance chain.
 
 ## 6. Phase 4B — LIVE EVIDENCE COMPLETE / MODEL SELECTED
 
@@ -270,22 +277,21 @@ SELECTED PRODUCTION WORKER MODEL = gemini-3.6-flash
 PROVIDER = google-gemini
 ```
 
-Evidence classification:
+Evidence classification for Phase 4B remains:
 
 ```text
 PROVIDER-SWAP CONTROL-PLANE EVIDENCE = PASS
 LIVE API WORKER EVIDENCE = COMPLETE / PASS IN TESTED SCOPE
 NINE-DIMENSION EVALUATION = COMPLETE
 PRODUCTION WORKER SELECTION = gemini-3.6-flash / HUMAN DECISION
-FUNCTIONAL ACCEPTANCE = OPEN
 MATURITY CLAIM = NONE
 ```
 
-No additional benchmark calls are required unless the human explicitly requests a new measurement.
+No additional benchmark calls were required for final functional acceptance.
 
 ## 7. Repository migration / Executor current self identity
 
-The critical repositories required by the current completion path are available under the `JTJ07` owner.
+The critical repositories required by the accepted completion path are available under the `JTJ07` owner.
 
 Immutable benchmark case identities remain unchanged:
 
@@ -301,7 +307,7 @@ Historical Phase-4C Executor provenance remains unchanged:
 litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317
 ```
 
-Current post-transfer Executor identity is now separately established:
+Current post-transfer Executor identity is separately established:
 
 ```text
 repository: JTJ07/Executor
@@ -312,40 +318,46 @@ Verify Executor foundations run: 31539013966 — SUCCESS
 GP001 replay repeatability run: 31539014065 — SUCCESS
 ```
 
-PR #58 changed only active/current self-identity bindings and their directly coupled tests/workflow. Runtime fail-closed identity checks were preserved: current self checkouts now require `JTJ07/Executor`, and regression coverage proves that the previous owner is rejected by the current self-identity gate.
+PR #58 changed only active/current self-identity bindings and their directly coupled tests/workflow. Runtime fail-closed identity checks were preserved: current self checkouts require `JTJ07/Executor`, and regression coverage proves that the previous owner is rejected by the current self-identity gate.
 
 Intentionally unchanged by PR #58:
 - historical Phase-4C locator/SHA;
 - `EXECUTOR_POLICY.yaml` Controlled External Fixture authority for the historical pilot fixture;
 - canonical GP001 external-fixture target binding and historical real-E2E evidence;
-- capabilities, effect authority, network/secrets defaults, auto-merge, product goal, maturity and functional-acceptance semantics.
+- capabilities, effect authority, network/secrets defaults, auto-merge, product goal and maturity semantics.
 
-## 8. What is still open
+## 8. What remains intentionally open after functional acceptance
 
 - no production human-identity/request-origin trust provider is selected;
-- the second zero-history repository-only resume passed and is recorded in `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md`;
-- explicit final human functional acceptance remains open;
-- `FUNCTIONAL_SADDLE_ACCEPTED` remains false;
-- completion lock remains ACTIVE.
+- maturity remains unclaimed beyond the accepted tested functional scope;
+- arbitrary-user production deployment, generalized IAM and broader capability expansion remain separate future decisions;
+- parked ideas remain parked until explicitly reactivated by a human roadmap decision.
+
+These items are **not blockers** to the completion definition that was explicitly accepted in `DEC-SAD-018`.
 
 ## 9. One next step
 
-The single next gate is the **explicit final human functional-acceptance decision**. This is a human-owned boundary; repository reconstruction cannot make that decision.
+There is no active completion-path step. Saddle is in a terminal accepted state for this completion project.
 
-Observed technical state:
+Before any post-acceptance product development begins, the human should explicitly choose a new roadmap objective or reactivate a parked idea. Functional acceptance and lock release alone do not authorize capability, autonomy, trust, spending, deployment, or tool expansion.
+
+Observed terminal state:
 
 ```text
 PHASE_7_TECHNICAL_EVIDENCE_ACCEPTED
 HUMAN_REVIEW_ACCEPTED = true
 SECOND_ZERO_HISTORY_RESUME = PASS
-EXPLICIT_FINAL_HUMAN_ACCEPTANCE = OPEN
-FUNCTIONAL_SADDLE_ACCEPTED = false
-COMPLETION_LOCK = ACTIVE
+EXPLICIT_FINAL_HUMAN_ACCEPTANCE = ACCEPTED / DEC-SAD-018
+FUNCTIONAL_SADDLE_ACCEPTED = true
+COMPLETION_LOCK = RELEASED
+ACTIVE_COMPLETION_GATE = NONE
+production request-origin / human-identity trust provider = OPEN
+maturity claim = NONE
 ```
 
-The resume recovered this state from canonical repository content only, without repeating the Gemini call or Executor effect. Its PASS cannot itself create final functional acceptance.
+## 10. Functional acceptance achieved
 
-Completed technical loop:
+The complete Phase-7 evidence set, the accepted human review, the passing second zero-history resume, and the separate explicit final human decision together satisfy the project's functional-acceptance condition.
 
 ```text
 human raw intent
@@ -357,20 +369,11 @@ human raw intent
 → bounded real execution through current Executor
 → EffectReceipt / verifier evidence
 → StateDelta
-→ required human review — ACCEPTED / DEC-SAD-017
+→ human review — ACCEPTED / DEC-SAD-017
 → second zero-history resume — PASS
-→ explicit final human acceptance — OPEN / NEXT
+→ explicit final human acceptance — ACCEPTED / DEC-SAD-018
+→ FUNCTIONAL_SADDLE_ACCEPTED
+→ completion lock RELEASED
 ```
 
-This step must preserve all existing authority and intent-integrity boundaries. It is not permission to broaden capabilities or bypass the intentionally open production request-origin/trust-provider question.
-
-## 10. Functional acceptance remains open
-
-Only the complete Phase-7 evidence set, including the passing second zero-history resume, plus explicit final human acceptance may produce `FUNCTIONAL_SADDLE_ACCEPTED`.
-
-```text
-PHASE 4B LIVE SUCCESS
-+ HUMAN MODEL SELECTION
-+ EXECUTOR SELF-IDENTITY RECONCILIATION
-!= FUNCTIONAL SADDLE ACCEPTANCE
-```
+This is a functional acceptance claim in the defined tested scope, not an automatic maturity, production-hardening, unrestricted-autonomy, or universal-product-readiness claim.

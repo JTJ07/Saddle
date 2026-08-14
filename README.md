@@ -1,6 +1,6 @@
 # Saddle
 
-Status: `PHASE 7 TECHNICAL EVIDENCE ACCEPTED / SECOND ZERO-HISTORY RESUME PASS / FINAL HUMAN ACCEPTANCE OPEN / NOT YET FUNCTIONAL`
+Status: `FUNCTIONAL_SADDLE_ACCEPTED / PHASE 7 ACCEPTED / COMPLETION LOCK RELEASED`
 
 Saddle is a durable control/coupling layer between **human intent** and **arbitrarily capable AI**.
 
@@ -19,7 +19,7 @@ NO LAYER MAY SUBSTITUTE FOR A HIGHER-ORDER OWNER
 
 > **Do not constrain intelligence unnecessarily. Constrain unauthorized effects.**
 
-GitHub is durable project memory. Completion lock remains active until full functional acceptance.
+GitHub is durable project memory. The original completion lock was released by explicit human decision `DEC-SAD-018` after the complete Phase-7 acceptance chain passed.
 
 ## Read order
 
@@ -42,55 +42,33 @@ GitHub is durable project memory. Completion lock remains active until full func
 - **Phase 5** — verified-intent + exact effect-authority boundaries; 15/15 deterministic tests PASS.
 - **Phase 6** — bounded ScriptOps controlled-workflow mechanism PASS, no maturity claim.
 
-## Phase 4 — two evidence goals, not one
+## Phase 4 — calibration, integration, and worker evidence
 
-`DEC-SAD-012` separates calibration from formal worker proof:
+`DEC-SAD-012` separates calibration from formal worker proof.
 
 ### Phase 4A — Web AI cognitive calibration
 
-Human-guided web AI may be used to calibrate the contract between Saddle and Intelligence:
-- preserve raw human intent;
-- proposal, not execution claim;
-- exact scope;
-- no invented authority;
-- no goal expansion;
-- useful rationale/evidence plan;
-- stable structure.
-
-Hard evidence rule:
+Human-guided web AI calibrated the contract between Saddle and Intelligence. The first baseline used 3 manual CASE-001/002/003 runs with 3/3 boundary-discipline PASS, zero scope/authority/execution violations, and reconstructed visible tests 13/13 PASS per proposal. All runs remain context-contaminated, so independent problem-solving is not claimed from Phase 4A.
 
 ```text
 WEB_AI_CALIBRATION != API_WORKER_EVIDENCE
 ```
 
-First baseline: 3 manual CASE-001/002/003 runs, 3/3 boundary-discipline PASS, zero scope/authority/execution violations, reconstructed visible tests 13/13 PASS per proposal. All runs were context-contaminated, so independent problem-solving is **not claimed**.
-
-See:
-- `docs/PHASE4A_WEB_AI_CALIBRATION.md`;
-- `evidence/PHASE4A_WEB_AI_CALIBRATION_BASELINE_2026-08-10.md`.
+See `docs/PHASE4A_WEB_AI_CALIBRATION.md` and `evidence/PHASE4A_WEB_AI_CALIBRATION_BASELINE_2026-08-10.md`.
 
 ### Phase 4B — Controlled reproducible API worker evidence
 
-Formal worker evidence used fixed inputs, fixed API models, fixed structured output, and deterministic evaluation.
-
-Approved `DEC-SAD-011` bounds:
-
-```text
-budget <= USD 5
-calls <= 6
-automatic retries = 0
-benchmark only
-proposal only
-no capability / authority / tool expansion
-```
-
 The bounded Gemini benchmark completed with 6/6 canonical evaluator PASS, 0 automatic retries, and no execution authority or target-repository write. The human selected `google-gemini / gemini-3.6-flash` in `DEC-SAD-016`. Model selection did not expand autonomy or authority.
+
+### Phase 4C — Provider-independent integration proof
+
+The provider-independent `IntentEnvelope -> VerifiedIntentBinding -> EffectProposal -> exact EffectAuthority -> Executor -> EffectReceipt -> StateDelta` chain passed its bounded synthetic integration proof before the live worker measurement.
 
 ## Functional acceptance
 
-Saddle is still **NOT YET FUNCTIONAL**.
+Saddle is **FUNCTIONAL_SADDLE_ACCEPTED** in the defined tested completion scope.
 
-Final acceptance requires:
+Accepted chain:
 
 ```text
 human raw intent
@@ -101,9 +79,17 @@ human raw intent
 → bounded real execution
 → EffectReceipt / verifier evidence
 → StateDelta
-→ required human review — ACCEPTED
+→ required human review — ACCEPTED / DEC-SAD-017
 → second zero-history resume — PASS
-→ explicit final human acceptance — OPEN
+→ explicit final human acceptance — ACCEPTED / DEC-SAD-018
+→ FUNCTIONAL_SADDLE_ACCEPTED
+→ completion lock RELEASED
 ```
 
-Only a separate explicit final human acceptance may now produce `FUNCTIONAL_SADDLE_ACCEPTED`. Until then, completion lock remains ACTIVE.
+Primary evidence:
+- `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`;
+- `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md`;
+- `decisions/DEC-SAD-017.md`;
+- `decisions/DEC-SAD-018.md`.
+
+Functional acceptance is not a blanket maturity or arbitrary-environment production-readiness claim. The production human-identity/request-origin trust provider remains intentionally unselected, and no parked post-acceptance direction is activated automatically by lock release.

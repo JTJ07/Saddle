@@ -1,191 +1,77 @@
 ---
 project: Saddle
-status: PHASE_6_ACCEPTED / PHASE_7_ACTIVE / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_TECHNICAL_EVIDENCE_ACCEPTED / SECOND_ZERO_HISTORY_RESUME_PASS / FINAL_HUMAN_ACCEPTANCE_REQUIRED / NOT_YET_FUNCTIONAL
-updated_at: 2026-08-13
+status: PHASE_6_ACCEPTED / PHASE_7_ACCEPTED / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_TECHNICAL_EVIDENCE_ACCEPTED / SECOND_ZERO_HISTORY_RESUME_PASS / FINAL_HUMAN_ACCEPTANCE_ACCEPTED / FUNCTIONAL_SADDLE_ACCEPTED / COMPLETION_LOCK_RELEASED
+updated_at: 2026-08-14
 ---
 
 # SESSION HANDOFF
 
 ## STATUS
 
-Canonical/frozen foundations: Phases 0–3 and Phase 5. Phase 6 ScriptOps controlled-workflow mechanism is accepted with no maturity claim. Phase 4A and Phase 4C remain accepted in their recorded evidence classes. Phase 4B live Gemini worker evidence and the nine-dimensional evaluation are complete.
-
-Current order:
+Saddle's defined completion path is terminally accepted.
 
 ```text
-4A WEB AI COGNITIVE CALIBRATION — ACCEPTED
-        ↓
-4C SYNTHETIC INTELLIGENCE INTEGRATION — ACCEPTED
-        ↓
-4B GEMINI PROVIDER-SWAP CONTROL PLANE — PASS
-        ↓
-4B CONTROLLED LIVE API WORKER EVIDENCE — COMPLETE / 6 OF 6 PASS
-        ↓
-9-DIMENSION EVALUATION — COMPLETE
-        ↓
-HUMAN MODEL DECISION — GEMINI 3.6 FLASH SELECTED
-        ↓
-EXECUTOR CURRENT SELF-IDENTITY RECONCILIATION — COMPLETE
-        ↓
-PHASE 7 TECHNICAL E2E — COMPLETE THROUGH HUMAN-REVIEW BOUNDARY
-        ↓
-HUMAN REVIEW — ACCEPTED / DEC-SAD-017
-        ↓
+PHASE 4A — ACCEPTED / cognitive calibration
+PHASE 4C — ACCEPTED / synthetic integration proof
+PHASE 4B — COMPLETE / 6 of 6 live worker evidence PASS in tested scope
+SELECTED WORKER — google-gemini / gemini-3.6-flash / DEC-SAD-016
+CURRENT EXECUTOR — JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d
+PHASE 7 TECHNICAL E2E — COMPLETE
+HUMAN TECHNICAL REVIEW — ACCEPTED / DEC-SAD-017
 SECOND ZERO-HISTORY RESUME — PASS
-        ↓
-EXPLICIT FINAL HUMAN ACCEPTANCE — OPEN / NEXT
+FINAL HUMAN ACCEPTANCE — ACCEPTED / DEC-SAD-018
+FUNCTIONAL_SADDLE_ACCEPTED — true
+COMPLETION_LOCK — RELEASED
+ACTIVE COMPLETION GATE — NONE
 ```
 
-Saddle remains `NOT_YET_FUNCTIONAL`. Completion lock remains ACTIVE.
+The final human statement recorded by `DEC-SAD-018` is:
 
-## ACTIVE GATE
+```text
+Finalnie akceptuję Saddle jako FUNCTIONAL_SADDLE_ACCEPTED i zezwalam na zwolnienie completion lock.
+```
 
-`PHASE 7 — EXPLICIT FINAL HUMAN ACCEPTANCE`
+## ACCEPTANCE BASIS
 
-The second zero-history repository-only resume passed from canonical state and is recorded in `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md`. Do not rerun the paid worker or Executor effect. Do not broaden capability, authority, tools, retries, provider routing, or autonomy. Only the human may make the remaining final acceptance decision.
+Primary durable evidence:
+
+- `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`;
+- `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md`;
+- `decisions/DEC-SAD-017.md`;
+- `decisions/DEC-SAD-018.md`.
+
+Observed Phase-7 facts retained from the accepted evidence:
+
+```text
+protocol bundle = PASS
+worker = google-gemini / gemini-3.6-flash
+total Phase-7 model calls = 1
+automatic retries = 0
+current Executor = JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d
+Executor status = ACTION_COMPLETED_REVIEW_REQUIRED
+human review = ACCEPTED
+second zero-history repository-only resume = PASS
+```
+
+The second resume recovered the state from canonical repository content without another Gemini call and without repeating the Executor effect. Its recorded deterministic verification was repository audit PASS and 76 tests / OK before the final acceptance delta.
 
 ## HUMAN DECISIONS
 
 - `DEC-SAD-010`: ScriptOps v2 selected; no rewrite/new capability; Phase-6 mechanism proof only.
-- `DEC-SAD-011`: API benchmark max USD 5 / 6 calls / 0 automatic retries / benchmark only / proposal only / no capability, autonomy, authority or tool-access expansion.
+- `DEC-SAD-011`: bounded API benchmark budget/calls/retries and proposal-only authority limits.
 - `DEC-SAD-012`: web AI = Phase 4A calibration; API = Phase 4B worker evidence.
-- `DEC-SAD-013`: Phase 4A accepted; nine-dimensional Phase-4B evaluation including intent preservation; human decision follows benchmark.
-- `DEC-SAD-014`: Phase 4C synthetic system integration precedes API-worker measurement.
-- `DEC-SAD-015`: Gemini replaces the previously planned OpenAI provider for Phase 4B and the substitution itself is a resilience test.
-- `DEC-SAD-016`: USER explicitly selected `google-gemini / gemini-3.6-flash` as the first production worker/model for the next bounded Saddle acceptance path.
-- `DEC-SAD-017`: USER explicitly accepted the Phase-7 technical E2E evidence; second zero-history repository-only resume is NEXT; functional acceptance remains false and completion lock remains ACTIVE.
+- `DEC-SAD-013`: Phase 4A accepted; nine-dimensional Phase-4B evaluation contract.
+- `DEC-SAD-014`: Phase 4C synthetic integration precedes API-worker measurement.
+- `DEC-SAD-015`: Gemini provider substitution for Phase 4B.
+- `DEC-SAD-016`: `google-gemini / gemini-3.6-flash` selected as first production worker for the bounded acceptance path.
+- `DEC-SAD-017`: Phase-7 technical E2E evidence accepted.
+- `DEC-SAD-018`: final functional Saddle acceptance and completion-lock release.
 
-`AI RECOMMENDATION != HUMAN DECISION` remains an invariant. `DEC-SAD-016` and `DEC-SAD-017` exist because the human explicitly made those decisions.
+`AI RECOMMENDATION != HUMAN DECISION` remains an invariant.
 
-## PHASE-4B LIVE EVIDENCE
+## BOUNDARIES STILL ACTIVE
 
-Evidence file:
-
-`evidence/PHASE4B_LIVE_GEMINI_API_WORKER_2026-08-11.md`
-
-Canonical run:
-
-```text
-workflow run: 31536385410
-job: 93928366114
-head: 41a8f882dd0c6dbd187d59eb29f2f63ee101971d
-event: workflow_dispatch
-conclusion: SUCCESS
-Saddle regression: 65 / 65 PASS
-calls attempted: 6 / 6
-automatic retries: 0
-provider errors/blocked: 0
-structured output valid: 6 / 6
-canonical evaluator PASS: 6 / 6
-scope compliant: 6 / 6
-execution authority: NONE
-target repository write: NONE
-estimated list-price cost: USD 0.167341
-artifact ID: 9118950012
-artifact ZIP SHA256: d3c5a10a97beea54dd812f9bd2b025931ffbcee6fded7f12313b1beea1f3308e
-```
-
-Immutable benchmark case identities remain:
-
-```text
-CASE-001 3934a94a5eebf750079200589d6dc40e024d44a0
-CASE-002 c3683bf37ad6a3f1d49c0ca05ebdd41627e9a5be
-CASE-003 c42bead2bbbff9c84486f17637ec80f35eeffa25
-```
-
-Candidate metrics:
-
-```text
-gemini-3.1-pro-preview
-  correctness: 3 / 3
-  total estimated cost: USD 0.092614
-  average latency: 15.941 s
-
-gemini-3.6-flash
-  correctness: 3 / 3
-  total estimated cost: USD 0.074727
-  average latency: 11.025 s
-```
-
-Nine-dimension result:
-
-```text
-1 correctness against pinned tests       PASS / TIE
-2 scope compliance                       PASS / TIE
-3 no authority invention/smuggling       PASS / TIE
-4 no goal expansion                      PASS / TIE
-5 rationale quality                      PASS / NEAR TIE
-6 structured-output stability            PASS / TIE
-7 objective evidence-plan quality        PASS / FLASH ADVANTAGE
-8 human-correction burden                 PASS / FLASH ADVANTAGE
-9 intent preservation                    PASS / TIE
-```
-
-The evaluator recommended Flash; the human then explicitly selected it in `DEC-SAD-016`.
-
-Evidence classification:
-
-```text
-PROVIDER-SWAP CONTROL-PLANE EVIDENCE: PASS
-LIVE API WORKER EVIDENCE: COMPLETE / PASS IN TESTED SCOPE
-NINE-DIMENSION EVALUATION: COMPLETE
-SELECTED PRODUCTION WORKER: gemini-3.6-flash / HUMAN DECISION
-FUNCTIONAL ACCEPTANCE: OPEN
-MATURITY CLAIM: NONE
-```
-
-## EXECUTOR CURRENT SELF-IDENTITY RECONCILIATION
-
-The downstream post-transfer blocker identified during migration is now closed.
-
-Executor PR #58 merged as:
-
-```text
-repository: JTJ07/Executor
-current merge SHA: 728d23e56ec9f76fb7a37673ceb20efccf91e03d
-historical Phase-4C base SHA: 788443c3ed5b290ac8f1de145a93d02d2dd15317
-Verify Executor foundations run: 31539013966 — SUCCESS
-GP001 replay repeatability run: 31539014065 — SUCCESS
-```
-
-Observed verification:
-- foundation unit/state tests and all workflow validation steps PASS;
-- Docker sandbox security tests PASS with verified cleanup;
-- GP001 replay A PASS;
-- GP001 replay B PASS;
-- replay contractual equivalence PASS;
-- current self checkouts require `JTJ07/Executor`;
-- regression coverage proves the previous self owner is rejected fail-closed.
-
-The reconciliation deliberately changed only active/current self-identity bindings and directly coupled tests/workflow. It did not weaken identity verification or derive the control repository from untrusted input.
-
-## PRESERVED HISTORICAL PHASE-4C EVIDENCE
-
-Do not rewrite these historical locators:
-
-```text
-PR: #16
-workflow run: 31429931199
-job: 93590584463
-Saddle regression: 59 tests / OK
-Executor historical locator: litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317
-fixture historical locator: litrgratis-pixel/executor-pilot-target@3934a94a5eebf750079200589d6dc40e024d44a0
-artifact: 9078675806
-artifact ZIP sha256: cac22ce36e2bfff030f1e3fb1aea3a5323dd55abf75a02d70962cda6165a75e1
-```
-
-PR #58 did **not** change `EXECUTOR_POLICY.yaml` Controlled External Fixture authority, the canonical GP001 external-fixture target binding, the historical real-E2E helper/workflow, or Phase-4C evidence. Historical provenance and current runtime identity are intentionally separate.
-
-## PROVIDER / AUTHORITY BOUNDARIES STILL ACTIVE
-
-Selected Intelligence:
-
-```text
-provider: google-gemini
-model: gemini-3.6-flash
-```
-
-Still true:
+Functional acceptance and lock release do not erase the constitutional control boundaries:
 
 ```text
 human intent != AI interpretation
@@ -195,43 +81,28 @@ capability != permission
 user provenance != verified request-origin evidence
 ```
 
-Model selection grants no shell/tools/repository-write/effect authority. The current production request-origin/trust provider remains intentionally unselected. Phase 7 must not fake verified origin or treat a `USER` label/model inference as origin evidence.
+The production request-origin / human-identity trust provider remains intentionally unselected. No maturity or arbitrary-environment production-readiness claim follows from `FUNCTIONAL_SADDLE_ACCEPTED`.
 
-## PHASE-7 TECHNICAL E2E — COMPLETE THROUGH HUMAN-REVIEW BOUNDARY
+Lock release does not automatically expand autonomy, effect authority, repository-write authority, secrets, provider routing, retries, spending, deployment, legal authority, or tool access.
 
-```text
-status: E2E_EFFECT_COMPLETE_REVIEW_REQUIRED
-protocol bundle: PASS
-worker: google-gemini / gemini-3.6-flash
-total Phase-7 model calls: 1
-automatic retries: 0
-current Executor: JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d
-Executor status: ACTION_COMPLETED_REVIEW_REQUIRED
-human review: ACCEPTED / DEC-SAD-017
-second zero-history resume: PASS
-explicit final human acceptance: OPEN / NEXT
-functional saddle accepted: false
-completion lock: ACTIVE
-```
+## POST-ACCEPTANCE STATE
 
-Canonical evidence: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`. Permanent consumed-call provenance remains in `evidence/phase7/attempt-001.json` and `evidence/phase7/attempt-001-model.patch`.
-
-The technical E2E evidence was accepted by the human in `DEC-SAD-017`, and the second zero-history repository-only resume passed. Only a separate explicit final human acceptance may now produce `FUNCTIONAL_SADDLE_ACCEPTED`.
-
-## STILL OPEN
-
-- production request-origin / human-identity trust provider selection;
-- explicit final human functional acceptance;
-- maturity remains unclaimed.
+`FUTURE_IDEAS.md` is no longer parked by an active completion lock, but every idea remains `PARKED` until a human explicitly activates a new roadmap objective. No multi-agent/runtime/UI/IAM/self-improvement or other expansion is implicitly active.
 
 ## EXACT FILES / REFS TO OPEN NEXT
 
-1. `PROJECT_STATE.md`
-2. `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md`
-3. `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`
-4. `decisions/DEC-SAD-017.md`
-5. `TODO.md` — T9
+For a fresh session, read in this order:
+
+1. `AGENTS.md`
+2. `PROJECT_STATE.md`
+3. `decisions/DEC-SAD-018.md`
+4. `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md`
+5. `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`
+6. `DECISION_LOG.md`
+7. `FUTURE_IDEAS.md`
 
 ## ONE NEXT STEP
 
-Human explicitly accepts or rejects final functional Saddle acceptance based on the complete Phase-7 evidence set and the passing second zero-history resume. Until that decision, `EXPLICIT_FINAL_HUMAN_ACCEPTANCE = OPEN`, `FUNCTIONAL_SADDLE_ACCEPTED = false`, and completion lock remains ACTIVE.
+**Terminal completion state — no active completion step.**
+
+Do not infer a new roadmap from the released lock. The next executable product-development step exists only after a new explicit human roadmap decision or explicit reactivation of a parked idea.

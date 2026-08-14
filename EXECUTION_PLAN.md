@@ -1,10 +1,10 @@
 # SADDLE EXECUTION PLAN — COMPLETION PATH
 
-Status: `ACTIVE`
+Status: `COMPLETE / FUNCTIONAL_SADDLE_ACCEPTED / COMPLETION LOCK RELEASED`
 
 Rule: phases are evidence gates. Do not implement later capability merely to avoid proving an earlier boundary.
 
-`DEC-SAD-009` froze the responsibility/protocol/eval foundations. `DEC-SAD-010` selected and proved the bounded ScriptOps Phase-6 mechanism. `DEC-SAD-012/013` separated and accepted Phase 4A cognitive calibration. `DEC-SAD-014` changes only the proof order: prove provider-independent product/system integration in Phase 4C before measuring an external AI worker in Phase 4B.
+`DEC-SAD-009` froze the responsibility/protocol/eval foundations. `DEC-SAD-010` selected and proved the bounded ScriptOps Phase-6 mechanism. `DEC-SAD-012/013` separated and accepted Phase 4A cognitive calibration. `DEC-SAD-014` changed the proof order so provider-independent product/system integration was proved in Phase 4C before measuring an external AI worker in Phase 4B. `DEC-SAD-017` accepted Phase-7 technical evidence. `DEC-SAD-018` is the separate final human functional acceptance and completion-lock release.
 
 ## PHASE 0 — DURABLE MEMORY BOOTSTRAP
 Status: `ACCEPTED`
@@ -143,21 +143,20 @@ Exact evidence:
 - PR #16;
 - workflow run `31429931199`, job `93590584463` SUCCESS;
 - 59 Saddle tests OK;
-- real Executor `788443c3ed5b290ac8f1de145a93d02d2dd15317`;
+- real historical Executor `litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317`;
 - exact CASE-001 fixture `3934a94a5eebf750079200589d6dc40e024d44a0`;
 - artifact `9078675806`, ZIP SHA256 `cac22ce36e2bfff030f1e3fb1aea3a5323dd55abf75a02d70962cda6165a75e1`;
 - `evidence/PHASE4C_SYNTHETIC_INTEGRATION_2026-08-10.md`.
 
-Evidence boundary:
+Evidence boundary for that historical checkpoint:
 
 ```text
 SYNTHETIC_INTEGRATION_EVIDENCE != API_WORKER_EVIDENCE
 SYNTHETIC_INTEGRATION_EVIDENCE != MODEL_PERFORMANCE_EVIDENCE
 MATURITY CLAIM: NONE
-FUNCTIONAL_SADDLE_ACCEPTED: NO
 ```
 
-Current ScriptOps v2 is scene-domain specific; GP001 is code-domain specific. Do not add a ScriptOps code-mutation capability or artificial second execution layer to make one diagram look uniform. ScriptOps remains separately proven Phase-6 controlled-workflow evidence.
+Current ScriptOps v2 is scene-domain specific; GP001 is code-domain specific. Do not add a ScriptOps code-mutation capability or artificial second execution layer merely to make one diagram look uniform. ScriptOps remains separately proven Phase-6 controlled-workflow evidence.
 
 ### PHASE 4B — CONTROLLED REPRODUCIBLE API WORKER EVIDENCE
 Status: `COMPLETE / 6 OF 6 PASS IN TESTED SCOPE / HUMAN MODEL SELECTED`
@@ -170,7 +169,7 @@ Canonical runner:
 - PR #15 merge `3547d42266c8711df35d7694b2839a5be3a11200`;
 - immutable CASE-001–003 inputs;
 - strict proposal-only WorkerProposal;
-- narrow Responses API adapter;
+- narrow provider adapter;
 - deterministic target/hash/diff validation;
 - no target-repo push;
 - proposal applied only in ephemeral checkout for tests.
@@ -187,8 +186,6 @@ autonomous execution = NO
 authority expansion = NO
 tool access expansion = NO
 ```
-
-The benchmark workflow is manual `workflow_dispatch`. Opening unrelated PRs must not start it.
 
 Nine-dimensional evaluation contract:
 1. proposal correctness against pinned tests;
@@ -213,9 +210,7 @@ EVALUATION
 HUMAN DECISION
 ```
 
-No automatic model selection, autonomy increase or capability expansion.
-
-Forbidden: dynamic routing, multi-agent worker, unrestricted shell/write/network, generalized provider framework, credentials in prompt/repo/evidence, web calibration or synthetic proof promoted into worker evidence.
+No automatic model selection, autonomy increase or capability expansion followed.
 
 ---
 
@@ -232,7 +227,7 @@ raw human intent
 → ALLOW / BLOCK
 ```
 
-Evidence includes `VerifiedIntentBinding`, independent `raw_intent_hash`, exact separate authority, freshness/replay controls, negative fail-closed cases and 15/15 tests PASS. Trust provider remains intentionally unselected.
+Evidence includes `VerifiedIntentBinding`, independent `raw_intent_hash`, exact separate authority, freshness/replay controls, negative fail-closed cases and 15/15 tests PASS. Production trust-provider selection remains intentionally open.
 
 ---
 
@@ -263,14 +258,14 @@ task
 → smoke evidence
 ```
 
-ScriptOps PR #7 merge `daa6e5dc210e09171a530eeffe5601e0e74ae041`; verifier + Phase-6 smoke succeeded. This is controlled-workflow evidence, not ScriptOps maturity or functional Saddle acceptance.
+ScriptOps PR #7 merge `daa6e5dc210e09171a530eeffe5601e0e74ae041`; verifier + Phase-6 smoke succeeded. This is controlled-workflow evidence, not ScriptOps maturity.
 
 ---
 
 ## PHASE 7 — FUNCTIONAL SADDLE ACCEPTANCE
-Status: `TECHNICAL E2E EVIDENCE ACCEPTED / SECOND ZERO-HISTORY RESUME PASS / FINAL HUMAN ACCEPTANCE OPEN`
+Status: `ACCEPTED / FUNCTIONAL_SADDLE_ACCEPTED / DEC-SAD-018`
 
-Observed technical chain:
+Accepted chain:
 
 ```text
 human intent
@@ -284,17 +279,23 @@ human intent
 → durable StateDelta
 → human review — ACCEPTED / DEC-SAD-017
 → second zero-history resume — PASS
-→ explicit final human acceptance — OPEN / NEXT
+→ explicit final human acceptance — ACCEPTED / DEC-SAD-018
+→ FUNCTIONAL_SADDLE_ACCEPTED
 ```
 
-Evidence: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md` and `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md`.
+Evidence: `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`, `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md`, `decisions/DEC-SAD-017.md`, and `decisions/DEC-SAD-018.md`.
 
-Technical status is `E2E_EFFECT_COMPLETE_REVIEW_REQUIRED`. The provider-independent Protocol v0.1 bundle passed, the single consumed real-worker proposal crossed exact authority, and the current Executor returned `ACTION_COMPLETED_REVIEW_REQUIRED`. No additional model call or repeated Executor effect is required.
+The provider-independent Protocol v0.1 bundle passed, the single consumed real-worker proposal crossed exact authority, and current Executor `JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d` returned `ACTION_COMPLETED_REVIEW_REQUIRED`. The technical evidence was then accepted by the human, the repository-only second resume passed without repeating the model call or effect, and the human separately issued final functional acceptance.
 
-The human accepted the technical evidence in `DEC-SAD-017`, and the second zero-history repository-only resume passed without repeating the Gemini call or Executor effect. The current and final Phase-7 gate is a separate explicit human acceptance decision. Until then, `FUNCTIONAL_SADDLE_ACCEPTED = false` and completion lock remains ACTIVE.
+No additional model call or repeated Executor effect was required.
 
 ---
 
 ## PHASE 8 — RELEASE COMPLETION LOCK
+Status: `COMPLETE / RELEASED / DEC-SAD-018`
 
-Does not start automatically. Human explicitly decides what to broaden only after Phase 7 acceptance. Until then `FUTURE_IDEAS.md` remains parking only.
+The completion lock release condition is satisfied by the Phase-7 evidence chain plus the explicit final human decision. `config/completion-lock.json` records `RELEASED`.
+
+No completion gate remains active. Lock release does not activate any future idea or broaden capability, autonomy, authority, secrets, spending, deployment, provider routing, trust semantics, or tool access.
+
+Any post-acceptance roadmap is a separate human-owned decision.

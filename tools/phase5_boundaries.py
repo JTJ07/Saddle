@@ -9,9 +9,11 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import os
 import re
 from datetime import datetime, timezone
-from typing import Any
+from pathlib import Path
+from typing import Any, Protocol
 
 HASH_RE = re.compile(r"^sha256:[0-9a-f]{64}$")
 INTENT_ID_RE = re.compile(r"^intent:sha256:[0-9a-f]{64}$")
@@ -23,6 +25,56 @@ TS_RE = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$")
 
 class BoundaryError(ValueError):
     pass
+
+
+class AuthorityConsumptionStore(Protocol):
+    """Minimal replay-store contract used by the authority gate."""
+
+    def __contains__(self, authority_id: object) -> bool: ...
+
+    def add(self, authority_id: str) -> None: ...
+
+
+class FileAuthorityConsumptionStore:
+    """Durable one-file-per-authority replay ledger.
+
+    ``add`` uses O_EXCL, so two processes racing to consume the same authority
+    cannot both succeed. The caller should keep this directory on storage whose
+    durability matches the effect boundary it protects.
+    """
+
+    def __init__(self, root: Path) -> None:
+        self.root = Path(root)
+        self.root.mkdir(parents=True, exist_ok=True)
+
+    @staticmethod
+    def _name(authority_id: str) -> str:
+        if AUTHORITY_ID_RE.fullmatch(authority_id) is None:
+            raise BoundaryError("authority_id: invalid for consumption store")
+        return authority_id.split(":", 2)[-1]
+
+    def _path(self, authority_id: str) -> Path:
+        return self.root / self._name(authority_id)
+
+    def __contains__(self, authority_id: object) -> bool:
+        return isinstance(authority_id, str) and AUTHORITY_ID_RE.fullmatch(authority_id) is not None and self._path(authority_id).is_file()
+
+    def add(self, authority_id: str) -> None:
+        path = self._path(authority_id)
+        try:
+            fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+        except FileExistsError as exc:
+            raise BoundaryError("effect authority already consumed") from exc
+        try:
+            with os.fdopen(fd, "w", encoding="utf-8") as handle:
+                handle.write(authority_id + "\n")
+                handle.flush()
+                os.fsync(handle.fileno())
+        except Exception:
+            try:
+                path.unlink(missing_ok=True)
+            finally:
+                raise
 
 
 def canonical_bytes(value: Any) -> bytes:
@@ -233,9 +285,14 @@ def authorize_effect(
     authority: dict[str, Any] | None,
     *,
     now: datetime,
-    consumed_authority_ids: set[str] | None = None,
+    consumed_authority_ids: AuthorityConsumptionStore | None = None,
 ) -> dict[str, Any]:
-    """Fail closed. Semantic similarity between intent and proposal never creates permission."""
+    """Fail closed. Semantic similarity between intent and proposal never creates permission.
+
+    A valid ALLOW authority is also fail-closed unless a consumption store is
+    supplied. This makes the schema's ``max_uses = 1`` an enforced property
+    rather than an optional caller convention.
+    """
     reasons = verify_intent_integrity(intent, binding, now=now)
     if proposal.get("schema_version") != "saddle-effect-proposal/0.1":
         reasons.append("UNSUPPORTED_EFFECT_PROPOSAL")
@@ -268,12 +325,17 @@ def authorize_effect(
     target = proposal.get("target") if isinstance(proposal.get("target"), dict) else {}
     if authority["authorized_target"] != {"kind": target.get("kind"), "ref": target.get("ref")}:
         reasons.append("AUTHORITY_TARGET_MISMATCH")
-    if consumed_authority_ids is not None and authority["authority_id"] in consumed_authority_ids:
+    if authority["decision"] == "ALLOW" and consumed_authority_ids is None:
+        reasons.append("EFFECT_AUTHORITY_CONSUMPTION_TRACKING_REQUIRED")
+    elif consumed_authority_ids is not None and authority["authority_id"] in consumed_authority_ids:
         reasons.append("EFFECT_AUTHORITY_REPLAYED")
     if reasons:
         return {"status": "BLOCK", "reasons": sorted(set(reasons))}
-    if consumed_authority_ids is not None:
+    assert consumed_authority_ids is not None
+    try:
         consumed_authority_ids.add(authority["authority_id"])
+    except BoundaryError as exc:
+        return {"status": "BLOCK", "reasons": [f"EFFECT_AUTHORITY_REPLAYED:{exc}"]}
     return {
         "status": "ALLOW",
         "reasons": ["EXACT_EFFECT_AUTHORITY_MATCH"],

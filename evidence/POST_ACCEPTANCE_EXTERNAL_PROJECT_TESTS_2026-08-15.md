@@ -273,3 +273,109 @@ REPEAT ON SEVERAL PROJECTS
 THEN COMPARE PATTERNS
 THEN HUMAN DECIDES WHETHER SADDLE CHANGES
 ```
+
+---
+
+## TEST 4 — autonomous completion attempt on Executor
+
+Date observed: 2026-08-15
+Target project: `JTJ07/Executor`
+Execution mode: autonomous project-finisher agent using Saddle as a read-only guiding layer
+Human-intervention rule: no intermediate human decisions; stop only for an objectively unavailable external action/access boundary
+Evidence status: `USER-SUPPLIED AGENT REPORT / NOT YET INDEPENDENTLY VERIFIED AGAINST A DURABLE TARGET-REPO DIFF`
+
+### Agent-reported behavior
+
+The agent reported that Saddle led it to preserve Executor as a narrow, fail-closed effect executor rather than reinterpret it as the owner of user intent or expand its permissions.
+
+It then independently mapped the current Executor state and reported completing a local change set without asking the human for intermediate product decisions.
+
+Reported decisions/changes:
+
+- preserve Executor's existing narrow product purpose;
+- preserve exact human-request text by removing a `.strip()`-style normalization at the relevant request boundary;
+- add intent-integrity tests;
+- switch seven historical workflows to manual triggering to remove permanently false-red CI behavior;
+- reconcile README/build-order/inventory documentation with the reported actual implementation state;
+- characterize the current path as: GP001 operational, request-to-contract progressing until the fail-closed verified-human-authorization boundary;
+- prepare three logical commits and a complete patch;
+- leave Saddle itself unchanged.
+
+### Agent-reported verification
+
+The agent reported:
+
+```text
+changed-area tests: 18 / 18 PASS
+compileall: PASS
+project validation: VALID
+secret/diff review: clean
+full suite: 241 PASS
+Docker-dependent tests: 10 skipped
+historical-SHA-dependent tests: 3 not executable in reconstructed copy without Git history
+Docker locally unavailable
+```
+
+These are recorded as agent-reported observations, not yet independent evidence from a durable target-repository branch/CI run.
+
+### Completion boundary encountered
+
+The agent did **not** persist the prepared work to GitHub.
+
+Reported reason:
+
+- the GitHub application required a separate approval for the write operation;
+- the approval expired after approximately eight minutes;
+- no target branch or pull request was created;
+- two attempts to export the prepared patch reportedly failed with infrastructure error `504`.
+
+The agent therefore classified the remaining step as external: repeat/continue the task, approve the next GitHub authorization prompt, then write the already prepared commits and open the PR.
+
+### Observations
+
+`OBSERVATION — AUTONOMOUS DECISION FLOW`: within the local execution window, the agent reports making multiple technical and scope decisions without asking the human for intermediate approval. This is directly relevant to evaluating Saddle's ability to preserve direction while delegating route selection to AI.
+
+`OBSERVATION — SADDLE/TARGET SEPARATION`: unlike TEST 0, the agent explicitly kept Saddle read-only and treated Executor as the target. The strengthened target-role instructions appear to have prevented the earlier target-confusion failure in this run.
+
+`OBSERVATION — EXTERNAL AUTHORITY IS NOT THE SAME AS PRODUCT DECISION`: the run stopped because the platform required a GitHub write approval, not because the agent requested a semantic/product choice from the human. This distinction matters when measuring autonomy.
+
+`OBSERVATION — LOCAL COMPLETION != DURABLE COMPLETION`: an agent can report a complete, verified local result while the project repository remains unchanged. Saddle evaluation must distinguish:
+
+```text
+COGNITIVE / LOCAL COMPLETION
+!=
+DURABLE EFFECT COMPLETION
+```
+
+For an autonomous project-finisher test, success should eventually require the intended durable artifact/branch/PR to exist, unless the external platform itself makes that impossible.
+
+### Warnings / questions for later audit
+
+`W-EXT-005 AUTONOMY VS PLATFORM APPROVAL`: external connectors may impose human approval boundaries unrelated to Saddle's own decision model. Future tests should record these separately rather than counting every approval prompt as a failure of AI decisiveness.
+
+`W-EXT-006 BROAD MAINTENANCE DECISIONS`: switching seven historical workflows to manual triggering is a potentially consequential repository-governance choice. The current report does not independently establish that this was the best decision. It is valuable evidence of agent decisiveness, but decision quality must be audited separately from willingness to decide.
+
+`W-EXT-007 UNVERIFIED LOCAL CLAIMS`: because the target branch/PR was not created, the reported patch, three commits, and test results are not durable evidence. Do not treat them as accepted Executor facts until reproduced or persisted and independently checked.
+
+### Provisional test result
+
+```text
+TARGET IDENTIFICATION                    PASS
+SADDLE REMAINED READ-ONLY                PASS (agent-reported)
+INTERMEDIATE HUMAN PRODUCT DECISIONS     0 reported
+AUTONOMOUS TECHNICAL DECISION-MAKING     OBSERVED
+LOCAL COMPLETION                         REPORTED PASS
+DURABLE GITHUB COMPLETION                BLOCKED
+BLOCKER TYPE                              EXTERNAL AUTHORIZATION / INFRASTRUCTURE
+DECISION QUALITY                         NOT YET AUDITED
+TARGET-REPO EVIDENCE                     NOT YET DURABLE
+```
+
+This run should therefore **not** be classified simply as either PASS or FAIL. It is evidence that autonomous decision-making proceeded substantially further than the earlier tests, while also exposing that the real end-to-end autonomy boundary includes external effect authorization and durable write completion.
+
+### New hypotheses to repeat on additional projects
+
+- `H-EXT-007`: with target/control roles made explicit, Saddle can support autonomous technical decision-making without repeatedly escalating ordinary implementation choices to the human.
+- `H-EXT-008`: the dominant autonomy blocker may shift from AI indecision to external effect-authorization infrastructure.
+- `H-EXT-009`: decision quality and decision autonomy must be scored separately; a decisive agent can still make a poor architectural/governance choice.
+- `H-EXT-010`: a meaningful "project finished by Saddle" claim requires both correct directional decisions and durable effect completion, not merely a locally prepared patch.

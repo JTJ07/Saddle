@@ -1,7 +1,7 @@
 ---
 project: Saddle
 status: PHASE_6_ACCEPTED / PHASE_7_ACCEPTED / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_TECHNICAL_EVIDENCE_ACCEPTED / SECOND_ZERO_HISTORY_RESUME_PASS / FINAL_HUMAN_ACCEPTANCE_ACCEPTED / FUNCTIONAL_SADDLE_ACCEPTED / COMPLETION_LOCK_RELEASED
-updated_at: 2026-08-14
+updated_at: 2026-08-15
 ---
 
 # SESSION HANDOFF
@@ -89,6 +89,10 @@ Lock release does not automatically expand autonomy, effect authority, repositor
 
 `FUTURE_IDEAS.md` is no longer parked by an active completion lock, but every idea remains `PARKED` until a human explicitly activates a new roadmap objective. No multi-agent/runtime/UI/IAM/self-improvement or other expansion is implicitly active.
 
+New post-acceptance external-project evidence is recorded in `evidence/POST_ACCEPTANCE_EXTERNAL_PROJECT_TESTS_2026-08-15.md`. It contains the first BEZIMIENNI comparative runs: target-confusion observation, WITH-SADDLE vs WITHOUT-SADDLE work, the unavailable mid-run handoff test, and the replacement zero-history/model-swap continuation test. Its status is `OBSERVATIONAL_EVIDENCE / DO_NOT_ACTIVATE_ROADMAP`.
+
+The human instruction for this evidence is to accumulate comparable observations across several materially different projects before using the pattern set as a basis for Saddle changes or improvements. One external project must not be generalized into a new product architecture.
+
 ## EXACT FILES / REFS TO OPEN NEXT
 
 For a fresh session, read in this order:
@@ -99,7 +103,8 @@ For a fresh session, read in this order:
 4. `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md`
 5. `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`
 6. `DECISION_LOG.md`
-7. `FUTURE_IDEAS.md`
+7. `evidence/POST_ACCEPTANCE_EXTERNAL_PROJECT_TESTS_2026-08-15.md`
+8. `FUTURE_IDEAS.md`
 
 ## ONE NEXT STEP
 

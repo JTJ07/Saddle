@@ -8,9 +8,9 @@ Purpose: keep current external source observations separate from historical evid
 
 | Source | Observed current main | Current role |
 |---|---|---|
-| `JTJ07/COS` | `23152cb1bf5443574da9ff44600a5a8c8c136025` | durable high-level/cross-project state, continuity and provenance |
-| `JTJ07/creative-os-project-reconstructor` | `defc7b029097284f94136fec54b75c313ac12f68` | project/context reconstruction |
-| `JTJ07/scriptops` | `daa6e5dc210e09171a530eeffe5601e0e74ae041` | Phase-6 controlled workflow mechanism proof / local canon-control substrate |
+| `JTJ07/COS` | `a9982d9f0ae73d8a09c3af8ce0825890784fa2ad` | durable high-level/cross-project state, continuity and provenance |
+| `JTJ07/creative-os-project-reconstructor` | `eb21b04e7d04caf777d66721f86ae9e83aab1dd4` | project/context reconstruction; Real-Value Run 001 integrated observed evidence |
+| `JTJ07/scriptops` | `5af0cd8ac65e72ae534827c677fe4bd12b23e4ca` | Phase-6 controlled workflow mechanism proof / local canon-control substrate; post-Saddle current state reconciled |
 | `JTJ07/Executor` | `d115578cf05ed7edf55c50a2b5d29af16d13fb4d` | Human-accepted and integrated governed effect engine |
 | `JTJ07/executor-pilot-target` | `6c18230d2e1223a8145885b19c5073ec1ce20662` | deterministic technical benchmark repository |
 
@@ -73,7 +73,7 @@ POST_ACCEPTANCE_EVALUATION = OBSERVATIONAL
 
 ### COS
 
-COS has Human-accepted ownership/state/continuity closure. It preserves cross-project state and provenance; local component truth remains local. COS does not own operational HOW/cognitive routing.
+COS has Human-accepted ownership/state/continuity closure. Its current `main@a9982d9f0ae73d8a09c3af8ce0825890784fa2ad` also reconciles the later ScriptOps and Reconstructor Run-001 cross-project pointers. COS preserves cross-project state and provenance; local component truth remains local. COS does not own operational HOW/cognitive routing.
 
 ### ScriptOps
 
@@ -82,10 +82,23 @@ Current local status at the observed main:
 ```text
 PHASE 6 CONTROLLED WORKFLOW MECHANISM PASS
 NO MATURITY CLAIM
-SADDLE LIVE MODEL EVIDENCE NEXT
+POST-SADDLE STATE RECONCILED
+NO CURRENT LOCAL PRODUCT BLOCKER
 ```
 
-This is a local ScriptOps state, not a new Saddle product claim.
+The historical `SADDLE LIVE MODEL EVIDENCE NEXT` gate is not current. This is a local ScriptOps state, not a new Saddle product claim.
+
+### Project Reconstructor
+
+Current local `main@eb21b04e7d04caf777d66721f86ae9e83aab1dd4` includes Real-Value Run 001 as observed evidence:
+
+```text
+REAL_VALUE_OBSERVED: YES
+TARGET_CURRENT_STATE_CONTRADICTIONS_FOUND: 4
+PROMPT_CHANGE_TRIGGERED: NO
+```
+
+That run is completed evidence, not the next pending P3 action and not a new product capability.
 
 ### Executor
 

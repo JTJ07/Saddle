@@ -119,7 +119,7 @@ The Executor self identity used by the accepted Phase-7 evidence chain was:
 JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d
 ```
 
-It remains historical acceptance provenance, not current live Executor main.
+It remains historical acceptance provenance, not a later source observation.
 
 Primary terminal evidence:
 
@@ -128,19 +128,19 @@ Primary terminal evidence:
 - `decisions/DEC-SAD-017.md`;
 - `decisions/DEC-SAD-018.md`.
 
-## 5. Current external source observations
+## 5. Last observed external source snapshot
 
-Current live observations are maintained in `SOURCE_REGISTRY.md` and `config/source-repos.json`.
+Last-observed continuity snapshots are maintained in `SOURCE_REGISTRY.md` and `config/source-repos.json`.
 
 ```text
 COS:           JTJ07/COS@a9982d9f0ae73d8a09c3af8ce0825890784fa2ad
 Reconstructor: JTJ07/creative-os-project-reconstructor@eb21b04e7d04caf777d66721f86ae9e83aab1dd4
 ScriptOps:     JTJ07/scriptops@5af0cd8ac65e72ae534827c677fe4bd12b23e4ca
-Executor:      JTJ07/Executor@d115578cf05ed7edf55c50a2b5d29af16d13fb4d
+Executor:      JTJ07/Executor@111e9e5d4fca66412e287852abdec6db5a1225ab
 pilot target:  JTJ07/executor-pilot-target@6c18230d2e1223a8145885b19c5073ec1ce20662
 ```
 
-These are continuity pointers only. Detailed/local truth remains with each semantic owner.
+These are continuity observations, not live locks. Detailed/local truth remains with each semantic owner, and live state must be re-resolved before consequential use.
 
 ## 6. Post-acceptance evaluation — separate axis
 
@@ -181,11 +181,11 @@ FALSE SUCCESS PATHS IN FINAL ADVERSARIAL EVIDENCE CHAIN: 0
 verified integration merge:
   d3ebe93e9b9d6ec29ff859e931939c89b57ed468
 
-current live Executor main after later closure:
-  d115578cf05ed7edf55c50a2b5d29af16d13fb4d
+last observed Executor main after final completion-authority reconciliation:
+  111e9e5d4fca66412e287852abdec6db5a1225ab
 ```
 
-Reconstructor durable facts at current local main establish:
+Reconstructor durable facts at the observed local main establish:
 
 ```text
 REAL_VALUE_OBSERVED: YES
@@ -227,6 +227,8 @@ Historical PR #2–#6 are closed unmerged as superseded candidates; their valuab
 
 Post-acceptance durable-state reconciliation was Human-accepted and merged as PR #33 at `059b218c1a8357d7c73c25c5b5089937205cbd9b`. P1 is therefore closed; this record must not present it as an open gate.
 
+Current-state reconciliation from the recovery audit was Human-accepted and merged as PR #35 at `3f7588c7f42de6330f49d4a36b0ee318ee213852`. P0 pointer drift is therefore closed; external SHA fields are last-observed snapshots and must not be treated as perpetual live locks.
+
 ## 9. One next step
 
 There is **no active Saddle product-development step**.
@@ -235,8 +237,9 @@ Current bounded work states are:
 
 ```text
 P0 SECURITY / CURRENT-STATE CORRECTNESS:
-  prior EffectAuthority hardening COMPLETE / Human accepted / PR #29 merged
-  current cross-project pointer reconciliation ACTIVE on a bounded maintenance branch
+  EffectAuthority hardening COMPLETE / Human accepted / PR #29 merged
+  cross-project pointer reconciliation COMPLETE / Human accepted / PR #35 merged
+  source SHA fields are last-observed snapshots, not live locks
 
 P1 DURABLE-STATE RECONCILIATION:
   COMPLETE / Human accepted / PR #33 merged
@@ -265,8 +268,8 @@ For cold start:
 1. read `AGENTS.md`;
 2. read this `PROJECT_STATE.md`;
 3. read `SESSION_HANDOFF.md`;
-4. use `SOURCE_REGISTRY.md` / `config/source-repos.json` for current external observations;
+4. use `SOURCE_REGISTRY.md` / `config/source-repos.json` for last-observed external snapshots, then re-resolve live state from the local owner before consequential use;
 5. use decisions/evidence for historical accepted identities;
 6. do not infer current state from an old PR, old SHA, historical capsule or AI memory.
 
-A current observation may supersede a stale pointer without rewriting the historical evidence for the checkpoint where that pointer was correct.
+A newer observation may supersede a stale pointer without rewriting the historical evidence for the checkpoint where that pointer was correct.

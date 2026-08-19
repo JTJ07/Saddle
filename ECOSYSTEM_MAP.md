@@ -42,7 +42,7 @@ The ecosystem is an **ownership network with handoffs**, not a master command-co
 
 | Component/project | Current observed main | Current meaning for Saddle |
 |---|---|---|
-| `JTJ07/Saddle` | `2a9aacdc0eca45f2906134a43d2eba3e8a0a7c01` at reconciliation base | functional product accepted; completion lock released; post-acceptance evaluation only |
+| `JTJ07/Saddle` | `fbebdeded66bd0de3206ff301b934038e9ab6151` | functional product accepted; completion lock released; PR #29 single-use EffectAuthority hardening Human-accepted and integrated; post-acceptance evaluation only |
 | `JTJ07/COS` | `23152cb1bf5443574da9ff44600a5a8c8c136025` | Human-accepted ownership/state/continuity closure; current cross-project continuity layer |
 | `JTJ07/Executor` | `d115578cf05ed7edf55c50a2b5d29af16d13fb4d` | Executor 1.0 Human-accepted and integrated; current governed effect engine |
 | `JTJ07/scriptops` | `daa6e5dc210e09171a530eeffe5601e0e74ae041` | controlled workflow mechanism PASS; no maturity claim |
@@ -58,6 +58,7 @@ FUNCTIONAL_SADDLE_ACCEPTED = true
 COMPLETION_LOCK = RELEASED
 ACTIVE COMPLETION GATE = NONE
 ACTIVE PRODUCT ROADMAP = NONE
+SECURITY HARDENING PR #29 = HUMAN ACCEPTED / MERGED
 PRODUCTION REQUEST-ORIGIN / HUMAN-IDENTITY TRUST PROVIDER = OPEN
 MATURITY CLAIM = NONE
 ```
@@ -122,10 +123,10 @@ This is status information, not a product roadmap.
 
 ```text
 P0 — Saddle PR #29 durable EffectAuthority single-use/replay hardening
-     technically verified candidate; Human decision pending
+     COMPLETE / Human accepted / merged at fbebdeded66bd0de3206ff301b934038e9ab6151
 
 P1 — post-acceptance durable-state reconciliation
-     this reconciliation work
+     this reconciliation work; refresh + reverify against post-P0 main
 
 P2 — memory/repo recovery evidence from design sessions
      preserve with authority labels; no memory-to-canon promotion

@@ -133,9 +133,9 @@ Primary terminal evidence:
 Current live observations are maintained in `SOURCE_REGISTRY.md` and `config/source-repos.json`.
 
 ```text
-COS:           JTJ07/COS@23152cb1bf5443574da9ff44600a5a8c8c136025
-Reconstructor: JTJ07/creative-os-project-reconstructor@defc7b029097284f94136fec54b75c313ac12f68
-ScriptOps:     JTJ07/scriptops@daa6e5dc210e09171a530eeffe5601e0e74ae041
+COS:           JTJ07/COS@a9982d9f0ae73d8a09c3af8ce0825890784fa2ad
+Reconstructor: JTJ07/creative-os-project-reconstructor@eb21b04e7d04caf777d66721f86ae9e83aab1dd4
+ScriptOps:     JTJ07/scriptops@5af0cd8ac65e72ae534827c677fe4bd12b23e4ca
 Executor:      JTJ07/Executor@d115578cf05ed7edf55c50a2b5d29af16d13fb4d
 pilot target:  JTJ07/executor-pilot-target@6c18230d2e1223a8145885b19c5073ec1ce20662
 ```
@@ -150,6 +150,7 @@ POST_ACCEPTANCE_EVALUATION: ACTIVE / OBSERVATIONAL
 METHOD: docs/PROJECT_COMPLETION_AUTONOMY_TEST_PROTOCOL.md
 FIRST TARGET: JTJ07/Executor
 FIRST TARGET RESULT: COMPLETE / PROJECT COMPLETION PASS
+RECONSTRUCTOR REAL-VALUE RUN 001: COMPLETE / OBSERVED EVIDENCE INTEGRATED
 ROADMAP CONSEQUENCE: NONE
 MULTI-PROJECT REPETITION: REQUIRED BEFORE GENERALIZATION
 ```
@@ -184,7 +185,16 @@ current live Executor main after later closure:
   d115578cf05ed7edf55c50a2b5d29af16d13fb4d
 ```
 
-One target result is evidence, not authorization to redesign Saddle or promote observations into product requirements.
+Reconstructor durable facts at current local main establish:
+
+```text
+REAL_VALUE_OBSERVED: YES
+TARGET_CURRENT_STATE_CONTRADICTIONS_FOUND: 4
+PROMPT_CHANGE_TRIGGERED: NO
+main: eb21b04e7d04caf777d66721f86ae9e83aab1dd4
+```
+
+One target result or one real-value run is evidence, not authorization to redesign Saddle or promote observations into product requirements.
 
 ## 7. Security maintenance — integrated on current main
 
@@ -224,8 +234,9 @@ There is **no active Saddle product-development step**.
 Current bounded work states are:
 
 ```text
-P0 SECURITY MAINTENANCE:
-  COMPLETE / Human accepted / PR #29 merged
+P0 SECURITY / CURRENT-STATE CORRECTNESS:
+  prior EffectAuthority hardening COMPLETE / Human accepted / PR #29 merged
+  current cross-project pointer reconciliation ACTIVE on a bounded maintenance branch
 
 P1 DURABLE-STATE RECONCILIATION:
   COMPLETE / Human accepted / PR #33 merged
@@ -237,15 +248,15 @@ P2 MEMORY/REPO RECOVERY:
 
 P3 MATERIAL-DIFFERENT EVALUATION:
   ACTIVE WORKING EVALUATION
-  next: Project Reconstructor real-value evidence
-  then: distinct ScriptOps workload
-  later: whole-ecosystem adversarial integration
+  Reconstructor Real-Value Run 001: COMPLETE / integrated observed evidence
+  next non-waiting evaluation item: distinct bounded ScriptOps workload using the existing Phase-6 mechanism
+  later hypothesis: whole-ecosystem adversarial integration
 
 P4 NEW CAPABILITY:
   none without measured blocker + explicit Human product decision
 ```
 
-P2 is an evidence inbox, not a reason to idle. While it is waiting, the highest non-waiting operational item is the Project Reconstructor real-value run. The P1–P3 ordering is operational/evaluation work state, not a new Saddle product roadmap and not a transfer of HOW selection into Saddle.
+P2 is an evidence inbox, not a reason to idle. The Reconstructor-first item is complete; the next non-waiting evaluation item is the distinct bounded ScriptOps workload unless P0/P1 evidence preempts it. The P1–P3 ordering is operational/evaluation work state, not a new Saddle product roadmap and not a transfer of HOW selection into Saddle.
 
 ## 10. Current truth rule
 

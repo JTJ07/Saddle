@@ -1,118 +1,156 @@
 ---
 project: Saddle
 status: PHASE_6_ACCEPTED / PHASE_7_ACCEPTED / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_TECHNICAL_EVIDENCE_ACCEPTED / SECOND_ZERO_HISTORY_RESUME_PASS / FINAL_HUMAN_ACCEPTANCE_ACCEPTED / FUNCTIONAL_SADDLE_ACCEPTED / COMPLETION_LOCK_RELEASED
-updated_at: 2026-08-15
+updated_at: 2026-08-19
 ---
 
 # SESSION HANDOFF
 
 ## STATUS
 
-Saddle's defined completion path is terminally accepted.
+Saddle's defined product-completion path remains terminally Human-accepted. Post-acceptance evaluation is a separate lane and does not reopen Phase 7 or activate a new product roadmap.
 
 ```text
-PHASE 4A — ACCEPTED / cognitive calibration
-PHASE 4C — ACCEPTED / synthetic integration proof
-PHASE 4B — COMPLETE / 6 of 6 live worker evidence PASS in tested scope
-SELECTED WORKER — google-gemini / gemini-3.6-flash / DEC-SAD-016
-CURRENT EXECUTOR — JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d
-PHASE 7 TECHNICAL E2E — COMPLETE
-HUMAN TECHNICAL REVIEW — ACCEPTED / DEC-SAD-017
-SECOND ZERO-HISTORY RESUME — PASS
-FINAL HUMAN ACCEPTANCE — ACCEPTED / DEC-SAD-018
 FUNCTIONAL_SADDLE_ACCEPTED — true
+FINAL HUMAN ACCEPTANCE — ACCEPTED / DEC-SAD-018
 COMPLETION_LOCK — RELEASED
-ACTIVE COMPLETION GATE — NONE
+ACTIVE PRODUCT COMPLETION GATE — NONE
+ACTIVE PRODUCT ROADMAP — NONE
+POST-ACCEPTANCE EVALUATION — ACTIVE / OBSERVATIONAL
+FIRST WHOLE-PROJECT TARGET — JTJ07/Executor / COMPLETE / PASS
+CURRENT LIVE EXECUTOR — JTJ07/Executor@d115578cf05ed7edf55c50a2b5d29af16d13fb4d
+GENERALIZATION FROM ONE PROJECT — NOT AUTHORIZED
 ```
 
-The final human statement recorded by `DEC-SAD-018` is:
+The final Human functional-acceptance statement remains the decision recorded by `DEC-SAD-018`:
 
 ```text
 Finalnie akceptuję Saddle jako FUNCTIONAL_SADDLE_ACCEPTED i zezwalam na zwolnienie completion lock.
 ```
 
-## ACCEPTANCE BASIS
+## ACCEPTED PRODUCT BASIS
 
-Primary durable evidence:
+Primary durable product evidence remains:
 
 - `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`;
 - `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md`;
 - `decisions/DEC-SAD-017.md`;
 - `decisions/DEC-SAD-018.md`.
 
-Observed Phase-7 facts retained from the accepted evidence:
+Historical Phase-7 Executor identity is preserved as historical evidence. It must not be relabeled as current live main.
+
+## POST-ACCEPTANCE EVALUATION
+
+Current method:
+
+`docs/PROJECT_COMPLETION_AUTONOMY_TEST_PROTOCOL.md`
+
+The old path `evidence/PROJECT_COMPLETION_AUTONOMY_TEST_PROTOCOL_2026-08-15.md` is retained only as a historical compatibility pointer because target evidence cites it.
+
+First target result:
+
+`evidence/PROJECT_COMPLETION_AUTONOMY_EXECUTOR_RESULT_2026-08-19.md`
+
+Observed first-target outcome:
 
 ```text
-protocol bundle = PASS
-worker = google-gemini / gemini-3.6-flash
-total Phase-7 model calls = 1
-automatic retries = 0
-current Executor = JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d
-Executor status = ACTION_COMPLETED_REVIEW_REQUIRED
-human review = ACCEPTED
-second zero-history repository-only resume = PASS
+TARGET: JTJ07/Executor
+PHASE A COMPLETION MAP: OBSERVED
+HUMAN SEMANTIC APPROVAL: OBSERVED
+PHASE B WHOLE-PROJECT EXECUTION: OBSERVED
+PHASE C INDEPENDENT VERIFICATION: PASS
+PROJECT COMPLETION: PASS
+EXECUTOR 1.0: HUMAN ACCEPTED
+CONTROLLED INTEGRATION: COMPLETE
+FALSE SUCCESS PATHS IN FINAL TARGET EVIDENCE: 0
+SADDLE ROADMAP CONSEQUENCE: NONE
 ```
 
-The second resume recovered the state from canonical repository content without another Gemini call and without repeating the Executor effect. Its recorded deterministic verification was repository audit PASS and 76 tests / OK before the final acceptance delta.
+The exact Human-accepted Executor product candidate remains `f60829f90ea2f69dc501582daf109b59676be07e`; accepted integration history is recorded separately in Executor. Current live Executor main is `d115578cf05ed7edf55c50a2b5d29af16d13fb4d`.
 
-## HUMAN DECISIONS
+One successful target is evidence, not a general product requirement. Repeat on materially different projects before any attempt to promote observations into Saddle product scope.
 
-- `DEC-SAD-010`: ScriptOps v2 selected; no rewrite/new capability; Phase-6 mechanism proof only.
-- `DEC-SAD-011`: bounded API benchmark budget/calls/retries and proposal-only authority limits.
-- `DEC-SAD-012`: web AI = Phase 4A calibration; API = Phase 4B worker evidence.
-- `DEC-SAD-013`: Phase 4A accepted; nine-dimensional Phase-4B evaluation contract.
-- `DEC-SAD-014`: Phase 4C synthetic integration precedes API-worker measurement.
-- `DEC-SAD-015`: Gemini provider substitution for Phase 4B.
-- `DEC-SAD-016`: `google-gemini / gemini-3.6-flash` selected as first production worker for the bounded acceptance path.
-- `DEC-SAD-017`: Phase-7 technical E2E evidence accepted.
-- `DEC-SAD-018`: final functional Saddle acceptance and completion-lock release.
+## CURRENT SOURCE SNAPSHOT
 
-`AI RECOMMENDATION != HUMAN DECISION` remains an invariant.
+Machine-readable current source observations are in `config/source-repos.json` and are observations, not semantic-ownership transfers.
+
+```text
+COS:          JTJ07/COS@23152cb1bf5443574da9ff44600a5a8c8c136025
+Reconstructor: JTJ07/creative-os-project-reconstructor@defc7b029097284f94136fec54b75c313ac12f68
+ScriptOps:    JTJ07/scriptops@daa6e5dc210e09171a530eeffe5601e0e74ae041
+Executor:     JTJ07/Executor@d115578cf05ed7edf55c50a2b5d29af16d13fb4d
+pilot target: JTJ07/executor-pilot-target@6c18230d2e1223a8145885b19c5073ec1ce20662
+```
+
+Historical run SHAs remain historical provenance and are not rewritten by this current snapshot.
+
+## HUMAN DECISIONS STILL GOVERNING
+
+- `DEC-SAD-010`: ScriptOps v2 selected for Phase-6 reuse + hardening proof; no rewrite/new capability.
+- `DEC-SAD-011`: bounded API benchmark authority.
+- `DEC-SAD-012`: web AI calibration vs API worker evidence.
+- `DEC-SAD-013`: Phase-4A acceptance and Phase-4B evaluation contract.
+- `DEC-SAD-014`: synthetic integration before API-worker measurement.
+- `DEC-SAD-015`: Gemini provider substitution.
+- `DEC-SAD-016`: `google-gemini / gemini-3.6-flash` selected for the bounded acceptance path.
+- `DEC-SAD-017`: Phase-7 technical E2E accepted.
+- `DEC-SAD-018`: final functional acceptance and completion-lock release.
+
+`AI RECOMMENDATION != HUMAN DECISION` remains active.
 
 ## BOUNDARIES STILL ACTIVE
 
-Functional acceptance and lock release do not erase the constitutional control boundaries:
-
 ```text
-human intent != AI interpretation
-proposal != authority
-execution != proof
-capability != permission
-user provenance != verified request-origin evidence
+HUMAN OWNS INTENT / GOAL / DONE / NORMATIVE AUTHORITY
+INTELLIGENCE PROPOSES OR SELECTS HOW
+SADDLE VALIDATES PROPOSED HOW AGAINST INTENT; IT DOES NOT CHOOSE THE ROUTE
+EXECUTOR GOVERNS AUTHORIZED CONSEQUENCES
+VERIFIER ESTABLISHES FACTS
+PROPOSAL != DECISION != AUTHORITY != EFFECT
+CAPABILITY != PERMISSION
+TECHNICAL PASS != HUMAN ACCEPTANCE
 ```
 
-The production request-origin / human-identity trust provider remains intentionally unselected. No maturity or arbitrary-environment production-readiness claim follows from `FUNCTIONAL_SADDLE_ACCEPTED`.
+Functional acceptance and lock release do not authorize broader autonomy, repository writes outside delegated scope, secrets, provider routing, retries, spending, deployment, release, legal/commercial commitment or new product capabilities.
 
-Lock release does not automatically expand autonomy, effect authority, repository-write authority, secrets, provider routing, retries, spending, deployment, legal authority, or tool access.
+The production request-origin / Human-identity trust provider remains intentionally unselected. No universal maturity or arbitrary-environment production-readiness claim exists.
 
-## POST-ACCEPTANCE STATE
+## SECURITY MAINTENANCE — SEPARATE FROM THIS RECONCILIATION
 
-`FUTURE_IDEAS.md` is no longer parked by an active completion lock, but every idea remains `PARKED` until a human explicitly activates a new roadmap objective. No multi-agent/runtime/UI/IAM/self-improvement or other expansion is implicitly active.
+Saddle PR #29 is a separate maintenance/security candidate for durable single-use EffectAuthority consumption. It must not be mixed into documentation/state reconciliation.
 
-New post-acceptance external-project evidence is recorded in `evidence/POST_ACCEPTANCE_EXTERNAL_PROJECT_TESTS_2026-08-15.md`. It contains the first BEZIMIENNI comparative runs, target-confusion observation, WITH-SADDLE vs WITHOUT-SADDLE work, the unavailable mid-run handoff test, the replacement zero-history/model-swap continuation test, and the autonomous Executor continuation evidence. Its status is `OBSERVATIONAL_EVIDENCE / DO_NOT_ACTIVATE_ROADMAP`.
+Current candidate after refresh on current main:
 
-The next evaluation method is recorded in `evidence/PROJECT_COMPLETION_AUTONOMY_TEST_PROTOCOL_2026-08-15.md`. It changes the test horizon from `NEXT STEP` to `WHOLE PROJECT COMPLETION` using: completion-map-only analysis, one semantic human approval, autonomous full execution, then independent zero-history verification. The first intended target is `JTJ07/Executor`.
+```text
+PR #29
+head: a030d21b48feab341dc0ea468ef768fa720f78e7
+repository audit + deterministic regression: PASS
+Phase 4C synthetic integration proof: PASS
+status: TECHNICALLY VERIFIED / HUMAN DECISION PENDING
+```
 
-The human instruction for this evidence is to accumulate comparable observations across several materially different projects before using the pattern set as a basis for Saddle changes or improvements. One external project must not be generalized into a new product architecture.
+No merge authority is implied by this handoff.
+
+## OPEN-PR HYGIENE
+
+Historical PR #2–#6 have been closed unmerged as superseded candidates after confirming their valuable material is already preserved on later canonical main. Their GitHub/Git provenance remains available.
 
 ## EXACT FILES / REFS TO OPEN NEXT
 
-For a fresh session, read in this order:
-
 1. `AGENTS.md`
 2. `PROJECT_STATE.md`
-3. `decisions/DEC-SAD-018.md`
-4. `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md`
-5. `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`
-6. `DECISION_LOG.md`
-7. `evidence/POST_ACCEPTANCE_EXTERNAL_PROJECT_TESTS_2026-08-15.md`
-8. `evidence/PROJECT_COMPLETION_AUTONOMY_TEST_PROTOCOL_2026-08-15.md`
-9. `FUTURE_IDEAS.md`
+3. `SESSION_HANDOFF.md`
+4. `SOURCE_REGISTRY.md`
+5. `ECOSYSTEM_MAP.md`
+6. `config/autonomy.json`
+7. `config/eval-lanes.json`
+8. `config/source-repos.json`
+9. `docs/PROJECT_COMPLETION_AUTONOMY_TEST_PROTOCOL.md`
+10. `evidence/PROJECT_COMPLETION_AUTONOMY_EXECUTOR_RESULT_2026-08-19.md`
+11. `FUTURE_IDEAS.md`
 
 ## ONE NEXT STEP
 
-**Terminal completion state — no active Saddle product-development step.**
+**No active Saddle product-development step.**
 
-For evaluation work, the next explicit human-selected experiment is Phase A of the whole-project completion autonomy protocol on `JTJ07/Executor`.
-
-Do not infer a Saddle product roadmap from the released lock or from one test result. Product changes require a later explicit human decision after repeated multi-project evidence.
+Post-acceptance evaluation may continue on materially different real projects under separate project authority, but that work must not be interpreted as Saddle product-roadmap activation. The current working ecosystem priority after durable-state reconciliation is a Project Reconstructor real-value run; this is a working evaluation sequence, not a new Saddle Human product decision.

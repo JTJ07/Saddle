@@ -43,10 +43,10 @@ The ecosystem is an **ownership network with handoffs**, not a master command-co
 | Component/project | Current observed main | Current meaning for Saddle |
 |---|---|---|
 | `JTJ07/Saddle` | resolve live `main` at read time | functional product accepted; completion lock released; PR #29 security hardening and PR #33 durable-state reconciliation are Human-accepted/integrated; post-acceptance evaluation only |
-| `JTJ07/COS` | `23152cb1bf5443574da9ff44600a5a8c8c136025` | Human-accepted ownership/state/continuity closure; current cross-project continuity layer |
+| `JTJ07/COS` | `a9982d9f0ae73d8a09c3af8ce0825890784fa2ad` | Human-accepted ownership/state/continuity closure; later cross-project ScriptOps/Reconstructor continuity reconciled |
 | `JTJ07/Executor` | `d115578cf05ed7edf55c50a2b5d29af16d13fb4d` | Executor 1.0 Human-accepted and integrated; current governed effect engine |
-| `JTJ07/scriptops` | `daa6e5dc210e09171a530eeffe5601e0e74ae041` | controlled workflow mechanism PASS; no maturity claim |
-| `JTJ07/creative-os-project-reconstructor` | `defc7b029097284f94136fec54b75c313ac12f68` | v1.0 stabilization; candidate for real-value repetition |
+| `JTJ07/scriptops` | `5af0cd8ac65e72ae534827c677fe4bd12b23e4ca` | controlled workflow mechanism PASS; no maturity claim; post-Saddle current state reconciled |
+| `JTJ07/creative-os-project-reconstructor` | `eb21b04e7d04caf777d66721f86ae9e83aab1dd4` | v1.0 stabilization; Real-Value Run 001 integrated observed evidence; no prompt change triggered |
 | `JTJ07/executor-pilot-target` | `6c18230d2e1223a8145885b19c5073ec1ce20662` | deterministic technical benchmark substrate |
 
 These SHAs are observational continuity data. Local detailed truth remains with each project. Saddle deliberately does not hard-code its own live `main` SHA here, because a self-pointer becomes stale as soon as this state record is merged; historical integration SHAs remain preserved in `PROJECT_STATE.md` and `SESSION_HANDOFF.md`.
@@ -86,7 +86,16 @@ Saddle result record:
 
 `evidence/PROJECT_COMPLETION_AUTONOMY_EXECUTOR_RESULT_2026-08-19.md`
 
-Interpretation: **one-project evidence only**. No automatic Saddle roadmap consequence. Repeat on materially different projects before generalization.
+Reconstructor Real-Value Run 001:
+
+```text
+JTJ07/creative-os-project-reconstructor@eb21b04e7d04caf777d66721f86ae9e83aab1dd4
+REAL_VALUE_OBSERVED = YES
+TARGET_CURRENT_STATE_CONTRADICTIONS_FOUND = 4
+PROMPT_CHANGE_TRIGGERED = NO
+```
+
+Interpretation: **observed evaluation evidence only**. No automatic Saddle roadmap consequence. Materially different repetition is still required before generalization.
 
 ## Current cross-project boundaries
 
@@ -123,8 +132,9 @@ COS may preserve high-level accepted state, provenance and local owner locators.
 This is status information, not a product roadmap.
 
 ```text
-P0 — Saddle PR #29 durable EffectAuthority single-use/replay hardening
-     COMPLETE / Human accepted / merged
+P0 — security / authority / current-state correctness
+     prior Saddle EffectAuthority hardening COMPLETE / Human accepted / merged
+     current external-pointer reconciliation is bounded maintenance only
 
 P1 — post-acceptance durable-state reconciliation
      COMPLETE / Human accepted / PR #33 merged
@@ -136,7 +146,9 @@ P2 — memory/repo recovery evidence from design sessions
 
 P3 — materially different project evaluations
      ACTIVE working evaluation
-     Project Reconstructor real-value run → ScriptOps distinct workload → later whole-ecosystem adversarial integration
+     Reconstructor Run 001 COMPLETE / integrated observed evidence
+     next non-waiting item: distinct bounded ScriptOps workload using existing Phase-6 mechanism
+     later hypothesis: whole-ecosystem adversarial integration
 
 P4 — new capabilities
      only after a measured blocker and explicit Human product decision

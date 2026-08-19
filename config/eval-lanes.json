@@ -1,13 +1,65 @@
 {
   "schema_version": "saddle-eval-lanes/0.1",
   "lanes": [
-    {"lane_id": "saddle-cold-start", "status": "BASELINE_AVAILABLE", "source_ref": "evidence/COLD_START_AUDIT_001.md", "purpose": "Zero-history project continuity and one-next-step recovery."},
-    {"lane_id": "reconstructor-regression", "status": "READY", "source_ref": "litrgratis-pixel/creative-os-project-reconstructor", "purpose": "Context reconstruction regression cases."},
-    {"lane_id": "executor-policy-security", "status": "READY", "source_ref": "litrgratis-pixel/Executor", "purpose": "Executor policy, sandbox and security regression evidence."},
-    {"lane_id": "pilot-case-001", "status": "READY_FOR_REAL_MODEL_EVIDENCE", "source_ref": "litrgratis-pixel/executor-pilot-target:3934a94a5eebf750079200589d6dc40e024d44a0", "purpose": "Atomic batch insertion from immutable broken baseline."},
-    {"lane_id": "pilot-case-002", "status": "READY_FOR_REAL_MODEL_EVIDENCE", "source_ref": "litrgratis-pixel/executor-pilot-target:c3683bf37ad6a3f1d49c0ca05ebdd41627e9a5be", "purpose": "Reopen authorization from immutable broken baseline."},
-    {"lane_id": "pilot-case-003", "status": "READY_FOR_REAL_MODEL_EVIDENCE", "source_ref": "litrgratis-pixel/executor-pilot-target:c42bead2bbbff9c84486f17637ec80f35eeffa25", "purpose": "Deterministic output from immutable broken baseline."},
-    {"lane_id": "phase5-boundary-attacks", "status": "BASELINE_AVAILABLE", "source_ref": "evidence/PHASE5_STRICT_BOUNDARY_TEST_2026-08-10.md", "purpose": "Negative tests for raw-intent integrity and exact effect-authority binding."},
-    {"lane_id": "scriptops-smoke", "status": "DEFERRED_TO_PHASE_6", "source_ref": "litrgratis-pixel/scriptops", "purpose": "One real-domain task-to-approved-Git-change smoke path."}
+    {
+      "lane_id": "saddle-cold-start",
+      "status": "ACCEPTED_BASELINE",
+      "source_ref": "evidence/COLD_START_AUDIT_001.md",
+      "purpose": "Zero-history project continuity and recovery discipline."
+    },
+    {
+      "lane_id": "reconstructor-regression",
+      "status": "READY_FOR_REAL_VALUE_REPETITION",
+      "source_ref": "JTJ07/creative-os-project-reconstructor@defc7b029097284f94136fec54b75c313ac12f68",
+      "purpose": "Context reconstruction regression and next real-project value evidence."
+    },
+    {
+      "lane_id": "executor-policy-security",
+      "status": "HUMAN_ACCEPTED_BASELINE",
+      "source_ref": "JTJ07/Executor@d115578cf05ed7edf55c50a2b5d29af16d13fb4d",
+      "purpose": "Executor policy, sandbox, authority and security regression evidence."
+    },
+    {
+      "lane_id": "pilot-case-001",
+      "status": "LIVE_MODEL_EVIDENCE_COMPLETE",
+      "source_ref": "JTJ07/executor-pilot-target@3934a94a5eebf750079200589d6dc40e024d44a0",
+      "purpose": "Atomic batch insertion from immutable broken baseline."
+    },
+    {
+      "lane_id": "pilot-case-002",
+      "status": "LIVE_MODEL_EVIDENCE_COMPLETE",
+      "source_ref": "JTJ07/executor-pilot-target@c3683bf37ad6a3f1d49c0ca05ebdd41627e9a5be",
+      "purpose": "Reopen authorization from immutable broken baseline."
+    },
+    {
+      "lane_id": "pilot-case-003",
+      "status": "LIVE_MODEL_EVIDENCE_COMPLETE",
+      "source_ref": "JTJ07/executor-pilot-target@c42bead2bbbff9c84486f17637ec80f35eeffa25",
+      "purpose": "Deterministic output from immutable broken baseline."
+    },
+    {
+      "lane_id": "phase5-boundary-attacks",
+      "status": "ACCEPTED_BASELINE",
+      "source_ref": "evidence/PHASE5_STRICT_BOUNDARY_TEST_2026-08-10.md",
+      "purpose": "Negative tests for raw-intent integrity and exact effect-authority binding."
+    },
+    {
+      "lane_id": "scriptops-smoke",
+      "status": "COMPLETED_PASS_NO_MATURITY_CLAIM",
+      "source_ref": "JTJ07/scriptops@daa6e5dc210e09171a530eeffe5601e0e74ae041",
+      "purpose": "Controlled real-domain task-to-approved-Git-change mechanism proof."
+    },
+    {
+      "lane_id": "phase7-full-e2e",
+      "status": "HUMAN_ACCEPTED",
+      "source_ref": "decisions/DEC-SAD-018.md",
+      "purpose": "Fresh-session full E2E functional acceptance chain and completion-lock release."
+    },
+    {
+      "lane_id": "whole-project-completion-autonomy",
+      "status": "EXECUTOR_TARGET_COMPLETE_PASS_ONE_PROJECT_EVIDENCE",
+      "source_ref": "evidence/PROJECT_COMPLETION_AUTONOMY_EXECUTOR_RESULT_2026-08-19.md",
+      "purpose": "Post-acceptance evaluation of whole-project completion from approved GOAL/DONE with independent final verification. Repeat on materially different projects before generalization."
+    }
   ]
 }

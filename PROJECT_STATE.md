@@ -142,6 +142,8 @@ pilot target:  JTJ07/executor-pilot-target@6c18230d2e1223a8145885b19c5073ec1ce20
 
 These are continuity observations, not live locks. Detailed/local truth remains with each semantic owner, and live state must be re-resolved before consequential use.
 
+Later accepted local-owner history may therefore be newer than these snapshots without making this section a false `CURRENT LIVE` claim.
+
 ## 6. Post-acceptance evaluation — separate axis
 
 ```text
@@ -151,8 +153,12 @@ METHOD: docs/PROJECT_COMPLETION_AUTONOMY_TEST_PROTOCOL.md
 FIRST TARGET: JTJ07/Executor
 FIRST TARGET RESULT: COMPLETE / PROJECT COMPLETION PASS
 RECONSTRUCTOR REAL-VALUE RUN 001: COMPLETE / OBSERVED EVIDENCE INTEGRATED
+SCRIPTOPS REAL-WORKLOAD RUN 001–003: COMPLETE / OBSERVED EVIDENCE INTEGRATED
+SCRIPTOPS RUN 003: CROSS-SCENE PROPOSAL COHERENCE OBSERVED PASS / GOAL DONE NO
+SCRIPTOPS CURRENT WORK-STATE: WAITING_FOR_EVIDENCE / HUMAN_SEMANTIC_DECISION
+WHOLE-ECOSYSTEM ADVERSARIAL INTEGRATION: TEST HYPOTHESIS / NOT EXECUTED / HUMAN GATE REQUIRED
 ROADMAP CONSEQUENCE: NONE
-MULTI-PROJECT REPETITION: REQUIRED BEFORE GENERALIZATION
+MULTI-PROJECT REPETITION: OBSERVED ACROSS RECONSTRUCTOR + SCRIPTOPS, NO GENERALIZATION CLAIM
 ```
 
 The method intentionally separates:
@@ -185,16 +191,11 @@ last observed Executor main after final completion-authority reconciliation:
   111e9e5d4fca66412e287852abdec6db5a1225ab
 ```
 
-Reconstructor durable facts at the observed local main establish:
+Reconstructor Run 001 established real-value observed evidence without triggering a prompt change. Later local P0 root-containment hardening is a separate accepted maintenance result and does not alter the Run 001 semantic verdict.
 
-```text
-REAL_VALUE_OBSERVED: YES
-TARGET_CURRENT_STATE_CONTRADICTIONS_FOUND: 4
-PROMPT_CHANGE_TRIGGERED: NO
-main: eb21b04e7d04caf777d66721f86ae9e83aab1dd4
-```
+ScriptOps Run 003 established bounded cross-scene proposal coherence for the supplied SCN-012 → SCN-027 material, while preserving `CANONICAL_EFFECT: NOT APPLIED`, `HUMAN_APPROVAL: NOT REQUESTED` and `GOAL_DONE: NO`. Local ScriptOps remains the semantic owner of detailed status and must be re-resolved before consequential use.
 
-One target result or one real-value run is evidence, not authorization to redesign Saddle or promote observations into product requirements.
+One target result or a set of observed workloads is evidence, not authorization to redesign Saddle or promote observations into product requirements.
 
 ## 7. Security maintenance — integrated on current main
 
@@ -247,19 +248,20 @@ P1 DURABLE-STATE RECONCILIATION:
 P2 MEMORY/REPO RECOVERY:
   WAITING_FOR_EVIDENCE / inbox remains open
   preserve design-session findings with authority labels; no memory-to-canon promotion
-  may preempt P3 only if evidence changes safety, authority, current-state correctness or the highest constraint to DONE
+  may preempt evaluation only if evidence changes safety, authority, current-state correctness or the highest constraint to DONE
 
 P3 MATERIAL-DIFFERENT EVALUATION:
-  ACTIVE WORKING EVALUATION
   Reconstructor Real-Value Run 001: COMPLETE / integrated observed evidence
-  next non-waiting evaluation item: distinct bounded ScriptOps workload using the existing Phase-6 mechanism
-  later hypothesis: whole-ecosystem adversarial integration
+  ScriptOps Real Workloads 001–003: COMPLETE / integrated observed evidence
+  ScriptOps current work-state: WAITING_FOR_EVIDENCE / HUMAN_SEMANTIC_DECISION
+  no additional P3 execution is self-authorized by Saddle
+  whole-ecosystem adversarial integration remains a test hypothesis until an explicit Human gate
 
 P4 NEW CAPABILITY:
   none without measured blocker + explicit Human product decision
 ```
 
-P2 is an evidence inbox, not a reason to idle. The Reconstructor-first item is complete; the next non-waiting evaluation item is the distinct bounded ScriptOps workload unless P0/P1 evidence preempts it. The P1–P3 ordering is operational/evaluation work state, not a new Saddle product roadmap and not a transfer of HOW selection into Saddle.
+P2 is an evidence inbox, not a reason to idle, but Saddle does not manufacture a replacement operational task when another project is waiting. Direction selection remains outside Saddle. A later cross-project test may be proposed or Human-authorized without becoming a Saddle product roadmap.
 
 ## 10. Current truth rule
 

@@ -40,16 +40,18 @@ The ecosystem is an **ownership network with handoffs**, not a master command-co
 
 ## Last observed repository snapshot
 
-| Component/project | Observed main at reconciliation | Current meaning for Saddle |
+| Component/project | Observed main at source-snapshot reconciliation | Meaning of that snapshot for Saddle |
 |---|---|---|
 | `JTJ07/Saddle` | resolve live `main` at read time | functional product accepted; completion lock released; PR #29 security hardening, PR #33 durable-state reconciliation and PR #35 current-state reconciliation are Human-accepted/integrated; post-acceptance evaluation only |
-| `JTJ07/COS` | `a9982d9f0ae73d8a09c3af8ce0825890784fa2ad` | Human-accepted ownership/state/continuity closure; later cross-project ScriptOps/Reconstructor continuity reconciled |
+| `JTJ07/COS` | `a9982d9f0ae73d8a09c3af8ce0825890784fa2ad` | Human-accepted ownership/state/continuity closure; later local/cross-project continuity may be newer |
 | `JTJ07/Executor` | `111e9e5d4fca66412e287852abdec6db5a1225ab` | Executor 1.0 Human-accepted and integrated; final completion authority/current-state surfaces reconciled |
-| `JTJ07/scriptops` | `5af0cd8ac65e72ae534827c677fe4bd12b23e4ca` | controlled workflow mechanism PASS; no maturity claim; post-Saddle current state reconciled |
-| `JTJ07/creative-os-project-reconstructor` | `eb21b04e7d04caf777d66721f86ae9e83aab1dd4` | v1.0 stabilization; Real-Value Run 001 integrated observed evidence; no prompt change triggered |
+| `JTJ07/scriptops` | `5af0cd8ac65e72ae534827c677fe4bd12b23e4ca` | historical continuity observation; later accepted ScriptOps history includes bounded proposal view and Run 003 |
+| `JTJ07/creative-os-project-reconstructor` | `eb21b04e7d04caf777d66721f86ae9e83aab1dd4` | Run 001 integration observation; later accepted local history includes validator root-containment P0 hardening |
 | `JTJ07/executor-pilot-target` | `6c18230d2e1223a8145885b19c5073ec1ce20662` | deterministic technical benchmark substrate |
 
-These SHAs are last-observed continuity snapshots, not remote locks. Local detailed truth remains with each project and live state must be re-resolved from the local semantic owner before consequential use. Saddle deliberately does not hard-code its own live `main` SHA here, because a self-pointer becomes stale as soon as this state record is merged; historical integration SHAs remain preserved in `PROJECT_STATE.md` and `SESSION_HANDOFF.md`.
+These SHAs are last-observed continuity snapshots from the source-snapshot reconciliation, not remote locks. Local detailed truth remains with each project and live state must be re-resolved from the local semantic owner before consequential use. Later accepted local-owner history may therefore be newer than this table without turning the table into a false `CURRENT LIVE` claim.
+
+Saddle deliberately does not hard-code its own live `main` SHA here, because a self-pointer becomes stale as soon as this state record is merged; historical integration SHAs remain preserved in `PROJECT_STATE.md` and `SESSION_HANDOFF.md`.
 
 ## Saddle current product state
 
@@ -90,13 +92,28 @@ Saddle result record:
 Reconstructor Real-Value Run 001:
 
 ```text
-JTJ07/creative-os-project-reconstructor@eb21b04e7d04caf777d66721f86ae9e83aab1dd4
 REAL_VALUE_OBSERVED = YES
 TARGET_CURRENT_STATE_CONTRADICTIONS_FOUND = 4
 PROMPT_CHANGE_TRIGGERED = NO
 ```
 
-Interpretation: **observed evaluation evidence only**. No automatic Saddle roadmap consequence. Materially different repetition is still required before generalization.
+Later accepted local Reconstructor history includes bounded validator root-containment/hardlink P0 hardening. That maintenance does not alter the Run 001 semantic result or authorize a prompt change.
+
+ScriptOps Real Workloads 001–003:
+
+```text
+RUN 003 BOUNDED_UPSTREAM_CONTEXT = PASS
+RUN 003 DOWNSTREAM_CANDIDATE = STAGED
+RUN 003 CROSS_SCENE_PROPOSAL_COHERENCE = OBSERVED PASS
+CANONICAL_EFFECT = NOT APPLIED
+HUMAN_APPROVAL = NOT REQUESTED
+GOAL_DONE = NO
+CURRENT LOCAL WORK-STATE = WAITING_FOR_EVIDENCE / HUMAN_SEMANTIC_DECISION
+```
+
+Interpretation: **observed evaluation evidence only**. No automatic Saddle roadmap consequence. Reconstructor and ScriptOps supply materially different observed workloads, but no universal generalization claim follows automatically.
+
+Whole-ecosystem adversarial integration remains a separate `TEST HYPOTHESIS / NOT EXECUTED`. It requires an explicit Human gate before execution and does not become active merely because earlier evaluation items completed.
 
 ## Current cross-project boundaries
 
@@ -147,16 +164,17 @@ P2 — memory/repo recovery evidence from design sessions
      may preempt only when evidence changes safety, authority, current-state correctness or highest constraint
 
 P3 — materially different project evaluations
-     ACTIVE working evaluation
      Reconstructor Run 001 COMPLETE / integrated observed evidence
-     next non-waiting item: distinct bounded ScriptOps workload using existing Phase-6 mechanism
-     later hypothesis: whole-ecosystem adversarial integration
+     ScriptOps Runs 001–003 COMPLETE / integrated observed evidence
+     ScriptOps local state WAITING_FOR_EVIDENCE / HUMAN_SEMANTIC_DECISION
+     no new P3 execution item is self-authorized by Saddle
+     whole-ecosystem adversarial integration = TEST HYPOTHESIS / NOT EXECUTED / HUMAN GATE REQUIRED
 
 P4 — new capabilities
      only after a measured blocker and explicit Human product decision
 ```
 
-Priority classes describe work risk/urgency. They do not transfer semantic ownership to Saddle or COS. A waiting P2 inbox does not block P3 merely because more design-session reports may arrive later.
+Priority classes describe work risk/urgency. They do not transfer semantic ownership to Saddle or COS. A waiting P2 inbox does not create a replacement P3 task, and completion of prior evaluations does not authorize Saddle to select the next operational direction.
 
 ## Historical provenance that must not be mistaken for current state
 

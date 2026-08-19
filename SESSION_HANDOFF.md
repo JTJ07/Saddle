@@ -1,7 +1,7 @@
 ---
 project: Saddle
 status: PHASE_6_ACCEPTED / PHASE_7_ACCEPTED / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_TECHNICAL_EVIDENCE_ACCEPTED / SECOND_ZERO_HISTORY_RESUME_PASS / FINAL_HUMAN_ACCEPTANCE_ACCEPTED / FUNCTIONAL_SADDLE_ACCEPTED / COMPLETION_LOCK_RELEASED
-updated_at: 2026-08-14
+updated_at: 2026-08-15
 ---
 
 # SESSION HANDOFF
@@ -89,6 +89,12 @@ Lock release does not automatically expand autonomy, effect authority, repositor
 
 `FUTURE_IDEAS.md` is no longer parked by an active completion lock, but every idea remains `PARKED` until a human explicitly activates a new roadmap objective. No multi-agent/runtime/UI/IAM/self-improvement or other expansion is implicitly active.
 
+New post-acceptance external-project evidence is recorded in `evidence/POST_ACCEPTANCE_EXTERNAL_PROJECT_TESTS_2026-08-15.md`. It contains the first BEZIMIENNI comparative runs, target-confusion observation, WITH-SADDLE vs WITHOUT-SADDLE work, the unavailable mid-run handoff test, the replacement zero-history/model-swap continuation test, and the autonomous Executor continuation evidence. Its status is `OBSERVATIONAL_EVIDENCE / DO_NOT_ACTIVATE_ROADMAP`.
+
+The next evaluation method is recorded in `evidence/PROJECT_COMPLETION_AUTONOMY_TEST_PROTOCOL_2026-08-15.md`. It changes the test horizon from `NEXT STEP` to `WHOLE PROJECT COMPLETION` using: completion-map-only analysis, one semantic human approval, autonomous full execution, then independent zero-history verification. The first intended target is `JTJ07/Executor`.
+
+The human instruction for this evidence is to accumulate comparable observations across several materially different projects before using the pattern set as a basis for Saddle changes or improvements. One external project must not be generalized into a new product architecture.
+
 ## EXACT FILES / REFS TO OPEN NEXT
 
 For a fresh session, read in this order:
@@ -99,10 +105,14 @@ For a fresh session, read in this order:
 4. `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md`
 5. `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md`
 6. `DECISION_LOG.md`
-7. `FUTURE_IDEAS.md`
+7. `evidence/POST_ACCEPTANCE_EXTERNAL_PROJECT_TESTS_2026-08-15.md`
+8. `evidence/PROJECT_COMPLETION_AUTONOMY_TEST_PROTOCOL_2026-08-15.md`
+9. `FUTURE_IDEAS.md`
 
 ## ONE NEXT STEP
 
-**Terminal completion state — no active completion step.**
+**Terminal completion state — no active Saddle product-development step.**
 
-Do not infer a new roadmap from the released lock. The next executable product-development step exists only after a new explicit human roadmap decision or explicit reactivation of a parked idea.
+For evaluation work, the next explicit human-selected experiment is Phase A of the whole-project completion autonomy protocol on `JTJ07/Executor`.
+
+Do not infer a Saddle product roadmap from the released lock or from one test result. Product changes require a later explicit human decision after repeated multi-project evidence.

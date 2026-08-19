@@ -186,24 +186,24 @@ current live Executor main after later closure:
 
 One target result is evidence, not authorization to redesign Saddle or promote observations into product requirements.
 
-## 7. Current security maintenance
+## 7. Security maintenance — integrated on current main
 
-Known maintenance is kept separate from the accepted product state.
-
-Saddle PR #29 addresses durable single-use EffectAuthority replay protection. Current refreshed candidate:
+The later-discovered enforcement gap around the existing `EffectAuthority.max_uses = 1` invariant is closed on current `main` through Human-accepted PR #29.
 
 ```text
 PR: #29
-head: a030d21b48feab341dc0ea468ef768fa720f78e7
+accepted head: a030d21b48feab341dc0ea468ef768fa720f78e7
 scope: tools/phase5_boundaries.py + tests/test_phase5_boundaries.py
-repository audit / deterministic regression: PASS
-Phase 4C synthetic integration proof: PASS
-status: TECHNICALLY VERIFIED SECURITY-MAINTENANCE CANDIDATE
-Human semantic acceptance: PENDING
-merge authority: PENDING
+repository audit / deterministic regression before merge: PASS
+Phase 4C synthetic integration proof before merge: PASS
+Human semantic acceptance: ACCEPTED
+merge authorization: ACCEPTED
+merge SHA: fbebdeded66bd0de3206ff301b934038e9ab6151
+merge tree: 27f59b97a93913bc891525935a8b06e804537f4d
+status: SECURITY HARDENING INTEGRATED
 ```
 
-The open maintenance candidate does not make the already accepted historical product evidence false; it records a later discovered hardening gap in enforcement of the existing `max_uses = 1` invariant.
+The merge enforces durable single-use consumption fail-closed. It does not alter Saddle's Human-owned goal, activate a roadmap, select a trust provider, expand autonomy, authorize deployment/release, or create broader effect authority.
 
 ## 8. Intentionally open / not blockers to accepted product state
 
@@ -223,10 +223,10 @@ Current bounded work states are:
 
 ```text
 P0 SECURITY MAINTENANCE:
-  PR #29 technically verified / waiting for Human decision
+  COMPLETE / Human accepted / PR #29 merged on main
 
 P1 DURABLE-STATE RECONCILIATION:
-  reconcile current post-acceptance memory/config/evaluation truth
+  current reconciliation candidate; refresh and verify against post-PR-#29 main
 
 P2 MEMORY/REPO RECOVERY:
   preserve design-session findings with authority labels; no memory-to-canon promotion

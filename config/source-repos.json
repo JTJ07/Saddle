@@ -3,18 +3,18 @@
   "repositories": [
     {
       "name": "JTJ07/COS",
-      "observed_main": "23152cb1bf5443574da9ff44600a5a8c8c136025",
+      "observed_main": "a9982d9f0ae73d8a09c3af8ce0825890784fa2ad",
       "role": "durable high-level/cross-project state, continuity and provenance"
     },
     {
       "name": "JTJ07/creative-os-project-reconstructor",
-      "observed_main": "defc7b029097284f94136fec54b75c313ac12f68",
-      "role": "context/project reconstruction"
+      "observed_main": "eb21b04e7d04caf777d66721f86ae9e83aab1dd4",
+      "role": "context/project reconstruction; Real-Value Run 001 integrated observed evidence"
     },
     {
       "name": "JTJ07/scriptops",
-      "observed_main": "daa6e5dc210e09171a530eeffe5601e0e74ae041",
-      "role": "Phase-6 controlled real-workflow substrate / canon-control mechanism proof"
+      "observed_main": "5af0cd8ac65e72ae534827c677fe4bd12b23e4ca",
+      "role": "Phase-6 controlled real-workflow substrate / canon-control mechanism proof; post-Saddle state reconciled"
     },
     {
       "name": "JTJ07/Executor",

@@ -2,21 +2,21 @@
 
 Reconciled: 2026-08-19
 
-Purpose: keep current external source observations separate from historical evidence identities. Repository location or a newer SHA does not transfer semantic ownership or rewrite historical proof.
+Purpose: keep external source observations separate from historical evidence identities. Repository location or a newer SHA does not transfer semantic ownership or rewrite historical proof.
 
-## Current live source observations
+## Last observed source snapshot
 
-| Source | Observed current main | Current role |
+| Source | Observed main at reconciliation | Current role |
 |---|---|---|
 | `JTJ07/COS` | `a9982d9f0ae73d8a09c3af8ce0825890784fa2ad` | durable high-level/cross-project state, continuity and provenance |
 | `JTJ07/creative-os-project-reconstructor` | `eb21b04e7d04caf777d66721f86ae9e83aab1dd4` | project/context reconstruction; Real-Value Run 001 integrated observed evidence |
 | `JTJ07/scriptops` | `5af0cd8ac65e72ae534827c677fe4bd12b23e4ca` | Phase-6 controlled workflow mechanism proof / local canon-control substrate; post-Saddle current state reconciled |
-| `JTJ07/Executor` | `d115578cf05ed7edf55c50a2b5d29af16d13fb4d` | Human-accepted and integrated governed effect engine |
+| `JTJ07/Executor` | `111e9e5d4fca66412e287852abdec6db5a1225ab` | Human-accepted and integrated governed effect engine; final completion authority state reconciled |
 | `JTJ07/executor-pilot-target` | `6c18230d2e1223a8145885b19c5073ec1ce20662` | deterministic technical benchmark repository |
 
 Machine-readable copy: `config/source-repos.json`.
 
-These are **observations**, not claims that Saddle owns each project's local truth. Live state must still be read from the local semantic owner when needed.
+These are **last-observed continuity snapshots**, not remote locks and not claims that Saddle owns each project's local truth. Re-resolve live state from the local semantic owner before consequential use.
 
 ## Historical Saddle acceptance provenance — do not rewrite
 
@@ -29,7 +29,7 @@ Executor: litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317
 pilot fixture: litrgratis-pixel/executor-pilot-target@3934a94a5eebf750079200589d6dc40e024d44a0
 ```
 
-Those old locators are historical provenance only. They are not the current live repository snapshot.
+Those old locators are historical provenance only. They are not the latest observed repository snapshot.
 
 ### Phase 7 accepted completion path
 
@@ -39,7 +39,7 @@ The Phase-7/current-self identity used during Saddle functional acceptance was:
 JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d
 ```
 
-At that checkpoint it was current and was part of the accepted Phase-7 evidence chain. It is **not** the current live Executor main in this registry.
+At that checkpoint it was current and was part of the accepted Phase-7 evidence chain. It is **not** the latest observed Executor main in this registry.
 
 ### Executor whole-project post-acceptance evaluation
 
@@ -58,7 +58,7 @@ merge d3ebe93e9b9d6ec29ff859e931939c89b57ed468
 tree 0b569a5abc432ba17d82cb3387e705adf3eb68e6
 ```
 
-Current live Executor main is later: `d115578cf05ed7edf55c50a2b5d29af16d13fb4d`. The later main does not replace the accepted candidate identity or integration evidence.
+Last observed Executor main at this reconciliation is `111e9e5d4fca66412e287852abdec6db5a1225ab`, after Human-authorized PR #71. This observation does not replace the accepted candidate identity or integration evidence and must be re-resolved before consequential use.
 
 ## Current project/evaluation facts relevant to Saddle
 
@@ -73,11 +73,11 @@ POST_ACCEPTANCE_EVALUATION = OBSERVATIONAL
 
 ### COS
 
-COS has Human-accepted ownership/state/continuity closure. Its current `main@a9982d9f0ae73d8a09c3af8ce0825890784fa2ad` also reconciles the later ScriptOps and Reconstructor Run-001 cross-project pointers. COS preserves cross-project state and provenance; local component truth remains local. COS does not own operational HOW/cognitive routing.
+COS has Human-accepted ownership/state/continuity closure. Its last observed `main@a9982d9f0ae73d8a09c3af8ce0825890784fa2ad` also reconciles the later ScriptOps and Reconstructor Run-001 cross-project pointers. COS preserves cross-project state and provenance; local component truth remains local. COS does not own operational HOW/cognitive routing.
 
 ### ScriptOps
 
-Current local status at the observed main:
+Local status at the observed main:
 
 ```text
 PHASE 6 CONTROLLED WORKFLOW MECHANISM PASS
@@ -90,7 +90,7 @@ The historical `SADDLE LIVE MODEL EVIDENCE NEXT` gate is not current. This is a 
 
 ### Project Reconstructor
 
-Current local `main@eb21b04e7d04caf777d66721f86ae9e83aab1dd4` includes Real-Value Run 001 as observed evidence:
+Observed local `main@eb21b04e7d04caf777d66721f86ae9e83aab1dd4` includes Real-Value Run 001 as observed evidence:
 
 ```text
 REAL_VALUE_OBSERVED: YES
@@ -115,6 +115,7 @@ Saddle captures only the cross-project evaluation result in `evidence/PROJECT_CO
 ## Source authority rules
 
 ```text
+OBSERVED SHA != LIVE LOCK
 CURRENT LIVE SHA != HISTORICAL ACCEPTED IDENTITY
 REPO LOCATION != SEMANTIC OWNERSHIP
 OPEN PR != CURRENT AUTHORITY

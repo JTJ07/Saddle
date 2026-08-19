@@ -20,7 +20,7 @@ POST-ACCEPTANCE EVALUATION — ACTIVE / OBSERVATIONAL
 FIRST WHOLE-PROJECT TARGET — JTJ07/Executor / COMPLETE / PASS
 CURRENT LIVE EXECUTOR — JTJ07/Executor@d115578cf05ed7edf55c50a2b5d29af16d13fb4d
 SECURITY HARDENING — HUMAN ACCEPTED / PR #29 MERGED
-CURRENT SADDLE MAIN AFTER SECURITY MERGE — fbebdeded66bd0de3206ff301b934038e9ab6151
+DURABLE-STATE RECONCILIATION — HUMAN ACCEPTED / PR #33 MERGED
 GENERALIZATION FROM ONE PROJECT — NOT AUTHORIZED
 ```
 
@@ -135,6 +135,23 @@ status: SECURITY HARDENING INTEGRATED
 
 This closes the P0 maintenance item. It does not authorize release, deployment, tag, roadmap activation, trust-provider selection, autonomy expansion, spending, secrets/credentials or broader effect authority.
 
+## DURABLE-STATE RECONCILIATION — INTEGRATED
+
+Post-acceptance durable-state reconciliation is no longer an open candidate. The Human separately accepted and then authorized merge of PR #33.
+
+```text
+PR #33
+accepted head: c0779ba932151032564d3a42f84d99894b3f6005
+base at acceptance: fbebdeded66bd0de3206ff301b934038e9ab6151
+repository audit + full deterministic regression before merge: PASS
+Human semantic acceptance: ACCEPTED
+merge authorization: ACCEPTED
+merge SHA: 059b218c1a8357d7c73c25c5b5089937205cbd9b
+status: POST-ACCEPTANCE DURABLE-STATE RECONCILIATION INTEGRATED
+```
+
+This closes P1. It changes durable state/evidence placement and current-status truth only; it does not activate a Saddle product roadmap or grant new semantic ownership.
+
 ## OPEN-PR HYGIENE
 
 Historical PR #2–#6 have been closed unmerged as superseded candidates after confirming their valuable material is already preserved on later canonical main. Their GitHub/Git provenance remains available.
@@ -157,4 +174,4 @@ Historical PR #2–#6 have been closed unmerged as superseded candidates after c
 
 **No active Saddle product-development step.**
 
-The current bounded operational item is to complete and independently verify post-acceptance durable-state reconciliation against `main@fbebdeded66bd0de3206ff301b934038e9ab6151`. After that, post-acceptance evaluation may continue on materially different real projects under separate project authority. This working sequence is not a new Saddle product-roadmap decision.
+P2 memory/repo recovery remains an evidence inbox and is currently `WAITING_FOR_EVIDENCE`; it does not force idle time. The highest non-waiting operational/evaluation item is the Project Reconstructor real-value run. Incoming P2 evidence may preempt that work only if it changes safety, authority, current-state correctness or the highest constraint to DONE. This is a working evaluation sequence, not a new Saddle product-roadmap decision.

@@ -1,168 +1,161 @@
-# SADDLE ECOSYSTEM MAP
+# ECOSYSTEM MAP — CURRENT
 
-Observed / reconciled: 2026-08-10
+Reconciled: 2026-08-19
+Status: `CURRENT CROSS-PROJECT OWNERSHIP MAP / NOT A COMMAND PIPELINE`
 
-## System view
+This map exists so a zero-history operator can recover current component roles and handoff boundaries. It is not a router, planner, roadmap or claim that Saddle owns the other repositories.
+
+## Ownership network
 
 ```text
 HUMAN
-  owns intent
-    ↓
+  owns intent / goal / DONE / normative decisions / consequential authority / final acceptance
+
+GINSENG
+  owns decision-space understanding / lineage / premises / alternatives / consequences / uncertainty
+
+EXTERNAL / BASE INTELLIGENCE
+  proposes/selects HOW and performs cognitive routing within accepted constraints
+
 SADDLE
-  preserves/binds intent, context, provenance, decisions, durable state
-    ↓
-ARBITRARY INTELLIGENCE
-  reasons / explores / proposes HOW
-    ↓
-EFFECT PROPOSAL
-    ↓
+  validates proposed HOW against intent / goal / DONE / boundaries / invariants
+  does NOT originate, rank, select or route direction
+
+COS
+  preserves durable high-level/cross-project state, continuity and provenance
+  does NOT replace local semantic owners or operational HOW selection
+
+CONTRACTS
+  materialize/bind already accepted meaning and scope into bounded executable form
+  do NOT create normative meaning, goal, HOW or effect authority
+
 EXECUTOR
-  governs consequence authority / scope / policy / bounded execution
-    ↓
-WORLD
-    ↓
-VERIFIER / EVIDENCE
-  establishes what actually happened
-    ↺
-SADDLE durable StateDelta
+  governs authorized consequential effects within the accepted solution boundary
+
+VERIFIER
+  independently establishes facts
 ```
 
-Cross-layer invariant:
+The ecosystem is an **ownership network with handoffs**, not a master command-control pipeline.
 
-`NO LAYER MAY SUBSTITUTE FOR A HIGHER-ORDER OWNER`.
+## Current observed repositories
 
-Default product front door is Saddle, not Executor. Explicit enterprise/delegated intake may place an authorized trust domain before Saddle.
+| Component/project | Current observed main | Current meaning for Saddle |
+|---|---|---|
+| `JTJ07/Saddle` | `2a9aacdc0eca45f2906134a43d2eba3e8a0a7c01` at reconciliation base | functional product accepted; completion lock released; post-acceptance evaluation only |
+| `JTJ07/COS` | `23152cb1bf5443574da9ff44600a5a8c8c136025` | Human-accepted ownership/state/continuity closure; current cross-project continuity layer |
+| `JTJ07/Executor` | `d115578cf05ed7edf55c50a2b5d29af16d13fb4d` | Executor 1.0 Human-accepted and integrated; current governed effect engine |
+| `JTJ07/scriptops` | `daa6e5dc210e09171a530eeffe5601e0e74ae041` | controlled workflow mechanism PASS; no maturity claim |
+| `JTJ07/creative-os-project-reconstructor` | `defc7b029097284f94136fec54b75c313ac12f68` | v1.0 stabilization; candidate for real-value repetition |
+| `JTJ07/executor-pilot-target` | `6c18230d2e1223a8145885b19c5073ec1ce20662` | deterministic technical benchmark substrate |
 
-## Component responsibilities
+These SHAs are observational continuity data. Local detailed truth remains with each project.
 
-### Saddle
-Owns Saddle-specific durable project state, intent binding, authority references, protocol, completion plan and evidence lineage.
+## Saddle current product state
 
-### COS
-Role: reusable high-level project/portfolio memory patterns and session-resumption discipline.
+```text
+FUNCTIONAL_SADDLE_ACCEPTED = true
+COMPLETION_LOCK = RELEASED
+ACTIVE COMPLETION GATE = NONE
+ACTIVE PRODUCT ROADMAP = NONE
+PRODUCTION REQUEST-ORIGIN / HUMAN-IDENTITY TRUST PROVIDER = OPEN
+MATURITY CLAIM = NONE
+```
 
-Observed main: `3220310267c3d0ba2184daaf3f2adad259a9cb20`.
+The accepted product path and historical exact identities remain in `PROJECT_STATE.md`, decisions and evidence. Newer live SHAs do not rewrite historical evidence.
 
-Reuse now:
-- Git-backed memory;
-- `START_HERE`/single entry pattern;
-- source hierarchy;
-- truthful statuses;
-- one-next-step discipline;
-- idea parking.
+## Post-acceptance evaluation state
 
-COS PR #18 classification:
-`REUSABLE GINSENG SEMANTICS + STALE/SUPERSEDED GLOBAL STATUS/PLACEMENT`.
+Method:
 
-Reuse from PR #18:
-- Ginseng = Decision Intelligence Layer;
-- `FACT / DECISION / HYPOTHESIS` separation;
-- Decision Lineage;
-- AI cannot confirm its own hypothesis/relation;
-- relation source/proposer/confidence/status;
-- `ELEMENT -> FUNCTION/CAPABILITY -> EFFECT` impact reasoning.
+`docs/PROJECT_COMPLETION_AUTONOMY_TEST_PROTOCOL.md`
 
-Do not import as current global truth:
-- old `ACTIVE_PRIORITY: EXECUTOR P1 / PR #32`;
-- old Executor-specific gate ordering;
-- `User -> Ginseng -> Creative OS -> ... -> Executor` as the current Saddle product map;
-- `Creative OS owns canon` if interpreted as global ownership over Saddle's own canonical repository.
+First whole-project target:
 
-Ginseng runtime/UI remains parked.
+```text
+JTJ07/Executor
+RESULT = PROJECT COMPLETION PASS
+HUMAN ACCEPTANCE = ACCEPTED
+IMPLEMENTATION INTEGRATION = COMPLETE
+FALSE SUCCESS PATHS IN FINAL TARGET EVIDENCE = 0
+```
 
-### creative-os-project-reconstructor
-Role: context-recovery adapter for fragmented project histories.
+Saddle result record:
 
-Observed main: `defc7b029097284f94136fec54b75c313ac12f68`.
+`evidence/PROJECT_COMPLETION_AUTONOMY_EXECUTOR_RESULT_2026-08-19.md`
 
-Reuse:
-- evidence/status separation;
-- source recovery;
-- deterministic validator;
-- regression cases;
-- reconstruction methodology.
+Interpretation: **one-project evidence only**. No automatic Saddle roadmap consequence. Repeat on materially different projects before generalization.
 
-Gap to be handled in T5: larger automated semantic/cross-model eval coverage.
+## Current cross-project boundaries
 
-### ScriptOps
-Role: strongest first real-domain candidate.
+### Human ↔ Intelligence
 
-Current main after reconciled access-check merge: `33c9d15a10dfd3f833a99dfcebea22dd77f26b65`.
+Human fixes goal/DONE, normative choices and consequential authority. Intelligence may choose route/HOW only inside that accepted envelope.
 
-Canonical facts now include:
-- no separate later RC1 implementation/build was found in accessible GitHub;
-- local/off-GitHub artifacts remain unknown;
-- preserved v2 already contains CLI/Git/context/validation/hash/staging/decision mechanics;
-- one-slice blockers are concrete: clean-tree lifecycle, approval dirty-tree, stale accepted hash, missing mandatory `why`, missing impact/smoke proof.
+### Ginseng ↔ Intelligence
 
-Technical recommendation: use `legacy/scriptops-v2-single.py` as the minimal RC1 base.
+Ginseng maps the decision space and lineage. Intelligence chooses/proposes operational HOW. Ginseng analysis must not silently become route selection or effect authority.
 
-Status: `RECOMMENDATION, NOT YET HUMAN BASE-SELECTION DECISION`.
+### Intelligence ↔ Saddle
 
-### Executor
-Role: canonical governed consequential-effect boundary.
+Intelligence supplies a proposed path. Saddle may validate or reject it against intent/boundaries. Saddle must remain removable from HOW generation/ranking/routing without disabling Intelligence's ability to choose HOW.
 
-Observed main: `788443c3ed5b290ac8f1de145a93d02d2dd15317`.
+### Accepted meaning ↔ Contracts
 
-Canonical main provides:
-- request-to-contract phase-1 formation boundary;
-- separation of verbatim user request from model interpretation;
-- policy/task/project/source checks;
-- action-authorization machinery;
-- hardened networkless execution sandbox;
-- evidence/replay-oriented controls;
-- controlled GP001 path.
+Contracts bind accepted meaning/scope into executable representations. Contract formation must not invent goal, scope, solution semantics or Human authority merely because it can serialize them.
 
-Current gaps:
-- GP001 proposal is hard-coded, not produced by a real AI worker;
-- verified human authority/freeze is intentionally absent from main.
+### Contracts/authority ↔ Executor
 
-Executor PR #51–#57 classification:
-- #51: active draft design + reusable human-authority semantics;
-- #52: active draft design + reusable receipt/evidence-trust semantics;
-- #53: draft non-executable implementation contract + reusable requirements;
-- #54: active draft technology-agnostic trust-boundary semantics;
-- #55: research/evidence + reusable technology-selection principle;
-- #56: research/evidence, provider unselected;
-- #57: reusable adversarial trust semantics + partially superseded product placement.
+Executor receives exact bounded authorized effects. Capability to execute does not create permission. Execution planning may choreograph an already selected solution, but solution planning belongs upstream to Intelligence.
 
-Critical retained findings:
-- `USER PROVENANCE != VERIFIED REQUEST-ORIGIN EVIDENCE`;
-- naive A2 rejected;
-- later authentication cannot retroactively establish request origin;
-- exact transaction-specific binding and anti-replay/freshness matter;
-- trust technology must satisfy the contract, not redefine it.
+### Executor ↔ Verifier
 
-Saddle reinterpretation:
-- strengthened-A2 principle belongs at the Saddle intent boundary by default;
-- A1 is a valid delegated/enterprise intake variant;
-- Executor does not own the global human front door.
+Executor produces effects and evidence. Verifier establishes facts independently. Executor cannot establish final truth merely by declaring PASS.
 
-Older Executor drafts:
-- #36/#38 = temporary NEVER-MERGE helpers;
-- #29 = historical rework/experimental implementation evidence;
-- #34 = governance draft/historical product-boundary input;
-- #19–#22 and similar = experimental/evidence only, not current completion path.
+### COS ↔ local project truth
 
-### executor-pilot-target
-Role: immutable/repeatable technical lab for AI-worker + Executor evals.
+COS may preserve high-level accepted state, provenance and local owner locators. A COS copy must never override newer authoritative local project truth.
 
-Observed main: `dc094679ef3e2d5cf5f1aa0ff0fd54d16f201154`.
+## Current maintenance/evaluation queue relevant to Saddle
 
-Cases:
-- CASE-001 atomic batch insertion;
-- CASE-002 reopen authorization;
-- CASE-003 deterministic canonical output.
+This is status information, not a product roadmap.
 
-Direct Codex CASE-001 solve at `313ebc9789a4518d91b8dea440b1aeba5629cb89` is `AI_WORKER_CAPABILITY` evidence, not full Saddle execution proof.
+```text
+P0 — Saddle PR #29 durable EffectAuthority single-use/replay hardening
+     technically verified candidate; Human decision pending
 
-Critical benchmark rule:
-Do not merge the repair into `case-001-broken`; keep broken inputs reproducible.
+P1 — post-acceptance durable-state reconciliation
+     this reconciliation work
 
-## Integration principle
+P2 — memory/repo recovery evidence from design sessions
+     preserve with authority labels; no memory-to-canon promotion
 
-Do not merge these repositories into a monolith for conceptual neatness.
+P3 — materially different project evaluations
+     Reconstructor real-value run / ScriptOps distinct workload / later whole-ecosystem adversarial integration
 
-Saddle references/integrates them through narrow contracts. Component repositories remain authoritative for their own merged implementations; Saddle owns the cross-component product state, responsibility map and completion path.
+P4 — new capabilities
+     only after a measured blocker and explicit Human product decision
+```
 
-Detailed Phase-1 classification: `docs/PHASE1_ECOSYSTEM_RECONCILIATION_2026-08-10.md`.
+Priority classes describe work risk/urgency. They do not transfer semantic ownership to Saddle or COS.
+
+## Historical provenance that must not be mistaken for current state
+
+Historical Phase-4C and Phase-7 exact source identities remain valid for those runs. See `PROJECT_STATE.md`, `SOURCE_REGISTRY.md` and their evidence refs. They must not be overwritten by current live source SHAs, but they also must not be labeled current.
+
+Likewise, closed superseded PRs remain historical/supporting evidence; open state is not authority.
+
+## Must remain true if any component is replaced
+
+Replacing a component must not implicitly transfer another owner's semantic rights:
+
+```text
+Human intent remains Human-owned.
+Decision-space understanding does not become route authority.
+Intelligence retains HOW selection.
+Saddle remains validation/integrity, not routing.
+COS remains continuity, not local canon or HOW owner.
+Contracts remain binding/materialization, not normative ownership.
+Executor remains consequence governance, not goal ownership.
+Verifier remains independent fact establishment.
+```

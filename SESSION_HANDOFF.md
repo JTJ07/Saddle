@@ -19,6 +19,8 @@ ACTIVE PRODUCT ROADMAP — NONE
 POST-ACCEPTANCE EVALUATION — ACTIVE / OBSERVATIONAL
 FIRST WHOLE-PROJECT TARGET — JTJ07/Executor / COMPLETE / PASS
 CURRENT LIVE EXECUTOR — JTJ07/Executor@d115578cf05ed7edf55c50a2b5d29af16d13fb4d
+SECURITY HARDENING — HUMAN ACCEPTED / PR #29 MERGED
+CURRENT SADDLE MAIN AFTER SECURITY MERGE — fbebdeded66bd0de3206ff301b934038e9ab6151
 GENERALIZATION FROM ONE PROJECT — NOT AUTHORIZED
 ```
 
@@ -115,21 +117,23 @@ Functional acceptance and lock release do not authorize broader autonomy, reposi
 
 The production request-origin / Human-identity trust provider remains intentionally unselected. No universal maturity or arbitrary-environment production-readiness claim exists.
 
-## SECURITY MAINTENANCE — SEPARATE FROM THIS RECONCILIATION
+## SECURITY MAINTENANCE — INTEGRATED
 
-Saddle PR #29 is a separate maintenance/security candidate for durable single-use EffectAuthority consumption. It must not be mixed into documentation/state reconciliation.
-
-Current candidate after refresh on current main:
+Durable single-use EffectAuthority consumption hardening is no longer an open candidate. The Human separately accepted and then authorized merge of PR #29.
 
 ```text
 PR #29
-head: a030d21b48feab341dc0ea468ef768fa720f78e7
-repository audit + deterministic regression: PASS
-Phase 4C synthetic integration proof: PASS
-status: TECHNICALLY VERIFIED / HUMAN DECISION PENDING
+accepted head: a030d21b48feab341dc0ea468ef768fa720f78e7
+repository audit + deterministic regression before merge: PASS
+Phase 4C synthetic integration proof before merge: PASS
+Human semantic acceptance: ACCEPTED
+merge authorization: ACCEPTED
+merge SHA: fbebdeded66bd0de3206ff301b934038e9ab6151
+merge tree: 27f59b97a93913bc891525935a8b06e804537f4d
+status: SECURITY HARDENING INTEGRATED
 ```
 
-No merge authority is implied by this handoff.
+This closes the P0 maintenance item. It does not authorize release, deployment, tag, roadmap activation, trust-provider selection, autonomy expansion, spending, secrets/credentials or broader effect authority.
 
 ## OPEN-PR HYGIENE
 
@@ -153,4 +157,4 @@ Historical PR #2–#6 have been closed unmerged as superseded candidates after c
 
 **No active Saddle product-development step.**
 
-Post-acceptance evaluation may continue on materially different real projects under separate project authority, but that work must not be interpreted as Saddle product-roadmap activation. The current working ecosystem priority after durable-state reconciliation is a Project Reconstructor real-value run; this is a working evaluation sequence, not a new Saddle Human product decision.
+The current bounded operational item is to complete and independently verify post-acceptance durable-state reconciliation against `main@fbebdeded66bd0de3206ff301b934038e9ab6151`. After that, post-acceptance evaluation may continue on materially different real projects under separate project authority. This working sequence is not a new Saddle product-roadmap decision.

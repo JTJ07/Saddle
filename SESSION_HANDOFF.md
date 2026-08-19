@@ -19,11 +19,15 @@ ACTIVE PRODUCT ROADMAP — NONE
 POST-ACCEPTANCE EVALUATION — ACTIVE / OBSERVATIONAL
 FIRST WHOLE-PROJECT TARGET — JTJ07/Executor / COMPLETE / PASS
 RECONSTRUCTOR REAL-VALUE RUN 001 — COMPLETE / INTEGRATED OBSERVED EVIDENCE
+SCRIPTOPS REAL-WORKLOAD RUN 001–003 — COMPLETE / INTEGRATED OBSERVED EVIDENCE
+SCRIPTOPS RUN 003 — CROSS-SCENE PROPOSAL COHERENCE OBSERVED PASS / GOAL DONE NO
+SCRIPTOPS CURRENT WORK-STATE — WAITING_FOR_EVIDENCE / HUMAN_SEMANTIC_DECISION
+WHOLE-ECOSYSTEM ADVERSARIAL INTEGRATION — TEST HYPOTHESIS / NOT EXECUTED / HUMAN GATE REQUIRED
 LAST OBSERVED EXECUTOR — JTJ07/Executor@111e9e5d4fca66412e287852abdec6db5a1225ab
 SECURITY HARDENING — HUMAN ACCEPTED / PR #29 MERGED
 DURABLE-STATE RECONCILIATION — HUMAN ACCEPTED / PR #33 MERGED
 CURRENT-STATE RECONCILIATION — HUMAN ACCEPTED / PR #35 MERGED
-GENERALIZATION FROM ONE PROJECT — NOT AUTHORIZED
+GENERALIZATION CLAIM — NONE
 ```
 
 The final Human functional-acceptance statement remains the decision recorded by `DEC-SAD-018`:
@@ -72,7 +76,7 @@ SADDLE ROADMAP CONSEQUENCE: NONE
 
 The exact Human-accepted Executor product candidate remains `f60829f90ea2f69dc501582daf109b59676be07e`; accepted integration history is recorded separately in Executor. Last observed Executor main at this reconciliation is `111e9e5d4fca66412e287852abdec6db5a1225ab` after Human-authorized PR #71. Re-resolve live state before consequential use.
 
-Reconstructor Real-Value Run 001 is integrated on the observed local `main@eb21b04e7d04caf777d66721f86ae9e83aab1dd4` with:
+Reconstructor Real-Value Run 001 established:
 
 ```text
 REAL_VALUE_OBSERVED: YES
@@ -80,7 +84,22 @@ TARGET_CURRENT_STATE_CONTRADICTIONS_FOUND: 4
 PROMPT_CHANGE_TRIGGERED: NO
 ```
 
-One successful target or run is evidence, not a general product requirement. Repeat on materially different projects before any attempt to promote observations into Saddle product scope.
+The later accepted root-containment/hardlink P0 maintenance is local Reconstructor state and must be resolved from that semantic owner; it does not change the Run 001 semantic verdict.
+
+ScriptOps later completed Real Workloads 001–003. Run 003 established:
+
+```text
+BOUNDED_UPSTREAM_CONTEXT: PASS
+DOWNSTREAM_CANDIDATE: STAGED
+CROSS_SCENE_PROPOSAL_COHERENCE: OBSERVED PASS
+CANONICAL_EFFECT: NOT APPLIED
+HUMAN_APPROVAL: NOT REQUESTED
+GOAL_DONE: NO
+```
+
+Human accepted the Run 003 evidence and separately authorized its integration. The local ScriptOps work-state is now `WAITING_FOR_EVIDENCE / HUMAN_SEMANTIC_DECISION`; detailed truth remains owned by `JTJ07/scriptops` and must be re-resolved before consequential use.
+
+These successful target/workload results are evidence, not a general product requirement. They do not self-authorize another Saddle product feature or test.
 
 ## LAST OBSERVED SOURCE SNAPSHOT
 
@@ -94,7 +113,7 @@ Executor:      JTJ07/Executor@111e9e5d4fca66412e287852abdec6db5a1225ab
 pilot target:  JTJ07/executor-pilot-target@6c18230d2e1223a8145885b19c5073ec1ce20662
 ```
 
-Historical run SHAs remain historical provenance and are not rewritten by this snapshot. Re-resolve external live state from the local owner before consequential use.
+Historical run SHAs remain historical provenance and are not rewritten by this snapshot. Later accepted local-owner changes may exist; re-resolve external live state from the local owner before consequential use.
 
 ## HUMAN DECISIONS STILL GOVERNING
 
@@ -200,4 +219,6 @@ Historical PR #2–#6 have been closed unmerged as superseded candidates after c
 
 **No active Saddle product-development step.**
 
-P0 current-state reconciliation is closed. P2 memory/repo recovery remains an evidence inbox and is currently `WAITING_FOR_EVIDENCE`; it does not force idle time. Reconstructor Run 001 is complete and integrated. The highest non-waiting operational/evaluation item is now a distinct bounded ScriptOps workload using the existing Phase-6 mechanism, unless incoming P0/P1 evidence changes safety, authority, current-state correctness or the highest constraint to DONE. This is a working evaluation sequence, not a new Saddle product-roadmap decision.
+P0 current-state reconciliation is closed. P2 memory/repo recovery remains an evidence inbox and is currently `WAITING_FOR_EVIDENCE`; it does not force idle time. Reconstructor Run 001 and ScriptOps Real Workloads 001–003 are complete as observed/integrated evaluation evidence. ScriptOps itself now waits on authoritative downstream evidence or a Human semantic decision.
+
+Saddle must not manufacture a replacement route. Whole-ecosystem adversarial integration remains a separate test hypothesis and requires an explicit Human gate before execution; it is not an automatically activated P3 item and not a new Saddle product roadmap.

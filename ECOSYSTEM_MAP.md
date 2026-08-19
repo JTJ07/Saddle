@@ -42,14 +42,14 @@ The ecosystem is an **ownership network with handoffs**, not a master command-co
 
 | Component/project | Current observed main | Current meaning for Saddle |
 |---|---|---|
-| `JTJ07/Saddle` | `fbebdeded66bd0de3206ff301b934038e9ab6151` | functional product accepted; completion lock released; PR #29 single-use EffectAuthority hardening Human-accepted and integrated; post-acceptance evaluation only |
+| `JTJ07/Saddle` | resolve live `main` at read time | functional product accepted; completion lock released; PR #29 security hardening and PR #33 durable-state reconciliation are Human-accepted/integrated; post-acceptance evaluation only |
 | `JTJ07/COS` | `23152cb1bf5443574da9ff44600a5a8c8c136025` | Human-accepted ownership/state/continuity closure; current cross-project continuity layer |
 | `JTJ07/Executor` | `d115578cf05ed7edf55c50a2b5d29af16d13fb4d` | Executor 1.0 Human-accepted and integrated; current governed effect engine |
 | `JTJ07/scriptops` | `daa6e5dc210e09171a530eeffe5601e0e74ae041` | controlled workflow mechanism PASS; no maturity claim |
 | `JTJ07/creative-os-project-reconstructor` | `defc7b029097284f94136fec54b75c313ac12f68` | v1.0 stabilization; candidate for real-value repetition |
 | `JTJ07/executor-pilot-target` | `6c18230d2e1223a8145885b19c5073ec1ce20662` | deterministic technical benchmark substrate |
 
-These SHAs are observational continuity data. Local detailed truth remains with each project.
+These SHAs are observational continuity data. Local detailed truth remains with each project. Saddle deliberately does not hard-code its own live `main` SHA here, because a self-pointer becomes stale as soon as this state record is merged; historical integration SHAs remain preserved in `PROJECT_STATE.md` and `SESSION_HANDOFF.md`.
 
 ## Saddle current product state
 
@@ -59,6 +59,7 @@ COMPLETION_LOCK = RELEASED
 ACTIVE COMPLETION GATE = NONE
 ACTIVE PRODUCT ROADMAP = NONE
 SECURITY HARDENING PR #29 = HUMAN ACCEPTED / MERGED
+DURABLE-STATE RECONCILIATION PR #33 = HUMAN ACCEPTED / MERGED
 PRODUCTION REQUEST-ORIGIN / HUMAN-IDENTITY TRUST PROVIDER = OPEN
 MATURITY CLAIM = NONE
 ```
@@ -123,22 +124,25 @@ This is status information, not a product roadmap.
 
 ```text
 P0 — Saddle PR #29 durable EffectAuthority single-use/replay hardening
-     COMPLETE / Human accepted / merged at fbebdeded66bd0de3206ff301b934038e9ab6151
+     COMPLETE / Human accepted / merged
 
 P1 — post-acceptance durable-state reconciliation
-     this reconciliation work; refresh + reverify against post-P0 main
+     COMPLETE / Human accepted / PR #33 merged
 
 P2 — memory/repo recovery evidence from design sessions
+     WAITING_FOR_EVIDENCE / inbox
      preserve with authority labels; no memory-to-canon promotion
+     may preempt only when evidence changes safety, authority, current-state correctness or highest constraint
 
 P3 — materially different project evaluations
-     Reconstructor real-value run / ScriptOps distinct workload / later whole-ecosystem adversarial integration
+     ACTIVE working evaluation
+     Project Reconstructor real-value run → ScriptOps distinct workload → later whole-ecosystem adversarial integration
 
 P4 — new capabilities
      only after a measured blocker and explicit Human product decision
 ```
 
-Priority classes describe work risk/urgency. They do not transfer semantic ownership to Saddle or COS.
+Priority classes describe work risk/urgency. They do not transfer semantic ownership to Saddle or COS. A waiting P2 inbox does not block P3 merely because more design-session reports may arrive later.
 
 ## Historical provenance that must not be mistaken for current state
 

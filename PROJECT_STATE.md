@@ -215,6 +215,8 @@ The merge enforces durable single-use consumption fail-closed. It does not alter
 
 Historical PR #2–#6 are closed unmerged as superseded candidates; their valuable content is already preserved on later canonical main and their provenance remains in GitHub/Git history.
 
+Post-acceptance durable-state reconciliation was Human-accepted and merged as PR #33 at `059b218c1a8357d7c73c25c5b5089937205cbd9b`. P1 is therefore closed; this record must not present it as an open gate.
+
 ## 9. One next step
 
 There is **no active Saddle product-development step**.
@@ -223,23 +225,27 @@ Current bounded work states are:
 
 ```text
 P0 SECURITY MAINTENANCE:
-  COMPLETE / Human accepted / PR #29 merged on main
+  COMPLETE / Human accepted / PR #29 merged
 
 P1 DURABLE-STATE RECONCILIATION:
-  current reconciliation candidate; refresh and verify against post-PR-#29 main
+  COMPLETE / Human accepted / PR #33 merged
 
 P2 MEMORY/REPO RECOVERY:
+  WAITING_FOR_EVIDENCE / inbox remains open
   preserve design-session findings with authority labels; no memory-to-canon promotion
+  may preempt P3 only if evidence changes safety, authority, current-state correctness or the highest constraint to DONE
 
 P3 MATERIAL-DIFFERENT EVALUATION:
-  working ecosystem sequence begins with Project Reconstructor real-value evidence,
-  then a distinct ScriptOps workload, before any whole-ecosystem generalization
+  ACTIVE WORKING EVALUATION
+  next: Project Reconstructor real-value evidence
+  then: distinct ScriptOps workload
+  later: whole-ecosystem adversarial integration
 
 P4 NEW CAPABILITY:
   none without measured blocker + explicit Human product decision
 ```
 
-The P1–P3 ordering is operational/evaluation work state, not a new Saddle product roadmap and not a transfer of HOW selection into Saddle.
+P2 is an evidence inbox, not a reason to idle. While it is waiting, the highest non-waiting operational item is the Project Reconstructor real-value run. The P1–P3 ordering is operational/evaluation work state, not a new Saddle product roadmap and not a transfer of HOW selection into Saddle.
 
 ## 10. Current truth rule
 

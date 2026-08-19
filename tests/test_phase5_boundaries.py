@@ -1,6 +1,7 @@
 import copy
 import hashlib
 import sys
+import tempfile
 import unittest
 from datetime import datetime, timezone
 from pathlib import Path
@@ -8,7 +9,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from tools.phase5_boundaries import authorize_effect, raw_intent_hash, with_boundary_identity
+from tools.phase5_boundaries import (
+    FileAuthorityConsumptionStore,
+    authorize_effect,
+    raw_intent_hash,
+    with_boundary_identity,
+)
 
 NOW = datetime(2026, 8, 10, 18, 30, 0, tzinfo=timezone.utc)
 
@@ -94,6 +100,12 @@ class Phase5BoundaryTests(unittest.TestCase):
         i = intent(); b = binding(i); p = proposal(i); a = authority(b, p)
         self.assertEqual(authorize_effect(i, b, p, a, now=NOW, consumed_authority_ids=set())["status"], "ALLOW")
 
+    def test_valid_allow_without_consumption_tracking_blocks(self):
+        i = intent(); b = binding(i); p = proposal(i); a = authority(b, p)
+        result = authorize_effect(i, b, p, a, now=NOW)
+        self.assertEqual(result["status"], "BLOCK")
+        self.assertIn("EFFECT_AUTHORITY_CONSUMPTION_TRACKING_REQUIRED", result["reasons"])
+
     def test_proposal_without_authority_blocks_even_if_it_references_intent(self):
         i = intent(); b = binding(i); p = proposal(i, action="REBUILD_SYSTEM", target_ref="*")
         result = authorize_effect(i, b, p, None, now=NOW)
@@ -160,6 +172,16 @@ class Phase5BoundaryTests(unittest.TestCase):
         i = intent(); b = binding(i); p = proposal(i); a = authority(b, p); consumed = set()
         self.assertEqual(authorize_effect(i, b, p, a, now=NOW, consumed_authority_ids=consumed)["status"], "ALLOW")
         self.assertIn("EFFECT_AUTHORITY_REPLAYED", authorize_effect(i, b, p, a, now=NOW, consumed_authority_ids=consumed)["reasons"])
+
+    def test_file_consumption_store_blocks_replay_after_new_instance(self):
+        i = intent(); b = binding(i); p = proposal(i); a = authority(b, p)
+        with tempfile.TemporaryDirectory() as tmp:
+            first = FileAuthorityConsumptionStore(Path(tmp))
+            self.assertEqual(authorize_effect(i, b, p, a, now=NOW, consumed_authority_ids=first)["status"], "ALLOW")
+            restarted = FileAuthorityConsumptionStore(Path(tmp))
+            result = authorize_effect(i, b, p, a, now=NOW, consumed_authority_ids=restarted)
+        self.assertEqual(result["status"], "BLOCK")
+        self.assertIn("EFFECT_AUTHORITY_REPLAYED", result["reasons"])
 
     def test_wrong_intent_binding_blocks(self):
         i = intent(); b = binding(i); p = proposal(i); a = authority(b, p); p["intent_id"] = "intent:sha256:" + "7" * 64

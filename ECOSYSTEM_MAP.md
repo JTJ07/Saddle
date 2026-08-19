@@ -38,18 +38,18 @@ VERIFIER
 
 The ecosystem is an **ownership network with handoffs**, not a master command-control pipeline.
 
-## Current observed repositories
+## Last observed repository snapshot
 
-| Component/project | Current observed main | Current meaning for Saddle |
+| Component/project | Observed main at reconciliation | Current meaning for Saddle |
 |---|---|---|
-| `JTJ07/Saddle` | resolve live `main` at read time | functional product accepted; completion lock released; PR #29 security hardening and PR #33 durable-state reconciliation are Human-accepted/integrated; post-acceptance evaluation only |
+| `JTJ07/Saddle` | resolve live `main` at read time | functional product accepted; completion lock released; PR #29 security hardening, PR #33 durable-state reconciliation and PR #35 current-state reconciliation are Human-accepted/integrated; post-acceptance evaluation only |
 | `JTJ07/COS` | `a9982d9f0ae73d8a09c3af8ce0825890784fa2ad` | Human-accepted ownership/state/continuity closure; later cross-project ScriptOps/Reconstructor continuity reconciled |
-| `JTJ07/Executor` | `d115578cf05ed7edf55c50a2b5d29af16d13fb4d` | Executor 1.0 Human-accepted and integrated; current governed effect engine |
+| `JTJ07/Executor` | `111e9e5d4fca66412e287852abdec6db5a1225ab` | Executor 1.0 Human-accepted and integrated; final completion authority/current-state surfaces reconciled |
 | `JTJ07/scriptops` | `5af0cd8ac65e72ae534827c677fe4bd12b23e4ca` | controlled workflow mechanism PASS; no maturity claim; post-Saddle current state reconciled |
 | `JTJ07/creative-os-project-reconstructor` | `eb21b04e7d04caf777d66721f86ae9e83aab1dd4` | v1.0 stabilization; Real-Value Run 001 integrated observed evidence; no prompt change triggered |
 | `JTJ07/executor-pilot-target` | `6c18230d2e1223a8145885b19c5073ec1ce20662` | deterministic technical benchmark substrate |
 
-These SHAs are observational continuity data. Local detailed truth remains with each project. Saddle deliberately does not hard-code its own live `main` SHA here, because a self-pointer becomes stale as soon as this state record is merged; historical integration SHAs remain preserved in `PROJECT_STATE.md` and `SESSION_HANDOFF.md`.
+These SHAs are last-observed continuity snapshots, not remote locks. Local detailed truth remains with each project and live state must be re-resolved from the local semantic owner before consequential use. Saddle deliberately does not hard-code its own live `main` SHA here, because a self-pointer becomes stale as soon as this state record is merged; historical integration SHAs remain preserved in `PROJECT_STATE.md` and `SESSION_HANDOFF.md`.
 
 ## Saddle current product state
 
@@ -60,11 +60,12 @@ ACTIVE COMPLETION GATE = NONE
 ACTIVE PRODUCT ROADMAP = NONE
 SECURITY HARDENING PR #29 = HUMAN ACCEPTED / MERGED
 DURABLE-STATE RECONCILIATION PR #33 = HUMAN ACCEPTED / MERGED
+CURRENT-STATE RECONCILIATION PR #35 = HUMAN ACCEPTED / MERGED
 PRODUCTION REQUEST-ORIGIN / HUMAN-IDENTITY TRUST PROVIDER = OPEN
 MATURITY CLAIM = NONE
 ```
 
-The accepted product path and historical exact identities remain in `PROJECT_STATE.md`, decisions and evidence. Newer live SHAs do not rewrite historical evidence.
+The accepted product path and historical exact identities remain in `PROJECT_STATE.md`, decisions and evidence. Newer source observations do not rewrite historical evidence.
 
 ## Post-acceptance evaluation state
 
@@ -133,8 +134,9 @@ This is status information, not a product roadmap.
 
 ```text
 P0 — security / authority / current-state correctness
-     prior Saddle EffectAuthority hardening COMPLETE / Human accepted / merged
-     current external-pointer reconciliation is bounded maintenance only
+     Saddle EffectAuthority hardening COMPLETE / Human accepted / PR #29 merged
+     external-pointer reconciliation COMPLETE / Human accepted / PR #35 merged
+     source SHAs are last-observed snapshots, not live locks
 
 P1 — post-acceptance durable-state reconciliation
      COMPLETE / Human accepted / PR #33 merged
@@ -158,7 +160,7 @@ Priority classes describe work risk/urgency. They do not transfer semantic owner
 
 ## Historical provenance that must not be mistaken for current state
 
-Historical Phase-4C and Phase-7 exact source identities remain valid for those runs. See `PROJECT_STATE.md`, `SOURCE_REGISTRY.md` and their evidence refs. They must not be overwritten by current live source SHAs, but they also must not be labeled current.
+Historical Phase-4C and Phase-7 exact source identities remain valid for those runs. See `PROJECT_STATE.md`, `SOURCE_REGISTRY.md` and their evidence refs. They must not be overwritten by newer observed source SHAs, but they also must not be labeled current.
 
 Likewise, closed superseded PRs remain historical/supporting evidence; open state is not authority.
 

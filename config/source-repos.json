@@ -1,10 +1,10 @@
 {
-  "observed_at": "2026-08-13",
+  "observed_at": "2026-08-19",
   "repositories": [
     {
       "name": "JTJ07/COS",
-      "observed_main": "3220310267c3d0ba2184daaf3f2adad259a9cb20",
-      "role": "canonical high-level state/memory"
+      "observed_main": "23152cb1bf5443574da9ff44600a5a8c8c136025",
+      "role": "durable high-level/cross-project state, continuity and provenance"
     },
     {
       "name": "JTJ07/creative-os-project-reconstructor",
@@ -18,8 +18,8 @@
     },
     {
       "name": "JTJ07/Executor",
-      "observed_main": "728d23e56ec9f76fb7a37673ceb20efccf91e03d",
-      "role": "controlled effect engine"
+      "observed_main": "d115578cf05ed7edf55c50a2b5d29af16d13fb4d",
+      "role": "Human-accepted and integrated controlled effect engine"
     },
     {
       "name": "JTJ07/executor-pilot-target",

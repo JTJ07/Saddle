@@ -1,108 +1,113 @@
-# SADDLE SOURCE REGISTRY
+# SOURCE REGISTRY — Saddle
 
-Reconciled: 2026-08-13
+Reconciled: 2026-08-19
 
-## Authority order inside Saddle
+Purpose: keep current external source observations separate from historical evidence identities. Repository location or a newer SHA does not transfer semantic ownership or rewrite historical proof.
 
-1. latest explicit human decision in `DECISION_LOG.md`;
-2. `PROJECT_STATE.md`;
-3. accepted Saddle protocols/contracts;
-4. merged implementation + tests/evidence;
-5. `SESSION_HANDOFF.md`;
-6. `TODO.md` as operational projection only;
-7. draft design / analysis / open PR material;
-8. history and AI inference.
+## Current live source observations
 
-The default branch of `JTJ07/Saddle` owns Saddle-specific product state and the cross-component responsibility/completion map.
+| Source | Observed current main | Current role |
+|---|---|---|
+| `JTJ07/COS` | `23152cb1bf5443574da9ff44600a5a8c8c136025` | durable high-level/cross-project state, continuity and provenance |
+| `JTJ07/creative-os-project-reconstructor` | `defc7b029097284f94136fec54b75c313ac12f68` | project/context reconstruction |
+| `JTJ07/scriptops` | `daa6e5dc210e09171a530eeffe5601e0e74ae041` | Phase-6 controlled workflow mechanism proof / local canon-control substrate |
+| `JTJ07/Executor` | `d115578cf05ed7edf55c50a2b5d29af16d13fb4d` | Human-accepted and integrated governed effect engine |
+| `JTJ07/executor-pilot-target` | `6c18230d2e1223a8145885b19c5073ec1ce20662` | deterministic technical benchmark repository |
 
-## Repository migration mapping
+Machine-readable copy: `config/source-repos.json`.
 
-Current canonical repository locators were verified on 2026-08-11 after transfer from `litrgratis-pixel` to `JTJ07`.
+These are **observations**, not claims that Saddle owns each project's local truth. Live state must still be read from the local semantic owner when needed.
+
+## Historical Saddle acceptance provenance — do not rewrite
+
+The following identities remain evidence for the exact historical runs that used them:
+
+### Phase 4C synthetic integration
 
 ```text
-litrgratis-pixel/Saddle                         -> JTJ07/Saddle
-litrgratis-pixel/COS                            -> JTJ07/COS
-litrgratis-pixel/creative-os-project-reconstructor -> JTJ07/creative-os-project-reconstructor
-litrgratis-pixel/scriptops                      -> JTJ07/scriptops
-litrgratis-pixel/Executor                       -> JTJ07/Executor
-litrgratis-pixel/executor-pilot-target          -> JTJ07/executor-pilot-target
+Executor: litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317
+pilot fixture: litrgratis-pixel/executor-pilot-target@3934a94a5eebf750079200589d6dc40e024d44a0
 ```
 
-Migration changes the current locator, not immutable content identity. Existing commit SHAs, artifact digests and benchmark case SHAs remain provenance anchors. Historical evidence documents retain the locator that was true when the original run occurred; do not rewrite history to match the current owner.
+Those old locators are historical provenance only. They are not the current live repository snapshot.
 
-## Saddle current references
+### Phase 7 accepted completion path
 
-- `DECISION_LOG.md` — human decisions including responsibility boundary, operational delegation, ScriptOps base selection, benchmark approval and Phase-4A/4B evidence split.
-- `PROJECT_STATE.md` — current evidence gate/state.
-- `EXECUTION_PLAN.md` — strategic gated completion path.
-- `TODO.md` — current operational queue; never overrides higher-authority state.
-- `docs/SADDLE_EXECUTOR_RESPONSIBILITY_BOUNDARY.md` — current intent/reasoning/effect/fact ownership split.
-- `docs/PHASE1_ECOSYSTEM_RECONCILIATION_2026-08-10.md` — Phase-1 classification.
-- `docs/PHASE4A_WEB_AI_CALIBRATION.md` — evidence-class boundary for human-guided web calibration versus reproducible API worker proof.
-- `analysis/SADDLE_TEST_SESSION_2026-08-10.md` — six-part test interpretation.
-- `evidence/COLD_START_AUDIT_001.md` — Phase-0 continuity evidence.
-- `evidence/PHASE4A_WEB_AI_CALIBRATION_BASELINE_2026-08-10.md` — first 3-run web-AI calibration baseline; context-contaminated, not worker evidence.
-- `evidence/PHASE4_LIVE_BENCHMARK_PREFLIGHT_2026-08-10.md` — API runner preflight; 54 tests OK, secret absent, 0 calls, USD 0.
-- `evidence/PHASE6_SCRIPTOPS_CONTROLLED_WORKFLOW_2026-08-10.md` — cross-repo Phase-6 mechanism proof.
-- `evidence/PHASE7_E2E_REVIEW_PACKET_2026-08-12.md` — Phase-7 technical E2E complete through the human-review boundary; accepted by the human in `DEC-SAD-017`.
-- `evidence/PHASE7_SECOND_ZERO_HISTORY_RESUME_2026-08-13.md` — second zero-history repository-only resume PASS; final human acceptance remains open, functional acceptance remains false, and completion lock remains ACTIVE.
-- `evidence/phase7/attempt-001.json` + `evidence/phase7/attempt-001-model.patch` — immutable consumed-call metadata and exact Phase-7 worker patch provenance.
+The Phase-7/current-self identity used during Saddle functional acceptance was:
 
-## Component sources
+```text
+JTJ07/Executor@728d23e56ec9f76fb7a37673ceb20efccf91e03d
+```
+
+At that checkpoint it was current and was part of the accepted Phase-7 evidence chain. It is **not** the current live Executor main in this registry.
+
+### Executor whole-project post-acceptance evaluation
+
+Human-accepted product candidate:
+
+```text
+JTJ07/Executor
+HEAD f60829f90ea2f69dc501582daf109b59676be07e
+TREE 1c4c141415505dd26e1fe307ca1aba987782cfba
+```
+
+Verified controlled integration:
+
+```text
+merge d3ebe93e9b9d6ec29ff859e931939c89b57ed468
+tree 0b569a5abc432ba17d82cb3387e705adf3eb68e6
+```
+
+Current live Executor main is later: `d115578cf05ed7edf55c50a2b5d29af16d13fb4d`. The later main does not replace the accepted candidate identity or integration evidence.
+
+## Current project/evaluation facts relevant to Saddle
+
+### Saddle
+
+```text
+FUNCTIONAL_SADDLE_ACCEPTED = true
+COMPLETION_LOCK = RELEASED
+ACTIVE PRODUCT ROADMAP = NONE
+POST_ACCEPTANCE_EVALUATION = OBSERVATIONAL
+```
 
 ### COS
-- Repo: https://github.com/JTJ07/COS
-- Main observed 2026-08-10: `3220310267c3d0ba2184daaf3f2adad259a9cb20`
-- Key merged sources: `START_HERE.md`, `CREATIVE_OS.md`
-- Draft PR #18: https://github.com/JTJ07/COS/pull/18
-- Classification: reusable Ginseng/decision-lineage semantics; stale/superseded global status/placement.
-- Reuse from #18 only with classification in `docs/PHASE1_ECOSYSTEM_RECONCILIATION_2026-08-10.md`.
 
-### Project Reconstructor
-- Repo: https://github.com/JTJ07/creative-os-project-reconstructor
-- Main observed: `defc7b029097284f94136fec54b75c313ac12f68`
-- Key: `README.md`, `PROJECT_STATE.md`, `PROMPT_STARTOWY.md`, tests, deterministic validator.
-- Role: context recovery / fragmented-history reconstruction.
+COS has Human-accepted ownership/state/continuity closure. It preserves cross-project state and provenance; local component truth remains local. COS does not own operational HOW/cognitive routing.
 
 ### ScriptOps
-- Repo: https://github.com/JTJ07/scriptops
-- Current main after Phase-6 controlled-workflow merge: `daa6e5dc210e09171a530eeffe5601e0e74ae041`
-- Key: `PROJECT_STATE.md`, `HANDOFF.md`, `DECISION_LOG.md`, `sources/RC1_SCOPE_LOCK.md`, `legacy/scriptops-v2-single.py`, `analysis/RC1_V2_GAP_2026-08-10.md`, `phase6/scriptops-v2-hardening.py`, `tests/test_phase6_scriptops_smoke.py`, `evidence/PHASE6_CONTROLLED_WORKFLOW_PROOF_2026-08-10.md`.
-- Human decision: v2 selected as Phase-6 base; `REWRITE: NO`; `NEW CAPABILITY: NO`; `MATURITY CLAIM: NONE`.
-- Canonical result: B1–B5 bounded workflow hardening passed; historical v2 remains unchanged.
-- Final verified PR #7 head `acbfca79f96407dbd46f9806bf821caf6e02e1af`: repository verifier run `31421752036` SUCCESS; Phase-6 smoke run `31421752569` SUCCESS.
-- Classification: controlled workflow mechanism proof only. Do not infer ScriptOps v5/RC1 maturity, independent product value or functional Saddle.
+
+Current local status at the observed main:
+
+```text
+PHASE 6 CONTROLLED WORKFLOW MECHANISM PASS
+NO MATURITY CLAIM
+SADDLE LIVE MODEL EVIDENCE NEXT
+```
+
+This is a local ScriptOps state, not a new Saddle product claim.
 
 ### Executor
-- Repo: https://github.com/JTJ07/Executor
-- Current main observed after self-identity reconciliation: `728d23e56ec9f76fb7a37673ceb20efccf91e03d`
-- Historical Phase-4C provenance: `litrgratis-pixel/Executor@788443c3ed5b290ac8f1de145a93d02d2dd15317`
-- Key current implementation: `executor/request_to_contract.py`, GP001 runtime, authorization/policy/sandbox/evidence code, task/project/policy contracts.
-- Canonical implementation source: `main`.
-- PR #51–#57: draft/research stack; use only according to Phase-1 classification.
-- Critical retained invariant: `USER PROVENANCE != VERIFIED REQUEST-ORIGIN EVIDENCE`.
-- Global `USER -> EXECUTOR` front-door placement from historical #57 is superseded by DEC-SAD-006; trust findings remain reusable.
-- Older PR #36/#38 are explicit never-merge helpers; #29/#34/#19–#22 are history/evidence unless a current blocker requires inspection.
 
-### Executor Pilot Target
-- Repo: https://github.com/JTJ07/executor-pilot-target
-- Main observed: `6c18230d2e1223a8145885b19c5073ec1ce20662`
-- Key: `PILOT_CONTRACT.md`, CASE-001–003 branches/tests.
-- Phase-4 immutable calibration/benchmark inputs:
-  - CASE-001 commit `3934a94a5eebf750079200589d6dc40e024d44a0`;
-  - CASE-002 commit `c3683bf37ad6a3f1d49c0ca05ebdd41627e9a5be`;
-  - CASE-003 commit `c42bead2bbbff9c84486f17637ec80f35eeffa25`.
-- Direct CASE-001 solve evidence: commit `313ebc9789a4518d91b8dea440b1aeba5629cb89`, PR #5.
-- Warning: PR #5 base is `case-001-broken`; do not merge the repair into that broken benchmark baseline.
+Current durable target records establish:
 
-## Original AI engineering operating package
+```text
+PROJECT COMPLETION: PASS
+EXECUTOR 1.0: HUMAN ACCEPTED
+IMPLEMENTATION INTEGRATION: COMPLETE
+```
 
-Preserved:
-- `references/AI_ENGINEERING_OS_AGENTS_ORIGINAL.md`
-- `references/README_AI_OS_ORIGINAL.md`
+Saddle captures only the cross-project evaluation result in `evidence/PROJECT_COMPLETION_AUTONOMY_EXECUTOR_RESULT_2026-08-19.md`; detailed Executor truth remains in Executor.
 
-The Saddle root `AGENTS.md` specializes those principles with completion lock, durable-memory law and Saddle-specific authority boundaries.
+## Source authority rules
 
-## OpenAI references
+```text
+CURRENT LIVE SHA != HISTORICAL ACCEPTED IDENTITY
+REPO LOCATION != SEMANTIC OWNERSHIP
+OPEN PR != CURRENT AUTHORITY
+AI MEMORY != REPO FACT
+RECORDING != HUMAN AUTHORIZATION
+TECHNICAL PASS != HUMAN ACCEPTANCE
+```
 
-Re-check official OpenAI documentation immediately before any current model/provider/Codex capability or pricing decision; do not rely on old capability assumptions.
+Before using an external source for consequential work, recheck its live repository state. This registry is durable continuity, not a remote locking mechanism.

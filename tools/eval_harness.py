@@ -24,6 +24,10 @@ HUMAN_REVIEW_OPEN_STATUS_RE = re.compile(
     r"^Status:\s*`TECHNICAL E2E COMPLETE THROUGH HUMAN-REVIEW BOUNDARY / HUMAN REVIEW OPEN`\s*$",
     re.MULTILINE,
 )
+RUN94_EXECUTOR_IMPLEMENTATION = "3cd0c8d747fef06f82c01cdab8449c7c8a100038"
+RUN94_EXECUTOR_TREE = "c739aaa989a15eaed65996d7a0b5242a0ec26d7e"
+HISTORICAL_EXECUTOR_FIRST_TARGET = "f60829f90ea2f69dc501582daf109b59676be07e"
+HUMAN_OPERATING_CONTRACT_PATH = "docs/HUMAN_OPERATING_CONTRACT.md"
 
 
 class EvalError(ValueError):
@@ -265,6 +269,37 @@ def audit_repository(root: Path) -> dict[str, Any]:
             check("completion-lock-active", "completion_lock: ACTIVE" in state_text, "PROJECT_STATE.md")
         check("state-one-next-step-section", state_text.count("## 9. One next step") == 1, "PROJECT_STATE.md")
         check("handoff-one-next-step-section", handoff_text.count("## ONE NEXT STEP") == 1, "SESSION_HANDOFF.md")
+
+        # Narrow currentness checks for the canonical post-acceptance Saddle repository.
+        # These are intentionally concrete regression guards, not a general semantic engine.
+        if functional_accepted and "project: Saddle" in state_text:
+            run94_state = RUN94_EXECUTOR_IMPLEMENTATION in state_text and RUN94_EXECUTOR_TREE in state_text
+            run94_handoff = RUN94_EXECUTOR_IMPLEMENTATION in handoff_text and RUN94_EXECUTOR_TREE in handoff_text
+            historical_preserved = HISTORICAL_EXECUTOR_FIRST_TARGET in state_text and HISTORICAL_EXECUTOR_FIRST_TARGET in handoff_text
+            observed_not_live_lock = "OBSERVED SHA != LIVE LOCK" in state_text and "OBSERVED SHA != LIVE LOCK" in handoff_text
+            stale_current_phrase = f"The exact Human-accepted Executor product candidate remains `{HISTORICAL_EXECUTOR_FIRST_TARGET}`"
+            check("semantic-currentness:executor-run94-state", run94_state, "PROJECT_STATE.md")
+            check("semantic-currentness:executor-run94-handoff", run94_handoff, "SESSION_HANDOFF.md")
+            check("semantic-currentness:executor-historical-identity-preserved", historical_preserved, HISTORICAL_EXECUTOR_FIRST_TARGET)
+            check("semantic-currentness:observed-sha-not-live-lock", observed_not_live_lock, "PROJECT_STATE.md + SESSION_HANDOFF.md")
+            check("semantic-currentness:no-stale-f608-current-claim", stale_current_phrase not in handoff_text, "SESSION_HANDOFF.md")
+
+            human_contract_path = root / HUMAN_OPERATING_CONTRACT_PATH
+            human_contract_text = human_contract_path.read_text(encoding="utf-8") if human_contract_path.is_file() else ""
+            human_contract_ok = all(
+                marker in human_contract_text
+                for marker in (
+                    "semantic_owner: \"HUMAN\"",
+                    "AKCJA = co jest robione + granice + wynik, jeśli już istnieje.",
+                    "GDZIE = dokładna tożsamość scope; PINNED albo LIVE, gdy ma to znaczenie.",
+                    "ODESŁAĆ = dokładnie jedna następna rzecz / decyzja / autoryzacja potrzebna teraz od Human albo NIC.",
+                    "CAPABILITY != PERMISSION",
+                )
+            )
+            human_contract_recovered = HUMAN_OPERATING_CONTRACT_PATH in state_text and HUMAN_OPERATING_CONTRACT_PATH in handoff_text
+            check("human-operating-contract:present-current", human_contract_ok, HUMAN_OPERATING_CONTRACT_PATH)
+            check("human-operating-contract:recovery-pointer", human_contract_recovered, "PROJECT_STATE.md + SESSION_HANDOFF.md")
+
     if todo_path.is_file():
         todo_text = todo_path.read_text(encoding="utf-8")
         ready_count = len(READY_NEXT_STATUS_RE.findall(todo_text))

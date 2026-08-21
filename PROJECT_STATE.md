@@ -80,6 +80,8 @@ Executor executes only authorized consequential effects.
 Verifier independently establishes facts.
 ```
 
+The current Human-owned external interaction contract is durably preserved in `docs/HUMAN_OPERATING_CONTRACT.md` as `AKCJA / GDZIE / ODESŁAĆ`. Saddle stores that contract; the Human remains its semantic owner. It does not alter the ownership architecture or create a runtime/router.
+
 The production request-origin / Human-identity trust provider remains intentionally unselected. Maturity beyond the explicitly tested/accepted functional scope remains unclaimed.
 
 ## 4. Historical acceptance evidence — identities preserved
@@ -128,9 +130,9 @@ Primary terminal evidence:
 - `decisions/DEC-SAD-017.md`;
 - `decisions/DEC-SAD-018.md`.
 
-## 5. Last observed external source snapshot
+## 5. Last recorded external source snapshot
 
-Last-observed continuity snapshots are maintained in `SOURCE_REGISTRY.md` and `config/source-repos.json`.
+The continuity snapshot maintained in `SOURCE_REGISTRY.md` and `config/source-repos.json` was recorded before later local-owner advances:
 
 ```text
 COS:           JTJ07/COS@a9982d9f0ae73d8a09c3af8ce0825890784fa2ad
@@ -142,7 +144,19 @@ pilot target:  JTJ07/executor-pilot-target@6c18230d2e1223a8145885b19c5073ec1ce20
 
 These are continuity observations, not live locks. Detailed/local truth remains with each semantic owner, and live state must be re-resolved before consequential use.
 
-Later accepted local-owner history may therefore be newer than these snapshots without making this section a false `CURRENT LIVE` claim.
+For this 2026-08-21 narrow semantic-freshness reconciliation, Executor local-owner truth was re-resolved at:
+
+```text
+JTJ07/Executor@d6a9df0567dd37b3b6f997ba49cd23b4585c3a5a
+```
+
+This observation does not replace `config/source-repos.json` with a perpetual live pointer and does not rewrite historical snapshots.
+
+```text
+OBSERVED SHA != LIVE LOCK
+```
+
+Later accepted local-owner history may therefore be newer than the recorded continuity snapshot without making that snapshot a false `CURRENT LIVE` claim.
 
 ## 6. Post-acceptance evaluation — separate axis
 
@@ -172,24 +186,30 @@ First-target Saddle result record:
 
 `evidence/PROJECT_COMPLETION_AUTONOMY_EXECUTOR_RESULT_2026-08-19.md`.
 
-Executor durable facts establish:
+Executor identity layers must remain distinct:
 
 ```text
-Human-accepted candidate:
-  f60829f90ea2f69dc501582daf109b59676be07e
-  tree 1c4c141415505dd26e1fe307ca1aba987782cfba
+HISTORICAL FIRST-TARGET HUMAN-ACCEPTED IDENTITY (2026-08-19 chain):
+  implementation f60829f90ea2f69dc501582daf109b59676be07e
+  tree           1c4c141415505dd26e1fe307ca1aba987782cfba
+  verified integration merge d3ebe93e9b9d6ec29ff859e931939c89b57ed468
+
+CURRENT RUN94 HUMAN-ACCEPTED IMPLEMENTATION (2026-08-20):
+  implementation 3cd0c8d747fef06f82c01cdab8449c7c8a100038
+  tree           c739aaa989a15eaed65996d7a0b5242a0ec26d7e
+  canonical main at acceptance a7fc272e09a2ffb5c06a98e26ed6ef9667cd4f89
+
+CURRENT LOCAL-OWNER LIVE MAIN RE-RESOLVED FOR THIS RECONCILIATION:
+  d6a9df0567dd37b3b6f997ba49cd23b4585c3a5a
 
 PROJECT COMPLETION: PASS
 EXECUTOR 1.0: ACCEPT
 P4 REPEATABLE EXECUTOR 1.0: HUMAN ACCEPTED
+G-01–G-18: PASS
 FALSE SUCCESS PATHS IN FINAL ADVERSARIAL EVIDENCE CHAIN: 0
-
-verified integration merge:
-  d3ebe93e9b9d6ec29ff859e931939c89b57ed468
-
-last observed Executor main after final completion-authority reconciliation:
-  111e9e5d4fca66412e287852abdec6db5a1225ab
 ```
+
+The Run94 source of truth is `JTJ07/Executor/docs/governance/EXECUTOR_1_0_FINAL_HUMAN_ACCEPTANCE_RECORD_2026-08-20.md`. The earlier `f60829f...` identity remains historical accepted provenance and is not rewritten. A live-main observation is a recovery observation, not the accepted implementation identity and not a live lock.
 
 Reconstructor Run 001 established real-value observed evidence without triggering a prompt change. Later local P0 root-containment hardening is a separate accepted maintenance result and does not alter the Run 001 semantic verdict.
 
@@ -257,7 +277,8 @@ Current bounded work states are:
 P0 SECURITY / CURRENT-STATE CORRECTNESS:
   EffectAuthority hardening COMPLETE / Human accepted / PR #29 merged
   cross-project pointer reconciliation COMPLETE / Human accepted / PR #35 merged
-  source SHA fields are last-observed snapshots, not live locks
+  source SHA fields are last-recorded snapshots, not live locks
+  narrow semantic-freshness reconciliation is maintenance only; no roadmap consequence
 
 P1 DURABLE-STATE RECONCILIATION:
   COMPLETE / Human accepted / PR #33 merged
@@ -287,8 +308,9 @@ For cold start:
 1. read `AGENTS.md`;
 2. read this `PROJECT_STATE.md`;
 3. read `SESSION_HANDOFF.md`;
-4. use `SOURCE_REGISTRY.md` / `config/source-repos.json` for last-observed external snapshots, then re-resolve live state from the local owner before consequential use;
-5. use decisions/evidence for historical accepted identities;
-6. do not infer current state from an old PR, old SHA, historical capsule or AI memory.
+4. read `docs/HUMAN_OPERATING_CONTRACT.md` for the current Human-owned `AKCJA / GDZIE / ODESŁAĆ` interaction surface;
+5. use `SOURCE_REGISTRY.md` / `config/source-repos.json` as recorded external snapshots, then re-resolve live state from the local owner before consequential use;
+6. use decisions/evidence for historical accepted identities;
+7. do not infer current state from an old PR, old SHA, historical capsule or AI memory.
 
 A newer observation may supersede a stale pointer without rewriting the historical evidence for the checkpoint where that pointer was correct.

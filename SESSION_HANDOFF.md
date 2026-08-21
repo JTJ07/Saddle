@@ -8,7 +8,7 @@ updated_at: 2026-08-21
 
 ## STATUS
 
-Saddle's defined product-completion path remains terminally Human-accepted. Post-acceptance evaluation is a separate lane and does not reopen Phase 7 or activate a new product roadmap.
+Saddle's defined product-completion path remains terminally Human-accepted. Post-acceptance evaluation and semantic-freshness maintenance are separate lanes and do not reopen Phase 7 or activate a new product roadmap.
 
 ```text
 FUNCTIONAL_SADDLE_ACCEPTED — true
@@ -28,10 +28,14 @@ C0 PAPER SUFFICIENCY — PASS
 C0 LIVE SUFFICIENCY — NOT TESTED
 C0 SOLUTION — NOT HUMAN ACCEPTED
 C0 IMPLEMENTATION — NOT AUTHORIZED
-LAST OBSERVED EXECUTOR — JTJ07/Executor@111e9e5d4fca66412e287852abdec6db5a1225ab
+EXECUTOR RUN94 HUMAN-ACCEPTED IMPLEMENTATION — 3cd0c8d747fef06f82c01cdab8449c7c8a100038
+EXECUTOR RUN94 HUMAN-ACCEPTED TREE — c739aaa989a15eaed65996d7a0b5242a0ec26d7e
+EXECUTOR LIVE MAIN RE-RESOLVED FOR THIS RECONCILIATION — d6a9df0567dd37b3b6f997ba49cd23b4585c3a5a
+HUMAN OPERATING CONTRACT — docs/HUMAN_OPERATING_CONTRACT.md / AKCJA-GDZIE-ODESŁAĆ
 SECURITY HARDENING — HUMAN ACCEPTED / PR #29 MERGED
 DURABLE-STATE RECONCILIATION — HUMAN ACCEPTED / PR #33 MERGED
 CURRENT-STATE RECONCILIATION — HUMAN ACCEPTED / PR #35 MERGED
+NARROW SEMANTIC-FRESHNESS RECONCILIATION RECORD — VERIFIED MAINTENANCE RESULT / HUMAN ACCEPTANCE EXTERNAL TO THIS FILE
 GENERALIZATION CLAIM — NONE
 ```
 
@@ -64,22 +68,30 @@ First target result:
 
 `evidence/PROJECT_COMPLETION_AUTONOMY_EXECUTOR_RESULT_2026-08-19.md`
 
-Observed first-target outcome:
+The first-target chain and later Run94 chain are both preserved, but they are not the same identity:
 
 ```text
-TARGET: JTJ07/Executor
-PHASE A COMPLETION MAP: OBSERVED
-HUMAN SEMANTIC APPROVAL: OBSERVED
-PHASE B WHOLE-PROJECT EXECUTION: OBSERVED
-PHASE C INDEPENDENT VERIFICATION: PASS
-PROJECT COMPLETION: PASS
-EXECUTOR 1.0: HUMAN ACCEPTED
-CONTROLLED INTEGRATION: COMPLETE
-FALSE SUCCESS PATHS IN FINAL TARGET EVIDENCE: 0
-SADDLE ROADMAP CONSEQUENCE: NONE
+HISTORICAL FIRST-TARGET HUMAN-ACCEPTED IDENTITY:
+  f60829f90ea2f69dc501582daf109b59676be07e
+  tree 1c4c141415505dd26e1fe307ca1aba987782cfba
+
+CURRENT RUN94 HUMAN-ACCEPTED IMPLEMENTATION:
+  3cd0c8d747fef06f82c01cdab8449c7c8a100038
+  tree c739aaa989a15eaed65996d7a0b5242a0ec26d7e
+  G-01–G-18 PASS
+  PROJECT COMPLETION PASS
+  EXECUTOR 1.0 ACCEPT
+
+CURRENT LOCAL-OWNER LIVE MAIN RE-RESOLVED FOR THIS RECONCILIATION:
+  d6a9df0567dd37b3b6f997ba49cd23b4585c3a5a
 ```
 
-The exact Human-accepted Executor product candidate remains `f60829f90ea2f69dc501582daf109b59676be07e`; accepted integration history is recorded separately in Executor. Last observed Executor main at this reconciliation is `111e9e5d4fca66412e287852abdec6db5a1225ab` after Human-authorized PR #71. Re-resolve live state before consequential use.
+The exact Run94 Human-acceptance source is `JTJ07/Executor/docs/governance/EXECUTOR_1_0_FINAL_HUMAN_ACCEPTANCE_RECORD_2026-08-20.md`. The earlier `f60829f...` identity remains valid historical provenance for its earlier chain. The live-main observation is neither a replacement accepted implementation identity nor a live lock.
+
+```text
+HISTORICAL ACCEPTANCE PRESERVED != CURRENT ACCEPTANCE POINTER UNCHANGED
+OBSERVED SHA != LIVE LOCK
+```
 
 Reconstructor Real-Value Run 001 established:
 
@@ -116,11 +128,9 @@ GENERALIZATION CLAIM: NONE
 
 This current-state reconciliation preserves the earlier M-05 verdicts as historical provenance and does not activate a new Saddle roadmap, runtime, capability, effect authority, release or deployment.
 
-GAP-ENTRY-001 contract-only sufficiency is now durably recorded in:
+GAP-ENTRY-001 contract-only sufficiency remains durably sealed in:
 
 `evidence/GAP_ENTRY_001_CONTRACT_ONLY_SUFFICIENCY_SEAL_2026-08-21.md`
-
-The sealed experiment result is:
 
 ```text
 GAP-ENTRY-001 DIAGNOSIS = CLOSED
@@ -133,13 +143,13 @@ SOLUTION = NOT HUMAN ACCEPTED
 IMPLEMENTATION = NOT AUTHORIZED
 ```
 
-The result identifies two semantic sub-gaps of one thin entry surface: `GAP-ENTRY-001.A` target/input-role binding and `GAP-ENTRY-001.B` invocation/bound-input identity to External/Base Intelligence. It does not establish a need for a master router, Ginseng runtime, graph runtime, multi-agent orchestrator, new cognitive-routing owner, new authority model, new protocol object, or new component.
+The narrow semantic-freshness reconciliation does not implement C0, its `.A/.B` bindings, a runtime, a router or a new capability.
 
 These successful target/workload/contract-only results are evidence, not a general product requirement. They do not self-authorize another Saddle product feature, live C0 test, or implementation.
 
-## LAST OBSERVED SOURCE SNAPSHOT
+## LAST RECORDED SOURCE SNAPSHOT
 
-Machine-readable source observations are in `config/source-repos.json`. They are continuity snapshots, not semantic-ownership transfers or live locks.
+Machine-readable source observations remain in `config/source-repos.json`. They are continuity snapshots, not semantic-ownership transfers or live locks.
 
 ```text
 COS:           JTJ07/COS@a9982d9f0ae73d8a09c3af8ce0825890784fa2ad
@@ -149,7 +159,9 @@ Executor:      JTJ07/Executor@111e9e5d4fca66412e287852abdec6db5a1225ab
 pilot target:  JTJ07/executor-pilot-target@6c18230d2e1223a8145885b19c5073ec1ce20662
 ```
 
-Historical run SHAs remain historical provenance and are not rewritten by this snapshot. Later accepted local-owner changes may exist; re-resolve external live state from the local owner before consequential use.
+For this reconciliation, Executor local-owner live state was separately re-resolved as `JTJ07/Executor@d6a9df0567dd37b3b6f997ba49cd23b4585c3a5a`. This does not rewrite the recorded snapshot.
+
+Historical run SHAs remain historical provenance. Later accepted local-owner changes may exist; re-resolve external live state from the local owner before consequential use.
 
 ## HUMAN DECISIONS STILL GOVERNING
 
@@ -162,6 +174,14 @@ Historical run SHAs remain historical provenance and are not rewritten by this s
 - `DEC-SAD-016`: `google-gemini / gemini-3.6-flash` selected for the bounded acceptance path.
 - `DEC-SAD-017`: Phase-7 technical E2E accepted.
 - `DEC-SAD-018`: final functional acceptance and completion-lock release.
+
+The current Human-owned interaction contract is `docs/HUMAN_OPERATING_CONTRACT.md`:
+
+```text
+AKCJA
+GDZIE
+ODESŁAĆ
+```
 
 `AI RECOMMENDATION != HUMAN DECISION` remains active.
 
@@ -231,7 +251,7 @@ merge SHA: 3f7588c7f42de6330f49d4a36b0ee318ee213852
 status: CURRENT-STATE RECONCILIATION INTEGRATED
 ```
 
-This closes the pointer-drift repair found by the recovery audit. Source SHAs are now treated as last-observed snapshots rather than live locks, so later upstream merges do not silently become false current-state claims.
+This closes the pointer-drift repair found by the recovery audit. Source SHAs are treated as recorded observations rather than live locks, so later upstream merges do not silently become false current-state claims.
 
 ## OPEN-PR HYGIENE
 
@@ -242,24 +262,19 @@ Historical PR #2–#6 have been closed unmerged as superseded candidates after c
 1. `AGENTS.md`
 2. `PROJECT_STATE.md`
 3. `SESSION_HANDOFF.md`
-4. `SOURCE_REGISTRY.md`
-5. `ECOSYSTEM_MAP.md`
-6. `config/autonomy.json`
-7. `config/eval-lanes.json`
-8. `config/source-repos.json`
-9. `docs/PROJECT_COMPLETION_AUTONOMY_TEST_PROTOCOL.md`
-10. `evidence/PROJECT_COMPLETION_AUTONOMY_EXECUTOR_RESULT_2026-08-19.md`
-11. `evidence/GAP_ENTRY_001_CONTRACT_ONLY_SUFFICIENCY_SEAL_2026-08-21.md`
-12. `FUTURE_IDEAS.md`
+4. `docs/HUMAN_OPERATING_CONTRACT.md`
+5. `SOURCE_REGISTRY.md`
+6. `ECOSYSTEM_MAP.md`
+7. `config/autonomy.json`
+8. `config/eval-lanes.json`
+9. `config/source-repos.json`
+10. `docs/PROJECT_COMPLETION_AUTONOMY_TEST_PROTOCOL.md`
+11. `evidence/PROJECT_COMPLETION_AUTONOMY_EXECUTOR_RESULT_2026-08-19.md`
+12. `evidence/GAP_ENTRY_001_CONTRACT_ONLY_SUFFICIENCY_SEAL_2026-08-21.md`
+13. `FUTURE_IDEAS.md`
 
 ## ONE NEXT STEP
 
 **No active Saddle product-development step.**
 
-The one bounded non-product-development handoff after this seal is accepted/integrated is:
-
-```text
-NEXT = NARROW AUDIT RECONCILIATION
-```
-
-Compare the sealed `GAP-ENTRY-001` result against the later full ecosystem implementation ↔ accepted-intent audit and reconcile only material contradictions under separate bounded Human authority. Do not implement C0, run a live C0 test, activate Ginseng, create a router, expand capability, or change the ownership architecture as part of that handoff.
+Repository acceptance and integration of this maintenance result are external Human-controlled effects. This file does not self-authorize or infer either effect. No new product-development step, roadmap, capability, runtime, C0 implementation, Ginseng activation, master router, release or deployment follows from this reconciliation.

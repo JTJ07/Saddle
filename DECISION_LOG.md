@@ -356,6 +356,19 @@ human decision
 - Authority consequence: no new architecture, capability, runtime, router, Ginseng activation, effect authority, C0 implementation or C0 live test follows.
 - Detailed decision record: `decisions/DEC-SAD-019.md`.
 
+## DEC-SAD-020 — Human product acceptance of C0 for GAP-ENTRY-001
+
+- Date: 2026-08-21
+- Owner: USER
+- Status: ACTIVE / HUMAN PRODUCT ACCEPTANCE / IMPLEMENTATION NOT AUTHORIZED
+- Human decision: accept `C0` as the minimal product solution for `GAP-ENTRY-001 / GENERIC PRODUCT INVOCATION / OPERATIONAL ENTRY BINDING`.
+- Evidence basis stated by the Human: `C0 PAPER SUFFICIENCY = PASS`; `C0.A PRIMARY TARGET != CONTROL / SUPPORT = LIVE PASS`; `C0.B BOUND INPUT → THIS INVOCATION → BASE INTELLIGENCE = LIVE PASS`.
+- Accepted form: `C0` remains a thin semantic entry contract, not a new architectural component.
+- Current necessity verdict: `NEW COMPONENT REQUIRED = NO`; `NEW RUNTIME REQUIRED = NO`; `MASTER ROUTER REQUIRED = NO`; `NEW CAPABILITY REQUIRED = NO`.
+- Observation boundary: `OBS-C0-01` and `OBS-C0-02` remain separate downstream Intelligence observations and do not expand C0.
+- Authority boundary: this is Human product acceptance of the C0 solution only; it does not authorize implementation, runtime activation, architecture change, capability expansion or `RWV-01 E1-FINAL`.
+- Detailed decision record: `decisions/DEC-SAD-020.md`.
+
 ## Not yet a decision / post-acceptance directions
 
 The following remain open until explicitly selected, activated, or proven:

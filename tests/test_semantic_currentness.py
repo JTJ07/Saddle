@@ -122,5 +122,62 @@ class SemanticCurrentnessTests(unittest.TestCase):
             self.assertEqual(audit_repository(root)["overall"], "FAIL")
 
 
+class CanonicalRecoverySurfaceTests(unittest.TestCase):
+    def read(self, path: str) -> str:
+        return (ROOT / path).read_text(encoding="utf-8")
+
+    def test_r01_dec_sad_006_role_placement_is_superseded_by_later_human_decision(self):
+        log = self.read("DECISION_LOG.md")
+        decision = self.read("decisions/DEC-SAD-019.md")
+        state = self.read("PROJECT_STATE.md")
+        handoff = self.read("SESSION_HANDOFF.md")
+
+        self.assertIn("## DEC-SAD-006 — Responsibility ownership boundary", log)
+        self.assertIn("Status: ACTIVE CORE / ROLE PLACEMENT SUPERSEDED BY DEC-SAD-019", log)
+        self.assertIn("## DEC-SAD-019 — Current ownership-semantics reconciliation", log)
+        self.assertLess(log.index("## DEC-SAD-006"), log.index("## DEC-SAD-019"))
+        self.assertIn("SUPERSEDED FOR CURRENT OWNERSHIP SEMANTICS", decision)
+        self.assertIn("SUPERSEDES:\nDEC-SAD-006 / ROLE-PLACEMENT AND FRONT-DOOR TOPOLOGY ONLY", decision)
+
+        for text in (state, handoff):
+            self.assertIn("GINSENG", text)
+            self.assertIn("INTELLIGENCE", text)
+            self.assertIn("SADDLE", text)
+            self.assertIn("EXECUTOR", text)
+        self.assertIn("DEC-SAD-019", state)
+        self.assertIn("DEC-SAD-019", handoff)
+
+    def test_r02_pr41_integration_is_current_while_pre_rework_evidence_stays_rework_required(self):
+        state = self.read("PROJECT_STATE.md")
+        handoff = self.read("SESSION_HANDOFF.md")
+        recheck = self.read("evidence/POST_RECONCILIATION_SEMANTIC_FRESHNESS_RECHECK_2026-08-21.md")
+
+        for text in (state, handoff):
+            self.assertIn("4018ea2a0a2f80e326ecd65bfcf9f0d5ae59b4bb", text)
+            self.assertIn("5080f60bb3a96b5dd09e2cf720c536e126ceeac9", text)
+            self.assertIn("HUMAN ACCEPTED", text)
+            self.assertIn("CANONICALLY INTEGRATED", text)
+
+        self.assertNotIn(
+            "NARROW SEMANTIC-FRESHNESS RECONCILIATION RECORD — VERIFIED MAINTENANCE RESULT / HUMAN ACCEPTANCE EXTERNAL TO THIS FILE",
+            handoff,
+        )
+        self.assertNotIn(
+            "Repository acceptance and integration of this maintenance result are external Human-controlled effects.",
+            handoff,
+        )
+        self.assertIn("VERDICT:\nREWORK REQUIRED", recheck)
+        self.assertIn("AUD-007 REOPENED", recheck)
+        self.assertIn("RECHECK-R01 OPEN", recheck)
+        self.assertIn("RECHECK-R02 OPEN", recheck)
+
+    def test_gap_entry_c0_remains_unimplemented_and_live_untested(self):
+        handoff = self.read("SESSION_HANDOFF.md")
+        self.assertIn("C0 PAPER SUFFICIENCY — PASS", handoff)
+        self.assertIn("C0 LIVE SUFFICIENCY — NOT TESTED", handoff)
+        self.assertIn("C0 SOLUTION — NOT HUMAN ACCEPTED", handoff)
+        self.assertIn("C0 IMPLEMENTATION — NOT AUTHORIZED", handoff)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -30,12 +30,14 @@ C0 SOLUTION — NOT HUMAN ACCEPTED
 C0 IMPLEMENTATION — NOT AUTHORIZED
 EXECUTOR RUN94 HUMAN-ACCEPTED IMPLEMENTATION — 3cd0c8d747fef06f82c01cdab8449c7c8a100038
 EXECUTOR RUN94 HUMAN-ACCEPTED TREE — c739aaa989a15eaed65996d7a0b5242a0ec26d7e
-EXECUTOR LIVE MAIN RE-RESOLVED FOR THIS RECONCILIATION — d6a9df0567dd37b3b6f997ba49cd23b4585c3a5a
+EXECUTOR LIVE MAIN RE-RESOLVED FOR THE NARROW RECONCILIATION — d6a9df0567dd37b3b6f997ba49cd23b4585c3a5a
 HUMAN OPERATING CONTRACT — docs/HUMAN_OPERATING_CONTRACT.md / AKCJA-GDZIE-ODESŁAĆ
+OWNERSHIP SEMANTICS RECONCILIATION — DEC-SAD-019 / DEC-SAD-006 ROLE PLACEMENT SUPERSEDED ONLY
 SECURITY HARDENING — HUMAN ACCEPTED / PR #29 MERGED
 DURABLE-STATE RECONCILIATION — HUMAN ACCEPTED / PR #33 MERGED
 CURRENT-STATE RECONCILIATION — HUMAN ACCEPTED / PR #35 MERGED
-NARROW SEMANTIC-FRESHNESS RECONCILIATION RECORD — VERIFIED MAINTENANCE RESULT / HUMAN ACCEPTANCE EXTERNAL TO THIS FILE
+NARROW SEMANTIC-FRESHNESS RECONCILIATION — HUMAN ACCEPTED / PR #41 CANONICALLY INTEGRATED / MERGE 5080f60bb3a96b5dd09e2cf720c536e126ceeac9
+POST-RECONCILIATION SEMANTIC-FRESHNESS RECHECK — PRE-REWORK EVIDENCE / REWORK REQUIRED / AUD-007 + R01 + R02
 GENERALIZATION CLAIM — NONE
 ```
 
@@ -82,7 +84,7 @@ CURRENT RUN94 HUMAN-ACCEPTED IMPLEMENTATION:
   PROJECT COMPLETION PASS
   EXECUTOR 1.0 ACCEPT
 
-CURRENT LOCAL-OWNER LIVE MAIN RE-RESOLVED FOR THIS RECONCILIATION:
+CURRENT LOCAL-OWNER LIVE MAIN RE-RESOLVED FOR THE NARROW RECONCILIATION:
   d6a9df0567dd37b3b6f997ba49cd23b4585c3a5a
 ```
 
@@ -143,7 +145,7 @@ SOLUTION = NOT HUMAN ACCEPTED
 IMPLEMENTATION = NOT AUTHORIZED
 ```
 
-The narrow semantic-freshness reconciliation does not implement C0, its `.A/.B` bindings, a runtime, a router or a new capability.
+The narrow semantic-freshness reconciliation and this rework do not implement C0, its `.A/.B` bindings, a runtime, a router or a new capability.
 
 These successful target/workload/contract-only results are evidence, not a general product requirement. They do not self-authorize another Saddle product feature, live C0 test, or implementation.
 
@@ -159,7 +161,7 @@ Executor:      JTJ07/Executor@111e9e5d4fca66412e287852abdec6db5a1225ab
 pilot target:  JTJ07/executor-pilot-target@6c18230d2e1223a8145885b19c5073ec1ce20662
 ```
 
-For this reconciliation, Executor local-owner live state was separately re-resolved as `JTJ07/Executor@d6a9df0567dd37b3b6f997ba49cd23b4585c3a5a`. This does not rewrite the recorded snapshot.
+For the narrow semantic-freshness reconciliation, Executor local-owner live state was separately re-resolved as `JTJ07/Executor@d6a9df0567dd37b3b6f997ba49cd23b4585c3a5a`. This does not rewrite the recorded snapshot.
 
 Historical run SHAs remain historical provenance. Later accepted local-owner changes may exist; re-resolve external live state from the local owner before consequential use.
 
@@ -174,6 +176,7 @@ Historical run SHAs remain historical provenance. Later accepted local-owner cha
 - `DEC-SAD-016`: `google-gemini / gemini-3.6-flash` selected for the bounded acceptance path.
 - `DEC-SAD-017`: Phase-7 technical E2E accepted.
 - `DEC-SAD-018`: final functional acceptance and completion-lock release.
+- `DEC-SAD-019`: current ownership-semantics reconciliation; `DEC-SAD-006` historical content preserved, former role/front-door topology placement superseded only.
 
 The current Human-owned interaction contract is `docs/HUMAN_OPERATING_CONTRACT.md`:
 
@@ -189,8 +192,10 @@ ODESŁAĆ
 
 ```text
 HUMAN OWNS INTENT / GOAL / DONE / NORMATIVE AUTHORITY
+GINSENG UNDERSTANDS DECISION SPACE
 INTELLIGENCE PROPOSES OR SELECTS HOW
 SADDLE VALIDATES PROPOSED HOW AGAINST INTENT; IT DOES NOT CHOOSE THE ROUTE
+COS PRESERVES HIGH-LEVEL CONTINUITY / PROVENANCE
 EXECUTOR GOVERNS AUTHORIZED CONSEQUENCES
 VERIFIER ESTABLISHES FACTS
 PROPOSAL != DECISION != AUTHORITY != EFFECT
@@ -253,6 +258,32 @@ status: CURRENT-STATE RECONCILIATION INTEGRATED
 
 This closes the pointer-drift repair found by the recovery audit. Source SHAs are treated as recorded observations rather than live locks, so later upstream merges do not silently become false current-state claims.
 
+## NARROW SEMANTIC-FRESHNESS RECONCILIATION — INTEGRATED
+
+The Human accepted and separately authorized merge of the narrow `AUD-001…AUD-007` semantic-freshness reconciliation in PR #41.
+
+```text
+PR #41
+accepted head: 4018ea2a0a2f80e326ecd65bfcf9f0d5ae59b4bb
+canonical merge SHA: 5080f60bb3a96b5dd09e2cf720c536e126ceeac9
+Human semantic acceptance: ACCEPTED
+merge authorization: ACCEPTED
+status: NARROW SEMANTIC-FRESHNESS RECONCILIATION INTEGRATED
+```
+
+The earlier pre-merge record `evidence/ECOSYSTEM_SEMANTIC_FRESHNESS_RECONCILIATION_2026-08-21.md` remains historical candidate evidence and is not rewritten.
+
+The later read-only recheck is separately preserved in `evidence/POST_RECONCILIATION_SEMANTIC_FRESHNESS_RECHECK_2026-08-21.md` with immutable pre-rework verdict:
+
+```text
+REWORK REQUIRED
+AUD-007 REOPENED
+RECHECK-R01 OPEN
+RECHECK-R02 OPEN
+```
+
+That recheck evidence is not rewritten to PASS by this repair. Current recovery may record later repair state separately after verification/acceptance.
+
 ## OPEN-PR HYGIENE
 
 Historical PR #2–#6 have been closed unmerged as superseded candidates after confirming their valuable material is already preserved on later canonical main. Their GitHub/Git provenance remains available.
@@ -263,18 +294,21 @@ Historical PR #2–#6 have been closed unmerged as superseded candidates after c
 2. `PROJECT_STATE.md`
 3. `SESSION_HANDOFF.md`
 4. `docs/HUMAN_OPERATING_CONTRACT.md`
-5. `SOURCE_REGISTRY.md`
-6. `ECOSYSTEM_MAP.md`
-7. `config/autonomy.json`
-8. `config/eval-lanes.json`
-9. `config/source-repos.json`
-10. `docs/PROJECT_COMPLETION_AUTONOMY_TEST_PROTOCOL.md`
-11. `evidence/PROJECT_COMPLETION_AUTONOMY_EXECUTOR_RESULT_2026-08-19.md`
-12. `evidence/GAP_ENTRY_001_CONTRACT_ONLY_SUFFICIENCY_SEAL_2026-08-21.md`
-13. `FUTURE_IDEAS.md`
+5. `DECISION_LOG.md`
+6. `decisions/DEC-SAD-019.md`
+7. `SOURCE_REGISTRY.md`
+8. `ECOSYSTEM_MAP.md`
+9. `config/autonomy.json`
+10. `config/eval-lanes.json`
+11. `config/source-repos.json`
+12. `docs/PROJECT_COMPLETION_AUTONOMY_TEST_PROTOCOL.md`
+13. `evidence/PROJECT_COMPLETION_AUTONOMY_EXECUTOR_RESULT_2026-08-19.md`
+14. `evidence/GAP_ENTRY_001_CONTRACT_ONLY_SUFFICIENCY_SEAL_2026-08-21.md`
+15. `evidence/POST_RECONCILIATION_SEMANTIC_FRESHNESS_RECHECK_2026-08-21.md`
+16. `FUTURE_IDEAS.md`
 
 ## ONE NEXT STEP
 
 **No active Saddle product-development step.**
 
-Repository acceptance and integration of this maintenance result are external Human-controlled effects. This file does not self-authorize or infer either effect. No new product-development step, roadmap, capability, runtime, C0 implementation, Ginseng activation, master router, release or deployment follows from this reconciliation.
+PR #41 is already Human-accepted and canonically integrated. The post-reconciliation recheck remains immutable evidence with verdict `REWORK REQUIRED`; any repair candidate requires its own exact Human acceptance and merge authority. No product-development step, roadmap, capability, runtime, C0 implementation, C0 live test, Ginseng activation, master router, release or deployment follows from this maintenance lane.

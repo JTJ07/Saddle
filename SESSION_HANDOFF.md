@@ -35,7 +35,7 @@ HUMAN OPERATING CONTRACT — docs/HUMAN_OPERATING_CONTRACT.md / AKCJA-GDZIE-ODES
 SECURITY HARDENING — HUMAN ACCEPTED / PR #29 MERGED
 DURABLE-STATE RECONCILIATION — HUMAN ACCEPTED / PR #33 MERGED
 CURRENT-STATE RECONCILIATION — HUMAN ACCEPTED / PR #35 MERGED
-NARROW SEMANTIC-FRESHNESS RECONCILIATION — CANDIDATE / HUMAN ACCEPTANCE NOT YET RECORDED
+NARROW SEMANTIC-FRESHNESS RECONCILIATION RECORD — VERIFIED MAINTENANCE RESULT / HUMAN ACCEPTANCE EXTERNAL TO THIS FILE
 GENERALIZATION CLAIM — NONE
 ```
 
@@ -277,10 +277,4 @@ Historical PR #2–#6 have been closed unmerged as superseded candidates after c
 
 **No active Saddle product-development step.**
 
-The narrow ecosystem semantic-freshness reconciliation is a maintenance candidate only. Its current Human-facing handoff is:
-
-```text
-NEXT = HUMAN ACCEPTANCE OF THE EXACT VERIFIED RECONCILIATION CANDIDATE
-```
-
-Acceptance does not authorize any new architecture, capability, runtime, C0 implementation, Ginseng activation, master router, release, deployment or unrelated roadmap work. If accepted and integrated, Saddle returns to terminal/no-active-product-development state unless the Human separately selects another bounded task.
+Repository acceptance and integration of this maintenance result are external Human-controlled effects. This file does not self-authorize or infer either effect. No new product-development step, roadmap, capability, runtime, C0 implementation, Ginseng activation, master router, release or deployment follows from this reconciliation.

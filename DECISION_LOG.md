@@ -47,7 +47,7 @@ Only explicit human decisions or decisions already clearly established by the pr
 
 - Date: 2026-08-10
 - Owner: USER
-- Status: ACTIVE
+- Status: ACTIVE CORE / ROLE PLACEMENT SUPERSEDED BY DEC-SAD-019
 - Decision:
   - `HUMAN OWNS INTENT`;
   - `SADDLE PRESERVES AND BINDS INTENT`;
@@ -63,6 +63,7 @@ Only explicit human decisions or decisions already clearly established by the pr
   - no trust provider is selected by this decision.
 - Executor consequence: Executor should own governed consequential-effect authority and execution, not become the semantic owner of human intent. A future Executor contract may carry an `intent_ref` without requiring full human conversational context.
 - Evidence/design reference: `docs/SADDLE_EXECUTOR_RESPONSIBILITY_BOUNDARY.md`.
+- Current-semantics reconciliation: the historical decision content above remains preserved, but its former component-role/front-door topology placement is superseded for current ownership semantics by `DEC-SAD-019` and the accepted current ownership map.
 
 ## DEC-SAD-007 — Operational delegation through completion path
 
@@ -341,6 +342,19 @@ human decision
   - no automatic autonomy, effect-authority, repository-write, secrets, tools, provider-routing, retry, spending, deployment or legal-authority expansion;
   - no `FUTURE_IDEAS.md` item is activated automatically.
 - Detailed decision record: `decisions/DEC-SAD-018.md`.
+
+## DEC-SAD-019 — Current ownership-semantics reconciliation
+
+- Date: 2026-08-21
+- Owner: USER
+- Status: ACTIVE / CURRENT OWNERSHIP SEMANTICS RECONCILIATION
+- Decision: preserve the historical Human decision content of `DEC-SAD-006`, but supersede its former component-role / front-door topology placement for current ownership semantics.
+- Supersedes: `DEC-SAD-006 / ROLE-PLACEMENT AND FRONT-DOOR TOPOLOGY ONLY`.
+- Preserves: Human intent ownership, Saddle intent-integrity preservation, Intelligence HOW ownership, Executor consequence governance, Verifier fact establishment, and the rule that no lower layer substitutes for a higher-order owner.
+- Current ownership source: `ECOSYSTEM_MAP.md` + `PROJECT_STATE.md` + accepted current ownership reconciliation.
+- Current placement: Human owns normative intent/goal/DONE/authority; Ginseng owns decision-space understanding; External/Base Intelligence owns operational framing + HOW + cognitive routing; Saddle validates HOW against intent/boundaries and does not originate/select/route direction; COS owns high-level continuity/provenance; Contracts bind accepted meaning/scope; Executor governs authorized consequential effects; Verifier independently establishes facts.
+- Authority consequence: no new architecture, capability, runtime, router, Ginseng activation, effect authority, C0 implementation or C0 live test follows.
+- Detailed decision record: `decisions/DEC-SAD-019.md`.
 
 ## Not yet a decision / post-acceptance directions
 

@@ -54,7 +54,7 @@ ACTIVE COMPLETION GATE — NONE
 ACTIVE PRODUCT ROADMAP — NONE
 ```
 
-Human decisions defining the terminal acceptance chain:
+Human decisions defining the terminal acceptance chain and current ownership reconciliation:
 
 - `DEC-SAD-010` — ScriptOps v2 selected for Phase-6 reuse + hardening proof; no rewrite/new capability.
 - `DEC-SAD-011` — bounded API benchmark authority.
@@ -65,6 +65,7 @@ Human decisions defining the terminal acceptance chain:
 - `DEC-SAD-016` — `google-gemini / gemini-3.6-flash` selected for the bounded acceptance path.
 - `DEC-SAD-017` — Phase-7 technical E2E evidence accepted.
 - `DEC-SAD-018` — final functional acceptance and completion-lock release.
+- `DEC-SAD-019` — preserves `DEC-SAD-006` historical Human decision content while superseding its former component-role/front-door topology placement for current ownership semantics.
 
 The release of the completion lock does **not** activate a new roadmap, new autonomy, new capabilities, deployment, release, spending, secrets, trust provider or broader effect authority.
 
@@ -79,6 +80,8 @@ Contracts bind accepted meaning/scope; they do not create meaning or authority.
 Executor executes only authorized consequential effects.
 Verifier independently establishes facts.
 ```
+
+`DEC-SAD-006` remains preserved as historical Human decision content. Its former component-role / front-door topology placement is superseded for current ownership semantics by `DEC-SAD-019`; current detailed ownership is recovered from `ECOSYSTEM_MAP.md` and this `PROJECT_STATE.md`.
 
 The current Human-owned external interaction contract is durably preserved in `docs/HUMAN_OPERATING_CONTRACT.md` as `AKCJA / GDZIE / ODESŁAĆ`. Saddle stores that contract; the Human remains its semantic owner. It does not alter the ownership architecture or create a runtime/router.
 
@@ -144,7 +147,7 @@ pilot target:  JTJ07/executor-pilot-target@6c18230d2e1223a8145885b19c5073ec1ce20
 
 These are continuity observations, not live locks. Detailed/local truth remains with each semantic owner, and live state must be re-resolved before consequential use.
 
-For this 2026-08-21 narrow semantic-freshness reconciliation, Executor local-owner truth was re-resolved at:
+For the 2026-08-21 narrow semantic-freshness reconciliation, Executor local-owner truth was re-resolved at:
 
 ```text
 JTJ07/Executor@d6a9df0567dd37b3b6f997ba49cd23b4585c3a5a
@@ -199,7 +202,7 @@ CURRENT RUN94 HUMAN-ACCEPTED IMPLEMENTATION (2026-08-20):
   tree           c739aaa989a15eaed65996d7a0b5242a0ec26d7e
   canonical main at acceptance a7fc272e09a2ffb5c06a98e26ed6ef9667cd4f89
 
-CURRENT LOCAL-OWNER LIVE MAIN RE-RESOLVED FOR THIS RECONCILIATION:
+CURRENT LOCAL-OWNER LIVE MAIN RE-RESOLVED FOR THE NARROW RECONCILIATION:
   d6a9df0567dd37b3b6f997ba49cd23b4585c3a5a
 
 PROJECT COMPLETION: PASS
@@ -267,6 +270,17 @@ Post-acceptance durable-state reconciliation was Human-accepted and merged as PR
 
 Current-state reconciliation from the recovery audit was Human-accepted and merged as PR #35 at `3f7588c7f42de6330f49d4a36b0ee318ee213852`. P0 pointer drift is therefore closed; external SHA fields are last-observed snapshots and must not be treated as perpetual live locks.
 
+The narrow ecosystem semantic-freshness reconciliation `AUD-001…AUD-007` was later Human-accepted and canonically integrated through PR #41:
+
+```text
+PR: #41
+accepted candidate head: 4018ea2a0a2f80e326ecd65bfcf9f0d5ae59b4bb
+canonical merge: 5080f60bb3a96b5dd09e2cf720c536e126ceeac9
+status: HUMAN ACCEPTED / CANONICALLY INTEGRATED
+```
+
+Its pre-merge evidence remains historical candidate evidence and is not rewritten. The subsequent read-only post-reconciliation recheck is separately preserved in `evidence/POST_RECONCILIATION_SEMANTIC_FRESHNESS_RECHECK_2026-08-21.md` with immutable verdict `REWORK REQUIRED`; that evidence does not retroactively change the fact that PR #41 was Human-accepted and integrated.
+
 ## 9. One next step
 
 There is **no active Saddle product-development step**.
@@ -277,8 +291,10 @@ Current bounded work states are:
 P0 SECURITY / CURRENT-STATE CORRECTNESS:
   EffectAuthority hardening COMPLETE / Human accepted / PR #29 merged
   cross-project pointer reconciliation COMPLETE / Human accepted / PR #35 merged
+  narrow ecosystem semantic-freshness reconciliation COMPLETE / Human accepted / PR #41 merged
+  post-reconciliation semantic-freshness recheck evidence = REWORK REQUIRED
+  narrow rework may proceed only under its exact Human authorization; no roadmap consequence
   source SHA fields are last-recorded snapshots, not live locks
-  narrow semantic-freshness reconciliation is maintenance only; no roadmap consequence
 
 P1 DURABLE-STATE RECONCILIATION:
   COMPLETE / Human accepted / PR #33 merged
@@ -309,8 +325,9 @@ For cold start:
 2. read this `PROJECT_STATE.md`;
 3. read `SESSION_HANDOFF.md`;
 4. read `docs/HUMAN_OPERATING_CONTRACT.md` for the current Human-owned `AKCJA / GDZIE / ODESŁAĆ` interaction surface;
-5. use `SOURCE_REGISTRY.md` / `config/source-repos.json` as recorded external snapshots, then re-resolve live state from the local owner before consequential use;
-6. use decisions/evidence for historical accepted identities;
-7. do not infer current state from an old PR, old SHA, historical capsule or AI memory.
+5. use `DECISION_LOG.md` and `decisions/DEC-SAD-019.md` to distinguish preserved `DEC-SAD-006` decision content from superseded former role/topology placement;
+6. use `SOURCE_REGISTRY.md` / `config/source-repos.json` as recorded external snapshots, then re-resolve live state from the local owner before consequential use;
+7. use decisions/evidence for historical accepted identities;
+8. do not infer current state from an old PR, old SHA, historical capsule or AI memory.
 
 A newer observation may supersede a stale pointer without rewriting the historical evidence for the checkpoint where that pointer was correct.

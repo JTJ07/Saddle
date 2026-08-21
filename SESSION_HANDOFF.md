@@ -1,7 +1,7 @@
 ---
 project: Saddle
 status: PHASE_6_ACCEPTED / PHASE_7_ACCEPTED / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_TECHNICAL_EVIDENCE_ACCEPTED / SECOND_ZERO_HISTORY_RESUME_PASS / FINAL_HUMAN_ACCEPTANCE_ACCEPTED / FUNCTIONAL_SADDLE_ACCEPTED / COMPLETION_LOCK_RELEASED
-updated_at: 2026-08-19
+updated_at: 2026-08-21
 ---
 
 # SESSION HANDOFF
@@ -22,7 +22,7 @@ RECONSTRUCTOR REAL-VALUE RUN 001 — COMPLETE / INTEGRATED OBSERVED EVIDENCE
 SCRIPTOPS REAL-WORKLOAD RUN 001–003 — COMPLETE / INTEGRATED OBSERVED EVIDENCE
 SCRIPTOPS RUN 003 — CROSS-SCENE PROPOSAL COHERENCE OBSERVED PASS / GOAL DONE NO
 SCRIPTOPS CURRENT WORK-STATE — WAITING_FOR_EVIDENCE / HUMAN_SEMANTIC_DECISION
-WHOLE-ECOSYSTEM ADVERSARIAL INTEGRATION — TEST HYPOTHESIS / NOT EXECUTED / HUMAN GATE REQUIRED
+WHOLE-ECOSYSTEM ADVERSARIAL INTEGRATION — M-05 / M-05 R1 EXECUTED / HUMAN ACCEPTED / CANONICALLY INTEGRATED
 LAST OBSERVED EXECUTOR — JTJ07/Executor@111e9e5d4fca66412e287852abdec6db5a1225ab
 SECURITY HARDENING — HUMAN ACCEPTED / PR #29 MERGED
 DURABLE-STATE RECONCILIATION — HUMAN ACCEPTED / PR #33 MERGED
@@ -98,6 +98,18 @@ GOAL_DONE: NO
 ```
 
 Human accepted the Run 003 evidence and separately authorized its integration. The local ScriptOps work-state is now `WAITING_FOR_EVIDENCE / HUMAN_SEMANTIC_DECISION`; detailed truth remains owned by `JTJ07/scriptops` and must be re-resolved before consequential use.
+
+M-05 whole-ecosystem adversarial integration was later executed. The initial M-05 `BLOCKED` verdict remains historical provenance. Bounded M-05 R1 supplied the same-identity H1→H8 replay; the exact evidence was Human-accepted and canonical integration completed through COS PR #34 → Saddle PR #38 → COS PR #35.
+
+```text
+M-05 / M-05 R1: EXECUTED / HUMAN ACCEPTED / CANONICALLY INTEGRATED
+M05-B01 / FS-25: CLOSED
+M05-G01 SEMANTIC CONTENT: CLOSED
+KNOWN AUDITED ARCHITECTURAL GAPS LEFT BY TESTED M-05 SCOPE: 0
+GENERALIZATION CLAIM: NONE
+```
+
+This current-state reconciliation preserves the earlier M-05 verdicts as historical provenance and does not activate a new Saddle roadmap, runtime, capability, effect authority, release or deployment.
 
 These successful target/workload results are evidence, not a general product requirement. They do not self-authorize another Saddle product feature or test.
 
@@ -219,6 +231,6 @@ Historical PR #2–#6 have been closed unmerged as superseded candidates after c
 
 **No active Saddle product-development step.**
 
-P0 current-state reconciliation is closed. P2 memory/repo recovery remains an evidence inbox and is currently `WAITING_FOR_EVIDENCE`; it does not force idle time. Reconstructor Run 001 and ScriptOps Real Workloads 001–003 are complete as observed/integrated evaluation evidence. ScriptOps itself now waits on authoritative downstream evidence or a Human semantic decision.
+P0 current-state reconciliation is closed. P2 memory/repo recovery remains an evidence inbox and is currently `WAITING_FOR_EVIDENCE`; it does not force idle time. Reconstructor Run 001, ScriptOps Real Workloads 001–003, and M-05 / M-05 R1 whole-ecosystem adversarial integration are complete as bounded observed/accepted/integrated evaluation evidence. ScriptOps itself now waits on authoritative downstream evidence or a Human semantic decision.
 
-Saddle must not manufacture a replacement route. Whole-ecosystem adversarial integration remains a separate test hypothesis and requires an explicit Human gate before execution; it is not an automatically activated P3 item and not a new Saddle product roadmap.
+Saddle must not manufacture a replacement route. Any later cross-project test requires a new hypothesis and explicit Human gate; M-05 must not be reopened merely because an older derived pointer was stale, and no new test is an automatically activated P3 item or Saddle product roadmap.

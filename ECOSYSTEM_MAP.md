@@ -1,6 +1,6 @@
 # ECOSYSTEM MAP — CURRENT
 
-Reconciled: 2026-08-19
+Reconciled: 2026-08-21
 Status: `CURRENT CROSS-PROJECT OWNERSHIP MAP / NOT A COMMAND PIPELINE`
 
 This map exists so a zero-history operator can recover current component roles and handoff boundaries. It is not a router, planner, roadmap or claim that Saddle owns the other repositories.
@@ -104,7 +104,7 @@ ScriptOps Real Workloads 001–003:
 ```text
 RUN 003 BOUNDED_UPSTREAM_CONTEXT = PASS
 RUN 003 DOWNSTREAM_CANDIDATE = STAGED
-RUN 003 CROSS_SCENE_PROPOSAL_COHERENCE = OBSERVED PASS
+RUN 003 CROSS_SCENE PROPOSAL_COHERENCE = OBSERVED PASS
 CANONICAL_EFFECT = NOT APPLIED
 HUMAN_APPROVAL = NOT REQUESTED
 GOAL_DONE = NO
@@ -113,7 +113,17 @@ CURRENT LOCAL WORK-STATE = WAITING_FOR_EVIDENCE / HUMAN_SEMANTIC_DECISION
 
 Interpretation: **observed evaluation evidence only**. No automatic Saddle roadmap consequence. Reconstructor and ScriptOps supply materially different observed workloads, but no universal generalization claim follows automatically.
 
-Whole-ecosystem adversarial integration remains a separate `TEST HYPOTHESIS / NOT EXECUTED`. It requires an explicit Human gate before execution and does not become active merely because earlier evaluation items completed.
+Whole-ecosystem adversarial integration is now closed for the tested M-05 scope. The initial M-05 `BLOCKED` verdict remains historical provenance; bounded M-05 R1 supplied the same-identity H1→H8 replay, was Human-accepted, and was canonically integrated through COS PR #34 → Saddle PR #38 → COS PR #35.
+
+```text
+M-05 / M-05 R1 = EXECUTED / HUMAN ACCEPTED / CANONICALLY INTEGRATED
+M05-B01 / FS-25 = CLOSED
+M05-G01 SEMANTIC CONTENT = CLOSED
+KNOWN AUDITED ARCHITECTURAL GAPS LEFT BY TESTED M-05 SCOPE = 0
+GENERALIZATION CLAIM = NONE
+```
+
+This current-state correction does not create a new roadmap, runtime, capability, effect authority or claim that future architecture is defect-free.
 
 ## Current cross-project boundaries
 
@@ -168,7 +178,7 @@ P3 — materially different project evaluations
      ScriptOps Runs 001–003 COMPLETE / integrated observed evidence
      ScriptOps local state WAITING_FOR_EVIDENCE / HUMAN_SEMANTIC_DECISION
      no new P3 execution item is self-authorized by Saddle
-     whole-ecosystem adversarial integration = TEST HYPOTHESIS / NOT EXECUTED / HUMAN GATE REQUIRED
+     whole-ecosystem adversarial integration = M-05 / M-05 R1 EXECUTED / HUMAN ACCEPTED / CANONICALLY INTEGRATED
 
 P4 — new capabilities
      only after a measured blocker and explicit Human product decision

@@ -202,8 +202,13 @@ M-05 / M-05 R1: EXECUTED / HUMAN ACCEPTED / CANONICALLY INTEGRATED
 M05-B01 / FS-25: CLOSED
 M05-G01 SEMANTIC CONTENT: CLOSED
 KNOWN AUDITED ARCHITECTURAL GAPS LEFT BY TESTED M-05 SCOPE: 0
+M05-R1-AUTH-PROV-01: HISTORICAL / UNRECOVERED / NOT ESTABLISHED
+CURRENT HUMAN RATIFICATION FOR EXECUTOR BASELINE: ESTABLISHED
+RETROACTIVE HISTORICAL MERGE-AUTHORITY CLAIM: NONE
 GENERALIZATION CLAIM: NONE
 ```
+
+The historical `M05-R1-AUTH-PROV-01` provenance gap remains recorded as `UNRECOVERED / NOT ESTABLISHED`. Current Human ratification established the Executor merged state as an accepted M-05 R1 baseline; it does not retroactively establish historical merge authority.
 
 This current-state reconciliation does not rewrite historical M-05 evidence and does not activate a new roadmap, runtime, capability, effect authority, release or deployment.
 

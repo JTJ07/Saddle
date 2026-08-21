@@ -9,9 +9,11 @@ on:
       - TODO.md
       - EXECUTION_PLAN.md
       - DECISION_LOG.md
+      - decisions/**
       - SOURCE_REGISTRY.md
       - docs/HUMAN_OPERATING_CONTRACT.md
       - evidence/ECOSYSTEM_SEMANTIC_FRESHNESS_RECONCILIATION_2026-08-21.md
+      - evidence/POST_RECONCILIATION_SEMANTIC_FRESHNESS_RECHECK_2026-08-21.md
       - config/source-repos.json
       - tools/eval_harness.py
       - tests/**

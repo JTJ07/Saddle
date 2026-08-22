@@ -3,7 +3,7 @@ project: Saddle
 status: PHASE_6_ACCEPTED / PHASE_7_ACCEPTED / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_TECHNICAL_EVIDENCE_ACCEPTED / SECOND_ZERO_HISTORY_RESUME_PASS / FINAL_HUMAN_ACCEPTANCE_ACCEPTED / FUNCTIONAL_SADDLE_ACCEPTED / COMPLETION_LOCK_RELEASED
 completion_lock: RELEASED
 state_owner: PROJECT_STATE.md
-updated_at: 2026-08-21
+updated_at: 2026-08-22
 ---
 
 # PROJECT_STATE — Saddle
@@ -66,6 +66,7 @@ Human decisions defining the terminal acceptance chain and current ownership rec
 - `DEC-SAD-017` — Phase-7 technical E2E evidence accepted.
 - `DEC-SAD-018` — final functional acceptance and completion-lock release.
 - `DEC-SAD-019` — preserves `DEC-SAD-006` historical Human decision content while superseding its former component-role/front-door topology placement for current ownership semantics.
+- `DEC-SAD-020` — Human accepts C0 as the minimal thin semantic entry-contract solution for GAP-ENTRY-001; implementation remains unauthorized.
 
 The release of the completion lock does **not** activate a new roadmap, new autonomy, new capabilities, deployment, release, spending, secrets, trust provider or broader effect authority.
 
@@ -264,6 +265,22 @@ The merge enforces durable single-use consumption fail-closed. It does not alter
 - resource/reinvestment, bounded self-improvement, multi-agent/runtime/UI and other parked ideas remain inactive unless explicitly reactivated by Human product decision;
 - post-acceptance evaluations do not become product scope by observation alone.
 
+Current C0 product-decision state is separate from historical pre-acceptance evidence:
+
+```text
+C0 PAPER SUFFICIENCY = PASS
+C0.A PRIMARY TARGET != CONTROL / SUPPORT = LIVE PASS
+C0.B BOUND INPUT → THIS INVOCATION → BASE INTELLIGENCE = LIVE PASS
+C0 PRODUCT SOLUTION = HUMAN ACCEPTED / DEC-SAD-020
+C0 IMPLEMENTATION = NOT AUTHORIZED
+NEW COMPONENT REQUIRED = NO
+NEW RUNTIME REQUIRED = NO
+MASTER ROUTER REQUIRED = NO
+NEW CAPABILITY REQUIRED = NO
+```
+
+This does not establish broader intent-fidelity sufficiency, `RWV-01 E1-FINAL`, or a product-development roadmap.
+
 Historical PR #2–#6 are closed unmerged as superseded candidates; their valuable content is already preserved on later canonical main and their provenance remains in GitHub/Git history.
 
 Post-acceptance durable-state reconciliation was Human-accepted and merged as PR #33 at `059b218c1a8357d7c73c25c5b5089937205cbd9b`. P1 is therefore closed; this record must not present it as an open gate.
@@ -296,6 +313,11 @@ P0 SECURITY / CURRENT-STATE CORRECTNESS:
   narrow rework may proceed only under its exact Human authorization; no roadmap consequence
   source SHA fields are last-recorded snapshots, not live locks
 
+C0 PRODUCT SOLUTION:
+  HUMAN ACCEPTED / DEC-SAD-020
+  IMPLEMENTATION NOT AUTHORIZED
+  WAITING FOR MEASURED IMPLEMENTATION NEED OR EXPLICIT HUMAN IMPLEMENTATION DECISION
+
 P1 DURABLE-STATE RECONCILIATION:
   COMPLETE / Human accepted / PR #33 merged
 
@@ -325,7 +347,7 @@ For cold start:
 2. read this `PROJECT_STATE.md`;
 3. read `SESSION_HANDOFF.md`;
 4. read `docs/HUMAN_OPERATING_CONTRACT.md` for the current Human-owned `AKCJA / GDZIE / ODESŁAĆ` interaction surface;
-5. use `DECISION_LOG.md` and `decisions/DEC-SAD-019.md` to distinguish preserved `DEC-SAD-006` decision content from superseded former role/topology placement;
+5. use `DECISION_LOG.md`, `decisions/DEC-SAD-019.md` and `decisions/DEC-SAD-020.md` to recover current Human decisions while preserving historical/superseded semantics correctly;
 6. use `SOURCE_REGISTRY.md` / `config/source-repos.json` as recorded external snapshots, then re-resolve live state from the local owner before consequential use;
 7. use decisions/evidence for historical accepted identities;
 8. do not infer current state from an old PR, old SHA, historical capsule or AI memory.

@@ -1,7 +1,7 @@
 ---
 project: Saddle
 status: PHASE_6_ACCEPTED / PHASE_7_ACCEPTED / PHASE_4A_ACCEPTED / PHASE_4C_SYNTHETIC_INTEGRATION_ACCEPTED / PHASE_4B_LIVE_EVIDENCE_COMPLETE / MODEL_SELECTED_GEMINI_3_6_FLASH / EXECUTOR_SELF_IDENTITY_RECONCILED / PHASE_7_TECHNICAL_EVIDENCE_ACCEPTED / SECOND_ZERO_HISTORY_RESUME_PASS / FINAL_HUMAN_ACCEPTANCE_ACCEPTED / FUNCTIONAL_SADDLE_ACCEPTED / COMPLETION_LOCK_RELEASED
-updated_at: 2026-08-21
+updated_at: 2026-08-22
 ---
 
 # SESSION HANDOFF
@@ -25,8 +25,9 @@ SCRIPTOPS CURRENT WORK-STATE — WAITING_FOR_EVIDENCE / HUMAN_SEMANTIC_DECISION
 WHOLE-ECOSYSTEM ADVERSARIAL INTEGRATION — M-05 / M-05 R1 EXECUTED / HUMAN ACCEPTED / CANONICALLY INTEGRATED
 GAP-ENTRY-001 DIAGNOSIS — CLOSED / CONTRACT-ONLY EXPERIMENT COMPLETE
 C0 PAPER SUFFICIENCY — PASS
-C0 LIVE SUFFICIENCY — NOT TESTED
-C0 SOLUTION — NOT HUMAN ACCEPTED
+C0.A PRIMARY TARGET != CONTROL / SUPPORT — LIVE PASS
+C0.B BOUND INPUT → THIS INVOCATION → BASE INTELLIGENCE — LIVE PASS
+C0 PRODUCT SOLUTION — HUMAN ACCEPTED / DEC-SAD-020
 C0 IMPLEMENTATION — NOT AUTHORIZED
 EXECUTOR RUN94 HUMAN-ACCEPTED IMPLEMENTATION — 3cd0c8d747fef06f82c01cdab8449c7c8a100038
 EXECUTOR RUN94 HUMAN-ACCEPTED TREE — c739aaa989a15eaed65996d7a0b5242a0ec26d7e
@@ -145,6 +146,17 @@ SOLUTION = NOT HUMAN ACCEPTED
 IMPLEMENTATION = NOT AUTHORIZED
 ```
 
+The block above is immutable historical contract-only evidence. It is not the current C0 product-decision state. Later live behavioral evidence and the Human decision in `decisions/DEC-SAD-020.md` establish the current state:
+
+```text
+C0.A PRIMARY TARGET != CONTROL / SUPPORT = LIVE PASS
+C0.B BOUND INPUT → THIS INVOCATION → BASE INTELLIGENCE = LIVE PASS
+C0 PRODUCT SOLUTION = HUMAN ACCEPTED
+C0 IMPLEMENTATION = NOT AUTHORIZED
+```
+
+This later current-state fact does not rewrite the historical seal and does not establish broader intent-fidelity sufficiency, runtime sufficiency, `RWV-01 E1-FINAL`, architecture change or capability expansion.
+
 The narrow semantic-freshness reconciliation and this rework do not implement C0, its `.A/.B` bindings, a runtime, a router or a new capability.
 
 These successful target/workload/contract-only results are evidence, not a general product requirement. They do not self-authorize another Saddle product feature, live C0 test, or implementation.
@@ -177,6 +189,7 @@ Historical run SHAs remain historical provenance. Later accepted local-owner cha
 - `DEC-SAD-017`: Phase-7 technical E2E accepted.
 - `DEC-SAD-018`: final functional acceptance and completion-lock release.
 - `DEC-SAD-019`: current ownership-semantics reconciliation; `DEC-SAD-006` historical content preserved, former role/front-door topology placement superseded only.
+- `DEC-SAD-020`: C0 thin semantic entry contract accepted as the minimal product solution for GAP-ENTRY-001; implementation remains unauthorized.
 
 The current Human-owned interaction contract is `docs/HUMAN_OPERATING_CONTRACT.md`:
 
@@ -296,19 +309,21 @@ Historical PR #2–#6 have been closed unmerged as superseded candidates after c
 4. `docs/HUMAN_OPERATING_CONTRACT.md`
 5. `DECISION_LOG.md`
 6. `decisions/DEC-SAD-019.md`
-7. `SOURCE_REGISTRY.md`
-8. `ECOSYSTEM_MAP.md`
-9. `config/autonomy.json`
-10. `config/eval-lanes.json`
-11. `config/source-repos.json`
-12. `docs/PROJECT_COMPLETION_AUTONOMY_TEST_PROTOCOL.md`
-13. `evidence/PROJECT_COMPLETION_AUTONOMY_EXECUTOR_RESULT_2026-08-19.md`
-14. `evidence/GAP_ENTRY_001_CONTRACT_ONLY_SUFFICIENCY_SEAL_2026-08-21.md`
-15. `evidence/POST_RECONCILIATION_SEMANTIC_FRESHNESS_RECHECK_2026-08-21.md`
-16. `FUTURE_IDEAS.md`
+7. `decisions/DEC-SAD-020.md`
+8. `SOURCE_REGISTRY.md`
+9. `ECOSYSTEM_MAP.md`
+10. `config/autonomy.json`
+11. `config/eval-lanes.json`
+12. `config/source-repos.json`
+13. `docs/PROJECT_COMPLETION_AUTONOMY_TEST_PROTOCOL.md`
+14. `evidence/PROJECT_COMPLETION_AUTONOMY_EXECUTOR_RESULT_2026-08-19.md`
+15. `evidence/GAP_ENTRY_001_CONTRACT_ONLY_SUFFICIENCY_SEAL_2026-08-21.md`
+16. `evidence/C0_LIVE_02_RAW_EVIDENCE_PACKAGE_2026-08-21.md`
+17. `evidence/POST_RECONCILIATION_SEMANTIC_FRESHNESS_RECHECK_2026-08-21.md`
+18. `FUTURE_IDEAS.md`
 
 ## ONE NEXT STEP
 
 **No active Saddle product-development step.**
 
-PR #41 is already Human-accepted and canonically integrated. The post-reconciliation recheck remains immutable evidence with verdict `REWORK REQUIRED`; any repair candidate requires its own exact Human acceptance and merge authority. No product-development step, roadmap, capability, runtime, C0 implementation, C0 live test, Ginseng activation, master router, release or deployment follows from this maintenance lane.
+PR #41 is already Human-accepted and canonically integrated. The post-reconciliation recheck remains immutable evidence with verdict `REWORK REQUIRED`; current C0 product state is governed by later `DEC-SAD-020`. Any new repair candidate still requires its own exact Human acceptance and merge authority. No product-development step, roadmap, capability, runtime, C0 implementation, Ginseng activation, master router, release or deployment follows from this maintenance lane.

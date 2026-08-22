@@ -171,12 +171,21 @@ class CanonicalRecoverySurfaceTests(unittest.TestCase):
         self.assertIn("RECHECK-R01 OPEN", recheck)
         self.assertIn("RECHECK-R02 OPEN", recheck)
 
-    def test_gap_entry_c0_remains_unimplemented_and_live_untested(self):
+    def test_gap_entry_c0_current_recovery_matches_dec_sad_020(self):
         handoff = self.read("SESSION_HANDOFF.md")
+        decision = self.read("decisions/DEC-SAD-020.md")
+
         self.assertIn("C0 PAPER SUFFICIENCY — PASS", handoff)
-        self.assertIn("C0 LIVE SUFFICIENCY — NOT TESTED", handoff)
-        self.assertIn("C0 SOLUTION — NOT HUMAN ACCEPTED", handoff)
+        self.assertIn("C0.A PRIMARY TARGET != CONTROL / SUPPORT — LIVE PASS", handoff)
+        self.assertIn("C0.B BOUND INPUT → THIS INVOCATION → BASE INTELLIGENCE — LIVE PASS", handoff)
+        self.assertIn("C0 PRODUCT SOLUTION — HUMAN ACCEPTED / DEC-SAD-020", handoff)
         self.assertIn("C0 IMPLEMENTATION — NOT AUTHORIZED", handoff)
+        self.assertNotIn("C0 LIVE SUFFICIENCY — NOT TESTED", handoff)
+        self.assertNotIn("C0 SOLUTION — NOT HUMAN ACCEPTED", handoff)
+
+        self.assertIn("Status: ACTIVE / HUMAN PRODUCT ACCEPTANCE / IMPLEMENTATION NOT AUTHORIZED", decision)
+        self.assertIn("C0 PRODUCT SOLUTION = HUMAN ACCEPTED", decision)
+        self.assertIn("C0 IMPLEMENTATION = NOT AUTHORIZED", decision)
 
 
 if __name__ == "__main__":
